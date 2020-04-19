@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/MenuButton.dart';
 import 'constants.dart';
+import 'WeiterButton.dart';
+//TODO clippy import löschen
+import 'package:clippy_flutter/clippy_flutter.dart';
+
 
 class StapelErstellen extends StatefulWidget{
 
@@ -61,6 +66,15 @@ class _StapelErstellen extends State<StapelErstellen> {
             ),
           ),
 
+
+      Padding(
+        padding: const EdgeInsets.fromLTRB(280.0, 160.0, 10.0, 20.0),
+        child: WeiterButton(
+          onTap: (){
+            //TODO KarteErstellen verknüpfen
+          },
+        ),
+      ),
 
         ],
       ),

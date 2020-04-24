@@ -2,37 +2,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-//https://pub.dev/packages/clippy_flutter#-readme-tab-   Import Link für Button-Formen
-import 'package:clippy_flutter/clippy_flutter.dart';
+class WeiterButton extends StatelessWidget{
 
-class WeiterButton extends StatelessWidget {
 
-  WeiterButton({this.onTap});
+  WeiterButton({this.onPress,@required this.text}){}
 
-  Function onTap;
+  String text;
+  final Function onPress;
+
 
   @override
   Widget build(BuildContext context) {
+    return FlatButton(
 
-    return Arrow(
-      triangleHeight: 30.0,
-      rectangleClipHeight: 10.0,
-      edge: Edge.RIGHT,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          color: Colors.blueAccent[200],
-          width: 100.0,
-          height: 70.0,
-          child: Center(
-            child: Text(
-              'WEITER  ',
-              style: WeisserTextStyle,
-            ),
+      onPressed: onPress,
+
+      child: Container(
+
+        width: 170.0,
+        height: 60.0,
+        child: Center(
+          child: Text(
+            text,
+            style: MenuButtonTextStyle,
+
+
           ),
+        ),
+        margin: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: Colors.green,
+          borderRadius: BorderRadius.circular(10.0),
         ),
       ),
     );
   }
-
 }

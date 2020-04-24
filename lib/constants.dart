@@ -14,4 +14,10 @@ fontFamily: 'Baloobhai2-ExtraBold.ttf',
 fontSize: 20.0
 );
 
+const CardTextStyle=TextStyle(
+    color: Colors.black,
+    fontFamily: 'Baloobhai2-ExtraBold.ttf',
+    fontSize: 20.0
+);
+
 

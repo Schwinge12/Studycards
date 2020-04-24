@@ -48,16 +48,16 @@ class _MenuPageState extends State<MenuPage>{
             ),
 
             MenuButton(
-              text: 'Stapel erstellen',
+              text: 'Kartenset',
               onPress: (){
                 Navigator.pushNamed(context, 'StapelErstellen');
               },
             ),
 
               MenuButton(
-                text: 'Meine Stapel',
+                text: 'Meine Sets',
                 onPress: (){
-
+                    Navigator.pushNamed(context, 'Kartenabfrage');
                 },
               ),
 

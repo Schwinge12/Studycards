@@ -10,7 +10,7 @@ import 'package:karteikartenapp/DozentScreens/StapelErstellen.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 
-//test
+//testsyncro
 
 void main()=>runApp(KarteikartenApp());
 

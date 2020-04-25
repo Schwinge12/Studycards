@@ -30,14 +30,14 @@ class _MenuPageState extends State<MenuPage>{
            Icon(Icons.person,size: 150,) ,
 
 
-              //TODO Username anzeigen lassen
+              //TODO Backend/Datenbank Username anzeigen lassen
               Text(username,
                 style: WeisserTextStyle
                 ),
 
 
 
-              //TODO Status als Dozent oder Student angeben
+              //TODO Backend/Datenbank Status als Dozent oder Student angeben
               Text(status,
                 style:WeisserTextStyle
               ),

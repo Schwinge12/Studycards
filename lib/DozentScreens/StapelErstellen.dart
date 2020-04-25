@@ -6,6 +6,9 @@ import 'package:karteikartenapp/WeiterButton.dart';
 
 
 
+
+//TODO Backend: Eingebene Daten abspeichern
+
 class StapelErstellen extends StatefulWidget{
 
   @override

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card.dart';
@@ -32,7 +33,24 @@ class KarteErstellenRueckseite extends StatelessWidget {
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
 
-              Center(child: Text('Rückseite:',style: WeisserTextStyle,)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(child: Text('Rückseite:',style: WeisserTextStyle,)),
+                  FlatButton(
+                    onPressed: (){
+                    //TODO Backend: Karte (Vorder & Rückseite) abspeichern
+                    },
+                    child: Container(
+                      width: 100,
+                      height: 30,
+                      color: Colors.white,
+                      child: Center(child: Text('Fertig',style: TextStyle(color: Colors.blueAccent,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,)),
+                    ),
+                  ),
+                ],
+              ),
+
 
               Expanded(
                 child: Container(
@@ -67,16 +85,13 @@ class KarteErstellenRueckseite extends StatelessWidget {
                       text: 'Weiter',
                     ),
                   ),
-                  Expanded(
-                    child: FertigstellenButton(
-                      onPress:(){},
-                      text: 'Fertig',
-                    ),
-                  ),
+
                 Expanded(
                   child: MultipleChoiceButton(
-                      onPress:(){},
-                      text: 'Text',
+                      onPress:(){
+                        //TODO Multiple Choice Schablone einfügen
+                      },
+                      text: 'MC',
                   )
                 )
                 ],

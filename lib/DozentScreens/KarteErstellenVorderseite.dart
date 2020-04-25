@@ -25,6 +25,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //TODO FrontEnd: Lange Strings passend anzeigen
         title: Text(studienfachstring+': '+themengebietstring),
         backgroundColor: Colors.blueAccent[400],
       ),
@@ -33,9 +34,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
-
               Center(child: Text('VORDERSEITE:',style: WeisserTextStyle,)),
-
               Expanded(
                 child: Container(
                   color: Colors.white,
@@ -45,13 +44,10 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                     maxLines: 20,
                     onChanged: (String s){
                       eingabe=s;
-                    },
+                    }
                   ),
                 ),
-
               ),
-
-
 
               SizedBox(
                 height: 15.0,
@@ -59,8 +55,15 @@ class KarteErstellenVorderseite  extends StatelessWidget {
               Row(
                 children: <Widget>[
 
+                  Expanded(
+                    child: FlatButton(
+                      child: Icon (Icons.add_a_photo, size: 60, color: Colors.white),
+                        onPressed: (){
+                      //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
+                      }
+                    )
 
-
+                  ),
                   Expanded(
                     child: WeiterButton(
                       text: 'Weiter',
@@ -69,12 +72,8 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                       },
                     ),
                   ),
-
-
                 ],
               ),
-
-
               SizedBox(
                 height: 15.0,
               ),

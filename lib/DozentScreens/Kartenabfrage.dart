@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:karteikartenapp/constants.dart';
 
 class Kartenabfrage extends StatefulWidget {
   @override
@@ -31,29 +32,30 @@ class _KartenabfrageState extends State<Kartenabfrage> {
                     },
                     front: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF89B3FB),
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Front', style: Theme.of(context).textTheme.headline),
+                          Text('Front', style: MenuButtonTextStyle),
+
                           Text('Click here to flip back',
-                              style: Theme.of(context).textTheme.body1),
+                              style: MenuButtonTextStyle),
                         ],
                       ),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF89B3FB),
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Back', style: Theme.of(context).textTheme.headline),
+                          Text('Back', style: MenuButtonTextStyle),
                           Text('Click here to flip front',
-                              style: Theme.of(context).textTheme.body1),
+                              style: MenuButtonTextStyle),
                         ],
                       ),
                     ),
@@ -69,9 +71,8 @@ class _KartenabfrageState extends State<Kartenabfrage> {
                   Expanded(
                     child: FloatingActionButton(
                       onPressed: (){
-
                       },
-                      backgroundColor: Color(0xFF89B3FB),
+                      backgroundColor: Colors.white70,
                       child: Icon(Icons.add),
                     ),
                   ),

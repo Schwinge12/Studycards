@@ -19,7 +19,7 @@ class _MenuPageState extends State<MenuPage>{
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red[400],
+          backgroundColor: Colors.blueAccent[400],
         ),
         body: Center(
           child: Column(

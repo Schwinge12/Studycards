@@ -10,8 +10,7 @@ import 'package:karteikartenapp/DozentScreens/StapelErstellen.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 
-//testsyncro
-//TEST
+
 void main()=>runApp(KarteikartenApp());
 
 class KarteikartenApp extends StatelessWidget{

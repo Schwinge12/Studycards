@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flip_card/flip_card.dart';
-import 'package:flip_card/flip_card.dart';
-import 'package:karteikartenapp/FertigstellenButton.dart';
+//import 'package:flip_card/flip_card.dart';
+//import 'package:karteikartenapp/FertigstellenButton.dart';
 import 'package:karteikartenapp/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/WeiterButton.dart';
 import 'package:karteikartenapp/constants.dart';

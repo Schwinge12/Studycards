@@ -6,17 +6,17 @@ import 'package:karteikartenapp/WeiterButton.dart';
 import 'package:karteikartenapp/constants.dart';
 
 
+//TODO Frontend: Löschen Button einfuegen
 
 class KarteErstellenVorderseite  extends StatelessWidget {
 
-  KarteErstellenVorderseite({this.studiengangstring,this.studienfachstring,this.themengebietstring});
+  KarteErstellenVorderseite({this.studiengang,this.studienfach,this.themengebiet});
 
-  final String studiengangstring;
-  final String studienfachstring;
-  final String themengebietstring;
+  final String studiengang;
+  final String studienfach;
+  final String themengebiet;
 
 
-  String dropdownValue = 'One';
 
   final TextEditingController vorderseite= new TextEditingController();
   String eingabe;
@@ -26,7 +26,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         //TODO FrontEnd: Lange Strings passend anzeigen
-        title: Text(studienfachstring+': '+themengebietstring),
+        title: Text(studienfach+': '+themengebiet),
         backgroundColor: Colors.blueAccent[400],
       ),
       body: Center(
@@ -64,14 +64,22 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                     )
 
                   ),
+
+                  Expanded(
+                    child: Container(
+                      width: 170.0,
+                    ),
+                  ),
+
                   Expanded(
                     child: WeiterButton(
                       text: 'Weiter',
                       onPress: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(studienfach: studienfachstring,studiengang: studiengangstring,themengebiet: themengebietstring)));
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(studienfach: studienfach,studiengang: studiengang,themengebiet: themengebiet)));
                       },
                     ),
                   ),
+
                 ],
               ),
               SizedBox(

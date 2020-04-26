@@ -1,12 +1,16 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/FertigstellenButton.dart';
 import 'package:karteikartenapp/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/WeiterButton.dart';
 import 'package:karteikartenapp/constants.dart';
+import 'StapelAbschliesenDozent.dart';
 
+//TODO Frontend: Löschen Button einfuegen
 
 class KarteErstellenRueckseite extends StatelessWidget {
 
@@ -37,9 +41,11 @@ class KarteErstellenRueckseite extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Center(child: Text('Rückseite:',style: WeisserTextStyle,)),
+                  
                   FlatButton(
                     onPressed: (){
                     //TODO Backend: Karte (Vorder & Rückseite) abspeichern
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>AbschliessenDozent(studienfach: studienfach,studiengang: studiengang,themengebiet: themengebiet)));
                     },
                     child: Container(
                       width: 100,
@@ -71,29 +77,40 @@ class KarteErstellenRueckseite extends StatelessWidget {
               ),
               Row(
                 children: <Widget>[
-              Expanded(
-                  child: FlatButton(
-                  child: Icon (Icons.add_a_photo, size: 60, color: Colors.white),
-                  onPressed: (){
-                  //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
-                  }
+
+                  Expanded(
+                      child: FlatButton(
+                          child: Icon (Icons.add_a_photo, size: 60, color: Colors.white),
+                          onPressed: (){
+                            //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
+                          }
+                      )
+
                   ),
 
-              ),
                   Expanded(
-                    child: WeiterButton(
-                      text: 'Weiter',
+                    child: MultipleChoiceButton(
+                      text: 'MP',
+                      onPress: (){
+
+                      },
                     ),
                   ),
 
-                Expanded(
-                  child: MultipleChoiceButton(
-                      onPress:(){
-                        //TODO Multiple Choice Schablone einfügen
+
+
+                  Expanded(
+                    child: WeiterButton(
+                      text: 'Weiter',
+                      onPress: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: studienfach,studiengang: studiengang,themengebiet: themengebiet)));
+                      //TODO Backend: Bei jedem Betätigen aktuelle eingaben speichern, und neue eingaben ermöglichen
                       },
-                      text: 'MC',
-                  )
-                )
+                    ),
+
+                  ),
+
+
                 ],
               ),
             ]),

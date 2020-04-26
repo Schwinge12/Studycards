@@ -95,7 +95,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                   child: WeiterButton(
                     text: 'Speichern',
                     onPress: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengangstring: studiengangstring,studienfachstring: studiengangstring,themengebietstring: themengebietstring)));
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangstring,studienfach: studienfachstring,themengebiet: themengebietstring)));
                     },
                   )
               ),

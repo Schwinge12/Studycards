@@ -9,7 +9,7 @@ import 'package:karteikartenapp/DozentScreens/MenuPage.dart';
 import 'package:karteikartenapp/DozentScreens/StapelErstellen.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
-
+import 'package:karteikartenapp/DozentScreens/StapelAbschliesenDozent.dart';
 
 void main()=>runApp(KarteikartenApp());
 
@@ -30,6 +30,7 @@ class KarteikartenApp extends StatelessWidget{
         'KarteErstellenVorderseite':(context)=>KarteErstellenVorderseite(),
         'KarteErstellenRueckseite':(context)=>KarteErstellenRueckseite(),
         'Kartenabfrage':(context)=>Kartenabfrage(),
+        'StapelAbschliesenDozent':(context)=>AbschliessenDozent(),
       },
 
     );

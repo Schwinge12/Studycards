@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 //import 'package:flip_card/flip_card.dart';
 //import 'package:karteikartenapp/FertigstellenButton.dart';
 import 'package:karteikartenapp/MultipleChoiceButton.dart';
+import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
+//import 'package:karteikartenapp/Speicherung/Speicherung.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/WeiterButton.dart';
 import 'package:karteikartenapp/constants.dart';
 
@@ -14,7 +17,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
   final String studiengang;
   final String studienfach;
   final String themengebiet;
-
+  final Userdata userdata = new Userdata(); //Todo: Speicherung - Userdata in main anlegen und hierher Übergeben
 
   final TextEditingController vorderseite= new TextEditingController();
   String eingabe;
@@ -39,6 +42,12 @@ class KarteErstellenRueckseite extends StatelessWidget {
                   FlatButton(
                     onPressed: (){
                     //TODO Backend: Karte (Vorder & Rückseite) abspeichern
+                        userdata.einfuegen(
+                            new Karteikarte()
+                            .withFach(userdata.getFachMitString('Informatik')) // Inapp liste zum auswählen ?
+                            .withVorderSeite('irgendein Bsp. Text')
+                            .withRueckSeite('irgendein Bsp. Text')
+                        );
                     },
                     child: Container(
                       width: 100,

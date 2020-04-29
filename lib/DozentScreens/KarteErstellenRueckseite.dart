@@ -44,9 +44,9 @@ class KarteErstellenRueckseite extends StatelessWidget {
                     //TODO Backend: Karte (Vorder & Rückseite) abspeichern
                         userdata.einfuegen(
                             new Karteikarte()
-                            .withFach(userdata.getFachMitString('Informatik')) // Inapp liste zum auswählen ?
-                            .withVorderSeite('irgendein Bsp. Text')
-                            .withRueckSeite('irgendein Bsp. Text')
+                            .mitKurs(userdata.getFachMitString('Informatik')) // Inapp liste zum auswählen ?
+                            .mitVorderSeite('irgendein Bsp. Text')
+                            .mitRueckSeite('irgendein Bsp. Text')
                         );
                     },
                     child: Container(

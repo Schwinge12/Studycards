@@ -1,12 +1,12 @@
 import 'Produkt.dart';
 
-class Fach extends Produkt {
+class Kurs extends Produkt {
 
 //____________________________________Variables_______________________________
   String name;
 
 //____________________________________Constructor_____________________________
-Fach(String name){
+Kurs(String name){
   this.name = name;
 
 }

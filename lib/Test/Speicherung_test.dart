@@ -17,8 +17,8 @@ test () {
     expect(ud.karteikarten, null);
     ud.einfuegen(p2);
     ud.einfuegen(p3);
-    expect(ud.karteikarten.length(), 2);
-    expect(ud.karteikarten.first().hashCode, p2.hashCode);
+    expect(ud.karteikarten.length, 2);
+    expect(ud.karteikarten.first.hashCode, p2.hashCode);
     expect(ud.karteikarten[1].hashCode, p3.hashCode);
   }
  catch (e){

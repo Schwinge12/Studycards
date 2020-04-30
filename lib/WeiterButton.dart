@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+// import 'constants.dart';
 
 class WeiterButton extends StatelessWidget{
 
 
-  WeiterButton({this.onPress,@required this.text}){}
+  WeiterButton({this.onPress,@required this.text});
 
   String text;
   final Function onPress;

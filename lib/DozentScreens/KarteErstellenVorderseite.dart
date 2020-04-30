@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flip_card/flip_card.dart';
-import 'package:flip_card/flip_card.dart';
+//import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/WeiterButton.dart';
 import 'package:karteikartenapp/constants.dart';

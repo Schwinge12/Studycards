@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartensets_verwalten.dart';
 //import 'package:karteikartenapp/DozentScreens/MenuButton.dart';
@@ -9,6 +10,7 @@ import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
 import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'StudentScreens/EinzelnerStapelStatusAnsicht.dart';
 
 
 void main()=>runApp(KarteikartenApp());
@@ -32,6 +34,8 @@ class KarteikartenApp extends StatelessWidget{
         'Kartenabfrage':(context)=>Kartenabfrage(),
         'StapelAbschliessenDozent':(context)=>StapelAbschliessenDozent(),
         'StapelUeberarbeiten':(context)=>StapelUeberarbeiten(),
+        'AlleStapelAnzeigen':(context)=>AlleStapel(),
+        'EinzelnerStapelStatus':(context)=>StapelStatus(),
       },
 
     );

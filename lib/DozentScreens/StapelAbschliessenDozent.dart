@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../constants.dart';
-import 'MenuButton.dart';
+import '../ButtonsAndConstants/constants.dart';
+import '../ButtonsAndConstants/MenuButton.dart';
 
 //TODO Frontend: Seite Scrollbar machen?:D
 
@@ -45,7 +45,7 @@ class StapelAbschliessenDozent extends StatelessWidget {
                MenuButton(
                 text: 'Stapel hochladen',
                 onPress: (){
-                Navigator.pushNamed(context, 'StapelErstellen');
+                //TODO Backend: Stapel hochladen
                 },
               ),
 

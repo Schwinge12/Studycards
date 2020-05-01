@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:karteikartenapp/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 class Kartenabfrage extends StatefulWidget {
   @override
@@ -20,6 +20,7 @@ class _KartenabfrageState extends State<Kartenabfrage> {
             children: <Widget>[
 
               Expanded(
+                flex: 7,
                 child: Card(
                   elevation: 0.0,
                   margin: EdgeInsets.only(left: 32.0, right: 32.0, top: 20.0, bottom: 0.0),
@@ -62,20 +63,33 @@ class _KartenabfrageState extends State<Kartenabfrage> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 15.0,
-              ),
+
               Row(
                 children: <Widget>[
 
                   Expanded(
-                    child: FloatingActionButton(
+                   
+                    child: IconButton(
                       onPressed: (){
+
                       },
-                      backgroundColor: Colors.white70,
-                      child: Icon(Icons.add),
+                      icon: Icon(Icons.check,color: Colors.green,size: 70,),
                     ),
                   ),
+
+
+                  Expanded(
+                    child: IconButton(
+                      onPressed: (){
+
+                      },
+                      icon: Icon(Icons.cancel,color: Colors.red,size: 70,),
+                    ),
+                  ),
+
+
+
+
 
 
 
@@ -83,9 +97,8 @@ class _KartenabfrageState extends State<Kartenabfrage> {
               ),
 
 
-              SizedBox(
-                height: 15.0,
-              ),
+
+
 
 
             ]),

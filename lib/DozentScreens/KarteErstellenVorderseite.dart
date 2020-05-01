@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 //import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
-import 'package:karteikartenapp/WeiterButton.dart';
-import 'package:karteikartenapp/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 
 //TODO Frontend: Löschen Button einfuegen
@@ -33,7 +33,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
-              Center(child: Text('VORDERSEITE:',style: WeisserTextStyle,)),
+              Center(child: Text('VORDERSEITE:\n',style: WeisserTextStyle,)),
               Expanded(
                 child: Container(
                   color: Colors.white,
@@ -48,9 +48,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(
-                height: 15.0,
-              ),
+
               Row(
                 children: <Widget>[
 
@@ -81,9 +79,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
 
                 ],
               ),
-              SizedBox(
-                height: 15.0,
-              ),
+
 
 
               

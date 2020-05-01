@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
-import 'package:karteikartenapp/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 class StapelUeberarbeiten extends StatefulWidget {
   @override

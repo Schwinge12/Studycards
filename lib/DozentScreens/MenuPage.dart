@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/constants.dart';
-import 'MenuButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import '../ButtonsAndConstants/MenuButton.dart';
 
 
 class MenuPage extends StatefulWidget{
@@ -42,7 +42,7 @@ class _MenuPageState extends State<MenuPage>{
               height: 50,
             ),
             MenuButton(
-              text: 'Kartenset',
+              text: 'Kartenset erstellen',
               onPress: (){
                 Navigator.pushNamed(context, 'StapelErstellen');
               },
@@ -50,7 +50,7 @@ class _MenuPageState extends State<MenuPage>{
               MenuButton(
                 text: 'Meine Sets',
                 onPress: (){
-                    Navigator.pushNamed(context, 'Kartenabfrage');
+                    Navigator.pushNamed(context, 'AlleStapelAnzeigen');
                 },
               ),
 

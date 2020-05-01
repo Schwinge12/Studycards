@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/MultipleChoiceButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-import 'package:karteikartenapp/WeiterButton.dart';
-import 'package:karteikartenapp/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'StapelAbschliessenDozent.dart';
 
 
@@ -37,6 +37,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
                 children: <Widget>[
                   Center(child: Text('Rückseite:',style: WeisserTextStyle,)),
                   FlatButton(
+
                     onPressed: (
                         ){
                     //TODO Backend: Karte (Vorder & Rückseite) abspeichern
@@ -72,9 +73,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
                 ),
 
               ),
-              SizedBox(
-                height: 15.0,
-              ),
+
               Row(
                 children: <Widget>[
               Expanded(
@@ -86,19 +85,25 @@ class KarteErstellenRueckseite extends StatelessWidget {
                   ),
 
               ),
-                  Expanded(
-                    child: WeiterButton(
-                      text: 'Weiter',
-                    ),
-                  ),
+
                 Expanded(
                   child: MultipleChoiceButton(
                       onPress:(){
-                        //TODO Multiple Choice Schablone einfügen
+                        //TODO Backend: Multiple Choice Schablone einfügen
                       },
                       text: 'MC',
                   )
-                )
+                ),
+
+                  Expanded(
+                    child: WeiterButton(
+                      text: 'Weiter',
+                      onPress: (){
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+
                 ],
               ),
             ]),

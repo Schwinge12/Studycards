@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:flip_card/flip_card.dart';
-//import 'package:karteikartenapp/FertigstellenButton.dart';
 import 'package:karteikartenapp/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
-//import 'package:karteikartenapp/Speicherung/Speicherung.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/WeiterButton.dart';
 import 'package:karteikartenapp/constants.dart';
+import 'StapelAbschliessenDozent.dart';
 
 
 class KarteErstellenRueckseite extends StatelessWidget {
@@ -19,7 +17,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
   final String themengebiet;
   final Userdata userdata = new Userdata(); //Todo: Speicherung - Userdata in main anlegen und hierher Übergeben
 
-  final TextEditingController vorderseite= new TextEditingController();
+  final TextEditingController vorderseite = new TextEditingController();
   String eingabe;
 
   @override
@@ -34,21 +32,22 @@ class KarteErstellenRueckseite extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Center(child: Text('Rückseite:',style: WeisserTextStyle,)),
                   FlatButton(
-                    onPressed: (){
+                    onPressed: (
+                        ){
                     //TODO Backend: Karte (Vorder & Rückseite) abspeichern
-                        userdata.einfuegen(
+                        /*userdata.einfuegen(
                             new Karteikarte()
                             .mitKurs(userdata.getFachMitString('Informatik')) // Inapp liste zum auswählen ?
                             .mitVorderSeite('irgendein Bsp. Text')
                             .mitRueckSeite('irgendein Bsp. Text')
-                        );
-                    },
+                        );*/
+                        Navigator.pushNamed(context, 'StapelAbschliessenDozent');
+                        },
                     child: Container(
                       width: 100,
                       height: 30,
@@ -58,7 +57,6 @@ class KarteErstellenRueckseite extends StatelessWidget {
                   ),
                 ],
               ),
-
 
               Expanded(
                 child: Container(
@@ -93,7 +91,6 @@ class KarteErstellenRueckseite extends StatelessWidget {
                       text: 'Weiter',
                     ),
                   ),
-
                 Expanded(
                   child: MultipleChoiceButton(
                       onPress:(){

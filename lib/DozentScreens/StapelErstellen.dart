@@ -13,12 +13,8 @@ class StapelErstellen extends StatefulWidget{
 
   @override
   _StapelErstellen createState()=>_StapelErstellen();
-
 }
-
-
 class _StapelErstellen extends State<StapelErstellen> {
-
 
   final TextEditingController studiengang= new TextEditingController();
   String studiengangstring;
@@ -26,7 +22,6 @@ class _StapelErstellen extends State<StapelErstellen> {
   String studienfachstring;
   final TextEditingController themengebiet= new TextEditingController();
   String themengebietstring;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

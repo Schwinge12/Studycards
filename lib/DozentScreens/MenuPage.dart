@@ -24,43 +24,35 @@ class _MenuPageState extends State<MenuPage>{
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: <Widget>[
 
            Icon(Icons.person,size: 150,) ,
-
 
               //TODO Backend/Datenbank Username anzeigen lassen
               Text(username,
                 style: WeisserTextStyle
                 ),
 
-
-
               //TODO Backend/Datenbank Status als Dozent oder Student angeben
               Text(status,
                 style:WeisserTextStyle
               ),
 
-
             SizedBox(
               height: 50,
             ),
-
             MenuButton(
               text: 'Kartenset',
               onPress: (){
                 Navigator.pushNamed(context, 'StapelErstellen');
               },
             ),
-
               MenuButton(
                 text: 'Meine Sets',
                 onPress: (){
                     Navigator.pushNamed(context, 'Kartenabfrage');
                 },
               ),
-
 
               MenuButton(
                 text: 'Einstellungen',

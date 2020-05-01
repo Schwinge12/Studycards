@@ -10,7 +10,6 @@ class FertigstellenButton extends StatelessWidget{
   String text;
   final Function onPress;
 
-
   @override
   Widget build(BuildContext context) {
     return FlatButton(

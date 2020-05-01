@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+//import 'constants.dart';
 
 class FertigstellenButton extends StatelessWidget{
 
 
-  FertigstellenButton({this.onPress,this.text}){}
+  FertigstellenButton({this.onPress,this.text});
 
   String text;
   final Function onPress;

@@ -21,7 +21,6 @@ class _StapelStatusState extends State<StapelStatus>{
         title: Center(child: Text('Stapelname,Thema',style: WeisserTextStyle,)),
       ),
       body: Container(
-
         margin: EdgeInsets.all(30.0),
         decoration: BoxDecoration(
           boxShadow: [
@@ -38,10 +37,8 @@ class _StapelStatusState extends State<StapelStatus>{
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.0),
         ),
-
         child: Column(
           children: <Widget>[
-
             //TODO Backend: Anzahl der Karten einfügen
             Expanded(
               child: Center(child: Padding(
@@ -50,18 +47,15 @@ class _StapelStatusState extends State<StapelStatus>{
               ),
               ),
             ),
-
             Expanded(
               child: Center(child: Text('Aktueller Lernfortschritt:',style: MenuButtonTextStyle,),
               ),
             ),
-
             Expanded(
               flex: 7,
               child: ProzentWidget(
               ),
             ),
-
             Expanded(
               flex: 2,
               child: WeiterButton(
@@ -73,8 +67,6 @@ class _StapelStatusState extends State<StapelStatus>{
                 },
               ),
             ),
-
-
           ],
         ),
       ),

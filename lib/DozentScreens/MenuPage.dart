@@ -19,14 +19,13 @@ class _MenuPageState extends State<MenuPage>{
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blueAccent[400],
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
-           Icon(Icons.person,size: 150,color: Colors.white,) ,
-
+           Icon(Icons.person,size: 150,) ,
               //TODO Backend/Datenbank Username anzeigen lassen
               Text(username,
                 style: WeisserTextStyle
@@ -36,7 +35,6 @@ class _MenuPageState extends State<MenuPage>{
               Text(status,
                 style:WeisserTextStyle
               ),
-
             SizedBox(
               height: 50,
             ),
@@ -52,11 +50,9 @@ class _MenuPageState extends State<MenuPage>{
                     Navigator.pushNamed(context, 'AlleStapelAnzeigen');
                 },
               ),
-
               MenuButton(
                 text: 'Einstellungen',
                 onPress: (){
-
                 },
               ),
       ]

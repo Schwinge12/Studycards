@@ -20,7 +20,6 @@ class _AlleStapel extends State<AlleStapel> {
     //TODO Backend: Liste mit Stapeln anlegen, und so viele MenuButtons erzeugen wie es Stapel gibt
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent[400],
         title: Text('Meine angelegten Stapel',style: WeisserTextStyle,),
       ),
       body: SingleChildScrollView(

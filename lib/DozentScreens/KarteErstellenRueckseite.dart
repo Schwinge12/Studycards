@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
-import 'StapelAbschliessenDozent.dart';
+
 
 
 class KarteErstellenRueckseite extends StatelessWidget {
@@ -25,7 +24,6 @@ class KarteErstellenRueckseite extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(studienfach+': '+themengebiet),
-        backgroundColor: Colors.blueAccent[400],
       ),
       body: Center(
         child: Column(
@@ -52,8 +50,8 @@ class KarteErstellenRueckseite extends StatelessWidget {
                     child: Container(
                       width: 100,
                       height: 30,
-                      color: Colors.white,
-                      child: Center(child: Text('Fertig',style: TextStyle(color: Colors.blueAccent,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,)),
+                      color: Colors.white30,
+                      child: Center(child: Text('Fertig',style: TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,)),
                     ),
                   ),
                 ],
@@ -78,7 +76,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
                 children: <Widget>[
               Expanded(
                   child: FlatButton(
-                  child: Icon (Icons.add_a_photo, size: 60, color: Colors.white),
+                  child: Icon (Icons.add_a_photo, size: 60, color: Colors.white30),
                   onPressed: (){
                   //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
                   }
@@ -86,14 +84,11 @@ class KarteErstellenRueckseite extends StatelessWidget {
 
               ),
 
-                Expanded(
-                  child: MultipleChoiceButton(
-                      onPress:(){
-                        //TODO Backend: Multiple Choice Schablone einfügen
-                      },
-                      text: 'MC',
-                  )
-                ),
+                  Expanded(
+                    child: Container(
+                      width: 170.0,
+                    ),
+                  ),
 
                   Expanded(
                     child: WeiterButton(

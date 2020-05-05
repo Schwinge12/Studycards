@@ -19,14 +19,13 @@ class _MenuPageState extends State<MenuPage>{
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueAccent[400],
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
 
-           Icon(Icons.person,size: 150,) ,
+           Icon(Icons.person,size: 150,color: Colors.white,) ,
 
               //TODO Backend/Datenbank Username anzeigen lassen
               Text(username,

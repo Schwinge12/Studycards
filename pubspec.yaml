@@ -26,6 +26,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flip_card: ^0.4.4
   syncfusion_flutter_gauges: ^18.1.45
+  swipe_stack: ^1.0.0
 
 dev_dependencies:
   flutter_test:

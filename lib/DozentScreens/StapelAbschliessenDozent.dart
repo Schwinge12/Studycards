@@ -20,7 +20,6 @@ class StapelAbschliessenDozent extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Stapel abschließen'),
-        backgroundColor: Colors.blueAccent[400],
       ),
       body: Center(
         child:Center(
@@ -29,7 +28,7 @@ class StapelAbschliessenDozent extends StatelessWidget {
              children: <Widget>[
               //TODO Backend: Stapel hochladen
 
-               Icon(Icons.thumbs_up_down,size: 120,) ,
+               Icon(Icons.thumbs_up_down,size: 120,color: Colors.white) ,
 
                //TODO Backend/Datenbank Username anzeigen lassen
                Text(studienfach,

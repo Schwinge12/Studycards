@@ -20,10 +20,10 @@ class KarteikartenApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme:ThemeData.dark().copyWith(
-          primaryColor: Colors.white,
-          scaffoldBackgroundColor: Colors.blueAccent[400]
-      ),
+      theme:ThemeData.light(
+      ).copyWith(primaryColor: Colors.blueAccent[400],scaffoldBackgroundColor: Colors.blueAccent[400], accentColor: Colors.grey ),
+
+      darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
       home: MenuPage(),
       routes: {
         'MenuPage':(context)=>MenuPage(),

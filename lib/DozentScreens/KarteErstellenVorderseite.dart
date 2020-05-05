@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
 
 
 //TODO Frontend: Löschen Button einfuegen
@@ -26,7 +26,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
       appBar: AppBar(
         //TODO FrontEnd: Lange Strings passend anzeigen
         title: Text(studienfach+': '+themengebiet),
-        backgroundColor: Colors.blueAccent[400],
+
       ),
       body: Center(
         child: Column(
@@ -54,7 +54,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
 
                   Expanded(
                     child: FlatButton(
-                      child: Icon (Icons.add_a_photo, size: 60, color: Colors.white),
+                      child: Icon (Icons.add_a_photo, size: 60, color: Colors.white30),
                         onPressed: (){
                       //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
                       }
@@ -62,10 +62,14 @@ class KarteErstellenVorderseite  extends StatelessWidget {
 
                   ),
 
+
                   Expanded(
-                    child: Container(
-                      width: 170.0,
-                    ),
+                      child: MultipleChoiceButton(
+                        onPress:(){
+                          //TODO Backend: Multiple Choice Schablone einfügen
+                        },
+                        text: 'MC',
+                      )
                   ),
 
                   Expanded(

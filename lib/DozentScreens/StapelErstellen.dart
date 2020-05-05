@@ -26,8 +26,6 @@ class _StapelErstellen extends State<StapelErstellen> {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent[400],
-
       ),
       body: Column(
         children: <Widget>[

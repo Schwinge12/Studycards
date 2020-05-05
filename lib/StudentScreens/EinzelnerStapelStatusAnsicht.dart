@@ -19,7 +19,6 @@ class _StapelStatusState extends State<StapelStatus>{
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Stapelname,Thema',style: WeisserTextStyle,)),
-        backgroundColor: Colors.blueAccent[400],
       ),
       body: Container(
 

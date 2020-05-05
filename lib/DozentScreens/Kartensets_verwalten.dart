@@ -8,7 +8,6 @@ class Kartensetsverwalten extends StatelessWidget{
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent[400],
 
       ),
       body: Column(

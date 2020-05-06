@@ -1,4 +1,5 @@
-import 'package:karteikartenapp/Speicherung/Fach.dart';
+import 'package:karteikartenapp/Speicherung/StudienKurs.dart';
+import 'package:karteikartenapp/Speicherung/Studiengang.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'Produkt.dart';
@@ -13,7 +14,8 @@ class Userdata extends Speicherung {
   var _konto;
   List<Karteikarte> karteikarten; // Spericherung der KK in liste ODER
   var _datenSpeicherort;
-  List<Kurs> kurse;
+  List<StudienKurs> kurse;
+  List<Studiengang> studiengaenge;
   List<Stapel> stapel; // speicherung der KK in Stapel ?
 
   //____________________________________Constructor_____________________________
@@ -28,16 +30,31 @@ class Userdata extends Speicherung {
     return _konto;
   }
 
-  Kurs getFachMitString(String x) {
-    for (int i = 0; i < kurse.length; i++) {
-      if (kurse[i]
-              .toString()
-              .trim()
-              .toLowerCase()
-              .compareTo(x.trim().toLowerCase()) ==
-          0) return kurse[i]; //optimierung?
+  // doppelter Code ?
+  StudienKurs getKursMitString(String s) {
+    Produkt tmp = sucheInListe(kurse, s);
+    if (tmp == null) {
+      StudienKurs tmpKurs = new StudienKurs(s);
+      kurse.add(tmpKurs);
+      return tmpKurs;
     }
-    return null;
+    else
+      return tmp;
+  }
+
+  Studiengang getStudiengangMitString(String s) {
+    Produkt tmp = sucheInListe(studiengaenge, s);
+    if (tmp == null) {
+      Studiengang tmpC = new Studiengang(s);
+      studiengaenge.add(tmpC);
+      return tmpC;
+    }
+    else
+      return tmp;
+  }
+
+  Studiengang getStudiengangVonKontodaten() {
+    return getKonto().getStudiengang();
   }
 
   //____________________________________Methods_________________________________
@@ -55,17 +72,15 @@ class Userdata extends Speicherung {
         {
           // TODO: Duplikate checken? // stapel checken und dort einfuegen - Redundanz... Entschidung folgt
           karteikarten.add(p);
-          // call speichern(karteikarten)
         }
         break;
-      case Kurs:
+      case StudienKurs:
         {
-          // TODO: Duplikate checken?
           kurse.add(p);
-          // call speichern(karteikarten)
         }
+
         break;
-      // add other Products?
+    // add other Products?
     }
   }
 
@@ -88,5 +103,16 @@ class Userdata extends Speicherung {
   }
 
 // TODO: Speicherung - Algorithmen zur Listensuche / abgleich / Threading für laufzeitverbesserung
+  Produkt sucheInListe(List l, String s) {
+    for (int i = 0; i < l.length; i++) {
+      if (l[i]
+          .toString()
+          .trim()
+          .toLowerCase()
+          .compareTo(s.trim().toLowerCase()) == 0)
+        return l[i];
 
+    }
+    return null;
+  }
 }

@@ -13,7 +13,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
 
   final String studiengang;
   final String studienfach;
-  final String themengebiet;
+  final String themengebiet; // doppelter Code
 
 
 
@@ -66,6 +66,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                   Expanded(
                       child: MultipleChoiceButton(
                         onPress:(){
+                          //TODO FrontEnd: Overlay für multiple Choice-"Schablone"
                           //TODO Backend: Multiple Choice Schablone einfügen
                         },
                         text: 'MC',
@@ -76,7 +77,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                     child: WeiterButton(
                       text: 'Weiter',
                       onPress: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(studienfach: studienfach,studiengang: studiengang,themengebiet: themengebiet)));
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this )));
                       },
                     ),
                   ),

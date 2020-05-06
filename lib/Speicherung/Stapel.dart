@@ -9,5 +9,5 @@ class Stapel extends Produkt {
 //____________________________________Constructor_____________________________
   Stapel();
 //____________________________________Methods_________________________________
-
+add(Karteikarte k){stapelKarten.add(k);} // convienice
 }

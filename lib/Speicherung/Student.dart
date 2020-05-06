@@ -1,3 +1,5 @@
+import 'package:karteikartenapp/Speicherung/Studiengang.dart';
+
 import 'Produkt.dart';
 
 class Student extends Produkt{
@@ -5,8 +7,9 @@ class Student extends Produkt{
   String accountName;
   String _vorName;
   String _nachName;
-  String anrede;
+  String _anrede;
   DateTime _geburtsdatum;
+  Studiengang sg;
   // List<Kurs> kurse ?
 
   //Todo: Kryptographie?
@@ -25,8 +28,12 @@ class Student extends Produkt{
     this._vorName = vorName;
     return this;
   }
+  Student mitStudiengang(Studiengang sg){
+    this.sg = sg;
+    return this;
+  }
   Student mitAnrede(String anrede){
-    this.anrede = anrede;
+    this._anrede = anrede;
     return this;
   }
   Student mitGeburtsDatum(DateTime gd){
@@ -41,6 +48,9 @@ class Student extends Produkt{
     this._email = passwort;
     return this;
   }
+  //____________________________________Get/Set_________________________________
+  Studiengang getStudiengang(){return sg;}
+
   //____________________________________Methods_________________________________
 
 }

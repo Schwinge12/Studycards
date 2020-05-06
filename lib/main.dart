@@ -9,7 +9,7 @@ import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
 import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
-import 'package:karteikartenapp/Speicherung/Stapel.dart';
+
 import 'StudentScreens/EinzelnerStapelStatusAnsicht.dart';
 
 

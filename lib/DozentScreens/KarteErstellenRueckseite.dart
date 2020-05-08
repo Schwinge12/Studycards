@@ -76,7 +76,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
                 children: <Widget>[
               Expanded(
                   child: FlatButton(
-                  child: Icon (Icons.add_a_photo, size: 60, color: Colors.white30),
+                  child: Icon (Icons.add_a_photo, size: 60,color: Colors.white30),
                   onPressed: (){
                   //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
                   }

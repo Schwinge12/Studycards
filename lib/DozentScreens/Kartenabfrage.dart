@@ -24,7 +24,7 @@ class _KartenabfrageState extends State<Kartenabfrage> {
                 child: Card(
                   elevation: 0.0,
                   margin: EdgeInsets.only(left: 32.0, right: 32.0, top: 20.0, bottom: 0.0),
-                  color: Color(0xFF89B3FB),
+
                   child: FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     speed: 500,

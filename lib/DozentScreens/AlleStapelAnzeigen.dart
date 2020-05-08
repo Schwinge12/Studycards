@@ -17,7 +17,8 @@ class _AlleStapel extends State<AlleStapel> {
   @override
   Widget build(BuildContext context) {
 
-    //TODO Backend: Liste mit Stapeln anlegen, und so viele MenuButtons erzeugen wie es Stapel gibt
+    //TODO Frontend:so viele MenuButtons erzeugen wie es Stapel gibt (List <Stapel> : userdata.stapel) - stapel.length
+    //TODO Frontend: möglichkeit finden Userdata 1 mal anzulegen und dann in alle benötigten klassen zu übergeben
     return Scaffold(
       appBar: AppBar(
         title: Text('Meine angelegten Stapel',style: WeisserTextStyle,),

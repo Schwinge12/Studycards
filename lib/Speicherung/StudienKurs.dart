@@ -1,13 +1,18 @@
-import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
-
 import 'Produkt.dart';
 
-class Stapel extends Produkt {
+class StudienKurs extends Produkt {
+
 //____________________________________Variables_______________________________
- List<Karteikarte> stapelKarten;
+  String name;
 
 //____________________________________Constructor_____________________________
-  Stapel();
+StudienKurs(String name){
+  this.name = name;
+
+}
+
 //____________________________________Methods_________________________________
-add(Karteikarte k){stapelKarten.add(k);} // convienice
+
+
+
 }

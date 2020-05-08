@@ -1,21 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
+import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
-import 'StapelAbschliessenDozent.dart';
+
 
 
 class KarteErstellenRueckseite extends StatelessWidget {
 
-  KarteErstellenRueckseite({this.studiengang,this.studienfach,this.themengebiet});
+  KarteErstellenRueckseite({this.vorderSeite});
 
-  final String studiengang;
-  final String studienfach;
-  final String themengebiet;
-  final Userdata userdata = new Userdata(); //Todo: Speicherung - Userdata in main anlegen und hierher Übergeben
+  final KarteErstellenVorderseite vorderSeite;
+  final Userdata userdata = new Userdata(); //Todo FrontEnd :Speicherung - Userdata 1x anlegen und hierher Übergeben
 
   final TextEditingController vorderseite = new TextEditingController();
   String eingabe;
@@ -24,8 +22,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(studienfach+': '+themengebiet),
-        backgroundColor: Colors.blueAccent[400],
+        title: Text(vorderSeite.studienfach+': '+vorderSeite.themengebiet),
       ),
       body: Center(
         child: Column(
@@ -40,20 +37,21 @@ class KarteErstellenRueckseite extends StatelessWidget {
 
                     onPressed: (
                         ){
-                    //TODO Backend: Karte (Vorder & Rückseite) abspeichern
-                        /*userdata.einfuegen(
+                    //Karte wird eingefügt______________________________________________________
+                        userdata.einfuegen(
                             new Karteikarte()
-                            .mitKurs(userdata.getFachMitString('Informatik')) // Inapp liste zum auswählen ?
-                            .mitVorderSeite('irgendein Bsp. Text')
-                            .mitRueckSeite('irgendein Bsp. Text')
-                        );*/
+                            .mitKurs(userdata.getKursMitString(vorderSeite.studienfach))
+                            .mitStudiengang(userdata.getStudiengangMitString(vorderSeite.studiengang))
+                            .mitVorderSeite(vorderSeite.eingabe)
+                            .mitRueckSeite(eingabe)
+                        );
                         Navigator.pushNamed(context, 'StapelAbschliessenDozent');
                         },
                     child: Container(
                       width: 100,
                       height: 30,
-                      color: Colors.white,
-                      child: Center(child: Text('Fertig',style: TextStyle(color: Colors.blueAccent,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,)),
+                      color: Colors.white30,
+                      child: Center(child: Text('Fertig',style: TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,)),
                     ),
                   ),
                 ],
@@ -78,21 +76,19 @@ class KarteErstellenRueckseite extends StatelessWidget {
                 children: <Widget>[
               Expanded(
                   child: FlatButton(
-                  child: Icon (Icons.add_a_photo, size: 60, color: Colors.white), onPressed: (){
+                  child: Icon (Icons.add_a_photo, size: 60, color: Colors.white30),
+                  onPressed: (){
                   //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
                   }
                   ),
 
               ),
 
-                Expanded(
-                  child: MultipleChoiceButton(
-                      onPress:(){
-                        //TODO Backend: Multiple Choice Schablone einfügen
-                      },
-                      text: 'MC',
-                  )
-                ),
+                  Expanded(
+                    child: Container(
+                      width: 170.0,
+                    ),
+                  ),
 
                   Expanded(
                     child: WeiterButton(

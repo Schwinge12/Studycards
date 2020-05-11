@@ -15,93 +15,119 @@ class StapelErstellen extends StatefulWidget{
 }
 class _StapelErstellen extends State<StapelErstellen> {
 
-  final TextEditingController studiengang= new TextEditingController();
-  String studiengangstring;
-  final TextEditingController studienfach= new TextEditingController();
-  String studienfachstring;
-  final TextEditingController themengebiet= new TextEditingController();
-  String themengebietstring;
+
+  String studiengang;
+
+  String studienfach;
+
+  String themengebiet;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar: AppBar(
-      ),
+
       body: Column(
+
         children: <Widget>[
 
           Expanded(
+            child: SafeArea(
+              child: Container(
+                height: 200.0,
 
-            child: TextField(
-              onChanged: (String s){
-                studiengangstring=s;
-              },
-              style: TextStyle(color: Colors.black),
-              cursorColor:Colors.black,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: 'Studiengang eingeben:',
-                hintStyle: TextStyle(color: Colors.grey),
+                child: Image.asset('images/LogoOhneKreis.PNG'),
               ),
             ),
           ),
 
+          TextField(
+
+            textAlign: TextAlign.center,
+            onChanged: (value) {
+              studiengang=value;
+            },
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white30,
+              hintText: 'Studiengang eingeben',
+              contentPadding:
+              EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+            ),
+          ),
           SizedBox(
-            height: 10.0,
+
+            height: 8.0,
           ),
 
-          Expanded(
+          TextField(
 
-            child: TextField(
-              onChanged: (String s){
-                studienfachstring=s;
-              },
-              style: TextStyle(color: Colors.black),
-              cursorColor:Colors.black,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: 'Studienfach eingeben:',
-                hintStyle: TextStyle(color: Colors.grey),
+            textAlign: TextAlign.center,
+            onChanged: (value) {
+              studienfach=value;
+            },
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white30,
+              hintText: 'Studienfach eingeben',
+              contentPadding:
+              EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
               ),
             ),
           ),
-
           SizedBox(
-            height: 10.0,
+
+            height: 8.0,
           ),
+          TextField(
 
-          Expanded(
-
-            child: TextField(
-              onChanged: (String s){
-                themengebietstring=s;
-              },
-              style: TextStyle(color: Colors.black),
-              cursorColor:Colors.black,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: 'Themengebiet eingeben:',
-                hintStyle: TextStyle(color: Colors.grey),
+            textAlign: TextAlign.center,
+            onChanged: (value) {
+              themengebiet=value;
+            },
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white30,
+              hintText: 'Themengebiet eingeben',
+              contentPadding:
+              EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                borderRadius: BorderRadius.all(Radius.circular(32.0)),
               ),
             ),
           ),
+          SizedBox(
 
-
+            height: 8.0,
+          ),
 
           Row(
             children: <Widget>[
@@ -112,7 +138,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                   child: WeiterButton(
                     text: 'Speichern',
                     onPress: (){
-                      if(studienfachstring==null||studiengangstring==null||themengebietstring==null){
+                      if(studienfach==null||studiengang==null||themengebiet==null){
 
 
                         showDialog(context: context,
@@ -133,7 +159,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                             barrierDismissible: false);
                       }
                       else{
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangstring,studienfach: studienfachstring,themengebiet: themengebietstring)));
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengang,studienfach: studienfach,themengebiet: themengebiet)));
                       }
 
                     },

@@ -3,7 +3,7 @@ import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 
-class AlleStapel extends StatefulWidget{
+class QuizAuswahl extends StatefulWidget{
 
   @override
   _AlleStapel createState()=>_AlleStapel();
@@ -11,7 +11,7 @@ class AlleStapel extends StatefulWidget{
 }
 
 
-class _AlleStapel extends State<AlleStapel> {
+class _AlleStapel extends State<QuizAuswahl> {
 
 
   @override
@@ -33,7 +33,7 @@ class _AlleStapel extends State<AlleStapel> {
               child: MenuButton(
                 text: 'Stapelname\nThemengebiet',
                 onPress: (){
-                  Navigator.pushNamed(context, 'EinzelnerStapelStatus');
+                  Navigator.pushNamed(context, 'Quizstart');
                 },
               ),
             ),

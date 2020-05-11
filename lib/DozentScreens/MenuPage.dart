@@ -18,14 +18,21 @@ class _MenuPageState extends State<MenuPage>{
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(
-         // backgroundColor: Colors.blueAccent[400],
-        ),
+
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-           Icon(Icons.person,size: 150, color: Colors.white,) ,
+              Expanded(
+                child: SafeArea(
+                  child: Container(
+                    height: 200.0,
+
+                    child: Image.asset('images/LogoOhneKreis.PNG'),
+                  ),
+                ),
+              ),
+
               //TODO Backend/Datenbank Username anzeigen lassen
               Text(username,
                 style: WeisserTextStyle
@@ -34,9 +41,7 @@ class _MenuPageState extends State<MenuPage>{
               Text(status,
                 style:WeisserTextStyle
               ),
-            SizedBox(
-              height: 50,
-            ),
+
             MenuButton(
               text: 'Kartenset erstellen',
               onPress: (){

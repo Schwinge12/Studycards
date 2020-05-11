@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartensets_verwalten.dart';
-//import 'package:karteikartenapp/DozentScreens/MenuButton.dart';
 import 'package:karteikartenapp/DozentScreens/StapelErstellen.dart';
 import 'package:karteikartenapp/DozentScreens/MenuPage.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
 import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
-
+import 'package:karteikartenapp/StudentScreens/Quizauswahl.dart';
 import 'StudentScreens/EinzelnerStapelStatusAnsicht.dart';
+import 'Login_Registration/RegistrationScreen.dart';
+import 'Login_Registration/LoginScreen.dart';
+import 'StudentScreens/MenuPageStudent.dart';
+import 'StudentScreens/QuizStart.dart';
+import 'StudentScreens/Quiz.dart';
+
 
 
 void main()=>runApp(KarteikartenApp());
@@ -21,10 +26,10 @@ class KarteikartenApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       theme:ThemeData.light(
-      ).copyWith(primaryColor: Colors.blueAccent[400],scaffoldBackgroundColor: Colors.blueAccent[400], accentColor: Colors.grey ),
+      ).copyWith(primaryColor: Color(0xFF3E7882),scaffoldBackgroundColor: Color(0xFF58A4B0), accentColor: Colors.grey ),
 
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
-      home: MenuPage(),
+      home: LoginScreen(),
       routes: {
         'MenuPage':(context)=>MenuPage(),
         'StapelErstellen':(context)=>StapelErstellen(),
@@ -36,6 +41,14 @@ class KarteikartenApp extends StatelessWidget{
         'StapelUeberarbeiten':(context)=>StapelUeberarbeiten(),
         'AlleStapelAnzeigen':(context)=>AlleStapel(),
         'EinzelnerStapelStatus':(context)=>StapelStatus(),
+        'LoginScreen':(context)=>LoginScreen(),
+        'RegistrationScreen':(context)=>RegistrationScreen(),
+        'MenuPageStudent':(context)=>MenuPageStudent(),
+        'Quizauswahl':(context)=>QuizAuswahl(),
+        'Quizstart':(context)=>QuizStart(),
+        'Quiz':(context)=>Quiz(),
+
+
       },
 
     );

@@ -37,15 +37,6 @@ class _AlleStapel extends State<AlleStapel> {
                 },
               ),
             ),
-
-
-
-
-
-
-
-
-
           ],
         ),
       ),

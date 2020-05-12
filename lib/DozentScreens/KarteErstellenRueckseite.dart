@@ -51,7 +51,9 @@ class KarteErstellenRueckseite extends StatelessWidget {
                       width: 100,
                       height: 30,
                       color: Colors.white30,
-                      child: Center(child: Text('Fertig',style: TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,)),
+                      child: Center(child: Text('Fertig',style:
+                        TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,
+                      )),
                     ),
                   ),
                 ],

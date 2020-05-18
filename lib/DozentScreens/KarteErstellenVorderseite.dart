@@ -3,6 +3,7 @@ import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
+import 'package:karteikartenapp/DozentScreens/MCErstellen.dart';
 
 
 //TODO Frontend: Löschen Button einfuegen
@@ -66,8 +67,7 @@ class KarteErstellenVorderseite  extends StatelessWidget {
                   Expanded(
                       child: MultipleChoiceButton(
                         onPress:(){
-                          //TODO FrontEnd: Overlay für multiple Choice-"Schablone"
-                          //TODO Backend: Multiple Choice Schablone einfügen
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: studienfach,studiengang: studiengang,themengebiet: themengebiet,)));
                         },
                         text: 'MC',
                       )

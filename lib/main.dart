@@ -15,6 +15,8 @@ import 'Login_Registration/LoginScreen.dart';
 import 'StudentScreens/MenuPageStudent.dart';
 import 'StudentScreens/QuizStart.dart';
 import 'StudentScreens/Quiz.dart';
+import 'DozentScreens/MCErstellen.dart';
+import 'DozentScreens/MCFertigstellen.dart';
 
 
 
@@ -47,6 +49,8 @@ class KarteikartenApp extends StatelessWidget{
         'Quizauswahl':(context)=>QuizAuswahl(),
         'Quizstart':(context)=>QuizStart(),
         'Quiz':(context)=>Quiz(),
+        'MCErstellen':(context)=>MCErstellen(),
+        'MCFertigstellen':(context)=>MCFertigstellen(),
 
 
       },

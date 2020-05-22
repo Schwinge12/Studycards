@@ -29,8 +29,8 @@ class Userdata extends Speicherung {
   }
 
   Userdata._internal() {
-    _userdata._datenSpeicherort = getApplicationDocumentsDirectory();
-    _userdata.init();
+   // _userdata._datenSpeicherort = getApplicationDocumentsDirectory();
+   // _userdata.init();
   }
 
   //____________________________________Get/Set_________________________________

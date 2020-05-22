@@ -12,8 +12,8 @@ class MenuPage extends StatefulWidget{
 
 class _MenuPageState extends State<MenuPage>{
 
-  String username='Username';
-  String status ='Dozent';
+  String username='Username'; //userdata.getKonto().accountName;
+  String status ='Dozent';    //userdata.getKonto().toString();
 
   @override
   Widget build(BuildContext context) {

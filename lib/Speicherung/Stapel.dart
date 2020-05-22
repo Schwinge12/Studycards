@@ -7,7 +7,7 @@ class Stapel extends Produkt {
  List<Karteikarte> stapelKarten;
 
 //____________________________________Constructor_____________________________
-  Stapel();
+ Stapel();
 //____________________________________Methods_________________________________
-add(Karteikarte k){stapelKarten.add(k);} // convienice
+ add(Karteikarte k){stapelKarten.add(k);} // convienice
 }

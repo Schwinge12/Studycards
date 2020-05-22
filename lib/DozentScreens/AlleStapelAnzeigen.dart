@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
@@ -17,9 +18,9 @@ class _AlleStapel extends State<AlleStapel> {
   @override
   Widget build(BuildContext context) {
 
+    Userdata _userdata = new Userdata();
     //TODO Frontend:so viele MenuButtons erzeugen wie es Stapel gibt (List <Stapel> : userdata.stapel) - stapel.length
-    //TODO Frontend: möglichkeit finden Userdata 1 mal anzulegen und dann in alle benötigten klassen zu übergeben
-
+    var  verfuegbareStapel = _userdata.stapel.length;
     return Scaffold(
       appBar: AppBar(
         title: Text('Meine angelegten Stapel',style: WeisserTextStyle,),

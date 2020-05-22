@@ -87,6 +87,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                 child:
                                 IconButton(
                                   //TODO Backend: Aktuelle Karte aus DB löschen
+                                  //Spericherung.loeschen(Produkt zuLoeschendeKarte)
                                   icon: Icon(Icons.cancel,color: Colors.red,),
                                   iconSize: 60.0,
                                   tooltip: 'Karte falsch',

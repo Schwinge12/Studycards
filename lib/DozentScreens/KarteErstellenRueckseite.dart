@@ -13,7 +13,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
   KarteErstellenRueckseite({this.vorderSeite});
 
   final KarteErstellenVorderseite vorderSeite;
-  final Userdata userdata = new Userdata(); //Todo FrontEnd :Speicherung - Userdata 1x anlegen und hierher Übergeben
+  final Userdata _userdata = new Userdata();
 
   final TextEditingController vorderseite = new TextEditingController();
   String eingabe;
@@ -38,10 +38,10 @@ class KarteErstellenRueckseite extends StatelessWidget {
                     onPressed: (
                         ){
                     //Karte wird eingefügt______________________________________________________
-                        userdata.einfuegen(
+                        _userdata.einfuegen(
                             new Karteikarte()
-                            .mitKurs(userdata.getKursMitString(vorderSeite.studienfach))
-                            .mitStudiengang(userdata.getStudiengangMitString(vorderSeite.studiengang))
+                            .mitKurs(_userdata.getKursMitString(vorderSeite.studienfach))
+                            .mitStudiengang(_userdata.getStudiengangMitString(vorderSeite.studiengang))
                             .mitVorderSeite(vorderSeite.eingabe)
                             .mitRueckSeite(eingabe)
                         );

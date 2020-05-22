@@ -9,6 +9,6 @@ abstract class Speicherung{
 
   void bearbeiten(Produkt p);
 
-  void laden();
+  void init();
 
 }

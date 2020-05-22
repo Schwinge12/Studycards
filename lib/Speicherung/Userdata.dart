@@ -9,8 +9,10 @@ import 'Karteikarte.dart';
 import 'Speicherung.dart';
 
 class Userdata extends Speicherung {
+
   //____________________________________Variables_______________________________
 
+  static final Userdata _userdata= Userdata._internal(); // singelton
   var _konto;
   List<Karteikarte> karteikarten; // Spericherung der KK in liste ODER
   var _datenSpeicherort;
@@ -20,9 +22,12 @@ class Userdata extends Speicherung {
 
   //____________________________________Constructor_____________________________
 
-  Userdata() {
-    _datenSpeicherort = getApplicationDocumentsDirectory();
-    this.laden();
+  factory Userdata(){
+    return _userdata;
+  }
+  Userdata._internal() {
+    _userdata._datenSpeicherort = getApplicationDocumentsDirectory();
+    _userdata.init();
   }
 
   //____________________________________Get/Set_________________________________
@@ -37,8 +42,7 @@ class Userdata extends Speicherung {
       StudienKurs tmpKurs = new StudienKurs(s);
       kurse.add(tmpKurs);
       return tmpKurs;
-    }
-    else
+    } else
       return tmp;
   }
 
@@ -48,8 +52,7 @@ class Userdata extends Speicherung {
       Studiengang tmpC = new Studiengang(s);
       studiengaenge.add(tmpC);
       return tmpC;
-    }
-    else
+    } else
       return tmp;
   }
 
@@ -80,7 +83,7 @@ class Userdata extends Speicherung {
         }
 
         break;
-    // add other Products?
+      // add other Products?
     }
   }
 
@@ -90,7 +93,7 @@ class Userdata extends Speicherung {
   }
 
   @override
-  void laden() {
+  void init() {
     // TODO: Speicherung - implement laden
     //data?
     // + load data
@@ -106,12 +109,11 @@ class Userdata extends Speicherung {
   Produkt sucheInListe(List l, String s) {
     for (int i = 0; i < l.length; i++) {
       if (l[i]
-          .toString()
-          .trim()
-          .toLowerCase()
-          .compareTo(s.trim().toLowerCase()) == 0)
-        return l[i];
-
+              .toString()
+              .trim()
+              .toLowerCase()
+              .compareTo(s.trim().toLowerCase()) ==
+          0) return l[i];
     }
     return null;
   }

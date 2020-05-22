@@ -1,6 +1,8 @@
+import 'package:karteikartenapp/Speicherung/Kurs.dart';
+import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/global_lib.dart';
 
-import 'StudienKurs.dart';
+
 import 'Produkt.dart';
 import 'Stapel.dart';
 import 'Studiengang.dart';
@@ -11,14 +13,14 @@ class Karteikarte extends Produkt {
 // ID über Fach hochgezählt
  var erstellungsDatum;
 
- StudienKurs fach;
+ Kurs kurs;
  Stapel stapel;
  Studiengang sg;
 
  String vorderSeite;
  String rueckSeite;
 
- String themengebiet;
+ Themengebiet themengebiet;
  bool keyKarte = false;
  var schwierigkeit = 0;
 
@@ -35,8 +37,8 @@ Karteikarte(){
 }
 //____________________________________Builder-Chain_____________________________
 
-  Karteikarte mitKurs(StudienKurs fach){
-    this.fach = fach;
+  Karteikarte mitKurs(Kurs kurs){
+    this.kurs = kurs;
     return this;
   }
   Karteikarte mitStudiengang(Studiengang sg){
@@ -47,7 +49,7 @@ Karteikarte(){
     this.stapel = stapel;
     return this;
   }
-  Karteikarte mitThemengebiet(String themengebiet){
+  Karteikarte mitThemengebiet(Themengebiet themengebiet){
     this.themengebiet = themengebiet;
     return this;
   }
@@ -73,6 +75,8 @@ Karteikarte(){
   }
 //____________________________________Get/Set___________________________________
   void setID(var x){this.id = x;}
+  Stapel getStapel(){return Stapel();}
+  Kurs getKurs(){return kurs;}
 //____________________________________Methods___________________________________
 
 }

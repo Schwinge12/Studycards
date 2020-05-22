@@ -6,10 +6,7 @@ class Studiengang extends Produkt {
   String name;
 
 //____________________________________Constructor_____________________________
-  Studiengang(String name){
-    this.name = name;
-
-  }
+  Studiengang(String name){this.name = name;}
 
 //____________________________________Methods_________________________________
 

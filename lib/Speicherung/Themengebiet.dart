@@ -1,15 +1,15 @@
 import 'Produkt.dart';
+import 'Stapel.dart';
 
-class StudienKurs extends Produkt {
+class Themengebiet extends Produkt {
+  //verschiedene Themengebiete innerhalb des Kurses
 
 //____________________________________Variables_______________________________
   String name;
-
+  List<Stapel> stapel;
 //____________________________________Constructor_____________________________
-StudienKurs(String name){
-  this.name = name;
+  Themengebiet(String name){this.name = name;}
 
-}
 
 //____________________________________Methods_________________________________
 

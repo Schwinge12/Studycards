@@ -19,8 +19,8 @@ class _AlleStapel extends State<AlleStapel> {
   Widget build(BuildContext context) {
 
     Userdata _userdata = new Userdata();
-    //TODO Frontend:so viele MenuButtons erzeugen wie es Stapel gibt (List <Stapel> : userdata.stapel) - stapel.length
     var  verfuegbareStapel = _userdata.stapel.length;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Meine angelegten Stapel',style: WeisserTextStyle,),

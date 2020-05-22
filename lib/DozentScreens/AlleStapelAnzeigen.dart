@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
@@ -18,7 +19,9 @@ class _AlleStapel extends State<AlleStapel> {
   @override
   Widget build(BuildContext context) {
 
-    Userdata _userdata = new Userdata();
+    var _userdata = new Userdata();
+
+
     var  verfuegbareStapel = _userdata.stapel.length;
 
     return Scaffold(

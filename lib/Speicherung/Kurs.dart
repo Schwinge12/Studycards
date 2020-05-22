@@ -7,7 +7,7 @@ class Kurs extends Produkt {
 
 //____________________________________Variables_______________________________
   String name;
-  List <Themengebiet> themengebiet;
+  List <Themengebiet> themengebiet = new List();
 
 //____________________________________Constructor_____________________________
   Kurs();

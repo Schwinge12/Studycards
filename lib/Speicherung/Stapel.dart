@@ -4,7 +4,7 @@ import 'Produkt.dart';
 
 class Stapel extends Produkt {
 //____________________________________Variables_______________________________
- List<Karteikarte> stapelKarten;
+ List<Karteikarte> stapelKarten = new List();
  String name;
 
 //____________________________________Constructor_____________________________

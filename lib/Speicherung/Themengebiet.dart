@@ -6,7 +6,7 @@ class Themengebiet extends Produkt {
 
 //____________________________________Variables_______________________________
   String name;
-  List<Stapel> stapel;
+  List<Stapel> stapel = new List();
 //____________________________________Constructor_____________________________
   Themengebiet(String name){this.name = name;}
 

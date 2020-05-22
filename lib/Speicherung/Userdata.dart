@@ -16,11 +16,11 @@ class Userdata extends Speicherung {
 
   static final Userdata _userdata = Userdata._internal(); // singelton
   var _konto;
-  List<Karteikarte> karteikarten; // Spericherung der KK in liste ODER
+  List<Karteikarte> karteikarten= new List(); // Spericherung der KK in liste ODER
   var _datenSpeicherort;
-  List<Studiengang> studiengaenge;
-  List<Kurs> kurse; // <-includes List Themengebiete
-  List<Stapel> stapel; // speicherung der KK in Stapel ?
+  List<Studiengang> studiengaenge= new List();
+  List<Kurs> kurse = new List(); // <-includes List Themengebiete
+  List<Stapel> stapel= new List(); // speicherung der KK in Stapel ?
 
   //____________________________________Constructor_____________________________
 
@@ -28,11 +28,7 @@ class Userdata extends Speicherung {
     return _userdata;
   }
 
-  Userdata._internal() {
-   // _userdata._datenSpeicherort = getApplicationDocumentsDirectory();
-   // _userdata.init();
-  }
-
+  Userdata._internal();
   //____________________________________Get/Set_________________________________
   Student getKonto() {
     return _konto;

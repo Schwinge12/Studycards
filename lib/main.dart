@@ -23,7 +23,7 @@ import 'DozentScreens/MCFertigstellen.dart';
 void main()=>runApp(KarteikartenApp());
 
 class KarteikartenApp extends StatelessWidget{
-//TODO Frontend: AppIcon
+//test
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

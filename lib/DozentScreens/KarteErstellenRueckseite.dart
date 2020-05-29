@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:async';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
@@ -7,22 +10,76 @@ import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 
+class KarteErstellenRueckseite extends StatefulWidget {
 
-class KarteErstellenRueckseite extends StatelessWidget {
 
   KarteErstellenRueckseite({this.vorderSeite});
 
   final KarteErstellenVorderseite vorderSeite;
   final Userdata _userdata = new Userdata();
 
+
   final TextEditingController vorderseite = new TextEditingController();
   String eingabe;
+
+  String get getEingabe => eingabe;
+
+  @override
+  _KarteErstellenRueckseite createState() => _KarteErstellenRueckseite();
+}
+
+
+class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
+  File _imageFile;
+
+  Future _openGallery() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    this.setState(() {
+      _imageFile=image;
+    });
+    Navigator.of(context).pop();
+  }
+
+  Future _openCamera() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    this.setState(() {
+      _imageFile=image;
+    });
+    Navigator.of(context).pop();
+  }
+
+  Future<void> auswaehlen(BuildContext context) {
+    return showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Auswählen"),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              GestureDetector(
+                child: Text("Galerie"),
+                onTap: () {
+                  _openGallery();
+                },
+              ),
+              Padding(padding: EdgeInsets.all(8.0)),
+              GestureDetector(
+                child: Text("Kamera"),
+                onTap: () {
+                  _openCamera();
+                },
+              )
+            ],
+          ),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(vorderSeite.studienfach+': '+vorderSeite.themengebiet),
+        title: Text(widget.vorderSeite.studienfach+': '+widget.vorderSeite.themengebiet),
       ),
       body: Center(
         child: Column(
@@ -38,12 +95,12 @@ class KarteErstellenRueckseite extends StatelessWidget {
                     onPressed: (
                         ){
                     //Karte wird eingefügt______________________________________________________
-                        _userdata.einfuegen(
+                        widget._userdata.einfuegen(
                             new Karteikarte()
-                            .mitKurs(_userdata.getKursMitString(vorderSeite.studienfach))
-                            .mitStudiengang(_userdata.getStudiengangMitString(vorderSeite.studiengang))
-                            .mitVorderSeite(vorderSeite.eingabe)
-                            .mitRueckSeite(eingabe)
+                            .mitKurs(widget._userdata.getKursMitString(widget.vorderSeite.studienfach))
+                            .mitStudiengang(widget._userdata.getStudiengangMitString(widget.vorderSeite.studiengang))
+                            .mitVorderSeite(widget.vorderSeite.getEingabe)
+                            .mitRueckSeite(widget.eingabe)
                         );
                         Navigator.pushNamed(context, 'StapelAbschliessenDozent');
                         },
@@ -64,25 +121,29 @@ class KarteErstellenRueckseite extends StatelessWidget {
                   color: Colors.white,
                   child: TextField(
                     style: MenuButtonTextStyle,
-                    controller: vorderseite,
+                    controller: widget.vorderseite,
                     maxLines: 20,
                     onChanged: (String s){
-                      eingabe=s;
+                      widget.eingabe=s;
                     },
                   ),
                 ),
 
               ),
+              Expanded(
+                child: Container(
+                  color: Colors.white,
+                  child: new Center(child: _imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(_imageFile, width: 400, height: 400))
+                )
+              ),
 
               Row(
                 children: <Widget>[
               Expanded(
-                  child: FlatButton(
-                  child: Icon (Icons.add_a_photo, size: 60,color: Colors.white30),
-                  onPressed: (){
-                  //TODO BackEnd: Kamera Zugriff ermöglichen, Datensatz speichern
-                  }
-                  ),
+                child: FlatButton(onPressed: (){
+                  auswaehlen(context);
+                  }, child: Icon(Icons.add_a_photo, size: 60, color: Colors.white30)
+              ),
 
               ),
 
@@ -107,4 +168,7 @@ class KarteErstellenRueckseite extends StatelessWidget {
       ),
     );
   }
+
+
+
 }

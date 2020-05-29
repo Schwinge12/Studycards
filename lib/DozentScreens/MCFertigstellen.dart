@@ -37,7 +37,7 @@ class _MCFertigstellen  extends State<MCFertigstellen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MultipleChoice Abschiessen'),
+        title: Text('MultipleChoice Abschliessen'),
       ),
       body:Column(
         crossAxisAlignment: CrossAxisAlignment.center,

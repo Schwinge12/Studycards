@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'Dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -75,28 +76,72 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        //TODO FrontEnd: Lange Strings passend anzeigen
-        title: Text(widget.studienfach+': '+widget.themengebiet),
 
-      ),
       body: Center(
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment:CrossAxisAlignment.stretch,
+
+
             children: <Widget>[
-              Center(child: Text('VORDERSEITE:\n',style: WeisserTextStyle,)),
+              Center(child: Row(
+
+                children: <Widget>[
+
+                  Expanded(
+                    child: WeiterButton(
+                      text: 'Zurück',
+                      onPress: (){
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+
+                        child: Column(
+                          children: <Widget>[
+                            Center(
+                              child: AutoSizeText(widget.studienfach, style: MenuButtonTextStyle , maxLines: 1),
+                            ),
+                            Center(
+                              child: AutoSizeText(widget.themengebiet,style: MenuButtonTextStyle , maxLines: 1),
+                            )
+                          ]
+                            ),
+                        ),
+
+                  ),
+                  Expanded( child: WeiterButton(
+                    text: 'Weiter',
+                    onPress: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
+                    },
+                  ),
+
+                  )
+                ],
+
+              )),
               Expanded(
                 child: Container(
                   color: Colors.white,
-                  child: TextField(
-                    style: MenuButtonTextStyle,
-                    controller: widget.vorderseite,
-                    maxLines: 20,
-                    onChanged: (String s){
-                      widget.eingabe=s;
-                    },
+                  child: Column(
+                    children: <Widget>[
+                      Center(
+                        child: Text('VORDERSEITE'),
+                      ),
+                      Expanded(
+                        child: TextField(
+                          style: MenuButtonTextStyle,
+                          controller: widget.vorderseite,
+                          maxLines: 20,
+                          onChanged: (String s){
+                            widget.eingabe=s;
+                          },
+                        ),
+                      )
+                    ],
                   )
+
                 ),
               ),
               Expanded(
@@ -127,9 +172,9 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
                   Expanded(
                     child: WeiterButton(
-                      text: 'Weiter',
+                      text: 'Löschen',
                       onPress: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet)));
                       },
                     ),
                   ),

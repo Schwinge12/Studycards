@@ -171,11 +171,10 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
                   ),
 
                   Expanded(
-                    child: WeiterButton(
-                      text: 'Löschen',
-                      onPress: (){
+                    child: FlatButton(
+                      onPressed: (){
                         Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet)));
-                      },
+                      }, child: Icon(Icons.delete, size:60, color: Colors.white30)
                     ),
                   ),
 

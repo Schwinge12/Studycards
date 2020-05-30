@@ -43,7 +43,7 @@ class _MenuPageState extends State<MenuPage>{
               ),
 
             MenuButton(
-              text: 'Kartenset erstellen',
+              text: 'Kartenset Erstellen',
               onPress: (){
                 Navigator.pushNamed(context, 'StapelErstellen');
               },
@@ -59,6 +59,7 @@ class _MenuPageState extends State<MenuPage>{
                 onPress: (){
                 },
               ),
+
       ]
       ),
         )

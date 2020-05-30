@@ -39,12 +39,12 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
                 ),
                 //TODO Backend/Datenbank Status als Dozent oder Student angeben
                 Text(status,
-                    style:WeisserTextStyle
+                    style: WeisserTextStyle
                 ),
 
                 MenuButton(
                   height: 70.0,
-                  text: 'Kartenset erstellen',
+                  text: 'Kartenset Erstellen',
                   onPress: (){
                     Navigator.pushNamed(context, 'StapelErstellen');
                   },

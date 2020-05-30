@@ -3,26 +3,24 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 const MenuButtonTextStyle= TextStyle(
   color: Colors.black,
-  fontSize: 25.0,
+  fontSize: 30.0,
   //fontWeight: FontWeight.w800,
-  fontFamily: 'Baloobhai2-ExtraBold.ttf',
+//  fontFamily: 'Baloobhai2-ExtraBold.ttf',
+  fontFamily: 'Pacifico-Regular',
 );
 
 
 const WeisserTextStyle=TextStyle(
 color: Colors.white,
-fontFamily: 'Baloobhai2-ExtraBold.ttf',
+fontFamily: 'Pacifico-Regular',
 fontSize: 20.0
 );
 
 const CardTextStyle=TextStyle(
     color: Colors.black,
-    fontFamily: 'Baloobhai2-ExtraBold.ttf',
+    fontFamily: 'Pacifico-Regular',
     fontSize: 20.0
 );
-
-
-
 
 class ProzentWidget extends StatefulWidget{
 

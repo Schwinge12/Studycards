@@ -11,9 +11,9 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
   class _LoginScreenState extends State<LoginScreen> {
 
     var _userdata = new Userdata();
-    String email;
-    String passwort;
-    String username;
+    String _email;
+    String _passwort;
+    String _username;
 
     bool showSpinner = false;
 
@@ -51,7 +51,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  email=value;
+                  _email=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -79,7 +79,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
               TextFormField(
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  passwort=value;
+                  _passwort=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -120,11 +120,11 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
                     onPressed: () async{
 
                       //Bis Datenbankverbindung steht passswort nutzen um zwischen dozent oder student zu unterscheiden
-                      if(passwort=='dozent'){
+                      if(_passwort=='dozent'){
                         Navigator.pushNamed(context, 'MenuPage');
                       }
 
-                      if(passwort=='student'){
+                      if(_passwort=='student'){
                         Navigator.pushNamed(context, 'MenuPageStudent');
                       }
                     },

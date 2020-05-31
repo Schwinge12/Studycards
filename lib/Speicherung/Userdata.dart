@@ -25,6 +25,7 @@ class Userdata extends Speicherung {
   List<Kurs> kurse = new List(); // <-includes List Themengebiete
   List<Stapel> stapel = new List(); // speicherung der KK in Stapel ?
   Stapel defaultStapel = new Stapel().mitName('Default');
+  Student testkonto = new Student().mitUsername('Mustermann');
 
   //____________________________________Constructor_____________________________
 
@@ -214,6 +215,7 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
   void init() {
     _datenSpeicherort = getApplicationDocumentsDirectory();
     stapel.insert(0, defaultStapel);
+    einfuegen(testkonto);
     // TODO: Speicherung - implement laden
     //data?
     // + load data

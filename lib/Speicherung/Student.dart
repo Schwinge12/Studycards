@@ -20,11 +20,11 @@ class Student extends Produkt{
   Student();
 
   //____________________________________Builder-Chain_____________________________
-  Student mitNachName(String username){
+  Student mitUsername(String username){
     this.accountName = username;
     return this;
   }
-  Student mitUsername(String nachName){
+  Student mitNachName(String nachName){
     this._nachName = nachName;
     return this;
   }
@@ -59,6 +59,9 @@ class Student extends Produkt{
     else return accountName;
   }
   //____________________________________Methods_________________________________
-
+  @override
+  String toString() {
+    return runtimeType.toString();
+  }
   //Todo Backend : E-mailbestätigung
 }

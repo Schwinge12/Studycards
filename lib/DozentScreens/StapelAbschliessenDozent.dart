@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/constants.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 
@@ -10,7 +11,7 @@ class StapelAbschliessenDozent extends StatelessWidget {
   //TODO Backend: Kursdaten an vorgefertigten Buttons/Textfeldern einfügen
 
   StapelAbschliessenDozent({this.kurse});
-
+  var _userdata = new Userdata();
   final String kurse;
   final String studienfach='Programmieren 2';
   final String themengebiet='Vererbung';
@@ -30,11 +31,12 @@ class StapelAbschliessenDozent extends StatelessWidget {
 
                Icon(Icons.thumbs_up_down,size: 120,color: Colors.white) ,
 
-               //TODO Backend/Datenbank Username anzeigen lassen
+               //TODO Frontend Username anzeigen lassen : _userdata.getKonto().accountName;
                Text(studienfach,
                    style: WeisserTextStyle,
                ),
-               //TODO Backend/Datenbank Status als Dozent oder Student angeben
+
+               //TODO Frontend Status als Dozent oder Student angeben : _userdata.getKonto().toString();
                Text(themengebiet,
                    style:WeisserTextStyle
                ),

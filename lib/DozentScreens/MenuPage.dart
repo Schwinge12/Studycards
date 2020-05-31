@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 
 
@@ -11,9 +12,9 @@ class MenuPage extends StatefulWidget{
 }
 
 class _MenuPageState extends State<MenuPage>{
-
-  String username='Username'; //userdata.getKonto().accountName;
-  String status ='Dozent';    //userdata.getKonto().toString();
+  static var _userdata = new Userdata();
+  String username= _userdata.getKonto().accountName;
+  String status = _userdata.getKonto().toString();
 
   @override
   Widget build(BuildContext context) {

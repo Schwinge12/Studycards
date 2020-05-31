@@ -7,8 +7,6 @@ abstract class Speicherung{
 
   void loeschen(Produkt p);
 
-  void bearbeiten(Produkt p);
-
   void init();
 
 }

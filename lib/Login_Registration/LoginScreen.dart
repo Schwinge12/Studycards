@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 
 
-class LoginScreen extends StatefulWidget {
+  class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
-}
+  }
 
-class _LoginScreenState extends State<LoginScreen> {
+  class _LoginScreenState extends State<LoginScreen> {
 
+    var _userdata = new Userdata();
+    String email;
+    String passwort;
+    String username;
 
-  String email;
-  String passwort;
-  String username;
-  bool showSpinner = false;
+    bool showSpinner = false;
 
 
 

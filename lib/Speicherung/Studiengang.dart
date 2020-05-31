@@ -1,3 +1,4 @@
+
 import 'Produkt.dart';
 
 class Studiengang extends Produkt {

@@ -1,34 +1,39 @@
 import 'package:flutter/cupertino.dart';
+import 'package:karteikartenapp/Speicherung/Dozent.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/Studiengang.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
+import 'package:karteikartenapp/Speicherung/Tutor.dart';
 import 'package:path_provider/path_provider.dart';
+
 
 import 'Produkt.dart';
 import 'Stapel.dart';
 import 'Student.dart';
 import 'Karteikarte.dart';
 import 'Speicherung.dart';
-
+// ignore: unnecessary_statements)
 class Userdata extends Speicherung {
-
   //____________________________________Variables_______________________________
 
   static final Userdata _userdata = Userdata._internal(); // singelton
   var _konto;
-  List<Karteikarte> karteikarten= new List(); // Spericherung der KK in liste ODER
+  List<Karteikarte> karteikarten =
+      new List();
   var _datenSpeicherort;
-  List<Studiengang> studiengaenge= new List();
+  List<Studiengang> studiengaenge = new List();
   List<Kurs> kurse = new List(); // <-includes List Themengebiete
-  List<Stapel> stapel= new List(); // speicherung der KK in Stapel ?
+  List<Stapel> stapel = new List(); // speicherung der KK in Stapel ?
+  Stapel defaultStapel = new Stapel().mitName('Default');
 
   //____________________________________Constructor_____________________________
 
-  factory Userdata(){
+  factory Userdata() {
     return _userdata;
   }
 
-  Userdata._internal();
+  Userdata._internal(){init();}
+
   //____________________________________Get/Set_________________________________
   Student getKonto() {
     return _konto;
@@ -38,7 +43,7 @@ class Userdata extends Speicherung {
     switch (Produkttyp.toLowerCase().trim()) {
       case 'kurs':
       case 'fach':
-      case 'studienfach' :
+      case 'studienfach':
         {
           return getKursMitString(nameDesProdukts);
         }
@@ -61,7 +66,6 @@ class Userdata extends Speicherung {
     }
   }
 
-  // doppelter Code ?
   Kurs getKursMitString(String s) {
     Produkt tmp = sucheInListe(kurse, s);
     if (tmp == null) {
@@ -102,88 +106,135 @@ class Userdata extends Speicherung {
   void einfuegen(dynamic p) {
     switch (p.runtimeType) {
       case Student:
+      case Tutor:
+      case Dozent:
         {
           _konto = p;
         }
         break;
-
       case Karteikarte:
         {
-          // TODO: Duplikate checken? // stapel checken und dort einfuegen - Redundanz... Entschidung folgt
-          // ignore: unnecessary_statements
-          Stapel tmpKartenstapel = (p as Karteikarte).getStapel();
+          Karteikarte kk = (p as Karteikarte);
+          Stapel tmpKartenstapel = kk.getStapel();
           if (tmpKartenstapel == null) {
-            //Todo: Backend default kartenstapel anlegen und index hier eintragen
-            // setze karte in default stapel ein
-            //stapel[defaultindex].add(p);
-          }
-          else {
-            //setze Karte in spezifischen Stapel
+            kk.stapel = defaultStapel;
+            stapel[0].add(p);
+          } else {
+            if (!stapel.contains(tmpKartenstapel))
+              stapel.add(tmpKartenstapel);
             stapel[stapel.indexOf(tmpKartenstapel)].stapelKarten.add(p);
-            // check ob Kurs vorhanden
-            if ((p as Karteikarte).getKurs() != null) {
-              var kursindex = kurse
-                  .indexOf((p as Karteikarte).getKurs());
-
-              // check ob themengebiet vorhanden
-              if ((p as Karteikarte)
-                  .themengebiet != null)
-                  {
-                // check ob themengebiet in Kurs schon vorhanden - wenn nicht füge ein
-                if (!kurse[kursindex].themengebiet.contains
-                  ((p as Karteikarte)
-                    .themengebiet))
-                  kurse[kursindex].themengebiet.add(
-                      (p as Karteikarte).themengebiet);
-                var themenindex = kurse[kursindex].themengebiet.indexOf(
-                    (p as Karteikarte).themengebiet);
-
-                //füge vorhandenen stapel ins themengebiet ein
-                kurse[kursindex].themengebiet[themenindex].stapel.add(
-                    tmpKartenstapel);
-              }
-            }
+           if (kk.kurs != null && kk.themengebiet != null)
+             stapelinThemengebietEinfuegen(kk.kurs, kk.themengebiet, kk.stapel);
           }
         }
-    break;
-    case Kurs:
-    {
-    kurse.add(p);
-    }
+        break;
+      case Stapel:
+        {
+          // nur für default stapel ...
+          stapel.add(p);
+        }
+        break;
+      case Studiengang:
+        {
+          studiengaenge.add(p);
+        }
+        break;
+      case Kurs:
+        {
+          kurse.add(p);
+        }
 
     break;
-    // add other Products?
+    default: throw new FlutterError('Nicht Implementiert!');
     }
-    }
+  }
 
-    @override
-    void bearbeiten(Produkt p) {
-    // TODO: Speicherung - implement bearbeiten
-    }
+void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufuegenthemengebiet, Stapel einzufuegenStapel){
+    if (! kurse.contains(einzufuegenKurs))
+      kurse.add(einzufuegenKurs);
+    Kurs tmpKurs = kurse[kurse.indexOf(einzufuegenKurs)];
+    if (! tmpKurs.themengebiet.contains(einzufuegenthemengebiet))
+      tmpKurs.themengebiet.add(einzufuegenthemengebiet);
+  tmpKurs.themengebiet[tmpKurs.themengebiet.indexOf(einzufuegenthemengebiet)].stapel.add(einzufuegenStapel);
+}
 
-    @override
-    void init() {
+  @override
+  void loeschen(Produkt p) {
+    switch (p.runtimeType) {
+      case Student:
+      case Tutor:
+      case Dozent:
+        {
+          _konto = null;
+        }
+        break;
+      case Karteikarte:
+        {
+          //check ob KK in default stapel
+           stapel[stapel.indexOf((p as Karteikarte).stapel)].stapelKarten.remove(p as Karteikarte);
+
+           /* nur Verwenden falls notwending --------
+
+           // schau in themengebiet und schmeiß karte da raus
+
+               if ((p as Karteikarte).themengebiet != null &&
+                  (p as Karteikarte).kurs != null) {
+                  Kurs tmpKurs = kurse[kurse.indexOf((p as Karteikarte).kurs)];
+                  Themengebiet tmpThemengebiet = tmpKurs.themengebiet[tmpKurs
+                   .themengebiet.indexOf((p as Karteikarte).themengebiet)];
+                if (tmpThemengebiet.stapel.contains(p as Karteikarte))
+                tmpThemengebiet.stapel.remove(p as Karteikarte);
+                }
+            */
+        }
+        break;
+      case Stapel:
+        {
+          // nur für default stapel ...
+          stapel.remove(p);
+
+        }
+        break;
+      case Studiengang:
+        {
+          studiengaenge.remove(p);
+        }
+        break;
+      case Kurs:
+        {
+          kurse.remove(p);
+        }
+
+        break;
+      default: throw new FlutterError('Nicht Implementiert!');
+    }
+  }
+
+  @override
+  void init() {
+    _datenSpeicherort = getApplicationDocumentsDirectory();
+    stapel.insert(0, defaultStapel);
     // TODO: Speicherung - implement laden
     //data?
     // + load data
     // - create new lists (karteikarten)
-    }
+  }
 
-    @override
-    void loeschen(Produkt p) {
-    // TODO: Speicherung - implement loeschen
-    }
+
 
 // TODO: Speicherung - Algorithmen zur Listensuche / abgleich / Threading für laufzeitverbesserung
-    Produkt sucheInListe(List l, String s) {
+  Produkt sucheInListe(List l, String s) {
     for (int i = 0; i < l.length; i++) {
-    if (l[i]
-        .toString()
-        .trim()
-        .toLowerCase()
-        .compareTo(s.trim().toLowerCase()) ==
-    0) return l[i];
+      if (l[i]
+              .toString()
+              .trim()
+              .toLowerCase()
+              .compareTo(s.trim().toLowerCase()) ==
+          0) return l[i];
     }
     return null;
-    }
   }
+
+
+
+}

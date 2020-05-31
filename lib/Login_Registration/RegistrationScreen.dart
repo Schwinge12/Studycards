@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:karteikartenapp/Speicherung/Student.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
+
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -7,10 +10,11 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  var _userdata = new Userdata();
 
-  String email;
-  String passwort;
-  String username;
+  String _email;
+  String _passwort;
+  String _username;
 
 
 
@@ -43,7 +47,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  email=value;
+                  _email=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -71,7 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextFormField(
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  passwort=value;
+                  _passwort=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -102,7 +106,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextFormField(
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  passwort=value;
+                  _passwort=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -132,7 +136,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               TextFormField(
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  username=value;
+                  _username=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -164,6 +168,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   child: MaterialButton(
                     onPressed: () async{
 
+                    //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
+                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort).mitUsername(_username));
+
+                    //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu
                     },
                     minWidth: 200.0,
                     height: 42.0,

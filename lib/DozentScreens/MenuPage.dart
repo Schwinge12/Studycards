@@ -13,7 +13,7 @@ class MenuPage extends StatefulWidget{
 
 class _MenuPageState extends State<MenuPage>{
   static var _userdata = new Userdata();
-  String username= _userdata.getKonto().accountName;
+  String username= _userdata.getKonto().getUsername();
   String status = _userdata.getKonto().toString();
 
   @override

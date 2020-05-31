@@ -54,7 +54,10 @@ class Student extends Produkt{
   }
   //____________________________________Get/Set_________________________________
   Studiengang getStudiengang(){return sg;}
-
+  String getUsername(){
+    if(accountName == null) return 'Username';
+    else return accountName;
+  }
   //____________________________________Methods_________________________________
 
   //Todo Backend : E-mailbestätigung

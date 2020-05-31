@@ -9,8 +9,6 @@ import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/DozentScreens/MCErstellen.dart';
 
 
-//TODO Frontend: Löschen Button einfuegen
-
 class KarteErstellenVorderseite extends StatefulWidget {
   final String studiengang;
   final String studienfach;

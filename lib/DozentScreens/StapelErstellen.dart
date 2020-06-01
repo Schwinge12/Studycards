@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/Speicherung/Kurs.dart';
+import 'package:karteikartenapp/Speicherung/Studiengang.dart';
+import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 
 
@@ -16,11 +20,11 @@ class StapelErstellen extends StatefulWidget{
 class _StapelErstellen extends State<StapelErstellen> {
 
 
-  String studiengang;
+  String studiengangEingabe;
 
-  String studienfach;
+  String kursEingabe;
 
-  String themengebiet;
+  String themengebietEingabe;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,7 @@ class _StapelErstellen extends State<StapelErstellen> {
 
             textAlign: TextAlign.center,
             onChanged: (value) {
-              studiengang=value;
+              studiengangEingabe=value;
             },
             decoration: InputDecoration(
               filled: true,
@@ -74,7 +78,7 @@ class _StapelErstellen extends State<StapelErstellen> {
 
             textAlign: TextAlign.center,
             onChanged: (value) {
-              studienfach=value;
+              kursEingabe=value;
             },
             decoration: InputDecoration(
               filled: true,
@@ -103,7 +107,7 @@ class _StapelErstellen extends State<StapelErstellen> {
 
             textAlign: TextAlign.center,
             onChanged: (value) {
-              themengebiet=value;
+              themengebietEingabe=value;
             },
             decoration: InputDecoration(
               filled: true,
@@ -138,7 +142,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                   child: WeiterButton(
                     text: 'Speichern',
                     onPress: (){
-                      if(studienfach==null||studiengang==null||themengebiet==null){
+                      if(kursEingabe==null||studiengangEingabe==null||themengebietEingabe==null){
 
 
                         showDialog(context: context,
@@ -159,7 +163,17 @@ class _StapelErstellen extends State<StapelErstellen> {
                             barrierDismissible: false);
                       }
                       else{
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengang,studienfach: studienfach,themengebiet: themengebiet)));
+                        Userdata stapel = new Userdata();
+                        Kurs kurs = new Kurs();
+
+
+                        //Eingaben in Speicherungslisten einspeichern
+                        stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
+                        stapel.kurse.add(kurs.mitName(kursEingabe));
+                        //kurs.themengebiet.add(new Themengebiet(themengebietEingabe));
+
+
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe)));
                       }
 
                     },

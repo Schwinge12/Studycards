@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:karteikartenapp/Speicherung/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -11,6 +11,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
+
 
   String _email;
   String _passwort;
@@ -104,6 +105,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 
               TextFormField(
+                obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   _passwort=value;
@@ -168,8 +170,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   child: MaterialButton(
                     onPressed: () async{
 
-                    //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
                       _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort).mitUsername(_username));
+                    //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
 
                     //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu
                     },

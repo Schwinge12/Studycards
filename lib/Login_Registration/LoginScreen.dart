@@ -77,6 +77,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
                 height: 8.0,
               ),
               TextFormField(
+                obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   _passwort=value;

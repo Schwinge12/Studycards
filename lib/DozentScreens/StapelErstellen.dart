@@ -4,21 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/Studiengang.dart';
-import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-
-
-
 
 //TODO Backend: Eingebene Daten abspeichern
 
 class StapelErstellen extends StatefulWidget{
-
   @override
   _StapelErstellen createState()=>_StapelErstellen();
 }
 class _StapelErstellen extends State<StapelErstellen> {
-
 
   String studiengangEingabe;
 
@@ -43,7 +37,6 @@ class _StapelErstellen extends State<StapelErstellen> {
               ),
             ),
           ),
-
           TextField(
 
             textAlign: TextAlign.center,
@@ -135,8 +128,14 @@ class _StapelErstellen extends State<StapelErstellen> {
 
           Row(
             children: <Widget>[
-
-
+              Expanded(
+                child: WeiterButton(
+                  text: 'Zurück',
+                  onPress: (){
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
 
               Expanded(
                   child: WeiterButton(
@@ -165,8 +164,6 @@ class _StapelErstellen extends State<StapelErstellen> {
                       else{
                         Userdata stapel = new Userdata();
                         Kurs kurs = new Kurs();
-
-
                         //Eingaben in Speicherungslisten einspeichern
                         stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
                         stapel.kurse.add(kurs.mitName(kursEingabe));
@@ -175,15 +172,11 @@ class _StapelErstellen extends State<StapelErstellen> {
 
                         Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe)));
                       }
-
                     },
                   )
               ),
             ],
           )
-
-
-
         ],
       ),
     );

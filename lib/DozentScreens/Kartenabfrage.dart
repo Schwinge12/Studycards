@@ -35,9 +35,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
 
-
-
-
                           Expanded(
                             child: Card(
                               elevation: 0.0,
@@ -78,8 +75,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                               ),
                             ),
                           ),
-
-
 
                           Row(
                             children: <Widget>[

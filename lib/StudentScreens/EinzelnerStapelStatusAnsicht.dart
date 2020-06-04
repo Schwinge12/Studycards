@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
-
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class StapelStatus extends StatefulWidget{
 
@@ -11,14 +12,16 @@ class StapelStatus extends StatefulWidget{
 
 class _StapelStatusState extends State<StapelStatus>{
 
-  String username='Username';
-  String status ='Dozent';
+  String stapelname = "Stapelname";
+  String themengebiet = "Themengebiet";
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Stapelname,Thema',style: WeisserTextStyle,)),
+        title: Center(child: Text( stapelname+' + '+themengebiet,style: WeisserTextStyle,)),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),
@@ -43,17 +46,17 @@ class _StapelStatusState extends State<StapelStatus>{
             Expanded(
               child: Center(child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Anzahl der Karten:',style: MenuButtonTextStyle,),
+                child: Text('Anzahl der Karten:',style: KleinereAnzeigeTextStyle,),
               ),
               ),
             ),
             Expanded(
-              child: Center(child: Text('Aktueller Lernfortschritt:',style: MenuButtonTextStyle,),
+              child: Center(child: Text('Aktueller Lernfortschritt:',style: KleinereAnzeigeTextStyle,),
               ),
             ),
             Expanded(
               flex: 7,
-              child: ProzentWidget(
+              child: ErfolgsAnzeige(
               ),
             ),
             Expanded(

@@ -17,13 +17,19 @@ import 'StudentScreens/QuizStart.dart';
 import 'StudentScreens/Quiz.dart';
 import 'DozentScreens/MCErstellen.dart';
 import 'DozentScreens/MCFertigstellen.dart';
+import 'DozentScreens/Einstellungen.dart';
+import 'package:syncfusion_flutter_core/core.dart';
 
 
-
-void main()=>runApp(KarteikartenApp());
+void main(){
+  SyncfusionLicense.registerLicense("NT8mJyc2IWhia31ifWN9ZmFoZHxgfGFjYWNzZGliZWlnZnMSHmg+Mis6Pjo/OjI9fTchNiAwOzYhEyAnJjc2PSd9NTskIH03Ng==");
+  return runApp(KarteikartenApp());
+}
 
 class KarteikartenApp extends StatelessWidget{
-//test
+
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +37,7 @@ class KarteikartenApp extends StatelessWidget{
       ).copyWith(primaryColor: Color(0xFF3E7882),scaffoldBackgroundColor: Color(0xFF58A4B0), accentColor: Colors.grey ),
 
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
-      home: MenuPage(),
+      home: LoginScreen(),
       routes: {
         'MenuPage':(context)=>MenuPage(),
         'StapelErstellen':(context)=>StapelErstellen(),
@@ -51,6 +57,8 @@ class KarteikartenApp extends StatelessWidget{
         'Quiz':(context)=>Quiz(),
         'MCErstellen':(context)=>MCErstellen(),
         'MCFertigstellen':(context)=>MCFertigstellen(),
+        'LoginScreen':(context)=>LoginScreen(),
+        'Einstellungen':(context)=>Einstellungen(),
       },
     );
   }

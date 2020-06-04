@@ -11,14 +11,10 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
-
-
+  
   String _email;
   String _passwort;
   String _username;
-
-
-
 
   @override
   Widget build(BuildContext context) {

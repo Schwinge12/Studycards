@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "293969649801",
+    "firebase_url": "https://karteikartenapp-de263.firebaseio.com",
+    "project_id": "karteikartenapp-de263",
+    "storage_bucket": "karteikartenapp-de263.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293969649801:android:bf97b745c5fc8b11ac6658",
+        "android_client_info": {
+          "package_name": "com.example.karteikartenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293969649801-3q266kcj2ldru8grv76u7mqu3fp80j0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeEbWB0-tKcgcOgmezXjhg5eXniBxQ0Zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293969649801-3q266kcj2ldru8grv76u7mqu3fp80j0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

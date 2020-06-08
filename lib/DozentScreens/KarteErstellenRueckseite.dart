@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
+import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
@@ -98,6 +99,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                         widget._userdata.einfuegen(
                             new Karteikarte()
                             .mitKurs(widget._userdata.getKursMitString(widget.vorderSeite.studienfach))
+                            .mitThemengebiet(widget._userdata.getThemengebietMitKursUndString(widget._userdata.getKursMitString(widget.vorderSeite.studienfach), widget.vorderSeite.themengebiet))
                             .mitStudiengang(widget._userdata.getStudiengangMitString(widget.vorderSeite.studiengang))
                             .mitVorderSeite(widget.vorderSeite.getEingabe)
                             .mitRueckSeite(widget.eingabe)

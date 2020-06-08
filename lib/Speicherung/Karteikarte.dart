@@ -97,6 +97,9 @@ class Karteikarte extends Produkt {
   Kurs getKurs() {
     return kurs;
   }
+  Themengebiet getThemengebiet(){
+    return themengebiet;
+  }
 
 
 //____________________________________Methods___________________________________

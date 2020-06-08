@@ -67,8 +67,18 @@ class Userdata extends Speicherung {
     }
   }
 
+  Themengebiet getThemengebietMitKursUndString(Kurs k, String s) {
+    Produkt tmp = sucheInListe(k.themengebiet, s);
+    if (tmp == null) {
+      Themengebiet tmpthemengebiet =new Themengebiet (k).mitName(s);
+      k.themengebiet.add(tmpthemengebiet);
+      return tmpthemengebiet;
+    } else
+      return tmp;
+  }
   Kurs getKursMitString(String s) {
     Produkt tmp = sucheInListe(kurse, s);
+
     if (tmp == null) {
       Kurs tmpFach = new Kurs().mitName(s);
       kurse.add(tmpFach);
@@ -216,6 +226,15 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
     _datenSpeicherort = getApplicationDocumentsDirectory();
     stapel.insert(0, defaultStapel);
     einfuegen(testkonto);
+    stapel[0].stapelKarten.add(
+    new Karteikarte()
+        .mitKurs(getKursMitString('Bsp.Kurs'))
+        .mitThemengebiet(getThemengebietMitKursUndString(getKursMitString('Bsp.Kurs'), 'Bsp.Themengebiet'))
+        .mitStudiengang(getStudiengangMitString('Bsp.Studiengang'))
+        .mitVorderSeite('Bsp.Vorderseite')
+        .mitRueckSeite('Bsp.Rueckseite')
+    );
+
     // TODO: Speicherung - implement laden
     //data?
     // + load data

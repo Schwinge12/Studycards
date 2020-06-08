@@ -18,4 +18,17 @@ class Stapel extends Produkt {
 
 //____________________________________Methods_________________________________
  add(Karteikarte k){stapelKarten.add(k);} // convienice
+ String getName(){
+  if (name != null)
+  return name;
+ else return '';
+ }
+ String getThemengebietName(){
+  if (stapelKarten.isEmpty) return '404 - Themengebiet not found';
+  else return stapelKarten[0].getThemengebiet().getName();
+ }
+ String getKursName(){
+  if (stapelKarten.isEmpty) return '404 - Kurs not found';
+  else return stapelKarten[0].getKurs().getName();
+ }
 }

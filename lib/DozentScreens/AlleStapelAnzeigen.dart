@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
+import 'package:karteikartenapp/StudentScreens/EinzelnerStapelStatusAnsicht.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
@@ -16,18 +17,17 @@ class AlleStapel extends StatefulWidget{
 class _AlleStapel extends State<AlleStapel> {
 
   static Userdata userdata = new Userdata();
-  List<String> buttons= alleStapel();
+  Map<String, Stapel> buttons= alleStapel();
 
-  static List<String> alleStapel () {
-    List<String> stapelverzeichnis = new List();
-    for (int i = 0; i < userdata.kurse.length; i++) {
-      String kursname = userdata.kurse[i].name;
-      for (int t = 0; t < userdata.kurse[i].themengebiet.length; t++){
-        String themengebiet = userdata.kurse[i].themengebiet[t].name;
+  static Map<String, Stapel> alleStapel () {
+    Map<String, Stapel> stapelverzeichnis = new Map();
+    for (int i = 0; i < userdata.stapel.length; i++) {
+      String kursname = userdata.stapel[i].getKursName();
+      String themengebiet = userdata.stapel[i].getThemengebietName();
 
 
-      stapelverzeichnis.add(kursname + "\n" + themengebiet);
-      }
+      stapelverzeichnis[kursname + "\n" + themengebiet]= userdata.stapel[i];
+
     }
 
     return stapelverzeichnis;
@@ -50,9 +50,9 @@ class _AlleStapel extends State<AlleStapel> {
         itemCount: buttons.length,
         itemBuilder: (BuildContext contex,index){
           return MenuButton(
-            text: buttons[index],
+            text: buttons.keys.toList()[index],
             onPress: (){
-              Navigator.pushNamed(context, 'EinzelnerStapelStatus');
+              Navigator.pushNamed(context, 'EinzelnerStapelStatus', arguments : StapelStatusState(buttons.values.toList()[index]));
             },
           );
         }

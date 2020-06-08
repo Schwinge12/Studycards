@@ -6,24 +6,26 @@ import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class StapelStatus extends StatefulWidget{
+  StapelStatus();
+  StapelStatusmitStapel(Stapel s){this.stapel = s;}
+  Stapel stapel;
 
   @override
-  _StapelStatusState createState()=>_StapelStatusState();
+  StapelStatusState createState()=>StapelStatusState(stapel);
 }
 
-class _StapelStatusState extends State<StapelStatus>{
+class StapelStatusState extends State<StapelStatus>{
+
+  StapelStatusState(Stapel s){this.stapel = s;}
+
 
   Stapel stapel;
-  String stapelname = "Stapelname";
-  String themengebiet = "Themengebiet";
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text( stapelname+' + '+themengebiet,style: WeisserTextStyle,)),
+        title: Center(child: Text( stapel.getName()+' + '+stapel.getThemengebietName(),style: WeisserTextStyle,)),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),
@@ -44,7 +46,7 @@ class _StapelStatusState extends State<StapelStatus>{
         ),
         child: Column(
           children: <Widget>[
-            //TODO Backend: Anzahl der Karten einfügen
+            //TODO Frontend: Anzahl der Karten einfügen - stapel.stapelKarten.length;
             Expanded(
               child: Center(child: Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -103,6 +103,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                             .mitStudiengang(widget._userdata.getStudiengangMitString(widget.vorderSeite.studiengang))
                             .mitVorderSeite(widget.vorderSeite.getEingabe)
                             .mitRueckSeite(widget.eingabe)
+                                .mitFile(widget.vorderSeite.imageFile)
                         );
                         Navigator.pushNamed(context, 'StapelAbschliessenDozent');
                         },

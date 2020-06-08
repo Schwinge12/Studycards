@@ -34,11 +34,11 @@ class _MenuPageState extends State<MenuPage>{
                   ),
                 ),
 
-                //TODO Backend/Datenbank Username anzeigen lassen
+
                 Text(username,
                     style: WeisserTextStyle
                 ),
-                //TODO Backend/Datenbank Status als Dozent oder Student angeben
+
                 Text(status,
                     style:WeisserTextStyle
                 ),

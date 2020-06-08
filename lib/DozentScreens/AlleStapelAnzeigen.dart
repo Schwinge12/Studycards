@@ -15,21 +15,19 @@ class AlleStapel extends StatefulWidget{
 
 class _AlleStapel extends State<AlleStapel> {
 
-  Userdata userdata = new Userdata();
+  static Userdata userdata = new Userdata();
+  List<String> buttons= alleStapel();
 
-  List<MenuButton> alleStapel (){
+  static List<String> alleStapel () {
+    List<String> stapelverzeichnis = new List();
+    for (int i = 0; i < userdata.kurse.length; i++) {
+      String kursname = userdata.kurse[i].name;
+      for (int t = 0; t < userdata.kurse[i].themengebiet.length; t++){
+        String themengebiet = userdata.kurse[i].themengebiet[t].name;
 
-    List<MenuButton> stapelverzeichnis=[];
-    for(int i =0;i<20/*userdata.kurse.length*/;i++){
-      String kursname= 'test';//userdata.kurse[i].name;
-      String themengebiet= 'test';//userdata.stapel[i].name;
 
-      var newItem=MenuButton(
-        text: kursname+"\n"+themengebiet,
-
-      );
-
-      stapelverzeichnis.add(newItem);
+      stapelverzeichnis.add(kursname + "\n" + themengebiet);
+      }
     }
 
     return stapelverzeichnis;
@@ -49,10 +47,10 @@ class _AlleStapel extends State<AlleStapel> {
         title: Text('Meine angelegten Stapel',style: WeisserTextStyle,),
       ),
       body: new ListView.builder(
-        itemCount: alleStapel().length,
+        itemCount: buttons.length,
         itemBuilder: (BuildContext contex,index){
           return MenuButton(
-            text: "Test",
+            text: buttons[index],
             onPress: (){
               Navigator.pushNamed(context, 'EinzelnerStapelStatus');
             },

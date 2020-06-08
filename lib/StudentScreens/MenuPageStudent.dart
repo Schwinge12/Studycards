@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 //TODO Frontend: Einstellungen Seite Coden
 
@@ -11,9 +12,11 @@ class MenuPageStudent extends StatefulWidget{
 }
 
 class _MenuPageStudentState extends State<MenuPageStudent>{
+  //Doppelt mit MenuPage ?
 
-  String username='Username';
-  String status ='Student';
+  static var _userdata = new Userdata();
+  String username= _userdata.getKonto().getUsername();
+  String status = _userdata.getKonto().toString();
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +36,11 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
                   ),
                 ),
 
-                //TODO Backend/Datenbank Username anzeigen lassen
+
                 Text(username,
                     style: WeisserTextStyle
                 ),
-                //TODO Backend/Datenbank Status als Dozent oder Student angeben
+
                 Text(status,
                     style: WeisserTextStyle
                 ),

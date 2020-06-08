@@ -12,7 +12,11 @@ class Themengebiet extends Produkt {
 //____________________________________Constructor_____________________________
   Themengebiet(Kurs kurs){this.kurs = kurs;}
 
-
+  //____________________________________Builder-Chain___________________________
+  Themengebiet mitName(String name){
+    this.name = name;
+    return this;
+  }
 //____________________________________Methods_________________________________
 
 

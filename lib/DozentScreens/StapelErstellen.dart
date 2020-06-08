@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/Studiengang.dart';
+import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 //TODO Backend: Eingebene Daten abspeichern
@@ -167,7 +168,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                         //Eingaben in Speicherungslisten einspeichern
                         stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
                         stapel.kurse.add(kurs.mitName(kursEingabe));
-                        //kurs.themengebiet.add(new Themengebiet(themengebietEingabe));
+                        kurs.themengebiet.add(new Themengebiet(kurs).mitName(themengebietEingabe));
 
 
                         Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe)));

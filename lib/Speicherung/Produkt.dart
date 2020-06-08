@@ -11,6 +11,6 @@ Userdata userdata;
   erstellungsDatum = new DateTime.now();
  }
 //____________________________________Methods_________________________________
-
+ //Map<dynamic, dynamic> encodeJSON();
 
  }

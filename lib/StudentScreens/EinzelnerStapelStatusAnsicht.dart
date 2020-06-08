@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class StapelStatus extends StatefulWidget{
@@ -12,6 +13,7 @@ class StapelStatus extends StatefulWidget{
 
 class _StapelStatusState extends State<StapelStatus>{
 
+  Stapel stapel;
   String stapelname = "Stapelname";
   String themengebiet = "Themengebiet";
 

@@ -147,7 +147,7 @@ class _StapelErstellen extends State<StapelErstellen> {
 
                         showDialog(context: context,
                             builder: (_)=>CupertinoAlertDialog(
-                              title: Text('Fehlende eingaben!'),
+                              title: Text('Fehlende Eingaben!'),
                               content: Text('Bitte jede Zeile füllen.'),
                               actions: <Widget>[
                                 CupertinoDialogAction(

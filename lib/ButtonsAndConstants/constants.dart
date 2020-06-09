@@ -6,7 +6,7 @@ const MenuButtonTextStyle= TextStyle(
   fontSize: 30.0,
   //fontWeight: FontWeight.w800,
 //  fontFamily: 'Baloobhai2-ExtraBold.ttf',
-  fontFamily: 'Pacifico-Regular',
+  fontFamily: 'BalooBhai2-ExtraBold',
 );
 
 const KleinereAnzeigeTextStyle= TextStyle(
@@ -17,13 +17,13 @@ const KleinereAnzeigeTextStyle= TextStyle(
 
 const WeisserTextStyle=TextStyle(
 color: Colors.white,
-fontFamily: 'Pacifico-Regular',
+fontFamily: 'BalooBhai2-Regular',
 fontSize: 20.0
 );
 
 const CardTextStyle=TextStyle(
     color: Colors.black,
-    fontFamily: 'Pacifico-Regular',
+    fontFamily: 'BalooBhai2-ExtraBold',
     fontSize: 20.0
 );
 

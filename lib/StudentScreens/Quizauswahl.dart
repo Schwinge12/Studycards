@@ -10,7 +10,6 @@ class QuizAuswahl extends StatefulWidget{
 
 }
 
-
 class _AlleStapel extends State<QuizAuswahl> {
 
 

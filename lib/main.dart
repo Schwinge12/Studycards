@@ -37,7 +37,7 @@ class KarteikartenApp extends StatelessWidget{
       ).copyWith(primaryColor: Color(0xFF3E7882),scaffoldBackgroundColor: Color(0xFF58A4B0), accentColor: Colors.grey ),
 
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
-      home: LoginScreen(),
+      home: MenuPage(),
       routes: {
         'MenuPage':(context)=>MenuPage(),
         'StapelErstellen':(context)=>StapelErstellen(),

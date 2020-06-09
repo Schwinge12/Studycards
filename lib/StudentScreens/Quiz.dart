@@ -20,7 +20,10 @@ class _KartenanzeigeState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text('Frage',style: WeisserTextStyle,)),
+      ),
 
 
     );

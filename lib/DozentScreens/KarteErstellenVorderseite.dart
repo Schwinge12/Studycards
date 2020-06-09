@@ -13,7 +13,7 @@ class KarteErstellenVorderseite extends StatefulWidget {
   final String studiengang;
   final String studienfach;
   final String themengebiet;
-
+  File imageFile;
 
   KarteErstellenVorderseite({this.studiengang,this.studienfach,this.themengebiet});
 
@@ -27,12 +27,12 @@ class KarteErstellenVorderseite extends StatefulWidget {
 }
 
 class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
-  File _imageFile;
+
 
   Future _openGallery() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
-      _imageFile=image;
+      widget.imageFile=image;
     });
     Navigator.of(context).pop();
   }
@@ -40,7 +40,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
   Future _openCamera() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
-      _imageFile=image;
+      widget.imageFile=image;
     });
     Navigator.of(context).pop();
   }
@@ -77,24 +77,21 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
       body: Center(
         child: Column(
-
-
             children: <Widget>[
               Center(child: Row(
-
                 children: <Widget>[
-
                   Expanded(
-                    child: WeiterButton(
-                      text: 'Zurück',
-                      onPress: (){
+                    child:
+                      FlatButton(
+                        onPressed: (){
                         Navigator.of(context).pop();
                       },
+                          child: Icon(Icons.arrow_forward, size: 60, color: Colors.white30)
                     ),
+
                   ),
                   Expanded(
                     child: Container(
-
                         child: Column(
                           children: <Widget>[
                             Center(
@@ -108,11 +105,13 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
                         ),
 
                   ),
-                  Expanded( child: WeiterButton(
-                    text: 'Weiter',
-                    onPress: (){
+                  Expanded(
+                    child: FlatButton(
+                      onPressed: (){
                       Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
                     },
+                      child: Icon(Icons.arrow_forward, size: 60, color: Colors.white30)
+
                   ),
 
                   )
@@ -145,7 +144,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
               Expanded(
                 child: Container(
                   color: Colors.white,
-                  child: new Center(child: _imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(_imageFile, width: 400, height: 400))
+                  child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(widget.imageFile, width: 400, height: 400))
                 ),
               ),
 

@@ -25,6 +25,10 @@ class Kurs extends Produkt {
   }
 //____________________________________Methods_________________________________
 
-
+getName(){
+    if(name == null)
+      return 'Kurs not found';
+    else return name;
+}
 
 }

@@ -18,7 +18,12 @@ class Themengebiet extends Produkt {
     return this;
   }
 //____________________________________Methods_________________________________
-
+  getName(){
+    if(name != null)
+      return name;
+    else
+      return 'Themengebiet';
+  }
 
 
 }

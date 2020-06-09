@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/rendering.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
@@ -30,6 +32,8 @@ class Karteikarte extends Produkt {
   List<String> multipleChoice;
 
   var id;
+
+  File bild;
 
 //____________________________________Constructor_______________________________
   Karteikarte() {
@@ -69,6 +73,10 @@ class Karteikarte extends Produkt {
     this.rueckSeite = rueckSeite;
     return this;
   }
+  Karteikarte mitFile(File bild) {
+    this.bild = bild;
+    return this;
+  }
 
   Karteikarte mitKeyStatus() {
     this.keyKarte = true;
@@ -96,6 +104,9 @@ class Karteikarte extends Produkt {
 
   Kurs getKurs() {
     return kurs;
+  }
+  Themengebiet getThemengebiet(){
+    return themengebiet;
   }
 
 

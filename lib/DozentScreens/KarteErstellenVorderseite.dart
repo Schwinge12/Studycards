@@ -77,24 +77,21 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
       body: Center(
         child: Column(
-
-
             children: <Widget>[
               Center(child: Row(
-
                 children: <Widget>[
-
                   Expanded(
-                    child: WeiterButton(
-                      text: 'Zurück',
-                      onPress: (){
+                    child:
+                      FlatButton(
+                        onPressed: (){
                         Navigator.of(context).pop();
                       },
+                          child: Icon(Icons.arrow_forward, size: 60, color: Colors.white30)
                     ),
+
                   ),
                   Expanded(
                     child: Container(
-
                         child: Column(
                           children: <Widget>[
                             Center(
@@ -108,11 +105,13 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
                         ),
 
                   ),
-                  Expanded( child: WeiterButton(
-                    text: 'Weiter',
-                    onPress: (){
+                  Expanded(
+                    child: FlatButton(
+                      onPressed: (){
                       Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
                     },
+                      child: Icon(Icons.arrow_forward, size: 60, color: Colors.white30)
+
                   ),
 
                   )

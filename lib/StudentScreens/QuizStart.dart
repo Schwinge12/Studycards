@@ -14,7 +14,7 @@ class _QuizStartState extends State<QuizStart>{
 
 
   int anzahlKartenImStapel=10;
-  int auswahl=0;
+  int auswahl=5;
 
 
   @override
@@ -47,8 +47,8 @@ class _QuizStartState extends State<QuizStart>{
             Expanded(
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(50),
-                  child: Text('Wie viele Karten sollen abgefragt werden?',style: MenuButtonTextStyle,),
+                  padding: const EdgeInsets.all(60),
+                  child: Text('Anzahl Quizfragen',style: MenuButtonTextStyle,),
                 ),
               ),
             ),
@@ -69,7 +69,7 @@ class _QuizStartState extends State<QuizStart>{
                 ),
                 child: Slider(
                   value: auswahl.toDouble(),
-                  min: 0.0,
+                  min: 1.0,
                   max: anzahlKartenImStapel.toDouble(),
                   onChanged: (double newValue) {
                     setState(() {

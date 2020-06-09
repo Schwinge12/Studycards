@@ -44,7 +44,7 @@ class _AlleStapel extends State<AlleStapel> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meine angelegten Stapel',style: WeisserTextStyle,),
+        title: Text('Meine Stapel',style: WeisserTextStyle,),
       ),
       body: new ListView.builder(
         itemCount: buttons.length,

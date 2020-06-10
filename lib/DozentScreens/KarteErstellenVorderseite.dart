@@ -73,7 +73,6 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),

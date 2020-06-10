@@ -24,7 +24,6 @@ class _StapelErstellen extends State<StapelErstellen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-
       body: Column(
 
         children: <Widget>[

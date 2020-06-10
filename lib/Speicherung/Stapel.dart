@@ -6,6 +6,7 @@ class Stapel extends Produkt {
 //____________________________________Variables_______________________________
  List<Karteikarte> stapelKarten = new List();
  String name;
+ int id;
 
 //____________________________________Constructor_____________________________
  Stapel();
@@ -30,5 +31,25 @@ class Stapel extends Produkt {
  String getKursName(){
   if (stapelKarten.isEmpty) return '404 - Kurs not found';
   else return stapelKarten[0].getKurs().getName();
+ }
+ Map<String, dynamic> toMap() { //Stapel zu Map-Objekt konvertieren für lokale Datenbank
+
+  var map = Map<String, dynamic> ();
+
+  if(id != null)
+  {
+   map['id'] = id;
+  }
+  map['name'] =name;
+  map['stapelKarten'] = stapelKarten;
+
+  return map;
+ }
+
+ Stapel.fromMapObject(Map<String, dynamic> map) {
+
+  this.id = map['id'];
+  this.name =map['name'];
+  this.stapelKarten=map['stapelKarten'];
  }
 }

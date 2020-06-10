@@ -18,8 +18,6 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
     bool showSpinner = false;
 
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

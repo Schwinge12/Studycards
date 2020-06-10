@@ -20,12 +20,14 @@ dependencies:
 
   shared_preferences: ^0.5.7
   image_picker: ^0.6.1+11
-  path_provider: ^1.6.7
   flutter:
     sdk: flutter
   firebase_core: ^0.4.5
   firebase_auth: ^0.16.1
   cloud_firestore: ^0.13.6
+  path_provider: any
+  sqflite: any
+  intl: ^0.16.1
 
 
 

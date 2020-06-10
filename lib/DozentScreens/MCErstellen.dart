@@ -50,7 +50,7 @@ class _MCErstellen extends State <MCErstellen>{
                 },
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Colors.white30,
+                  fillColor: Colors.white70,
                   hintText: 'Frage eingeben',
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),

@@ -75,110 +75,119 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
     return Scaffold(
 
       body: Center(
-        child: Column(
-            children: <Widget>[
-              Center(child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child:
-                      FlatButton(
-                        onPressed: (){
-                        Navigator.of(context).pop();
-                      },
-                          child: Icon(Icons.arrow_forward, size: 60, color: Colors.white30)
-                    ),
-
-                  ),
-                  Expanded(
-                    child: Container(
-                        child: Column(
-                          children: <Widget>[
-                            Center(
-                              child: AutoSizeText(widget.studienfach, style: MenuButtonTextStyle , maxLines: 1),
-                            ),
-                            Center(
-                              child: AutoSizeText(widget.themengebiet,style: MenuButtonTextStyle , maxLines: 1),
-                            )
-                          ]
-                            ),
-                        ),
-
-                  ),
-                  Expanded(
-                    child: FlatButton(
-                      onPressed: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
-                    },
-                      child: Icon(Icons.arrow_forward, size: 60, color: Colors.white30)
-
-                  ),
-
-                  )
-                ],
-
-              )),
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: Column(
-                    children: <Widget>[
-                      Center(
-                        child: Text('VORDERSEITE'),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          style: MenuButtonTextStyle,
-                          controller: widget.vorderseite,
-                          maxLines: 20,
-                          onChanged: (String s){
-                            widget.eingabe=s;
-                          },
-                        ),
-                      )
-                    ],
-                  )
-
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(widget.imageFile, width: 400, height: 400))
-                ),
-              ),
-
-              Row(
-
-                children: <Widget>[
-
-                  Expanded(
-                    child: FlatButton(onPressed: (){
-                      auswaehlen(context);
-                    },child: Icon(Icons.add_a_photo, size: 60, color: Colors.white30)
-                    )
-                  ),
-                  Expanded(
-                      child: MultipleChoiceButton(
-                        onPress:(){
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet,)));
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: Column(
+              children: <Widget>[
+                Center(child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child:
+                        FlatButton(
+                          onPressed: (){
+                          Navigator.of(context).pop();
                         },
-                        text: 'MC',
-                      )
-                  ),
+                            child: Icon(Icons.arrow_back, size: 50, color: Colors.white30)
+                      ),
 
-                  Expanded(
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet)));
-                      }, child: Icon(Icons.delete, size:60, color: Colors.white30)
                     ),
+                    Expanded(
+                      child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
+                            child: Column(
+                              children: <Widget>[
+                                Center(
+                                  child: AutoSizeText(widget.studienfach, style: TextStyle(fontSize: 25), maxLines: 1),
+                                ),
+                                Center(
+                                  child: AutoSizeText(widget.themengebiet,style: TextStyle(fontSize: 25) , maxLines: 1),
+                                )
+                              ]
+                                ),
+                          ),
+                          ),
+
+                    ),
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
+                      },
+                        child: Icon(Icons.arrow_forward, size: 50, color: Colors.white30)
+
+                    ),
+
+                    )
+                  ],
+
+                )),
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text('VORDERSEITE'),
+                          ),
+                        ),
+                        Expanded(
+                          child: TextField(
+                            style: MenuButtonTextStyle,
+                            controller: widget.vorderseite,
+                            maxLines: 20,
+                            onChanged: (String s){
+                              widget.eingabe=s;
+                            },
+                          ),
+                        )
+                      ],
+                    )
+
                   ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(widget.imageFile, width: 400, height: 400))
+                  ),
+                ),
 
-                ],
-              ),
+                Row(
+
+                  children: <Widget>[
+
+                    Expanded(
+                      child: FlatButton(onPressed: (){
+                        auswaehlen(context);
+                      },child: Icon(Icons.add_a_photo, size: 60, color: Colors.white30)
+                      )
+                    ),
+                    Expanded(
+                        child: MultipleChoiceButton(
+                          onPress:(){
+                            Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet,)));
+                          },
+                          text: 'MC',
+                        )
+                    ),
+
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet)));
+                        }, child: Icon(Icons.delete, size:60, color: Colors.white30)
+                      ),
+                    ),
+
+                  ],
+                ),
 
 
-            ]),
+              ]),
+        ),
       ),
     );
   }

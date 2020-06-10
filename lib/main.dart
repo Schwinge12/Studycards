@@ -34,7 +34,7 @@ class KarteikartenApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       theme:ThemeData.light(
-      ).copyWith(primaryColor: Color(0xFF3E7882),scaffoldBackgroundColor: Color(0xFF58A4B0), accentColor: Colors.grey ),
+      ).copyWith(primaryColor: Color(0xFF3E7882),scaffoldBackgroundColor: Color(0xFF3E7882), accentColor: Colors.grey ),
 
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
       home: LoginScreen(),

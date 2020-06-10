@@ -23,57 +23,59 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
     return Scaffold(
 
         body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: SafeArea(
-                    child: Container(
-                      height: 200.0,
+          child: SafeArea(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: SafeArea(
+                      child: Container(
+                        height: 200.0,
 
-                      child: Image.asset('images/LogoOhneKreis.PNG'),
+                        child: Image.asset('images/LogoOhneKreis.PNG'),
+                      ),
                     ),
                   ),
-                ),
 
 
-                Text(username,
-                    style: WeisserTextStyle
-                ),
+                  Text(username,
+                      style: WeisserTextStyle
+                  ),
 
-                Text(status,
-                    style: WeisserTextStyle
-                ),
+                  Text(status,
+                      style: WeisserTextStyle
+                  ),
 
-                MenuButton(
-                  height: 70.0,
-                  text: 'Kartenset Erstellen',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'StapelErstellen');
-                  },
-                ),
-                MenuButton(
-                  height: 70.0,
-                  text: 'Meine Sets',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'AlleStapelAnzeigen');
-                  },
-                ),
-                MenuButton(
-                  height: 70.0,
-                  text: 'Quiz',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'Quizauswahl');
-                  },
-                ),
-                MenuButton(
-                  height: 70.0,
-                  text: 'Einstellungen',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'Einstellungen');
-                  },
-                ),
-              ]
+                  MenuButton(
+                    height: 70.0,
+                    text: 'Stapel Erstellen',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'StapelErstellen');
+                    },
+                  ),
+                  MenuButton(
+                    height: 70.0,
+                    text: 'Meine Sets',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'AlleStapelAnzeigen');
+                    },
+                  ),
+                  MenuButton(
+                    height: 70.0,
+                    text: 'Quiz',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'Quizauswahl');
+                    },
+                  ),
+                  MenuButton(
+                    height: 70.0,
+                    text: 'Einstellungen',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'Einstellungen');
+                    },
+                  ),
+                ]
+            ),
           ),
         )
     );

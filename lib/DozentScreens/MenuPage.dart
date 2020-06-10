@@ -21,48 +21,50 @@ class _MenuPageState extends State<MenuPage>{
     return Scaffold(
 
         body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: SafeArea(
-                    child: Container(
-                      height: 200.0,
+          child: SafeArea(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: SafeArea(
+                      child: Container(
+                        height: 200.0,
 
-                      child: Image.asset('images/LogoOhneKreis.PNG'),
+                        child: Image.asset('images/LogoOhneKreis.PNG'),
+                      ),
                     ),
                   ),
-                ),
 
 
-                Text(username,
-                    style: WeisserTextStyle
-                ),
+                  Text(username,
+                      style: WeisserTextStyle
+                  ),
 
-                Text(status,
-                    style:WeisserTextStyle
-                ),
+                  Text(status,
+                      style:WeisserTextStyle
+                  ),
 
-                MenuButton(
-                  text: 'Kartenset Erstellen',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'StapelErstellen');
-                  },
-                ),
-                MenuButton(
-                  text: 'Meine Sets',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'AlleStapelAnzeigen');
-                  },
-                ),
-                MenuButton(
-                  text: 'Einstellungen',
-                  onPress: (){
-                    Navigator.pushNamed(context, 'Einstellungen');
-                  },
-                ),
+                  MenuButton(
+                    text: 'Stapel Erstellen',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'StapelErstellen');
+                    },
+                  ),
+                  MenuButton(
+                    text: 'Meine Sets',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'AlleStapelAnzeigen');
+                    },
+                  ),
+                  MenuButton(
+                    text: 'Einstellungen',
+                    onPress: (){
+                      Navigator.pushNamed(context, 'Einstellungen');
+                    },
+                  ),
 
-              ]
+                ]
+            ),
           ),
         )
     );

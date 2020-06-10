@@ -18,29 +18,31 @@ class _EinstellungenState extends State<Einstellungen> {
     return Scaffold(
 
         body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: SafeArea(
-                    child: Container(
-                      height: 200.0,
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: SafeArea(
+                      child: Container(
+                        height: 200.0,
 
-                      child: Icon(Icons.settings, size: 100,),
+                        child: Icon(Icons.settings, size: 100,),
+                      ),
                     ),
                   ),
-                ),
 
-                LogoutButton(
-                    text: 'Abmelden',
-                    onPress: (
-                        //TODO DB Firebase Abmelden
-                        ) {
-                      Navigator.pushNamed(context, 'LoginScreen');
-                    }
-                ),
+                  LogoutButton(
+                      text: 'Abmelden',
+                      onPress: (
+                          //TODO DB Firebase Abmelden
+                          ) {
+                        Navigator.pushNamed(context, 'LoginScreen');
+                      }
+                  ),
 
-              ],
+                ],
+              ),
             )
         )
 

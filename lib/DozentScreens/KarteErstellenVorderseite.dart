@@ -73,88 +73,65 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+        title: Text(
+          widget.studienfach + ': ' + widget.themengebiet
+        ),
+          actions: <Widget>[
+      // action button
+      IconButton(
+      icon: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 25),
+        onPressed: (){
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
+        },
+
+      ),
+    ]
+
+      ),
+
+
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30.0),
-          child: Column(
-              children: <Widget>[
-                Center(child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child:
-                        FlatButton(
-                          onPressed: (){
-                          Navigator.of(context).pop();
-                        },
-                            child: Icon(Icons.arrow_back, size: 50, color: Colors.white30)
-                      ),
+        child: Column(
+            children: <Widget>[
 
-                    ),
-                    Expanded(
-                      child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 8.0),
-                            child: Column(
-                              children: <Widget>[
-                                Center(
-                                  child: AutoSizeText(widget.studienfach, style: TextStyle(fontSize: 25), maxLines: 1),
-                                ),
-                                Center(
-                                  child: AutoSizeText(widget.themengebiet,style: TextStyle(fontSize: 25) , maxLines: 1),
-                                )
-                              ]
-                                ),
-                          ),
-                          ),
+              Expanded(
+                child: Container(
 
-                    ),
-                    Expanded(
-                      child: FlatButton(
-                        onPressed: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
-                      },
-                        child: Icon(Icons.arrow_forward, size: 50, color: Colors.white30)
-
-                    ),
-
-                    )
-                  ],
-
-                )),
-                Expanded(
-                  child: Container(
-                    color: Colors.white,
-                    child: Column(
-                      children: <Widget>[
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Text('VORDERSEITE'),
-                          ),
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text('VORDERSEITE'),
                         ),
-                        Expanded(
-                          child: TextField(
-                            style: MenuButtonTextStyle,
-                            controller: widget.vorderseite,
-                            maxLines: 20,
-                            onChanged: (String s){
-                              widget.eingabe=s;
-                            },
-                          ),
-                        )
-                      ],
-                    )
+                      ),
+                      Expanded(
+                        child: TextField(
+                          style: MenuButtonTextStyle,
+                          controller: widget.vorderseite,
+                          maxLines: 20,
+                          onChanged: (String s){
+                            widget.eingabe=s;
+                          },
+                        ),
+                      )
+                    ],
+                  )
 
-                  ),
                 ),
-                Expanded(
-                  child: Container(
-                    color: Colors.white,
-                    child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(widget.imageFile, width: 400, height: 400))
-                  ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.white,
+                  child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(widget.imageFile, width: 400, height: 400))
                 ),
+              ),
 
-                Row(
+              SafeArea(
+                child: Row(
 
                   children: <Widget>[
 
@@ -183,10 +160,10 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
                   ],
                 ),
+              ),
 
 
-              ]),
-        ),
+            ]),
       ),
     );
   }

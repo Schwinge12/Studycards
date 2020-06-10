@@ -25,7 +25,7 @@ class StapelStatusState extends State<StapelStatus>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text( stapel.getName()+' + '+stapel.getThemengebietName(),style: WeisserTextStyle,)),
+        title: Center(child: Text( 'Test')),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),
@@ -50,12 +50,21 @@ class StapelStatusState extends State<StapelStatus>{
             Expanded(
               child: Center(child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Anzahl der Karten:',style: KleinereAnzeigeTextStyle,),
+                child: Text('Anzahl der Karten:',
+                  style: TextStyle(fontFamily: 'BalooBhai2-ExtraBold',
+                  fontSize: 25.0
+                  ),
+                ),
               ),
               ),
             ),
             Expanded(
-              child: Center(child: Text('Aktueller Lernfortschritt:',style: KleinereAnzeigeTextStyle,),
+              child: Center(child:
+              Text('Aktueller Lernfortschritt:',
+                style: TextStyle(fontFamily:'BalooBhai2-ExtraBold',
+                    fontSize: 25.0
+                ),
+              ),
               ),
             ),
             Expanded(

@@ -18,19 +18,21 @@ class _EinstellungsScreenState extends State<EinstellungsScreen>{
     return Scaffold(
 
         body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+          child: SafeArea(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
 
-                MenuButton(
-                  text: 'Appdesign anpassen',
-                  onPress: (){
+                  MenuButton(
+                    text: 'Appdesign anpassen',
+                    onPress: (){
 
-                  },
-                ),
+                    },
+                  ),
 
 
-              ]
+                ]
+            ),
           ),
         )
     );

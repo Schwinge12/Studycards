@@ -126,56 +126,58 @@ class _StapelErstellen extends State<StapelErstellen> {
             height: 8.0,
           ),
 
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: WeiterButton(
-                  text: 'Zurück',
-                  onPress: (){
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-
-              Expanded(
+          SafeArea(
+            child: Row(
+              children: <Widget>[
+                Expanded(
                   child: WeiterButton(
-                    text: 'Speichern',
+                    text: 'Zurück',
                     onPress: (){
-                      if(kursEingabe==null||studiengangEingabe==null||themengebietEingabe==null){
-
-
-                        showDialog(context: context,
-                            builder: (_)=>CupertinoAlertDialog(
-                              title: Text('Fehlende Eingaben!'),
-                              content: Text('Bitte jede Zeile füllen.'),
-                              actions: <Widget>[
-                                CupertinoDialogAction(
-                                  child: Text('OK'),
-                                  onPressed:
-                                      (){
-                                    Navigator.pop(context);
-                                  },
-                                ),
-
-                              ],
-                            ),
-                            barrierDismissible: false);
-                      }
-                      else{
-                        Userdata stapel = new Userdata();
-                        Kurs kurs = new Kurs();
-                        //Eingaben in Speicherungslisten einspeichern
-                        stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
-                        stapel.kurse.add(kurs.mitName(kursEingabe));
-                        kurs.themengebiet.add(new Themengebiet(kurs).mitName(themengebietEingabe));
-
-
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe)));
-                      }
+                      Navigator.of(context).pop();
                     },
-                  )
-              ),
-            ],
+                  ),
+                ),
+
+                Expanded(
+                    child: WeiterButton(
+                      text: 'Speichern',
+                      onPress: (){
+                        if(kursEingabe==null||studiengangEingabe==null||themengebietEingabe==null){
+
+
+                          showDialog(context: context,
+                              builder: (_)=>CupertinoAlertDialog(
+                                title: Text('Fehlende Eingaben!'),
+                                content: Text('Bitte jede Zeile füllen.'),
+                                actions: <Widget>[
+                                  CupertinoDialogAction(
+                                    child: Text('OK'),
+                                    onPressed:
+                                        (){
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+
+                                ],
+                              ),
+                              barrierDismissible: false);
+                        }
+                        else{
+                          Userdata stapel = new Userdata();
+                          Kurs kurs = new Kurs();
+                          //Eingaben in Speicherungslisten einspeichern
+                          stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
+                          stapel.kurse.add(kurs.mitName(kursEingabe));
+                          kurs.themengebiet.add(new Themengebiet(kurs).mitName(themengebietEingabe));
+
+
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe)));
+                        }
+                      },
+                    )
+                ),
+              ],
+            ),
           )
         ],
       ),

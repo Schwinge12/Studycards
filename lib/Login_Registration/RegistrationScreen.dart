@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:karteikartenapp/Speicherung/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -13,13 +13,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
   final _auth = FirebaseAuth.instance;
   String _email;
-  String _passwort;
-  String _username;
+  String _passwort1;
+  String _passwort2;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Form(
@@ -73,7 +73,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _passwort=value;
+                  _passwort1=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -105,7 +105,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _passwort=value;
+                  _passwort2=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -127,38 +127,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ),
 
-              SizedBox(
 
-                height: 8.0,
-              ),
 
-              TextFormField(
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  _username=value;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white30,
-                  hintText: 'Benutzername',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
+
               SizedBox(
                 height: 24.0,
               ),
+
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
@@ -166,12 +141,34 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
                     onPressed: () async {
-                      final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort);
+
+                      if(_passwort1!=_passwort2){
+
+
+                        showDialog(context: context,
+                            builder: (_)=>CupertinoAlertDialog(
+                              title: Text('Falsche Eingabe!'),
+                              content: Text('Passwörter müssen identisch sein'),
+                              actions: <Widget>[
+                                CupertinoDialogAction(
+                                  child: Text('OK'),
+                                  onPressed:
+                                      (){
+                                    Navigator.pop(context);
+                                  },
+                                ),
+
+                              ],
+                            ),
+                            barrierDismissible: false);
+                      }
+
+                      final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort1);
                       if (newUser != null) {
                         Navigator.pushNamed(context, 'LoginScreen');
                       }
 
-                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort).mitUsername(_username));
+                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort1));
                     //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
 
                     //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu

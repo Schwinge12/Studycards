@@ -55,7 +55,7 @@ import 'package:firebase_auth/firebase_auth.dart';
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
-                  hintText: 'Email eingeben',
+                  hintText: 'Email',
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -84,7 +84,7 @@ import 'package:firebase_auth/firebase_auth.dart';
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
-                  hintText: 'Passwort eingeben',
+                  hintText: 'Passwort',
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -156,7 +156,7 @@ import 'package:firebase_auth/firebase_auth.dart';
                     minWidth: 200.0,
                     height: 42.0,
                     child: Text(
-                      'Neu Registrieren',
+                      'Registrieren',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

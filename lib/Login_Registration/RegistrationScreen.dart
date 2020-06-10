@@ -14,7 +14,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
   String _email;
   String _passwort;
-  String _username;
+
 
   @override
   Widget build(BuildContext context) {
@@ -131,31 +131,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                 height: 8.0,
               ),
-
-              TextFormField(
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  _username=value;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white30,
-                  hintText: 'Benutzername',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
               SizedBox(
                 height: 24.0,
               ),
@@ -169,9 +144,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort);
                       if (newUser != null) {
                         Navigator.pushNamed(context, 'LoginScreen');
-                      }
 
-                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort).mitUsername(_username));
+
+                      }
+                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort));
                     //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
 
                     //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu

@@ -11,7 +11,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
-  
+  final _auth = FirebaseAuth.instance;
   String _email;
   String _passwort;
   String _username;
@@ -70,6 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 8.0,
               ),
               TextFormField(
+                obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   _passwort=value;
@@ -164,7 +165,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   color: Colors.white10,
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
-                    onPressed: () async{
+                    onPressed: () async {
+                      final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, 'LoginScreen');
+                      }
 
                       _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort).mitUsername(_username));
                     //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
@@ -174,8 +179,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     minWidth: 200.0,
                     height: 42.0,
                     child: Text(
-                      'Register',
+                      'Registrieren',
                       style: TextStyle(color: Colors.white),
+
                     ),
                   ),
                 ),

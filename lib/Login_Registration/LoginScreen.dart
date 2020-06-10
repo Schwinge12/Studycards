@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
@@ -9,7 +10,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
   }
 
   class _LoginScreenState extends State<LoginScreen> {
-
+    final _auth = FirebaseAuth.instance;
     var _userdata = new Userdata();
     String _email;
     String _passwort;
@@ -117,6 +118,11 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
                   child: MaterialButton(
                     onPressed: () async{
+                      //final user = await _auth.signInWithEmailAndPassword(email: _email, password: _passwort);
+                      // if (user != null) {
+                        // Navigator.pushNamed(context, 'MenuPage');
+                      //}
+                      // anmeldung über email nach registrierung mit Email
 
                       //Bis Datenbankverbindung steht passswort nutzen um zwischen dozent oder student zu unterscheiden
                       if(_passwort=='dozent'){
@@ -162,6 +168,4 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
       ),
     );
   }
-
-
 }

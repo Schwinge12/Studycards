@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:karteikartenapp/Speicherung/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Form(
@@ -73,7 +73,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _passwort=value;
+                  _passwort1=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -105,7 +105,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _passwort=value;
+                  _passwort2=value;
                 },
                 decoration: InputDecoration(
                   filled: true,
@@ -134,6 +134,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 24.0,
               ),
+
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
@@ -141,7 +142,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
                     onPressed: () async {
-                      final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort);
+
+                      if(_passwort1!=_passwort2){
+
+
+                        showDialog(context: context,
+                            builder: (_)=>CupertinoAlertDialog(
+                              title: Text('Falsche Eingabe!'),
+                              content: Text('Passwörter müssen identisch sein'),
+                              actions: <Widget>[
+                                CupertinoDialogAction(
+                                  child: Text('OK'),
+                                  onPressed:
+                                      (){
+                                    Navigator.pop(context);
+                                  },
+                                ),
+
+                              ],
+                            ),
+                            barrierDismissible: false);
+                      }
+
+                      final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort1);
                       if (newUser != null) {
                         Navigator.pushNamed(context, 'LoginScreen');
 

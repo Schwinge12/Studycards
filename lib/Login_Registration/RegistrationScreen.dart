@@ -143,8 +143,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   child: MaterialButton(
                     onPressed: () async {
 
-                      if(_passwort1!=_passwort2){
-
+                      if(_passwort1 != _passwort2) {
 
                         showDialog(context: context,
                             builder: (_)=>CupertinoAlertDialog(
@@ -163,10 +162,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                             barrierDismissible: false);
                       }
-
                       final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort1);
                       if (newUser != null) {
                         Navigator.pushNamed(context, 'LoginScreen');
+                      }
+
 
 
                       }

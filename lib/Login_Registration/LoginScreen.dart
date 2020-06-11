@@ -14,7 +14,6 @@ import 'package:firebase_auth/firebase_auth.dart';
     var _userdata = new Userdata();
     String _email;
     String _passwort;
-    String _username;
 
     bool showSpinner = false;
 
@@ -156,8 +155,9 @@ import 'package:firebase_auth/firebase_auth.dart';
                     minWidth: 200.0,
                     height: 42.0,
                     child: Text(
-                      'Registrieren',
+                      'Registrierung',
                       style: TextStyle(color: Colors.white),
+                      //TODO Anmelden-Button eventuell ein bisschen nach oben verschieben zu Email und PW, Registrierung am Boden lassen
                     ),
                   ),
                 ),

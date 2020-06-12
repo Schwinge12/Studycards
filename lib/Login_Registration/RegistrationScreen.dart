@@ -13,7 +13,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
   final _auth = FirebaseAuth.instance;
   String _email;
-  String _passwort;
+  String _passwort1;
+  String _passwort2;
 
 
   @override
@@ -127,10 +128,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ),
 
-              SizedBox(
 
-                height: 8.0,
-              ),
+
+
               SizedBox(
                 height: 24.0,
               ),
@@ -169,8 +169,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 
 
-                      }
-                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort));
+                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort1));
                     //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
 
                     //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu

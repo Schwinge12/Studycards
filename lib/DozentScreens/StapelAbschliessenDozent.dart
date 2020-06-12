@@ -4,7 +4,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/constants.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 
-//TODO Frontend: Seite Scrollbar machen?:D
+
 
 class StapelAbschliessenDozent extends StatelessWidget {
 

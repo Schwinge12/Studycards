@@ -4,7 +4,7 @@ import 'package:karteikartenapp/ButtonsAndConstants/LogoutButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
-//TODO Frontend: Einstellungen Seite Coden, Abmelden Button
+
 
 class Einstellungen extends StatefulWidget{
 

@@ -39,7 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                 ),
               ),
-              
+
 
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
@@ -170,9 +170,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
 
                       _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort1));
-                    //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
+                      //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
 
-                    //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu
+                      //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu
                     },
                     minWidth: 200.0,
                     height: 42.0,

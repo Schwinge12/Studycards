@@ -64,7 +64,7 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
                     height: 70.0,
                     text: 'Quiz',
                     onPress: (){
-                      Navigator.pushNamed(context, 'Quizauswahl');
+                      Navigator.pushNamed(context, 'QuizAuswahl');
                     },
                   ),
                   MenuButton(

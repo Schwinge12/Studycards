@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class MultipleChoiceButton extends StatelessWidget{
 
 
-  MultipleChoiceButton({this.onPress,this.text});
+  MultipleChoiceButton({@ required this.onPress,this.text});
 
   String text;
   final Function onPress;

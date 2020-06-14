@@ -18,7 +18,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
   @override
   Widget build(BuildContext context) {
     return SwipeStack(
-      children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12].map((int index) {
+      children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,].map((int index) {
         return SwiperItem(
             builder: (SwiperPosition position, double progress) {
               return Material(
@@ -45,31 +45,81 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                 onFlipDone: (status) {
                                   print(status);
                                 },
-                                front: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white70,
-                                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Front', style: MenuButtonTextStyle),
-                                      Text('Click here to flip back', style: MenuButtonTextStyle)
-                                    ],
-                                  ),
+                                front: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: <Widget>[
+
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white70,
+                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text('Front', style: MenuButtonTextStyle),
+                                            Text('Hier Text anzeigen', style: MenuButtonTextStyle)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    Expanded(
+                                      child: Container( 
+                                        decoration: BoxDecoration(
+                                          color: Colors.white70,
+                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+
+                                            Text('Hier Bild Anzeigen', style: MenuButtonTextStyle)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                back: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white70,
-                                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Back', style: MenuButtonTextStyle),
-                                      Text('Click here to flip front',style: MenuButtonTextStyle),
-                                    ],
-                                  ),
+
+
+                                back: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: <Widget>[
+
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white70,
+                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text('Front', style: MenuButtonTextStyle),
+                                            Text('Hier Text anzeigen', style: MenuButtonTextStyle)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white70,
+                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+
+                                            Text('Hier Bild Anzeigen', style: MenuButtonTextStyle)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

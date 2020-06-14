@@ -14,7 +14,7 @@ class KarteErstellenVorderseite extends StatefulWidget {
   final String themengebiet;
   File imageFile;
 
-  KarteErstellenVorderseite({this.studiengang,this.studienfach,this.themengebiet});
+  KarteErstellenVorderseite({@required this.studiengang,@required this.studienfach,@required this.themengebiet});
 
   final TextEditingController vorderseite= new TextEditingController();
   String eingabe;
@@ -83,7 +83,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
       IconButton(
       icon: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 25),
         onPressed: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,)));
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget)));
         },
 
       ),

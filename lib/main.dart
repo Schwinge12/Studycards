@@ -16,7 +16,6 @@ import 'StudentScreens/MenuPageStudent.dart';
 import 'StudentScreens/QuizStart.dart';
 import 'StudentScreens/Quiz.dart';
 import 'DozentScreens/MCErstellen.dart';
-import 'DozentScreens/MCFertigstellen.dart';
 import 'DozentScreens/Einstellungen.dart';
 import 'package:syncfusion_flutter_core/core.dart';
 
@@ -52,11 +51,10 @@ class KarteikartenApp extends StatelessWidget{
         'LoginScreen':(context)=>LoginScreen(),
         'RegistrationScreen':(context)=>RegistrationScreen(),
         'MenuPageStudent':(context)=>MenuPageStudent(),
-        'Quizauswahl':(context)=>QuizAuswahl(),
+        'QuizAuswahl':(context)=>QuizAuswahl(),
         'Quizstart':(context)=>QuizStart(),
         'Quiz':(context)=>Quiz(),
         'MCErstellen':(context)=>MCErstellen(),
-        'MCFertigstellen':(context)=>MCFertigstellen(),
         'LoginScreen':(context)=>LoginScreen(),
         'Einstellungen':(context)=>Einstellungen(),
       },

@@ -23,6 +23,7 @@ class _StapelErstellen extends State<StapelErstellen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
 
       body: Column(
 
@@ -129,14 +130,7 @@ class _StapelErstellen extends State<StapelErstellen> {
           SafeArea(
             child: Row(
               children: <Widget>[
-                Expanded(
-                  child: WeiterButton(
-                    text: 'Zurück',
-                    onPress: (){
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
+
 
                 Expanded(
                     child: WeiterButton(

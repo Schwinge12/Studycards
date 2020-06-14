@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
-import 'package:karteikartenapp/DozentScreens/MCFertigstellen.dart';
+import 'KarteErstellenVorderseite.dart';
 
 
 
@@ -24,6 +24,12 @@ class _MCErstellen extends State <MCErstellen>{
   String antwort3;
   String antwort4;
   List<String> antworten;
+
+  bool checked1=false;
+  bool checked2=false;
+  bool checked3=false;
+  bool checked4=false;
+
   @override
   Widget build(BuildContext){
     return Scaffold(
@@ -34,15 +40,13 @@ class _MCErstellen extends State <MCErstellen>{
 
           children: <Widget>[
 
-            
-            Expanded(
-              child: SizedBox(
-                height: 20,
-              ),
+            SizedBox(
+              height: 20.0,
             ),
 
+
             Expanded(
-              child: TextField( 
+              child: TextField(
 
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -68,147 +72,218 @@ class _MCErstellen extends State <MCErstellen>{
                 ),
               ),
             ),
-            SizedBox(
 
-              height: 20,
-            ),
 
-            Expanded(
-              child: TextField( 
 
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  antwort1=value;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white30,
-                  hintText: 'Antwort eingeben',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 8,
+                  child: TextField(
 
-              height: 20,
-            ),
-            Expanded(
-              child: TextField( 
-
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  antwort2=value;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white30,
-                  hintText: 'Antwort eingeben',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      antwort1=value;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white30,
+                      hintText: 'Antwort eingeben',
+                      contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(
 
-              height: 20,
-            ),
-
-            Expanded(
-              child: TextField( 
-
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  antwort3=value;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white30,
-                  hintText: 'Antwort eingeben',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                Expanded(
+                  child: Checkbox(
+                    checkColor: Colors.green,
+                    value: checked1,
+                    onChanged: (bool value){
+                      setState(() {
+                        checked1=value;
+                      });
+                    },
                   ),
                 ),
-              ),
+
+              ],
             ),
+
             SizedBox(
 
               height: 20,
             ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 8,
+                  child: TextField(
 
-            Expanded(
-              child: TextField( 
-
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  antwort4=value;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white30,
-                  hintText: 'Antwort eingeben',
-                  contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      antwort2=value;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white30,
+                      hintText: 'Antwort eingeben',
+                      contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+
+                Expanded(
+                  child: Checkbox(
+                    checkColor: Colors.green,
+                    value: checked2,
+                    onChanged: (bool value){
+                      setState(() {
+                        checked2=value;
+                      });
+                    },
+                  ),
+                ),
+
+              ],
             ),
             SizedBox(
 
               height: 20,
             ),
 
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 8,
+                  child: TextField(
+
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      antwort3=value;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white30,
+                      hintText: 'Antwort eingeben',
+                      contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: Checkbox(
+                    checkColor: Colors.green,
+                    value: checked3,
+                    onChanged: (bool value){
+                      setState(() {
+                        checked3=value;
+                      });
+                    },
+                  ),
+                ),
+
+              ],
+            ),
+            SizedBox(
+
+              height: 20,
+            ),
+
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 8,
+                  child: TextField(
+
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      antwort4=value;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white30,
+                      hintText: 'Antwort eingeben',
+                      contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color:Color(0xFF58A4B0), width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: Checkbox(
+                    checkColor: Colors.green,
+                    value: checked4,
+                    onChanged: (bool value){
+                      setState(() {
+                        checked4=value;
+                      });
+                    },
+                  ),
+                ),
+
+              ],
+            ),
+            SizedBox(
+
+              height: 10,
+            ),
+
 
             Expanded(
-              flex:2,
+
               child: SafeArea(
                 child: WeiterButton( 
-                  text: 'Weiter',
+                  text: 'Speichern',
                   onPress: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>
-                        MCFertigstellen(frage: frage,antwort1: antwort1,antwort2: antwort2,antwort3: antwort3,antwort4: antwort4,studiengang: widget.studiengang,studienfach: widget.studienfach,themengebiet: widget.themengebiet,)));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.studiengang,studienfach: widget.studienfach,themengebiet: widget.themengebiet)));
+
                   },
                 ),
               ),

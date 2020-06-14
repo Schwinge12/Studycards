@@ -29,15 +29,23 @@ class StapelAbschliessenDozent extends StatelessWidget {
              children: <Widget>[
               //TODO Backend: Stapel hochladen
 
-               Icon(Icons.thumbs_up_down,size: 120,color: Colors.white) ,
+               Expanded(
+                 child: SafeArea(
+                   child: Container(
+                     height: 200.0,
 
-               //TODO Frontend Username anzeigen lassen : _userdata.getKonto().accountName;
-               Text(studienfach,
+                     child: Image.asset('images/LogoOhneKreis.PNG'),
+                   ),
+                 ),
+               ),
+
+
+               Text(_userdata.getKonto().accountName,
                    style: WeisserTextStyle,
                ),
 
-               //TODO Frontend Status als Dozent oder Student angeben : _userdata.getKonto().toString();
-               Text(themengebiet,
+
+               Text(_userdata.getKonto().toString(),
                    style:WeisserTextStyle
                ),
                SizedBox(

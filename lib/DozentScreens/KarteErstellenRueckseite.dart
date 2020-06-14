@@ -160,7 +160,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                     child: WeiterButton(
                       text: 'Weiter',
                       onPress: (){
-                        Navigator.pop(context);
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.vorderSeite.studiengang,studienfach: widget.vorderSeite.studienfach,themengebiet: widget.vorderSeite.themengebiet)));
                       },
                     ),
                   ),

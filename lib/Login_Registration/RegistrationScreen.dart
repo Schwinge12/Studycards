@@ -162,11 +162,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                             barrierDismissible: false);
                       }
-                      final newUser = await _auth.createUserWithEmailAndPassword(email: _email, password: _passwort1);
-                      if (newUser != null) {
-                        Navigator.pushNamed(context, 'LoginScreen');
+                      else {
+                        final newUser = await _auth
+                            .createUserWithEmailAndPassword(email: _email,
+                            password: _passwort1);
+                        if (newUser != null) {
+                          Navigator.pushNamed(context, 'LoginScreen');
+                        }
                       }
-
 
 
                       _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort1));

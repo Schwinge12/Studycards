@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class WeiterButton extends StatelessWidget{
 
 
-  WeiterButton({this.onPress,@required this.text,this.color,this.style});
+  WeiterButton({@required this.onPress,@required this.text,this.color,this.style});
 
   Color color;
   String text;

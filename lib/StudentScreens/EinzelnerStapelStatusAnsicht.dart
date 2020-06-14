@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
@@ -9,6 +10,9 @@ class StapelStatus extends StatefulWidget{
   StapelStatus();
   StapelStatusmitStapel(Stapel s){this.stapel = s;}
   Stapel stapel;
+
+
+
 
   @override
   StapelStatusState createState()=>StapelStatusState(stapel);
@@ -18,14 +22,14 @@ class StapelStatusState extends State<StapelStatus>{
 
   StapelStatusState(Stapel s){this.stapel = s;}
 
-
+  Userdata userdata;
   Stapel stapel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text( 'Test')),
+        title: Center(child: Text( 'test')),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),

@@ -14,7 +14,7 @@ class Student extends Produkt{
 
   //Todo: Kryptographie?
   String _email;
-  String _passwort;
+  //String _passwort;
 
   //____________________________________Constructor_____________________________
   Student();

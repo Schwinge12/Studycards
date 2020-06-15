@@ -7,4 +7,6 @@ class Tutor extends Student {
   Tutor();
 //____________________________________Methods_________________________________
 
+
+//Todo: was kann ein Tutor ? - Methoden einfuegen
 }

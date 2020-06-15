@@ -84,6 +84,7 @@ class StapelStatusState extends State<StapelStatus>{
                 text: 'Jetzt Lernen!',
                 onPress: (){
                   Navigator.pushNamed(context, 'Kartenabfrage');
+                  //Todo Frontend Staple an Kartenabfrage übergeben
                 },
               ),
             ),

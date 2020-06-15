@@ -20,7 +20,11 @@ class Userdata extends Speicherung {
   var _konto;
   List<Karteikarte> karteikarten =
       new List();
-  var _datenSpeicherort;
+  Future<String> get datenspeicherort async {
+    final _directory = await getApplicationDocumentsDirectory();
+
+    return _directory.path;
+  }
   List<Studiengang> studiengaenge = new List();
   List<Kurs> kurse = new List(); // <-includes List Themengebiete
   List<Stapel> stapel = new List(); // speicherung der KK in Stapel ?
@@ -223,7 +227,6 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
 
   @override
   void init() {
-    _datenSpeicherort = getApplicationDocumentsDirectory();
     stapel.insert(0, defaultStapel);
     einfuegen(testkonto);
     stapel[0].stapelKarten.add(

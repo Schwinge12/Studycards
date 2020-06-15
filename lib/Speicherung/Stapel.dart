@@ -21,8 +21,8 @@ class Stapel extends Produkt {
  add(Karteikarte k){stapelKarten.add(k);} // convienice
  String getName(){
   if (name != null)
-  return name;
- else return '';
+   return name;
+  else return '';
  }
  String getThemengebietName(){
   if (stapelKarten.isEmpty) return '404 - Themengebiet not found';
@@ -52,4 +52,6 @@ class Stapel extends Produkt {
   this.name =map['name'];
   this.stapelKarten=map['stapelKarten'];
  }
+
+
 }

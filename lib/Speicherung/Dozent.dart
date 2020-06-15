@@ -7,5 +7,5 @@ class Dozent extends Tutor {
 //____________________________________Constructor_____________________________
   Dozent();
 //____________________________________Methods_________________________________
-
+//Todo: was kann ein Dozent ? - Methoden einfuegen
 }

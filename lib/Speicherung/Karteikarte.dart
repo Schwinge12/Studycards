@@ -3,17 +3,19 @@ import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
-import 'package:karteikartenapp/Speicherung/global_lib.dart';
+import 'package:karteikartenapp/Speicherung/GlobalLib.dart';
 
 
 import 'Produkt.dart';
 import 'Stapel.dart';
 import 'Studiengang.dart';
+import 'FileManager.dart';
 
 class Karteikarte extends Produkt {
 
 //____________________________________Variables_________________________________
-// ID über Fach hochgezählt
+
+
   var erstellungsDatum;
 
   Kurs kurs;
@@ -33,7 +35,7 @@ class Karteikarte extends Produkt {
 
   var id;
 
-  File bild;
+  List<File> bilder = new List();
 
 //____________________________________Constructor_______________________________
   Karteikarte() {
@@ -74,7 +76,8 @@ class Karteikarte extends Produkt {
     return this;
   }
   Karteikarte mitFile(File bild) {
-    this.bild = bild;
+     bilder.add(bild);
+     FileManager.writeFile(id, bild,bilder.length -1); // -1 -> dateisystem startet bei 0
     return this;
   }
 
@@ -111,6 +114,7 @@ class Karteikarte extends Produkt {
 
 
 //____________________________________Methods___________________________________
+
 
   /* nur für shared-Preferences SpeicherOption
   @override

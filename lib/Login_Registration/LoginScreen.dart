@@ -118,8 +118,8 @@ import 'package:firebase_auth/firebase_auth.dart';
                   child: MaterialButton(
                     onPressed: () async{
                       //final user = await _auth.signInWithEmailAndPassword(email: _email, password: _passwort);
-                      // if (user != null) {
-                      //   Navigator.pushNamed(context, 'MenuPage');
+                      //if (user != null) {
+                        //Navigator.pushNamed(context, 'MenuPage');
                       //}
                       // anmeldung über email nach registrierung mit Email
 

@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:swipe_stack/swipe_stack.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 
 
 class Kartenabfrage extends StatefulWidget {
+
+  Stapel stapel;
+
+  Kartenabfrage({@required this.stapel}){}
+
   @override
   _KartenanzeigeState createState() => _KartenanzeigeState();
 }
@@ -58,7 +65,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-                                            Text('Front', style: MenuButtonTextStyle),
+                                            Text(widget.stapel.getKursName(), style: MenuButtonTextStyle),
                                             Text('Hier Text anzeigen', style: MenuButtonTextStyle)
                                           ],
                                         ),

@@ -3,33 +3,33 @@ import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
+import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class StapelStatus extends StatefulWidget{
-  StapelStatus();
-  StapelStatusmitStapel(Stapel s){this.stapel = s;}
+
   Stapel stapel;
 
-
+  StapelStatus({@required this.stapel});
 
 
   @override
-  StapelStatusState createState()=>StapelStatusState(stapel);
+  StapelStatusState createState()=>StapelStatusState();
 }
 
 class StapelStatusState extends State<StapelStatus>{
 
-  StapelStatusState(Stapel s){this.stapel = s;}
+  StapelStatusState(){}
 
   Userdata userdata;
-  Stapel stapel;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text( 'test')),
+        title: Center(child: Text( widget.stapel.getKursName())),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),
@@ -83,7 +83,7 @@ class StapelStatusState extends State<StapelStatus>{
                 style: WeisserTextStyle,
                 text: 'Jetzt Lernen!',
                 onPress: (){
-                  Navigator.pushNamed(context, 'Kartenabfrage');
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Kartenabfrage(stapel: widget.stapel)));
                   //Todo Frontend Staple an Kartenabfrage übergeben
                 },
               ),

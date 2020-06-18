@@ -14,10 +14,10 @@ class KarteErstellenVorderseite extends StatefulWidget {
   final String studienfach;
   final String themengebiet;
   // Todo Frontend diesen stapel zwischen Vorderseiten / rueckseiten übergeben + in Stapelabschließen / stapel überarbeiten
-  Stapel stapel = new Stapel();
+  Stapel stapel;
   File imageFile;
 
-  KarteErstellenVorderseite({@required this.studiengang,@required this.studienfach,@required this.themengebiet});
+  KarteErstellenVorderseite({@required this.studiengang,@required this.studienfach,@required this.themengebiet,@required this.stapel});
 
   final TextEditingController vorderseite= new TextEditingController();
   String eingabe;

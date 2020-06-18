@@ -6,6 +6,7 @@ import 'package:karteikartenapp/Speicherung/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/Studiengang.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 //TODO Backend: Eingebene Daten abspeichern
 
@@ -16,7 +17,7 @@ class StapelErstellen extends StatefulWidget{
 class _StapelErstellen extends State<StapelErstellen> {
 
   String studiengangEingabe;
-
+  Stapel stapel = new Stapel();
   String kursEingabe;
 
   String themengebietEingabe;
@@ -165,7 +166,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                           kurs.themengebiet.add(new Themengebiet(kurs).mitName(themengebietEingabe));
 
 
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe)));
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe,stapel:this.stapel)));
                         }
                       },
                     )

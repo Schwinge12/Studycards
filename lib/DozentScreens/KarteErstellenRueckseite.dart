@@ -34,7 +34,7 @@ class KarteErstellenRueckseite extends StatefulWidget {
 
 class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
   File _imageFile;
-  Stapel stapel;
+
   Future _openGallery() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
@@ -158,7 +158,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                        karteikarteEinfuegen();
                        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.vorderSeite.studiengang,studienfach: widget.vorderSeite.studienfach,themengebiet: widget.vorderSeite.themengebiet)));
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.vorderSeite.studiengang,studienfach: widget.vorderSeite.studienfach,themengebiet: widget.vorderSeite.themengebiet,stapel: widget.stapel,)));
                       },
                     ),
                   ),

@@ -6,12 +6,15 @@ import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/DozentScreens/MCErstellen.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 
 class KarteErstellenVorderseite extends StatefulWidget {
   final String studiengang;
   final String studienfach;
   final String themengebiet;
+  // Todo Frontend diesen stapel zwischen Vorderseiten / rueckseiten übergeben + in Stapelabschließen / stapel überarbeiten
+  Stapel stapel = new Stapel();
   File imageFile;
 
   KarteErstellenVorderseite({@required this.studiengang,@required this.studienfach,@required this.themengebiet});

@@ -131,16 +131,28 @@ class Userdata extends Speicherung {
         {
           Karteikarte kk = (p as Karteikarte);
           Stapel tmpKartenstapel = kk.getStapel();
+          print (tmpKartenstapel == null);
           if (tmpKartenstapel == null) {
+            print('TEST------------------------------------------------------5');
             kk.stapel = defaultStapel;
             stapel[0].add(p);
           } else {
-            if (!stapel.contains(tmpKartenstapel))
+            print('TEST------------------------------------------------------0');
+            if (!stapel.contains(tmpKartenstapel)) {
+              print(
+                  'TEST------------------------------------------------------1');
               stapel.add(tmpKartenstapel);
+            }
+            print('TEST------------------------------------------------------2');
             stapel[stapel.indexOf(tmpKartenstapel)].stapelKarten.add(p);
-           if (kk.kurs != null && kk.themengebiet != null)
+           if (kk.kurs != null && kk.themengebiet != null) {
              stapelinThemengebietEinfuegen(kk.kurs, kk.themengebiet, kk.stapel);
+             print(
+                 'TEST------------------------------------------------------4');
+           }
           }
+          print(tmpKartenstapel.stapelKarten.length.toString());
+          stapel.forEach((element) => print(element.getName()));
         }
         break;
       case Stapel:
@@ -228,6 +240,7 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
   @override
   void init() {
     stapel.insert(0, defaultStapel);
+    // Testdaten ____________________________
     einfuegen(testkonto);
     stapel[0].stapelKarten.add(
     new Karteikarte()
@@ -237,6 +250,15 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
         .mitVorderSeite('Bsp.Vorderseite')
         .mitRueckSeite('Bsp.Rueckseite')
     );
+    stapel[0].stapelKarten.add(
+        new Karteikarte()
+            .mitKurs(getKursMitString('Bsp.Kurs'))
+            .mitThemengebiet(getThemengebietMitKursUndString(getKursMitString('Bsp.Kurs'), 'Bsp.Themengebiet'))
+            .mitStudiengang(getStudiengangMitString('Bsp.Studiengang'))
+            .mitVorderSeite('Bsp.Vorderseite 2 - Hier könnte ihre Werbung stehen')
+            .mitRueckSeite('Bsp.Rueckseite 2 - nur 3,99 €')
+    );
+    // ____________________________
 
     // TODO: Speicherung - implement laden
     //data?

@@ -18,6 +18,8 @@ class Karteikarte extends Produkt {
 
   var erstellungsDatum;
 
+//Todo Jan Themengebiet / Studiengang / Kurs von KK in Stapel verschieben
+
   Kurs kurs;
   Stapel stapel;
   Studiengang sg;

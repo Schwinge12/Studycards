@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
@@ -13,11 +14,11 @@ import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 class KarteErstellenRueckseite extends StatefulWidget {
 
-
   KarteErstellenRueckseite({this.vorderSeite});
 
   final KarteErstellenVorderseite vorderSeite;
   final Userdata _userdata = new Userdata();
+
 
 
   final TextEditingController vorderseite = new TextEditingController();
@@ -32,7 +33,7 @@ class KarteErstellenRueckseite extends StatefulWidget {
 
 class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
   File _imageFile;
-
+  Stapel stapel;
   Future _openGallery() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
@@ -95,16 +96,8 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
 
                     onPressed: (
                         ){
-                    //Karte wird eingefügt______________________________________________________
-                        widget._userdata.einfuegen(
-                            new Karteikarte()
-                            .mitKurs(widget._userdata.getKursMitString(widget.vorderSeite.studienfach))
-                            .mitThemengebiet(widget._userdata.getThemengebietMitKursUndString(widget._userdata.getKursMitString(widget.vorderSeite.studienfach), widget.vorderSeite.themengebiet))
-                            .mitStudiengang(widget._userdata.getStudiengangMitString(widget.vorderSeite.studiengang))
-                            .mitVorderSeite(widget.vorderSeite.getEingabe)
-                            .mitRueckSeite(widget.eingabe)
-                                .mitFile(widget.vorderSeite.imageFile)
-                        );
+                      karteikarteEinfuegen();
+                      widget._userdata.einfuegen(widget.vorderSeite.stapel);
                         Navigator.pushNamed(context, 'StapelAbschliessenDozent');
                         },
                     child: Container(
@@ -160,6 +153,10 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                     child: WeiterButton(
                       text: 'Weiter',
                       onPress: (){
+
+                       karteikarteEinfuegen();
+                       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
                         Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.vorderSeite.studiengang,studienfach: widget.vorderSeite.studienfach,themengebiet: widget.vorderSeite.themengebiet)));
                       },
                     ),
@@ -172,6 +169,19 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
     );
   }
 
-
+  void karteikarteEinfuegen(){
+    // Todo Backend check ob bilder null -> mitFile() nur wenn bild dabei
+    widget.vorderSeite.stapel.stapelKarten.add(
+        new Karteikarte()
+            .mitStapel(widget.vorderSeite.stapel)
+            .mitKurs(widget._userdata.getKursMitString(widget.vorderSeite.studienfach))
+            .mitThemengebiet(widget._userdata.getThemengebietMitKursUndString(widget._userdata.getKursMitString(widget.vorderSeite.studienfach), widget.vorderSeite.themengebiet))
+            .mitStudiengang(widget._userdata.getStudiengangMitString(widget.vorderSeite.studiengang))
+            .mitVorderSeite(widget.vorderSeite.getEingabe)
+            .mitRueckSeite(widget.eingabe)
+            .mitFile(widget.vorderSeite.imageFile)
+    );
+  print(widget.vorderSeite.stapel.stapelKarten.length.toString());
+  }
 
 }

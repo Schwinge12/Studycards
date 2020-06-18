@@ -11,6 +11,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 class Kartenabfrage extends StatefulWidget {
 
   Stapel stapel;
+  int kartennummer = 0;
 
   Kartenabfrage({@required this.stapel}){}
 
@@ -66,7 +67,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
                                             Text(widget.stapel.getKursName(), style: MenuButtonTextStyle),
-                                            Text('Hier Text anzeigen', style: MenuButtonTextStyle)
+                                            Text(widget.stapel.stapelKarten[widget.kartennummer].vorderSeite, style: MenuButtonTextStyle)
                                           ],
                                         ),
                                       ),
@@ -105,7 +106,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
                                             Text('Front', style: MenuButtonTextStyle),
-                                            Text('Hier Text anzeigen', style: MenuButtonTextStyle)
+                                            Text(widget.stapel.stapelKarten[widget.kartennummer].rueckSeite, style: MenuButtonTextStyle)
                                           ],
                                         ),
                                       ),
@@ -143,7 +144,14 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                   iconSize: 60.0,
                                   tooltip: 'Karte falsch',
                                   onPressed: (){
+                                    print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
+                                    if(widget.stapel.stapelKarten.length -1 == widget.kartennummer)
+                                    //todo Backend : logik fürs wiedererscheinen von karten
                                     Navigator.pop(context);
+                                  else setState(() {
+                                      widget.kartennummer  ++ ;
+                                    });
+
                                   },
                                 ),
                               ),
@@ -153,7 +161,12 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                   iconSize: 60.0,
                                   tooltip: 'Stapel abschließen und hochladen',
                                   onPressed: (){
+                                    print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
+                                    if(widget.stapel.stapelKarten.length -1 == widget.kartennummer)
                                     Navigator.pop(context, 'StapelAbschliessenDozent');
+                                    else setState(() {
+                                    widget.kartennummer  ++ ;
+                                    });
                                   },
                                 ),
                               ),

@@ -50,11 +50,11 @@ class StapelStatusState extends State<StapelStatus>{
         ),
         child: Column(
           children: <Widget>[
-            //TODO Frontend: Anzahl der Karten einfügen - stapel.stapelKarten.length;
+
             Expanded(
               child: Center(child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Anzahl der Karten:',
+                child: Text('Anzahl der Karten:'+widget.stapel.stapelKarten.length.toString(),
                   style: TextStyle(fontFamily: 'BalooBhai2-ExtraBold',
                   fontSize: 25.0
                   ),

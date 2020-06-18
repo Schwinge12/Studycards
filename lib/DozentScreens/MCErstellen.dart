@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'KarteErstellenVorderseite.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 
 
 class MCErstellen extends StatefulWidget{
+
+  Stapel stapel;
   final String studiengang;
   final String studienfach;
   final String themengebiet;
 
-  MCErstellen({this.studiengang,this.studienfach,this.themengebiet});
+  MCErstellen({this.studiengang,this.studienfach,this.themengebiet,@required stapel});
 
 
   @override

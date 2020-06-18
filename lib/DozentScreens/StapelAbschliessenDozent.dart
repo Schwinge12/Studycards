@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/constants.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
@@ -10,8 +12,9 @@ class StapelAbschliessenDozent extends StatelessWidget {
 
   //TODO Backend: Kursdaten an vorgefertigten Buttons/Textfeldern einfügen
 
-  StapelAbschliessenDozent({this.kurse});
+  StapelAbschliessenDozent({this.kurse,this.stapel});
   var _userdata = new Userdata();
+  Stapel stapel;
   final String kurse;
   final String studienfach='Programmieren 2';
   final String themengebiet='Vererbung';
@@ -63,7 +66,7 @@ class StapelAbschliessenDozent extends StatelessWidget {
               MenuButton(
               text: 'Stapel überarbeiten',
               onPress: (){
-                Navigator.pushNamed(context, 'StapelUeberarbeiten');
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelUeberarbeiten(stapel: stapel)));
                 },
     ),
     ]

@@ -86,7 +86,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
       IconButton(
       icon: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 25),
         onPressed: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget)));
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,stapel: widget.stapel)));
         },
 
       ),

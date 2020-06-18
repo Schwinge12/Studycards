@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 class StapelUeberarbeiten extends StatefulWidget {
+  Stapel stapel;
+
+  StapelUeberarbeiten({@required this.stapel}){}
+
   @override
   _StapelUeberarbeitenState createState() => _StapelUeberarbeitenState();
 }
@@ -38,7 +43,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text('Front', style: MenuButtonTextStyle),
+                            Text(widget.stapel.getKursName(), style: MenuButtonTextStyle),
 
                             Text('Click here to flip back',
                                 style: MenuButtonTextStyle),

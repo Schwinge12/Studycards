@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
+import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
@@ -14,8 +15,8 @@ import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 class KarteErstellenRueckseite extends StatefulWidget {
 
-  KarteErstellenRueckseite({this.vorderSeite});
-
+  KarteErstellenRueckseite({this.vorderSeite,this.stapel});
+  Stapel stapel;
   final KarteErstellenVorderseite vorderSeite;
   final Userdata _userdata = new Userdata();
 
@@ -98,7 +99,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                         ){
                       karteikarteEinfuegen();
                       widget._userdata.einfuegen(widget.vorderSeite.stapel);
-                        Navigator.pushNamed(context, 'StapelAbschliessenDozent');
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessenDozent(stapel: widget.stapel,)));
                         },
                     child: Container(
                       width: 100,

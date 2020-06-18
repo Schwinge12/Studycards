@@ -141,7 +141,6 @@ import 'package:firebase_auth/firebase_auth.dart';
                   ),
                 ),
               ),
-
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
@@ -157,7 +156,8 @@ import 'package:firebase_auth/firebase_auth.dart';
                     child: Text(
                       'Registrierung',
                       style: TextStyle(color: Colors.white),
-                      //TODO Anmelden-Button eventuell ein bisschen nach oben verschieben zu Email und PW, Registrierung am Boden lassen
+                      //TODO Frontend: Passwort vergessen Button im LoginScreen
+                      //TODO Frontend: Anmelden Button ein bisschen nach oben schieben für Passwort vergessen Button
                     ),
                   ),
                 ),

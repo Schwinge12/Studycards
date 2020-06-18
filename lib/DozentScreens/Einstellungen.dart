@@ -38,7 +38,7 @@ class _EinstellungenState extends State<Einstellungen> {
                   LogoutButton(
                       text: 'Abmelden',
                       onPress: () {
-                          _auth.signOut();
+                        _auth.signOut();
 
                         Navigator.pushNamed(context, 'LoginScreen');
                       }

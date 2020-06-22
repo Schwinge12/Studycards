@@ -6,7 +6,10 @@ class Stapel extends Produkt {
 //____________________________________Variables_______________________________
  List<Karteikarte> stapelKarten = new List();
  String name;
- int id;
+ int _id;
+ String _studiengang;
+ String _studienfach;
+ String _themengebiet;
 
 //____________________________________Constructor_____________________________
  Stapel();
@@ -36,21 +39,23 @@ class Stapel extends Produkt {
 
   var map = Map<String, dynamic> ();
 
-  if(id != null)
+  if(_id != null)
   {
-   map['id'] = id;
+   map['id'] = _id;
   }
-  map['name'] =name;
-  map['stapelKarten'] = stapelKarten;
+  map['studiengang'] = _studiengang;
+  map['studienfach'] = _studienfach;
+  map['themengebiet'] = _themengebiet;
 
   return map;
  }
 
  Stapel.fromMapObject(Map<String, dynamic> map) {
 
-  this.id = map['id'];
-  this.name =map['name'];
-  this.stapelKarten=map['stapelKarten'];
+  this._id = map['id'];
+  this._studiengang =map['studiengang'];
+  this._studienfach=map['studienfach'];
+  this._themengebiet = map['themengebiet'];
  }
 
 

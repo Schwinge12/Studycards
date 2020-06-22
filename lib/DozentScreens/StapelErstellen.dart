@@ -7,7 +7,7 @@ import 'package:karteikartenapp/Speicherung/Studiengang.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
-
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 //TODO Backend: Eingebene Daten abspeichern
 
 class StapelErstellen extends StatefulWidget{
@@ -16,11 +16,13 @@ class StapelErstellen extends StatefulWidget{
 }
 class _StapelErstellen extends State<StapelErstellen> {
 
+  final dbHelfer = LokaleDatenbankStapel.instance;
+
   String studiengangEingabe;
   Stapel stapel = new Stapel();
   String kursEingabe;
-
   String themengebietEingabe;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,7 +169,8 @@ class _StapelErstellen extends State<StapelErstellen> {
                         else{
                           Userdata stapel = new Userdata();
                           Kurs kurs = new Kurs();
-                          //Eingaben in Speicherungslisten einspeichern
+                          _insert(studiengangEingabe, kursEingabe, themengebietEingabe);
+                          _ausgeben();
                           stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
                           stapel.kurse.add(kurs.mitName(kursEingabe));
                           kurs.themengebiet.add(new Themengebiet(kurs).mitName(themengebietEingabe));
@@ -184,5 +187,21 @@ class _StapelErstellen extends State<StapelErstellen> {
         ],
       ),
     );
+  }
+  void _insert(String studiengang, String studienfach, String themengebiet) async {
+    // row to insert
+    Map<String, dynamic> row = {
+      LokaleDatenbankStapel.colStudiengang : studiengang,
+      LokaleDatenbankStapel.colStudienfach  : studienfach,
+      LokaleDatenbankStapel.colThemengebiet : themengebiet
+    };
+    final id = await dbHelfer.insert(row);
+    print('inserted row id: $id');
+  }
+
+  void _ausgeben() async {
+    final allRows = await dbHelfer.queryAllRows();
+    print('query all rows:');
+    allRows.forEach((row) => print(row));
   }
 }

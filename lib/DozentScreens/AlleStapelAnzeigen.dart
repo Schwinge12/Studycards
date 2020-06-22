@@ -5,7 +5,6 @@ import 'package:karteikartenapp/StudentScreens/EinzelnerStapelStatusAnsicht.dart
 import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
-
 class AlleStapel extends StatefulWidget{
 
   @override

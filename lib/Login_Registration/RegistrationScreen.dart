@@ -12,6 +12,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
   final _auth = FirebaseAuth.instance;
+  
   String _email;
   String _passwort1;
   String _passwort2;
@@ -19,7 +20,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text ("Zurück zum Login")),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Form(
@@ -44,7 +45,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
-                  hintText: 'E-Mail',
+                  hintText: 'Email',
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -154,7 +155,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             await _auth.createUserWithEmailAndPassword(
                                 email: _email, password: _passwort1);
                         if (newUser != null) {
-                          Navigator.pushNamed(context, 'LoginScreen');
+                         Navigator.pushNamed(context, 'LoginScreen');
                         }
                       }
 

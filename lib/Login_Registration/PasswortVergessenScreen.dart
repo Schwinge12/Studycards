@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PasswortVergessenScreen extends StatefulWidget {
   @override
@@ -8,14 +9,17 @@ class PasswortVergessenScreen extends StatefulWidget {
 
 class _PasswortVergessenScreenState extends State<PasswortVergessenScreen> {
   String _email;
+  var _formKey = GlobalKey<FormState>();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("Zurück zum Login")),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Form(
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -37,7 +41,7 @@ class _PasswortVergessenScreenState extends State<PasswortVergessenScreen> {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
-                  hintText: 'E-Mail',
+                  hintText: 'Email',
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -64,10 +68,15 @@ class _PasswortVergessenScreenState extends State<PasswortVergessenScreen> {
                   color: Colors.white10,
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
-                    onPressed: () async {
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+                        //Navigator.pushNamed(context, 'LoginScreen');
 
+                      }
                     },
-                    minWidth: 200.0,
+
+
                     height: 42.0,
                     child: Text(
                       'Passwort zurücksetzen',
@@ -83,6 +92,3 @@ class _PasswortVergessenScreenState extends State<PasswortVergessenScreen> {
     );
   }
 }
-
-
-    //Todo Frontend: Absenden-Button und noch fehlende Funktion (loginScreen onPressed auf PasswortVergessenScreen)

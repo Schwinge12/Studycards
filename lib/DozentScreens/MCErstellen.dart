@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'StapelAbschliessenDozent.dart';
 
 
 
@@ -12,7 +13,7 @@ class MCErstellen extends StatefulWidget{
   final String studienfach;
   final String themengebiet;
 
-  MCErstellen({this.studiengang,this.studienfach,this.themengebiet,@required stapel});
+  MCErstellen({this.studiengang,this.studienfach,this.themengebiet,@required this.stapel});
 
 
   @override
@@ -36,7 +37,6 @@ class _MCErstellen extends State <MCErstellen>{
   @override
   Widget build(BuildContext){
     return Scaffold(
-
 
       body: SafeArea(
         child: Column(
@@ -278,19 +278,36 @@ class _MCErstellen extends State <MCErstellen>{
               height: 10,
             ),
 
+            Row(
+              children: <Widget>[
+                Expanded(
 
-            Expanded(
+                  child: SafeArea(
+                    child: WeiterButton(
+                      text: 'Speichern',
+                      onPress: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.studiengang,studienfach: widget.studienfach,themengebiet: widget.themengebiet)));
 
-              child: SafeArea(
-                child: WeiterButton( 
-                  text: 'Speichern',
-                  onPress: (){
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.studiengang,studienfach: widget.studienfach,themengebiet: widget.themengebiet)));
-
-                  },
+                      },
+                    ),
+                  ),
                 ),
-              ),
+
+                Expanded(
+
+                  child: SafeArea(
+                    child: WeiterButton(
+                      text: 'Stapel abschliessen',
+                      onPress: (){
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessenDozent(stapel: widget.stapel,)));
+
+                      },
+                    ),
+                  ),
+                )
+              ],
             )
+
 
 
 

@@ -6,6 +6,7 @@ import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
 import 'package:karteikartenapp/DozentScreens/MCErstellen.dart';
+import 'package:karteikartenapp/DozentScreens/StapelErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 
@@ -13,7 +14,7 @@ class KarteErstellenVorderseite extends StatefulWidget {
   final String studiengang;
   final String studienfach;
   final String themengebiet;
-  // Todo Frontend diesen stapel zwischen Vorderseiten / rueckseiten übergeben + in Stapelabschließen / stapel überarbeiten
+
   Stapel stapel;
   File imageFile;
 
@@ -77,7 +78,12 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelErstellen()));
+            },
+          ),
         title: Text(
           widget.studienfach + ': ' + widget.themengebiet
         ),
@@ -147,7 +153,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
                     Expanded(
                         child: MultipleChoiceButton(
                           onPress:(){
-                            Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet,)));
+                            Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet,stapel: widget.stapel,)));
                           },
                           text: 'MC',
                         )

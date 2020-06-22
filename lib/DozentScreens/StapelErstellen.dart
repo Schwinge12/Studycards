@@ -24,7 +24,14 @@ class _StapelErstellen extends State<StapelErstellen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: (){
+            Navigator.pushNamed(context,'MenuPage');
+          },
+        ),
+      ),
 
       body: Column(
 

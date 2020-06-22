@@ -9,6 +9,7 @@ import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
 import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/StudentScreens/Quizauswahl.dart';
+import 'Login_Registration/PasswortVergessenScreen.dart';
 import 'StudentScreens/EinzelnerStapelStatusAnsicht.dart';
 import 'Login_Registration/RegistrationScreen.dart';
 import 'Login_Registration/LoginScreen.dart';
@@ -57,6 +58,7 @@ class KarteikartenApp extends StatelessWidget{
         'MCErstellen':(context)=>MCErstellen(),
         'LoginScreen':(context)=>LoginScreen(),
         'Einstellungen':(context)=>Einstellungen(),
+        'PasswortVergessenScreen':(context)=>PasswortVergessenScreen(),
       },
     );
   }

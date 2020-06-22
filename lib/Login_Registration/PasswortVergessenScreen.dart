@@ -55,12 +55,34 @@ class _PasswortVergessenScreenState extends State<PasswortVergessenScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 24.0,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: Material(
+                  color: Colors.white10,
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  child: MaterialButton(
+                    onPressed: () async {
+
+                    },
+                    minWidth: 200.0,
+                    height: 42.0,
+                    child: Text(
+                      'Passwort zurücksetzen',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
-
-    //Todo Frontend: Absenden-Button und noch fehlende Funktion (loginScreen onPressed auf PasswortVergessenScreen)
   }
 }
+
+
+    //Todo Frontend: Absenden-Button und noch fehlende Funktion (loginScreen onPressed auf PasswortVergessenScreen)

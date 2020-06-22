@@ -149,6 +149,25 @@ import 'package:firebase_auth/firebase_auth.dart';
                   child: MaterialButton(
                     onPressed: () async{
 
+                      Navigator.pushNamed(context, 'PasswortVergessenScreen');
+                    },
+                    minWidth: 200.0,
+                    height: 42.0,
+                    child: Text(
+                      'Passwort vergessen',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+                Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: Material(
+                  color: Colors.white10,
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  child: MaterialButton(
+                    onPressed: () async{
+
                       Navigator.pushNamed(context, 'RegistrationScreen');
                     },
                     minWidth: 200.0,
@@ -156,16 +175,14 @@ import 'package:firebase_auth/firebase_auth.dart';
                     child: Text(
                       'Registrierung',
                       style: TextStyle(color: Colors.white),
-                      //TODO Frontend: Passwort vergessen Button im LoginScreen
-                      //TODO Frontend: Anmelden Button ein bisschen nach oben schieben für Passwort vergessen Button
                     ),
                   ),
                 ),
               ),
-            ],
+              ]
+            ),
           ),
         ),
-      ),
     );
   }
 }

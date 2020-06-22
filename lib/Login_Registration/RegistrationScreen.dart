@@ -16,7 +16,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String _passwort1;
   String _passwort2;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,117 +23,108 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Form(
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-
               Expanded(
                 child: SafeArea(
                   child: Container(
                     height: 180.0,
-
                     child: Image.asset('images/LogoOhneKreis.PNG'),
                   ),
                 ),
               ),
-
-
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _email=value;
+                  _email = value;
                 },
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
                   hintText: 'E-Mail',
                   contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 1.0),
+                    borderSide:
+                        BorderSide(color: Color(0xFF58A4B0), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                    borderSide:
+                        BorderSide(color: Color(0xFF58A4B0), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                 ),
               ),
               SizedBox(
-
                 height: 8.0,
               ),
               TextFormField(
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _passwort1=value;
+                  _passwort1 = value;
                 },
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
                   hintText: 'Passwort',
                   contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 1.0),
+                    borderSide:
+                        BorderSide(color: Color(0xFF58A4B0), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                    borderSide:
+                        BorderSide(color: Color(0xFF58A4B0), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                 ),
               ),
-
               SizedBox(
-
                 height: 8.0,
               ),
-
-
               TextFormField(
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  _passwort2=value;
+                  _passwort2 = value;
                 },
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
                   hintText: 'Passwort wiederholen',
                   contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 1.0),
+                    borderSide:
+                        BorderSide(color: Color(0xFF58A4B0), width: 1.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF58A4B0), width: 2.0),
+                    borderSide:
+                        BorderSide(color: Color(0xFF58A4B0), width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                   ),
                 ),
               ),
-
-
-
-
               SizedBox(
                 height: 24.0,
               ),
-
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
@@ -142,37 +132,35 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
                     onPressed: () async {
-
-                      if(_passwort1 != _passwort2) {
-
-                        showDialog(context: context,
-                            builder: (_)=>CupertinoAlertDialog(
-                              title: Text('Falsche Eingabe!'),
-                              content: Text('Passwörter müssen identisch sein'),
-                              actions: <Widget>[
-                                CupertinoDialogAction(
-                                  child: Text('OK'),
-                                  onPressed:
-                                      (){
-                                    Navigator.pop(context);
-                                  },
+                      if (_passwort1 != _passwort2) {
+                        showDialog(
+                            context: context,
+                            builder: (_) => CupertinoAlertDialog(
+                                  title: Text('Falsche Eingabe!'),
+                                  content:
+                                      Text('Passwörter müssen identisch sein'),
+                                  actions: <Widget>[
+                                    CupertinoDialogAction(
+                                      child: Text('OK'),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
                                 ),
-
-                              ],
-                            ),
                             barrierDismissible: false);
-                      }
-                      else {
-                        final newUser = await _auth
-                            .createUserWithEmailAndPassword(email: _email,
-                            password: _passwort1);
+                      } else {
+                        final newUser =
+                            await _auth.createUserWithEmailAndPassword(
+                                email: _email, password: _passwort1);
                         if (newUser != null) {
                           Navigator.pushNamed(context, 'LoginScreen');
                         }
                       }
 
-
-                      _userdata.einfuegen(new Student().mitEmail(_email).mitPasswort(_passwort1));
+                      _userdata.einfuegen(new Student()
+                          .mitEmail(_email)
+                          .mitPasswort(_passwort1));
                       //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
 
                       //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu
@@ -182,7 +170,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: Text(
                       'Registrieren',
                       style: TextStyle(color: Colors.white),
-
                     ),
                   ),
                 ),
@@ -193,6 +180,4 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     );
   }
-
-
 }

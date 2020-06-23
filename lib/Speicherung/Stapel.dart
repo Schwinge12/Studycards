@@ -10,6 +10,8 @@ class Stapel extends Produkt {
  String _studiengang;
  String _studienfach;
  String _themengebiet;
+ var map = Map<String, dynamic> ();
+
 
 //____________________________________Constructor_____________________________
  Stapel();
@@ -20,8 +22,10 @@ class Stapel extends Produkt {
   return this;
  }
 
-//____________________________________Methods_________________________________
- add(Karteikarte k){stapelKarten.add(k);} // convienice
+ set id(int value) {
+  _id = value;
+ } //____________________________________Get/Set___________________________________
+
  String getName(){
   if (name != null)
    return name;
@@ -35,9 +39,21 @@ class Stapel extends Produkt {
   if (stapelKarten.isEmpty) return '404 - Kurs not found';
   else return stapelKarten[0].getKurs().getName();
  }
- Map<String, dynamic> toMap() { //Stapel zu Map-Objekt konvertieren für lokale Datenbank
+ set studiengang(String value) {
+  _studiengang = value;
+ }
 
-  var map = Map<String, dynamic> ();
+ set studienfach(String value) {
+  _studienfach = value;
+ }
+
+ set themengebiet(String value) {
+  _themengebiet = value;
+ }
+//____________________________________Methods_________________________________
+ add(Karteikarte k){stapelKarten.add(k);} // convienice
+
+ Map<String, dynamic> toMap() { //Stapel zu Map-Objekt konvertieren für lokale Datenbank
 
   if(_id != null)
   {
@@ -57,6 +73,16 @@ class Stapel extends Produkt {
   this._studienfach=map['studienfach'];
   this._themengebiet = map['themengebiet'];
  }
+ Stapel StapelfromMapObject(Map<String, dynamic> map) {
+ Stapel s = new Stapel();
+  s._id = map['id'];
+  s._studiengang =map['studiengang'];
+  s._studienfach=map['studienfach'];
+  s._themengebiet = map['themengebiet'];
+  return s;
+ }
+
+
 
 
 }

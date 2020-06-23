@@ -258,7 +258,9 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
             .mitVorderSeite('Bsp.Vorderseite 2 - Hier könnte ihre Werbung stehen')
             .mitRueckSeite('Bsp.Rueckseite 2 - nur 3,99 €')
     );
-    // ____________________________
+
+    //this.einfuegen(Stapel.StapelfromMapObject(map));
+    
 
     // TODO: Speicherung - implement laden
     //data?

@@ -8,6 +8,7 @@ import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
 import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
+import 'package:karteikartenapp/StudentScreens/EinstellungsScreen.dart';
 import 'package:karteikartenapp/StudentScreens/Quizauswahl.dart';
 import 'Login_Registration/PasswortVergessenScreen.dart';
 import 'StudentScreens/EinzelnerStapelStatusAnsicht.dart';
@@ -19,6 +20,8 @@ import 'StudentScreens/Quiz.dart';
 import 'DozentScreens/MCErstellen.dart';
 import 'DozentScreens/Einstellungen.dart';
 import 'package:syncfusion_flutter_core/core.dart';
+import 'StudentScreens/ShareFunction.dart';
+import 'package:share/share.dart';
 
 
 void main(){
@@ -60,6 +63,8 @@ class KarteikartenApp extends StatelessWidget{
         'LoginScreen':(context)=>LoginScreen(),
         'Einstellungen':(context)=>Einstellungen(),
         'PasswortVergessenScreen':(context)=>PasswortVergessenScreen(),
+        'share':(context)=>ShareDemo(),
+
       },
     );
   }

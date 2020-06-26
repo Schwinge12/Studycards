@@ -59,7 +59,7 @@ class _MenuPageState extends State<MenuPage>{
                   MenuButton(
                     text: 'Einstellungen',
                     onPress: (){
-                      Navigator.pushNamed(context, 'Einstellungen');
+                      Navigator.pushNamed(context, 'share');
                     },
                   ),
 

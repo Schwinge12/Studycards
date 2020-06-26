@@ -12,7 +12,6 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   var _userdata = new Userdata();
   final _auth = FirebaseAuth.instance;
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   String _email;
   String _passwort1;
@@ -159,7 +158,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         //await newUser.user.sendEmailVerification();
 
                         if (newUser != null) {
-                          await newUser.user.sendEmailVerification();
+                          newUser.user.sendEmailVerification();
 
                           //Navigator.pushNamed(context, 'LoginScreen');
                         }

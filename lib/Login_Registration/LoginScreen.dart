@@ -106,18 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     child: MaterialButton(
                       onPressed: () async {
-                        final user = await _auth.signInWithEmailAndPassword(email: _email, password: _passwort);
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: _email, password: _passwort);
                         if (user != null) {
-                        Navigator.pushNamed(context, 'MenuPage');
-                        }
-                        // anmeldung über email nach registrierung mit Email
-
-                        //Bis Datenbankverbindung steht passswort nutzen um zwischen dozent oder student zu unterscheiden
-                        if (_passwort == 'dozent') {
-                          Navigator.pushNamed(context, 'MenuPage');
-                        }
-
-                        if (_passwort == 'student') {
                           Navigator.pushNamed(context, 'MenuPageStudent');
                         }
                       },

@@ -21,7 +21,7 @@ class Karteikarte extends Produkt {
 //Todo Jan Themengebiet / Studiengang / Kurs von KK in Stapel verschieben
 
   Kurs kurs;
-  Stapel stapel;
+
   Studiengang sg;
 
   String vorderSeite;
@@ -48,10 +48,12 @@ class Karteikarte extends Produkt {
 //____________________________________Builder-Chain_____________________________
 
 
-  Karteikarte mitStapel(Stapel stapel) {
-    this.stapel = stapel;
+  Karteikarte mitID(var id) {
+    this.id = id;
     return this;
   }
+  
+
 
 
   Karteikarte mitVorderSeite(String vorderSeite) {
@@ -63,6 +65,8 @@ class Karteikarte extends Produkt {
     this.rueckSeite = rueckSeite;
     return this;
   }
+  
+  
   Karteikarte mitFile(File bild) {
      bilder.add(bild);
      FileManager.writeFile(id, bild,bilder.length -1); // -1 -> dateisystem startet bei 0
@@ -101,52 +105,13 @@ class Karteikarte extends Produkt {
 
 //____________________________________Methods___________________________________
 
-
-  /* nur für shared-Preferences SpeicherOption
-  @override
-  Map<String, dynamic> encodeJSON() =>
-      {
-        'erstellungsDatum': erstellungsDatum,
-        'kurs': kurs,
-        'stapel': stapel,
-        'studiengang': sg,
-
-        'vorderSeite': vorderSeite,
-        'rueckSeite': rueckSeite,
-
-        'themengebiet': themengebiet,
-        //evtl optimisierung durch <dynamic, dynamic>
-        'keyKarte': (keyKarte as int),
-        'schwierigkeit': schwierigkeit,
-
-        'haufigkeitsFaktor': haufigkeitsFaktor = 1,
-
-        // evtl falsche decodierung -> custom encode
-        'multipleChoice': multipleChoice,
-
-        'id': id,
-      };
-  decodeJSON(Map<String, dynamic> json){
-    erstellungsDatum = json['erstellungsDatum'];
-
-    kurs = json['kurs'];
-    stapel = json['stapel'];
-    sg = json['studiengang'];
-
-
-    vorderSeite = json['vorderSeite'];
-    rueckSeite = json['rueckSeite'];
-
-    themengebiet = json['themengebiet'];
-    keyKarte = (int.parse(json['keyKarte']) as bool );
-    schwierigkeit = int.parse(json['schwierigkeit']);
-    haufigkeitsFaktor = int.parse(json['haufigkeitsFaktor']);
-
-
-    multipleChoice = json['multipleChoice'];
-
-    id = json['id'];
+  static Karteikarte KKfromMapObject(Map<String, dynamic> map) {
+    Karteikarte s = new Karteikarte()
+    .mitID(map['_id'])
+    .mitVorderSeite(map['stringvorderseite'])
+    .mitRueckSeite(map['stringrueckseite'])
+    ;
+    return s;
   }
-*/
 
 }

@@ -1,5 +1,8 @@
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
+import 'package:karteikartenapp/Speicherung/Studiengang.dart';
+import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 
+import 'Kurs.dart';
 import 'Produkt.dart';
 
 class Stapel extends Produkt {
@@ -78,13 +81,6 @@ class Stapel extends Produkt {
   return map;
  }
 
- fromMapObject(Map<String, dynamic> map) {
-
-  this._id = map['id'];
-  this._studiengang =map['studiengang'];
-  this._studienfach=map['studienfach'];
-  this._themengebiet = map['themengebiet'];
- }
 
  static Stapel StapelfromMapObject(Map<String, dynamic> map) {
  Stapel s = new Stapel();

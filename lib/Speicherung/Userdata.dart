@@ -179,16 +179,6 @@ class Userdata extends Speicherung {
     default: throw new FlutterError('Nicht Implementiert!');
     }
   }
-
-void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufuegenthemengebiet, Stapel einzufuegenStapel){
-    if (! kurse.contains(einzufuegenKurs))
-      kurse.add(einzufuegenKurs);
-    Kurs tmpKurs = kurse[kurse.indexOf(einzufuegenKurs)];
-    if (! tmpKurs.themengebiet.contains(einzufuegenthemengebiet))
-      tmpKurs.themengebiet.add(einzufuegenthemengebiet);
-  tmpKurs.themengebiet[tmpKurs.themengebiet.indexOf(einzufuegenthemengebiet)].stapel.add(einzufuegenStapel);
-}
-
   @override
   void loeschen(Produkt p) {
     switch (p.runtimeType) {
@@ -201,10 +191,10 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
         break;
       case Karteikarte:
         {
-          //check ob KK in default stapel
+          /*//check ob KK in default stapel
            stapel[stapel.indexOf((p as Karteikarte).stapel)].stapelKarten.remove(p as Karteikarte);
 
-           /* nur Verwenden falls notwending --------
+            nur Verwenden falls notwending --------
 
            // schau in themengebiet und schmeiß karte da raus
 
@@ -216,8 +206,7 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
                 if (tmpThemengebiet.stapel.contains(p as Karteikarte))
                 tmpThemengebiet.stapel.remove(p as Karteikarte);
                 }
-            */
-        }
+*/        }
         break;
       case Stapel:
         {

@@ -5,6 +5,7 @@ import 'Produkt.dart';
 
 class Kurs extends Produkt {
   // Kurse eines Studiengangs bsp : Statistik
+  //Klasse war als erweiterte beschreibung des Kurses gedacht , findet keine Verwendung in der App
 
 //____________________________________Variables_______________________________
   String name;

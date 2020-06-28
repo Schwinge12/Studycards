@@ -22,9 +22,9 @@ import 'Userdata.dart';
   static final colStudienfach = 'studienfach';
   static final colThemengebiet = 'themengebiet';
 
-  static Userdata _userdata = new Userdata();
+  static Userdata userdata = new Userdata();
 
-
+  LokaleDatenbankStapel();
   LokaleDatenbankStapel._privateConstructor();
   static final LokaleDatenbankStapel instance = LokaleDatenbankStapel._privateConstructor();
 
@@ -55,32 +55,33 @@ import 'Userdata.dart';
           ''');
   }
 
-  static Future<int> insert(Map<String, dynamic> row) async {
+  static Future<int> insert(String tabelle, Map<String, dynamic> row) async {
     Database db = await instance.database;
     return await db.insert(tabelle, row);
   }
 
 
-  static Future<List<Map<String, dynamic>>> queryAllRows() async {
+  static Future<List<Map<String, dynamic>>> queryAllRows(String tabelle) async {
     Database db = await instance.database;
     return await db.query(tabelle);
   }
 
 
-  Future<int> queryRowCount() async {
+
+  static Future<int> queryRowCount(String tabelle) async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM $tabelle'));
   }
 
 
-  Future<int> update(Map<String, dynamic> row) async {
+  static Future<int> update(String tabelle, Map<String, dynamic> row) async {
     Database db = await instance.database;
     int id = row[colId];
     return await db.update(tabelle, row, where: '$colId = ?', whereArgs: [id]);
   }
 
 
-  Future<int> delete(int id) async {
+  static Future<int> delete(String tabelle, int id) async {
     Database db = await instance.database;
     return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
   }
@@ -92,18 +93,18 @@ import 'Userdata.dart';
       LokaleDatenbankStapel.colStudienfach  : studienfach,
       LokaleDatenbankStapel.colThemengebiet : themengebiet
     };
-    final id = await insert(row);
+    final id = await insert(tabelle,row);
     print('inserted row id: $id');
   }
 
   static void ausgeben() async {
-    final allRows = await queryAllRows();
+    final allRows = await queryAllRows(tabelle);
     print('query all rows:');
     allRows.forEach((row) => print(row));
   }
 
   static void alleStapelLaden() async{
-    final allRows = await queryAllRows();
-    allRows.forEach((row) => _userdata.einfuegen(Stapel.StapelfromMapObject(row)));
+    final allRows = await queryAllRows(tabelle);
+    allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)));
   }
 }

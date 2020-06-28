@@ -18,7 +18,7 @@ class _StapelErstellen extends State<StapelErstellen> {
 
 
   String studiengangEingabe;
-  Stapel stapel = new Stapel();
+  Stapel stapel;
   String kursEingabe;
   String themengebietEingabe;
 
@@ -166,13 +166,12 @@ class _StapelErstellen extends State<StapelErstellen> {
                               barrierDismissible: false);
                         }
                         else{
-                          Userdata stapel = new Userdata();
-                          Kurs kurs = new Kurs();
                           _insert(studiengangEingabe, kursEingabe, themengebietEingabe);
                           _ausgeben();
-                          stapel.studiengaenge.add(new Studiengang(studiengangEingabe));
-                          stapel.kurse.add(kurs.mitName(kursEingabe));
-                          kurs.themengebiet.add(new Themengebiet(kurs).mitName(themengebietEingabe));
+
+
+                          stapel = new Stapel().mit_studienfach(kursEingabe).mit_studiengang(studiengangEingabe).mit_themengebiet(themengebietEingabe);
+
 
 
                           Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe,stapel:this.stapel)));

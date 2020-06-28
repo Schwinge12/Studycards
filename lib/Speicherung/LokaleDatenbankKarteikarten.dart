@@ -1,48 +1,42 @@
 import 'dart:io';
+import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'Userdata.dart';
 
 
 
-class LokaleDatenbankStapel{
 
-  static final _databaseName= "DatenbankStapel.db";
-  static final _datenbankVersion = 1;
+class LokaleDatenbankKarteiKarten {
 
-
-  static final tabelle = 'karteikarten_tabelle';
+  static var tabelle;
 
   static final colId = '_id';
+  static final colStapelId = 'sId';
   static final colStringVorderseite = 'stringvorderseite';
   static final colStringRueckseite = 'stringrueckseite';
   static final colBilderAnzahl = 'bilderanzahl';
 
-
-  LokaleDatenbankStapel._privateConstructor();
-  static final LokaleDatenbankStapel instance = LokaleDatenbankStapel._privateConstructor();
-
-
   static Database _database;
-  Future<Database> get database async {
-    if (_database != null) return _database;
-    _database = await _initDatabase();
-    return _database;
+  static int stapelId;
+
+  static Userdata userdata = new Userdata();
+
+  LokaleDatenbankKarteiKarten(Database db, int version, String tabellenName, int StapelId){
+    tabelle = tabellenName;
+    _database = db;
+    _onCreate();
   }
 
-  _initDatabase() async {
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, _databaseName);
-    return await openDatabase(path,
-        version: _datenbankVersion,
-        onCreate: _onCreate);
-  }
 
-  Future _onCreate(Database db, int version) async {
-    await db.execute('''
+  Future _onCreate() async {
+    await _database.execute('''
           CREATE TABLE $tabelle (
             $colId INTEGER PRIMARY KEY,
+            $colStapelId INTEGER FOREIGN KEY REFERENCES karteikarten_tabelle (_id),
             $colStringVorderseite TEXT NOT NULL,
             $colStringRueckseite TEXT NOT NULL,
             $colBilderAnzahl INTEGER NOT NULL
@@ -50,50 +44,29 @@ class LokaleDatenbankStapel{
           ''');
   }
 
-  static Future<int> insert(Map<String, dynamic> row) async {
-    Database db = await instance.database;
-    return await db.insert(tabelle, row);
-  }
-
-
-  static Future<List<Map<String, dynamic>>> queryAllRows() async {
-    Database db = await instance.database;
-    return await db.query(tabelle);
-  }
-
-
-  Future<int> queryRowCount() async {
-    Database db = await instance.database;
-    return Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM $tabelle'));
-  }
-
-
-  Future<int> update(Map<String, dynamic> row) async {
-    Database db = await instance.database;
-    int id = row[colId];
-    return await db.update(tabelle, row, where: '$colId = ?', whereArgs: [id]);
-  }
-
-
-  Future<int> delete(int id) async {
-    Database db = await instance.database;
-    return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
-  }
-
   static void insertStapel(String stringvorderseite, String stringrueckseite, int bilderanzahl) async {
     // row to insert
     Map<String, dynamic> row = {
-      LokaleDatenbankStapel.colStringVorderseite : stringvorderseite,
-      LokaleDatenbankStapel.colStringRueckseite  : stringrueckseite,
-      LokaleDatenbankStapel.colBilderAnzahl : bilderanzahl
+      LokaleDatenbankKarteiKarten.colStapelId : stapelId,
+      LokaleDatenbankKarteiKarten.colStringVorderseite : stringvorderseite,
+      LokaleDatenbankKarteiKarten.colStringRueckseite  : stringrueckseite,
+      LokaleDatenbankKarteiKarten.colBilderAnzahl : bilderanzahl
     };
-    final id = await insert(row);
+    final id = await LokaleDatenbankStapel.insert(tabelle, row);
     print('inserted row id: $id');
   }
 
   static void _ausgeben() async {
-    final allRows = await queryAllRows();
+    final allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
     print('query all rows:');
     allRows.forEach((row) => print(row));
   }
+
+  static void alleKarteikartenLaden() async{
+    final allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
+    allRows.forEach((row) => userdata.stapel[stapelId].add(Karteikarte.KKfromMapObject(row)));
+  }
+
+
+
 }

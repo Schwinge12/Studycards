@@ -174,7 +174,6 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
     // Todo Backend check ob bilder null -> mitFile() nur wenn bild dabei
     widget.vorderSeite.stapel.stapelKarten.add(
         new Karteikarte()
-            .mitStapel(widget.vorderSeite.stapel)
             .mitVorderSeite(widget.vorderSeite.getEingabe)
             .mitRueckSeite(widget.eingabe)
             .mitFile(widget.vorderSeite.imageFile)

@@ -129,6 +129,7 @@ class Userdata extends Speicherung {
         break;
       case Karteikarte:
         {
+          /*
           Karteikarte kk = (p as Karteikarte);
           Stapel tmpKartenstapel = kk.getStapel();
           print (tmpKartenstapel == null);
@@ -153,6 +154,8 @@ class Userdata extends Speicherung {
           }
           print(tmpKartenstapel.stapelKarten.length.toString());
           stapel.forEach((element) => print(element.getName()));
+          */
+
         }
         break;
       case Stapel:
@@ -244,23 +247,17 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
     einfuegen(testkonto);
     stapel[0].stapelKarten.add(
     new Karteikarte()
-        .mitKurs(getKursMitString('Bsp.Kurs'))
-        .mitThemengebiet(getThemengebietMitKursUndString(getKursMitString('Bsp.Kurs'), 'Bsp.Themengebiet'))
-        .mitStudiengang(getStudiengangMitString('Bsp.Studiengang'))
         .mitVorderSeite('Bsp.Vorderseite')
         .mitRueckSeite('Bsp.Rueckseite')
     );
     stapel[0].stapelKarten.add(
         new Karteikarte()
-            .mitKurs(getKursMitString('Bsp.Kurs'))
-            .mitThemengebiet(getThemengebietMitKursUndString(getKursMitString('Bsp.Kurs'), 'Bsp.Themengebiet'))
-            .mitStudiengang(getStudiengangMitString('Bsp.Studiengang'))
             .mitVorderSeite('Bsp.Vorderseite 2 - Hier könnte ihre Werbung stehen')
             .mitRueckSeite('Bsp.Rueckseite 2 - nur 3,99 €')
     );
 
     //this.einfuegen(Stapel.StapelfromMapObject(map));
-    
+
 
     // TODO: Speicherung - implement laden
     //data?

@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 
 
 
-class LokaleDatenbankStapel{
+ class LokaleDatenbankStapel{
 
   static final _databaseName = 'DatenbankStapel.db';
   static final _datenbankVersion = 1;
@@ -50,13 +50,13 @@ class LokaleDatenbankStapel{
           ''');
   }
 
-  Future<int> insert(Map<String, dynamic> row) async {
+  static Future<int> insert(Map<String, dynamic> row) async {
     Database db = await instance.database;
     return await db.insert(tabelle, row);
   }
 
 
-  Future<List<Map<String, dynamic>>> queryAllRows() async {
+  static Future<List<Map<String, dynamic>>> queryAllRows() async {
     Database db = await instance.database;
     return await db.query(tabelle);
   }
@@ -78,5 +78,22 @@ class LokaleDatenbankStapel{
   Future<int> delete(int id) async {
     Database db = await instance.database;
     return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
+  }
+
+  static void insertStapel(String studiengang, String studienfach, String themengebiet) async {
+    // row to insert
+    Map<String, dynamic> row = {
+      LokaleDatenbankStapel.colStudiengang : studiengang,
+      LokaleDatenbankStapel.colStudienfach  : studienfach,
+      LokaleDatenbankStapel.colThemengebiet : themengebiet
+    };
+    final id = await insert(row);
+    print('inserted row id: $id');
+  }
+
+  static void _ausgeben() async {
+    final allRows = await queryAllRows();
+    print('query all rows:');
+    allRows.forEach((row) => print(row));
   }
 }

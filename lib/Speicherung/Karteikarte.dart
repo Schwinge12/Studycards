@@ -27,7 +27,6 @@ class Karteikarte extends Produkt {
   String vorderSeite;
   String rueckSeite;
 
-  Themengebiet themengebiet;
   bool keyKarte = false;
   var schwierigkeit = 0;
 
@@ -48,25 +47,12 @@ class Karteikarte extends Produkt {
 
 //____________________________________Builder-Chain_____________________________
 
-  Karteikarte mitKurs(Kurs kurs) {
-    this.kurs = kurs;
-    return this;
-  }
-
-  Karteikarte mitStudiengang(Studiengang sg) {
-    this.sg = sg;
-    return this;
-  }
 
   Karteikarte mitStapel(Stapel stapel) {
     this.stapel = stapel;
     return this;
   }
 
-  Karteikarte mitThemengebiet(Themengebiet themengebiet) {
-    this.themengebiet = themengebiet;
-    return this;
-  }
 
   Karteikarte mitVorderSeite(String vorderSeite) {
     this.vorderSeite = vorderSeite;
@@ -110,9 +96,7 @@ class Karteikarte extends Produkt {
   Kurs getKurs() {
     return kurs;
   }
-  Themengebiet getThemengebiet(){
-    return themengebiet;
-  }
+
 
 
 //____________________________________Methods___________________________________

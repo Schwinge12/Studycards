@@ -189,19 +189,10 @@ class _StapelErstellen extends State<StapelErstellen> {
     );
   }
   void _insert(String studiengang, String studienfach, String themengebiet) async {
-    // row to insert
-    Map<String, dynamic> row = {
-      LokaleDatenbankStapel.colStudiengang : studiengang,
-      LokaleDatenbankStapel.colStudienfach  : studienfach,
-      LokaleDatenbankStapel.colThemengebiet : themengebiet
-    };
-    final id = await dbHelfer.insert(row);
-    print('inserted row id: $id');
+   LokaleDatenbankStapel.insertStapel( studiengang,  studienfach,  themengebiet);
   }
 
   void _ausgeben() async {
-    final allRows = await dbHelfer.queryAllRows();
-    print('query all rows:');
-    allRows.forEach((row) => print(row));
+    LokaleDatenbankStapel.queryAllRows();
   }
 }

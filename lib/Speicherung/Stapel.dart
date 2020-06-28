@@ -32,8 +32,8 @@ class Stapel extends Produkt {
   else return '';
  }
  String getThemengebietName(){
-  if (stapelKarten.isEmpty) return '404 - Themengebiet not found';
-  else return stapelKarten[0].getThemengebiet().getName();
+  if (_themengebiet == null) return '404 - Themengebiet not found';
+  else return _themengebiet;
  }
  String getKursName(){
   if (stapelKarten.isEmpty) return '404 - Kurs not found';
@@ -62,7 +62,6 @@ class Stapel extends Produkt {
   map['studiengang'] = _studiengang;
   map['studienfach'] = _studienfach;
   map['themengebiet'] = _themengebiet;
-
   return map;
  }
 
@@ -82,8 +81,5 @@ class Stapel extends Produkt {
   s._themengebiet = map['themengebiet'];
   return s;
  }
-
-
-
 
 }

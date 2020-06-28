@@ -175,9 +175,6 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
     widget.vorderSeite.stapel.stapelKarten.add(
         new Karteikarte()
             .mitStapel(widget.vorderSeite.stapel)
-            .mitKurs(widget._userdata.getKursMitString(widget.vorderSeite.studienfach))
-            .mitThemengebiet(widget._userdata.getThemengebietMitKursUndString(widget._userdata.getKursMitString(widget.vorderSeite.studienfach), widget.vorderSeite.themengebiet))
-            .mitStudiengang(widget._userdata.getStudiengangMitString(widget.vorderSeite.studiengang))
             .mitVorderSeite(widget.vorderSeite.getEingabe)
             .mitRueckSeite(widget.eingabe)
             .mitFile(widget.vorderSeite.imageFile)

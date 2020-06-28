@@ -16,7 +16,6 @@ class StapelErstellen extends StatefulWidget{
 }
 class _StapelErstellen extends State<StapelErstellen> {
 
-  final dbHelfer = LokaleDatenbankStapel.instance;
 
   String studiengangEingabe;
   Stapel stapel = new Stapel();
@@ -193,6 +192,6 @@ class _StapelErstellen extends State<StapelErstellen> {
   }
 
   void _ausgeben() async {
-    LokaleDatenbankStapel.queryAllRows();
+    LokaleDatenbankStapel.ausgeben();
   }
 }

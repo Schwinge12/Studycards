@@ -3,6 +3,9 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'Stapel.dart';
+import 'Userdata.dart';
+
 
 
 
@@ -18,6 +21,8 @@ import 'package:path_provider/path_provider.dart';
   static final colStudiengang = 'studiengang';
   static final colStudienfach = 'studienfach';
   static final colThemengebiet = 'themengebiet';
+
+  static Userdata _userdata = new Userdata();
 
 
   LokaleDatenbankStapel._privateConstructor();
@@ -39,7 +44,7 @@ import 'package:path_provider/path_provider.dart';
         onCreate: _onCreate);
   }
 
-  Future _onCreate(Database db, int version) async {
+   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $tabelle (
             $colId INTEGER PRIMARY KEY,
@@ -91,9 +96,14 @@ import 'package:path_provider/path_provider.dart';
     print('inserted row id: $id');
   }
 
-  static void _ausgeben() async {
+  static void ausgeben() async {
     final allRows = await queryAllRows();
     print('query all rows:');
     allRows.forEach((row) => print(row));
+  }
+
+  static void alleStapelLaden() async{
+    final allRows = await queryAllRows();
+    allRows.forEach((row) => _userdata.einfuegen(Stapel.StapelfromMapObject(row)));
   }
 }

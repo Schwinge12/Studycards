@@ -43,7 +43,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(widget.stapel.getKursName(), style: MenuButtonTextStyle),
+                            Text(widget.stapel.getStudienfachName(), style: MenuButtonTextStyle),
 
                             Text('Click here to flip back',
                                 style: MenuButtonTextStyle),

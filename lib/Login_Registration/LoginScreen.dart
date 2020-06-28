@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: MaterialButton(
                       onPressed: () async {
                         final user = await _auth.signInWithEmailAndPassword(
-                            email: _email, password: _passwort);
+                            email: _email.trim(), password: _passwort);
                         if (user != null) {
                           Navigator.pushNamed(context, 'MenuPageStudent');
                         }

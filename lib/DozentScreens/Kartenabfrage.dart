@@ -66,7 +66,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-                                            Text(widget.stapel.getKursName(), style: MenuButtonTextStyle),
+                                            Text(widget.stapel.getStudienfachName(), style: MenuButtonTextStyle),
                                             Text(widget.stapel.stapelKarten[widget.kartennummer].vorderSeite, style: MenuButtonTextStyle)
                                           ],
                                         ),

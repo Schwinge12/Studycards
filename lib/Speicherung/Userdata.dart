@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/Speicherung/Dozent.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Studiengang.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Tutor.dart';
@@ -28,7 +29,7 @@ class Userdata extends Speicherung {
   List<Studiengang> studiengaenge = new List();
   List<Kurs> kurse = new List(); // <-includes List Themengebiete
   List<Stapel> stapel = new List(); // speicherung der KK in Stapel ?
-  Stapel defaultStapel = new Stapel().mitName('Default');
+  Stapel defaultStapel = new Stapel().mitName('Default').mit_studienfach('Bsp.Fach').mit_themengebiet('Bsp.Thema');
   Student testkonto = new Student().mitUsername('Mustermann');
 
   //____________________________________Constructor_____________________________
@@ -255,8 +256,7 @@ void stapelinThemengebietEinfuegen(Kurs  einzufuegenKurs, Themengebiet  einzufue
             .mitVorderSeite('Bsp.Vorderseite 2 - Hier könnte ihre Werbung stehen')
             .mitRueckSeite('Bsp.Rueckseite 2 - nur 3,99 €')
     );
-
-    //this.einfuegen(Stapel.StapelfromMapObject(map));
+    LokaleDatenbankStapel.alleStapelLaden();
 
 
     // TODO: Speicherung - implement laden

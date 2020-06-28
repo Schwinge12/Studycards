@@ -29,7 +29,7 @@ class StapelStatusState extends State<StapelStatus>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text( widget.stapel.getKursName())),
+        title: Center(child: Text( widget.stapel.getStudienfachName())),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),

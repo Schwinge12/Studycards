@@ -21,6 +21,18 @@ class Stapel extends Produkt {
   this.name = name;
   return this;
  }
+ Stapel mit_studiengang(String _studiengang){
+  this._studiengang = _studiengang;
+  return this;
+ }
+ Stapel mit_studienfach(String _studienfach){
+  this._studienfach = _studienfach;
+  return this;
+ }
+ Stapel mit_themengebiet(String _themengebiet){
+  this._themengebiet = _themengebiet;
+  return this;
+ }
 
  set id(int value) {
   _id = value;
@@ -31,13 +43,14 @@ class Stapel extends Produkt {
    return name;
   else return '';
  }
+
  String getThemengebietName(){
   if (_themengebiet == null) return '404 - Themengebiet not found';
   else return _themengebiet;
  }
- String getKursName(){
-  if (stapelKarten.isEmpty) return '404 - Kurs not found';
-  else return stapelKarten[0].getKurs().getName();
+ String getStudienfachName(){
+  if (_studienfach == null) return '404 - Kurs not found';
+  else return _studienfach;
  }
  set studiengang(String value) {
   _studiengang = value;

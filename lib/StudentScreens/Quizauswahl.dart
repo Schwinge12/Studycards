@@ -22,7 +22,7 @@ class _QuizAuswahl extends State<QuizAuswahl> {
   static Map<String, Stapel> alleStapel () {
     Map<String, Stapel> stapelverzeichnis = new Map();
     for (int i = 0; i < userdata.stapel.length; i++) {
-      String kursname = userdata.stapel[i].getKursName();
+      String kursname = userdata.stapel[i].getStudienfachName();
       String themengebiet = userdata.stapel[i].getThemengebietName();
 
 

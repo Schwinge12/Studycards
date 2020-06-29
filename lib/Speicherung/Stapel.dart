@@ -36,6 +36,10 @@ class Stapel extends Produkt {
   this._themengebiet = _themengebiet;
   return this;
  }
+ Stapel mit_karte(Karteikarte k){
+  this.stapelKarten.add(k);
+  return this;
+ }
 
  Stapel mitId(int _id) {
   this._id = _id;
@@ -49,10 +53,17 @@ class Stapel extends Produkt {
  int getID(){
   return _id;
  }
+ bool istID(var zuPruefen){
+  return (zuPruefen == _id);
+ }
 
  String getThemengebietName(){
   if (_themengebiet == null) return '404 - Themengebiet not found';
   else return _themengebiet;
+ }
+ String getStudiengang(){
+  if (_themengebiet == null) return '404 - Studiengang not found';
+  else return _studiengang;
  }
  String getStudienfachName(){
   if (_studienfach == null) return '404 - Kurs not found';

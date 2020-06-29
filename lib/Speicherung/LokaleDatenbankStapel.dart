@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankKarteikarten.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -86,16 +87,24 @@ import 'Userdata.dart';
     return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
   }
 
-  static void insertStapel(String studiengang, String studienfach, String themengebiet) async {
+  static void insertStapel(Stapel s) async {
     // row to insert
 
     Map<String, dynamic> row = {
-      LokaleDatenbankStapel.colStudiengang : studiengang,
-      LokaleDatenbankStapel.colStudienfach  : studienfach,
-      LokaleDatenbankStapel.colThemengebiet : themengebiet
+      LokaleDatenbankStapel.colStudiengang : s.getStudiengang(),
+      LokaleDatenbankStapel.colStudienfach  : s.getStudienfachName(),
+      LokaleDatenbankStapel.colThemengebiet : s.getThemengebietName()
     };
     final id = await insert(tabelle,row);
-    print('inserted row id: $id');
+
+    // ^ stapel - Karteikarten v
+
+    LokaleDatenbankKarteiKarten kk =
+    new LokaleDatenbankKarteiKarten(_database, _datenbankVersion, s.getThemengebietName(), id);
+    for (int i = 0 ; i < s.stapelKarten.length; i++){
+      kk.insertKK(s.stapelKarten[i]);
+    }
+    print('inserted row id: $id in Table $tabelle');
   }
 
 
@@ -113,7 +122,6 @@ import 'Userdata.dart';
   }
   static Future<Stapel> lastEntry() async{
     final allRows = await queryAllRows(tabelle);
-    print(allRows.asMap());
     return Stapel.StapelfromMapObject(allRows.last);
   }
 
@@ -121,4 +129,6 @@ import 'Userdata.dart';
     final rowsDeleted = await delete(id);
     print('deleted $rowsDeleted row(s): row $id');
   }
-}
+
+
+ }

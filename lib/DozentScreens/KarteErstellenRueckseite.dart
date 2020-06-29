@@ -156,7 +156,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                       onPress: (){
 
                        karteikarteEinfuegen();
-                       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
 
                         Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.vorderSeite.studiengang,studienfach: widget.vorderSeite.studienfach,themengebiet: widget.vorderSeite.themengebiet,stapel: widget.stapel,)));
                       },

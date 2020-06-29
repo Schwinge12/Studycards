@@ -44,27 +44,22 @@ class LokaleDatenbankKarteiKarten {
           ''');
   }
 
-  static void insertStapel(String stringvorderseite, String stringrueckseite, int bilderanzahl) async {
+   void insertKK(Karteikarte k) async {
     // row to insert
     Map<String, dynamic> row = {
       LokaleDatenbankKarteiKarten.colStapelId : stapelId,
-      LokaleDatenbankKarteiKarten.colStringVorderseite : stringvorderseite,
-      LokaleDatenbankKarteiKarten.colStringRueckseite  : stringrueckseite,
-      LokaleDatenbankKarteiKarten.colBilderAnzahl : bilderanzahl
+      LokaleDatenbankKarteiKarten.colStringVorderseite : k.vorderSeite,
+      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.rueckSeite,
+      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length
     };
     final id = await LokaleDatenbankStapel.insert(tabelle, row);
     print('inserted row id: $id');
   }
 
-  static void _ausgeben() async {
+  static void alleKarteikartenLaden(var id) async{
     final allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
-    print('query all rows:');
-    allRows.forEach((row) => print(row));
-  }
-
-  static void alleKarteikartenLaden() async{
-    final allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
-    allRows.forEach((row) => userdata.stapel[stapelId].add(Karteikarte.KKfromMapObject(row)));
+    final tmpStapel = userdata.stapel.indexOf(userdata.stapel.singleWhere((l) => l.istID(id)));
+    allRows.forEach((row) => userdata.stapel[tmpStapel].add(Karteikarte.KKfromMapObject(row)));
 
   }
 

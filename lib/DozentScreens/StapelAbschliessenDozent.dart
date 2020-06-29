@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/constants.dart';
@@ -10,14 +11,12 @@ import '../ButtonsAndConstants/MenuButton.dart';
 
 class StapelAbschliessenDozent extends StatelessWidget {
 
-  //TODO Backend: Kursdaten an vorgefertigten Buttons/Textfeldern einfügen
 
   StapelAbschliessenDozent({this.kurse,this.stapel});
   var _userdata = new Userdata();
   Stapel stapel;
   final String kurse;
-  final String studienfach='Programmieren 2';
-  final String themengebiet='Vererbung';
+  Userdata _u = new Userdata();
   @override
 
   Widget build(BuildContext context) {
@@ -56,8 +55,10 @@ class StapelAbschliessenDozent extends StatelessWidget {
                ),
                MenuButton(
                 text: 'Stapel speichern',
-                onPress: (){
-
+                onPress: () async {
+                  LokaleDatenbankStapel.insertStapel(stapel);
+                  stapel  = await LokaleDatenbankStapel.lastEntry();
+                  _u.einfuegen(stapel);
                 Navigator.pushNamed(context, 'MenuPage');
                 },
               ),

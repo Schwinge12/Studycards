@@ -30,6 +30,16 @@ class StapelStatusState extends State<StapelStatus>{
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text( widget.stapel.getStudienfachName())),
+          actions: <Widget>[
+            // action button
+            IconButton(
+              icon: Icon(Icons.delete, color: Colors.red, size: 35),
+              onPressed: (){
+
+              },
+
+            ),
+          ]
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),

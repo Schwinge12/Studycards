@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: _email.trim(), password: _passwort);
                         if (user != null) {
-                          Navigator.pushNamed(context, 'MenuPageStudent');
+                          Navigator.pushNamed(context, 'MenuPage');
                         }
                       },
                       minWidth: 200.0,

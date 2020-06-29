@@ -55,9 +55,9 @@ class StapelAbschliessenDozent extends StatelessWidget {
                  height: 50,
                ),
                MenuButton(
-                text: 'Stapel hochladen',
+                text: 'Stapel speichern',
                 onPress: (){
-                //TODO Backend: Stapel hochladen
+                Navigator.pushNamed(context, 'MenuPage');
                 },
               ),
 

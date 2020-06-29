@@ -43,7 +43,7 @@ class KarteikartenApp extends StatelessWidget{
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
       home: LoginScreen(),
       routes: {
-        'MenuPage':(context)=>MenuPage(),
+        'MenuPage':(context)=>MenuPageStudent(),
         'StapelErstellen':(context)=>StapelErstellen(),
         'Kartensets verwalten':(context)=>Kartensetsverwalten(),
         'KarteErstellenVorderseite':(context)=>KarteErstellenVorderseite(),
@@ -55,7 +55,6 @@ class KarteikartenApp extends StatelessWidget{
         'EinzelnerStapelStatus':(context)=>StapelStatus(),
         'LoginScreen':(context)=>LoginScreen(),
         'RegistrationScreen':(context)=>RegistrationScreen(),
-        'MenuPageStudent':(context)=>MenuPageStudent(),
         'QuizAuswahl':(context)=>QuizAuswahl(),
         'Quizstart':(context)=>QuizStart(),
         'Quiz':(context)=>Quiz(),

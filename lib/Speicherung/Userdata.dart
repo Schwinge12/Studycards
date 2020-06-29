@@ -232,22 +232,9 @@ class Userdata extends Speicherung {
 
   @override
   void init() {
-    stapel.insert(0, defaultStapel);
     // Testdaten ____________________________
     einfuegen(testkonto);
-    stapel[0].stapelKarten.add(
-    new Karteikarte()
-        .mitVorderSeite('Bsp.Vorderseite')
-        .mitRueckSeite('Bsp.Rueckseite')
-    );
-    stapel[0].stapelKarten.add(
-        new Karteikarte()
-            .mitVorderSeite('Bsp.Vorderseite 2 - Hier könnte ihre Werbung stehen')
-            .mitRueckSeite('Bsp.Rueckseite 2 - nur 3,99 €')
-    );
     LokaleDatenbankStapel.alleStapelLaden();
-
-
     // TODO: Speicherung - implement laden
     //data?
     // + load data

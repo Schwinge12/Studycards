@@ -40,9 +40,6 @@ class Stapel extends Produkt {
  Stapel mitId(int _id) {
   this._id = _id;
  } //____________________________________Get/Set___________________________________
- int getId(){
-  return _id;
- }
 
  String getName(){
   if (name != null)

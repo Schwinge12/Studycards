@@ -108,8 +108,7 @@ import 'Userdata.dart';
     allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)));
   }
 
-  static void stapelLoeschen() async {
-    final id = await queryRowCount(tabelle);
+  static void stapelLoeschen(int id) async {
     final rowsDeleted = await delete(id);
     print('deleted $rowsDeleted row(s): row $id');
   }

@@ -38,8 +38,8 @@ class StapelStatusState extends State<StapelStatus>{
             // action button
             IconButton(
               icon: Icon(Icons.delete, color: Colors.red, size: 35),
-              onPressed: (){
-                _loeschen();
+              onPressed: ()async{
+                await _loeschen();
                 Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleStapel()));
               },
             ),

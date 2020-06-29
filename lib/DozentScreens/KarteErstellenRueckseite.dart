@@ -98,7 +98,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                     onPressed: (
                         ){
                       karteikarteEinfuegen();
-                      widget._userdata.einfuegen(widget.vorderSeite.stapel);
+
                       Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessenDozent(stapel: widget.stapel,)));
                         },
                     child: Container(
@@ -171,14 +171,17 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
   }
 
   void karteikarteEinfuegen(){
-    // Todo Backend check ob bilder null -> mitFile() nur wenn bild dabei
-    widget.vorderSeite.stapel.stapelKarten.add(
-        new Karteikarte()
-            .mitVorderSeite(widget.vorderSeite.getEingabe)
-            .mitRueckSeite(widget.eingabe)
-            .mitFile(widget.vorderSeite.imageFile)
-    );
-  print(widget.vorderSeite.stapel.stapelKarten.length.toString());
+
+    Karteikarte kk =  new Karteikarte()
+        .mitVorderSeite(widget.vorderSeite.getEingabe)
+        .mitRueckSeite(widget.eingabe);
+   if(widget.vorderSeite.imageFile != null)
+     kk.mitFile(widget.vorderSeite.imageFile);
+    if(_imageFile != null )
+      kk.mitFile(_imageFile);
+
+    widget.stapel.stapelKarten.add(kk);
+  print(widget.stapel.stapelKarten.length.toString());
   }
 
 }

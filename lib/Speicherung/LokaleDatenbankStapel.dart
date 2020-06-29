@@ -99,12 +99,12 @@ import 'Userdata.dart';
 
     // ^ stapel - Karteikarten v
 
-    LokaleDatenbankKarteiKarten kk =
+   /* LokaleDatenbankKarteiKarten kk =
     new LokaleDatenbankKarteiKarten(_database, _datenbankVersion, s.getThemengebietName(), id);
     for (int i = 0 ; i < s.stapelKarten.length; i++){
       kk.insertKK(s.stapelKarten[i]);
     }
-    print('inserted row id: $id in Table $tabelle');
+    print('inserted row id: $id in Table $tabelle');*/
   }
 
 

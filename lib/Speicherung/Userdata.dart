@@ -44,6 +44,9 @@ class Userdata extends Speicherung {
   Student getKonto() {
     return _konto;
   }
+  List<Stapel> getStapelListe() {
+    return stapel;
+  }
 
   Produkt getProduktMitString(String nameDesProdukts, String Produkttyp) {
     switch (Produkttyp.toLowerCase().trim()) {

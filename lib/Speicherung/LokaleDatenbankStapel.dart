@@ -11,7 +11,7 @@ import 'Userdata.dart';
 
  class LokaleDatenbankStapel{
 
-  static final _databaseName = 'DatenbankStapel.db';
+  static final _databaseName = 'DatenbankStapel1.db';
   static final _datenbankVersion = 1;
 
 
@@ -88,6 +88,7 @@ import 'Userdata.dart';
 
   static void insertStapel(String studiengang, String studienfach, String themengebiet) async {
     // row to insert
+
     Map<String, dynamic> row = {
       LokaleDatenbankStapel.colStudiengang : studiengang,
       LokaleDatenbankStapel.colStudienfach  : studienfach,
@@ -97,6 +98,7 @@ import 'Userdata.dart';
     print('inserted row id: $id');
   }
 
+
   static void ausgeben() async {
     final allRows = await queryAllRows(tabelle);
     print('query all rows:');
@@ -105,7 +107,9 @@ import 'Userdata.dart';
 
   static void alleStapelLaden() async{
     final allRows = await queryAllRows(tabelle);
-    allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)));
+    print(allRows.asMap());
+    allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)
+    ));
   }
 
   static void stapelLoeschen(int id) async {

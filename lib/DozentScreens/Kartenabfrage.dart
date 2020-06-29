@@ -13,7 +13,7 @@ class Kartenabfrage extends StatefulWidget {
   Stapel stapel;
   int kartennummer = 0;
 
-  Kartenabfrage({@required this.stapel}){}
+  Kartenabfrage({@required this.stapel});
 
   @override
   _KartenanzeigeState createState() => _KartenanzeigeState();

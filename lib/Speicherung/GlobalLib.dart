@@ -6,6 +6,7 @@ class GlobalLib implements Function {
   static var idCounter = 0;
 
 
+
   //_________________________________Singelton__________________________________
   static final GlobalLib _gl = GlobalLib._internal();
   factory GlobalLib() {
@@ -18,4 +19,5 @@ int call() {
   idCounter ++;
   return idCounter;
 }
+
 }

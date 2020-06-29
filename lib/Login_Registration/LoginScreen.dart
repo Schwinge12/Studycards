@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/Speicherung/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -109,6 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         final user = await _auth.signInWithEmailAndPassword(
                             email: _email.trim(), password: _passwort);
                         if (user != null) {
+                          _userdata.einfuegen(new Student().mitUsername(_email));
                           Navigator.pushNamed(context, 'MenuPage');
                         }
                       },

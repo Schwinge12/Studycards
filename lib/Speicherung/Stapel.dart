@@ -46,6 +46,9 @@ class Stapel extends Produkt {
    return name;
   else return '';
  }
+ int getID(){
+  return _id;
+ }
 
  String getThemengebietName(){
   if (_themengebiet == null) return '404 - Themengebiet not found';
@@ -88,7 +91,7 @@ class Stapel extends Produkt {
 
  static Stapel StapelfromMapObject(Map<String, dynamic> map) {
  Stapel s = new Stapel();
-  s._id = map['id'];
+  s._id = map['_id'];
   s._studiengang =map['studiengang'];
   s._studienfach=map['studienfach'];
   s._themengebiet = map['themengebiet'];

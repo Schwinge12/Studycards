@@ -65,6 +65,7 @@ class LokaleDatenbankKarteiKarten {
   static void alleKarteikartenLaden() async{
     final allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
     allRows.forEach((row) => userdata.stapel[stapelId].add(Karteikarte.KKfromMapObject(row)));
+
   }
 
 

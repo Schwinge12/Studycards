@@ -108,7 +108,9 @@ class StapelStatusState extends State<StapelStatus>{
     );
   }
   void _loeschen() async{
+
     print(userdata.stapel.indexOf(widget.stapel));
-    LokaleDatenbankStapel.stapelLoeschen(userdata.stapel.indexOf(widget.stapel));
+    await LokaleDatenbankStapel.stapelLoeschen(widget.stapel.getID());
+    await userdata.loeschen(widget.stapel);
   }
 }

@@ -40,6 +40,12 @@ class _AlleStapel extends State<AlleStapel> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: (){
+            Navigator.pushNamed(context, 'MenuPage');
+          },
+        ) ,
         title: Text('Meine Sets',style: WeisserTextStyle,),
 
       ),

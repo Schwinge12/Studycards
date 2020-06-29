@@ -4,6 +4,7 @@ import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
+import 'package:karteikartenapp/DozentScreens/MenuPage.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
@@ -39,9 +40,8 @@ class StapelStatusState extends State<StapelStatus>{
               icon: Icon(Icons.delete, color: Colors.red, size: 35),
               onPressed: (){
                 _loeschen();
-
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleStapel()));
               },
-
             ),
           ]
       ),

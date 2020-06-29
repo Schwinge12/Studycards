@@ -7,10 +7,11 @@ import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
-
+import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
 class StapelStatus extends StatefulWidget{
 
   Stapel stapel;
+  AlleStapel alleStapel;
 
   StapelStatus({@required this.stapel});
 
@@ -24,7 +25,7 @@ class StapelStatusState extends State<StapelStatus>{
 
   StapelStatusState(){}
 
-  Userdata userdata;
+  Userdata userdata = new Userdata();
 
 
   @override
@@ -107,7 +108,7 @@ class StapelStatusState extends State<StapelStatus>{
     );
   }
   void _loeschen() async{
-    LokaleDatenbankStapel.stapelLoeschen(userdata.stapel.indexOf(widget.stapel));
     print(userdata.stapel.indexOf(widget.stapel));
+    LokaleDatenbankStapel.stapelLoeschen(userdata.stapel.indexOf(widget.stapel));
   }
 }

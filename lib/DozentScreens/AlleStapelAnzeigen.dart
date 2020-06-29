@@ -6,10 +6,8 @@ import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
 
 class AlleStapel extends StatefulWidget{
-
   @override
   _AlleStapel createState()=>_AlleStapel();
-
 }
 
 
@@ -59,5 +57,4 @@ class _AlleStapel extends State<AlleStapel> {
       )
     );
   }
-
 }

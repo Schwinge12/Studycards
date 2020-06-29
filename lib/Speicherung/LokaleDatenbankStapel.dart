@@ -81,7 +81,7 @@ import 'Userdata.dart';
   }
 
 
-  static Future<int> delete(String tabelle, int id) async {
+  static Future<int> delete( int id) async {
     Database db = await instance.database;
     return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
   }
@@ -106,5 +106,11 @@ import 'Userdata.dart';
   static void alleStapelLaden() async{
     final allRows = await queryAllRows(tabelle);
     allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)));
+  }
+
+  static void stapelLoeschen() async {
+    final id = await queryRowCount(tabelle);
+    final rowsDeleted = await delete(id);
+    print('deleted $rowsDeleted row(s): row $id');
   }
 }

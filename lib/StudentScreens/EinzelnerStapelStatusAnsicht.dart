@@ -6,6 +6,7 @@ import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 
 class StapelStatus extends StatefulWidget{
 
@@ -19,6 +20,7 @@ class StapelStatus extends StatefulWidget{
 }
 
 class StapelStatusState extends State<StapelStatus>{
+  final dbHelfer = LokaleDatenbankStapel.instance;
 
   StapelStatusState(){}
 
@@ -35,6 +37,7 @@ class StapelStatusState extends State<StapelStatus>{
             IconButton(
               icon: Icon(Icons.delete, color: Colors.red, size: 35),
               onPressed: (){
+                _loeschen();
 
               },
 
@@ -102,5 +105,8 @@ class StapelStatusState extends State<StapelStatus>{
         ),
       ),
     );
+  }
+  void _loeschen() async{
+    LokaleDatenbankStapel.stapelLoeschen();
   }
 }

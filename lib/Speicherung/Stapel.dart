@@ -37,9 +37,12 @@ class Stapel extends Produkt {
   return this;
  }
 
- set id(int value) {
-  _id = value;
+ Stapel mitId(int _id) {
+  this._id = _id;
  } //____________________________________Get/Set___________________________________
+ int getId(){
+  return _id;
+ }
 
  String getName(){
   if (name != null)
@@ -65,6 +68,10 @@ class Stapel extends Produkt {
 
  set themengebiet(String value) {
   _themengebiet = value;
+ }
+
+ set id(int value){
+  _id= value;
  }
 //____________________________________Methods_________________________________
  add(Karteikarte k){stapelKarten.add(k);} // convienice

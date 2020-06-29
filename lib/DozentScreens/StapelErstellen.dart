@@ -21,6 +21,7 @@ class _StapelErstellen extends State<StapelErstellen> {
   Stapel stapel;
   String kursEingabe;
   String themengebietEingabe;
+  Userdata _u = new Userdata();
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +145,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                 Expanded(
                     child: WeiterButton(
                       text: 'Speichern',
-                      onPress: (){
+                      onPress: () async {
                         if(kursEingabe==null||studiengangEingabe==null||themengebietEingabe==null){
 
 
@@ -170,8 +171,8 @@ class _StapelErstellen extends State<StapelErstellen> {
                           _ausgeben();
 
 
-                          stapel = new Stapel().mit_studienfach(kursEingabe).mit_studiengang(studiengangEingabe).mit_themengebiet(themengebietEingabe);
-
+                          stapel  = await LokaleDatenbankStapel.lastEntry();
+                          _u.einfuegen(stapel);
 
 
                           Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe,stapel:this.stapel)));

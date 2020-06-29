@@ -57,6 +57,7 @@ class StapelAbschliessenDozent extends StatelessWidget {
                MenuButton(
                 text: 'Stapel speichern',
                 onPress: (){
+
                 Navigator.pushNamed(context, 'MenuPage');
                 },
               ),

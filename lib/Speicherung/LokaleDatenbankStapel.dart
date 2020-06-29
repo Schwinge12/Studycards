@@ -111,6 +111,11 @@ import 'Userdata.dart';
     allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)
     ));
   }
+  static Future<Stapel> lastEntry() async{
+    final allRows = await queryAllRows(tabelle);
+    print(allRows.asMap());
+    return Stapel.StapelfromMapObject(allRows.last);
+  }
 
   static void stapelLoeschen(int id) async {
     final rowsDeleted = await delete(id);

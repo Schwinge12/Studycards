@@ -75,7 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white30,
-                  hintText: 'Passwort',
+                  hintText: 'Passwort (mind. 6 Zeichen)',
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -133,13 +133,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
                     onPressed: () async {
-                      if (_passwort1 != _passwort2) {
+                      if (_passwort1 != _passwort2 || _passwort1.length < 6) {
                         showDialog(
                             context: context,
                             builder: (_) => CupertinoAlertDialog(
                                   title: Text('Falsche Eingabe!'),
                                   content:
-                                      Text('Passwörter müssen identisch sein'),
+                                      Text('Passwörter müssen identisch und mindestens 6 Zeichen lang sein'),
                                   actions: <Widget>[
                                     CupertinoDialogAction(
                                       child: Text('OK'),
@@ -150,26 +150,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   ],
                                 ),
                             barrierDismissible: false);
+
                       } else {
                         final newUser =
                             await _auth.createUserWithEmailAndPassword(
                                 email: _email, password: _passwort1);
-
-                        //await newUser.user.sendEmailVerification();
+                        showDialog(
+                            context: context,
+                            builder: (_) => CupertinoAlertDialog(
+                                    title: Text('Registrierung erfolgreich!'),
+                                    content: Text(
+                                        'Eine Bestätigung an ihre E-Mail wurde versendet.'),
+                                    actions: <Widget>[
+                                      CupertinoDialogAction(
+                                          child: Text('OK'),
+                                          onPressed: () {
+                                            Navigator.pushNamed(
+                                                context, 'LoginScreen');
+                                          })
+                                    ]));
 
                         if (newUser != null) {
                           newUser.user.sendEmailVerification();
-
-                          //Navigator.pushNamed(context, 'LoginScreen');
                         }
                       }
-
-                      _userdata.einfuegen(new Student()
-                          .mitEmail(_email)
-                          .mitPasswort(_passwort1));
-                      //Erstellt neues Konto - Konstruktor entscheidet über art new Dozent() / new Tutor
-
-                      //Todo Frontend - angabe als student/Dozent/Tutor -> weiterleitung auf login/menu
                     },
                     minWidth: 200.0,
                     height: 42.0,

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 
@@ -12,7 +12,6 @@ class MenuPageStudent extends StatefulWidget{
 }
 
 class _MenuPageStudentState extends State<MenuPageStudent>{
-  //Doppelt mit MenuPage ?
 
   static var _userdata = new Userdata();
   String username= _userdata.getKonto().getUsername();

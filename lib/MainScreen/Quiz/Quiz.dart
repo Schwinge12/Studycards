@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flip_card/flip_card.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
-import 'package:swipe_stack/swipe_stack.dart';
-import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+
 
 
 

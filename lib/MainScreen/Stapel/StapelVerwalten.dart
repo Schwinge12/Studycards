@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:karteikartenapp/constants.dart';
 
 class Kartensetsverwalten extends StatelessWidget{
 

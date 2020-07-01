@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
+import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
-import 'package:karteikartenapp/Speicherung/Kurs.dart';
-import 'package:karteikartenapp/Speicherung/Studiengang.dart';
-import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
-import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 //TODO Backend: Eingebene Daten abspeichern
 
 class StapelErstellen extends StatefulWidget{

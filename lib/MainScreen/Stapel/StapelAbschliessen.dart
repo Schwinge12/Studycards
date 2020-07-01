@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:karteikartenapp/DozentScreens/StapelUeberarbeiten.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-import '../ButtonsAndConstants/constants.dart';
-import '../ButtonsAndConstants/MenuButton.dart';
+import '../../ButtonsAndConstants/TextStyles.dart';
+import '../../ButtonsAndConstants/MenuButton.dart';
 
 
 

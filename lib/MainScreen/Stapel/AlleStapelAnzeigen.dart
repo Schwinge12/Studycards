@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-import 'package:karteikartenapp/StudentScreens/EinzelnerStapelStatusAnsicht.dart';
-import '../ButtonsAndConstants/MenuButton.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/EinzelnerStapelStatusAnsicht.dart';
+import '../../ButtonsAndConstants/MenuButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
 class AlleStapel extends StatefulWidget{
   @override

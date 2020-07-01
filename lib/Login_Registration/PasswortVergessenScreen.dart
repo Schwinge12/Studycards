@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -68,24 +69,41 @@ class _PasswortVergessenScreenState extends State<PasswortVergessenScreen> {
                   color: Colors.white10,
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                   child: MaterialButton(
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
-                        //Navigator.pushNamed(context, 'LoginScreen');
-
-                      }
-                    },
-
-
                     height: 42.0,
                     child: Text(
                       'Passwort zurücksetzen',
                       style: TextStyle(color: Colors.white),
                     ),
-                  ),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        showDialog(
+                            context: context,
+                            builder: (_) =>
+                                CupertinoAlertDialog(
+                                  title: Text('Passwort zurückgesetzt!'),
+                                  content:
+                                  Text(
+                                      'Sie erhalten eine E-Mail zum zurücksetzen Ihres Passwortes'),
+                                  actions: <Widget>[
+                                    CupertinoDialogAction(
+                                      child: Text('OK'),
+                                      onPressed: () {
+                                        FirebaseAuth.instance
+                                            .sendPasswordResetEmail(
+                                            email: _email);
+                                        Navigator.pushNamed(
+                                            context, 'LoginScreen');
+                                      },
+                                    ),
+                                  ],
+                                ),
+                            barrierDismissible: false);
+                      }
+                    },
                 ),
               ),
-            ],
+              ),
+                ],
           ),
         ),
       ),

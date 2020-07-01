@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 
 

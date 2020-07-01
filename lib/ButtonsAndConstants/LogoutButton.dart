@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
 class LogoutButton extends StatelessWidget{
 

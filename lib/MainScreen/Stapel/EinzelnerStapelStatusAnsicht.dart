@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
-import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
-import 'package:karteikartenapp/DozentScreens/Kartenabfrage.dart';
-import 'package:karteikartenapp/DozentScreens/MenuPage.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
+import 'package:karteikartenapp/MainScreen/Karten/Kartenabfrage.dart';
+import 'package:karteikartenapp/MainScreen/MenuPage.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
-import 'package:karteikartenapp/DozentScreens/AlleStapelAnzeigen.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 class StapelStatus extends StatefulWidget{
 
   Stapel stapel;

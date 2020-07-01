@@ -1,12 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'Dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:karteikartenapp/DozentScreens/KarteErstellenRueckseite.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
-import 'package:karteikartenapp/DozentScreens/MCErstellen.dart';
-import 'package:karteikartenapp/DozentScreens/StapelErstellen.dart';
+import 'package:karteikartenapp/MainScreen/Karten/MCErstellen.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 

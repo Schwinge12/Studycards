@@ -3,14 +3,13 @@ import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/DozentScreens/KarteErstellenVorderseite.dart';
-import 'package:karteikartenapp/DozentScreens/StapelAbschliessenDozent.dart';
+import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/StapelAbschliessen.dart';
 import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
-import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/constants.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
 
 class KarteErstellenRueckseite extends StatefulWidget {

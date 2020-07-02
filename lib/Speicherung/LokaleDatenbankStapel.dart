@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'Karteikarte.dart';
 import 'Stapel.dart';
 import 'Userdata.dart';
 
@@ -12,7 +13,7 @@ import 'Userdata.dart';
 
  class LokaleDatenbankStapel{
 
-  static final _databaseName = 'DatenbankStapel1.db';
+  static final _databaseName = '3.db';
   static final _datenbankVersion = 1;
 
 
@@ -99,12 +100,12 @@ import 'Userdata.dart';
 
     // ^ stapel - Karteikarten v
 
-   /* LokaleDatenbankKarteiKarten kk =
+    LokaleDatenbankKarteiKarten kk =
     new LokaleDatenbankKarteiKarten(_database, _datenbankVersion, s.getThemengebietName(), id);
     for (int i = 0 ; i < s.stapelKarten.length; i++){
       kk.insertKK(s.stapelKarten[i]);
     }
-    print('inserted row id: $id in Table $tabelle');*/
+    print('inserted row id: $id in Table $tabelle');
   }
 
 
@@ -117,17 +118,30 @@ import 'Userdata.dart';
   static void alleStapelLaden() async{
     final allRows = await queryAllRows(tabelle);
     print(allRows.asMap());
-    allRows.forEach((row) => userdata.einfuegen(Stapel.StapelfromMapObject(row)
-    ));
+    allRows.forEach((row) => StapelmitKarteikartenLaden(row));
   }
   static Future<Stapel> lastEntry() async{
     final allRows = await queryAllRows(tabelle);
-    return Stapel.StapelfromMapObject(allRows.last);
+    return await alleKarteikartenLaden(Stapel.StapelfromMapObject(allRows.last));
   }
 
   static void stapelLoeschen(int id) async {
     final rowsDeleted = await delete(id);
     print('deleted $rowsDeleted row(s): row $id');
+  }
+
+  static void StapelmitKarteikartenLaden(var row) async {
+    Stapel tmpStapel = Stapel.StapelfromMapObject(row);
+     userdata.einfuegen( await alleKarteikartenLaden(tmpStapel));
+  }
+
+  static Future<Stapel> alleKarteikartenLaden(Stapel s) async{
+    var tbl = s.getThemengebietName();
+    final allRows = await _database.rawQuery(
+        'SELECT * FROM $tbl');
+    allRows.forEach((row) => s.stapelKarten.add(Karteikarte.KKfromMapObject(row)));
+    return s;
+
   }
 
 

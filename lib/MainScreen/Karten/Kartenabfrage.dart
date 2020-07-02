@@ -65,7 +65,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-                                            Text(widget.stapel.getStudienfachName(), style: MenuButtonTextStyle),
+                                            Text(widget.stapel.getThemengebietName(), style: MenuButtonTextStyle),
                                             Text(widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite(), style: MenuButtonTextStyle)
                                           ],
                                         ),
@@ -104,7 +104,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-                                            Text('Front', style: MenuButtonTextStyle),
+                                            Text(widget.stapel.getThemengebietName(), style: MenuButtonTextStyle),
                                             Text(widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite(), style: MenuButtonTextStyle)
                                           ],
                                         ),

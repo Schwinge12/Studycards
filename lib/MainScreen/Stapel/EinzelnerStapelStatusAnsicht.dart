@@ -97,8 +97,9 @@ class StapelStatusState extends State<StapelStatus>{
                 style: WeisserTextStyle,
                 text: 'Jetzt Lernen!',
                 onPress: (){
+                  if(widget.stapel.stapelKarten.length > 0)
                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Kartenabfrage(stapel: widget.stapel)));
-                  //Todo Frontend Staple an Kartenabfrage übergeben
+
                 },
               ),
             ),

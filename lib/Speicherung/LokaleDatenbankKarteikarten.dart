@@ -23,6 +23,8 @@ class LokaleDatenbankKarteiKarten {
 
   static Database _database;
   static int stapelId;
+  LokaleDatenbankKarteiKarten._privateConstructor();
+  static final LokaleDatenbankKarteiKarten instance = LokaleDatenbankKarteiKarten._privateConstructor();
 
   static Userdata userdata = new Userdata();
 
@@ -30,6 +32,10 @@ class LokaleDatenbankKarteiKarten {
     tabelle = tabellenName;
     _database = db;
     _onCreate();
+  }
+
+  Future<Database> get database async {
+    return _database;
   }
 
 
@@ -47,7 +53,7 @@ class LokaleDatenbankKarteiKarten {
     print('Tabelle: $tabelle erstellt');
   }
 
-   void insertKK(Karteikarte k) async {
+  void insertKK(Karteikarte k) async {
     // row to insert
     Map<String, dynamic> row = {
       LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
@@ -58,8 +64,32 @@ class LokaleDatenbankKarteiKarten {
     print('inserted row id: $id');
   }
 
+  Future<int> update(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    int id = row[colId];
+    return await db.update(tabelle, row, where: '$colId = ?', whereArgs: [id]);
+  }
 
+  static void updateKk(Karteikarte k) async {
+    // row to update
+    Map<String, dynamic> row = {
+      LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
+      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
+      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length
+    };
+    final rowsAffected = await _database.update(tabelle, row);
+    print('updated $rowsAffected row(s)');
+  }
 
+  static Future<int> delete(int id, var tabelle) async {
+    Database db = await instance.database;
+    return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
+  }
 
+  static void karteikarteLoeschen(Karteikarte s) async {
+    var id = s.id;
+    final rowsDeleted = await delete(id, tabelle);
+    print('deleted $rowsDeleted row(s): row $id');
+  }
 
 }

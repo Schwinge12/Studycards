@@ -25,7 +25,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
   @override
   Widget build(BuildContext context) {
     return SwipeStack(
-      children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,].map((int index) {
+      children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12].map((int index) {
         return SwiperItem(
             builder: (SwiperPosition position, double progress) {
               return Material(
@@ -128,7 +128,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-
                                             Expanded(
                                               child: Container(
                                                   color: Colors.white,

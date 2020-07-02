@@ -30,7 +30,6 @@ class KarteErstellenVorderseite extends StatefulWidget {
 
 class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
-
   Future _openGallery() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
@@ -46,6 +45,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
     });
     Navigator.of(context).pop();
   }
+
 
   Future<void> auswaehlen(BuildContext context) {
     return showDialog(context: context, builder: (BuildContext context) {

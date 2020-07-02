@@ -67,9 +67,9 @@ class Karteikarte extends Produkt {
     FileManager.writeFile(id, bild,bilder.length -1); // -1 -> dateisystem startet bei 0
     return this;
   }
-  
+
   Karteikarte mitFile(File bild) {
-     bilder.add(bild);
+    bilder.add(bild);
     return this;
   }
 

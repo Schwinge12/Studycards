@@ -128,7 +128,14 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
 
-                                            Text('Hier Bild Anzeigen', style: MenuButtonTextStyle)
+                                            Expanded(
+                                              child: Container(
+                                                  color: Colors.white,
+                                                  child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder[0] == null
+                                                      ? new Text("Kein Bild vorhanden.")
+                                                      : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),

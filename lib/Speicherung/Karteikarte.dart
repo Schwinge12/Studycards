@@ -122,6 +122,7 @@ class Karteikarte extends Produkt {
     var bilderzahl = map['bilderanzahl'];
     if (bilderzahl > 0 ){
       for (int i = 0 ; i < bilderzahl; i++)
+        print('getting file $id, $bilderzahl');
       s.mitFile(await FileManager.getFile(id, bilderzahl));
     }
     return s;

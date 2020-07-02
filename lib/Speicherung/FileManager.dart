@@ -14,23 +14,27 @@ class FileManager {
   // Karteikarte/bildID (aufgrund mehrerer bilder)
   static Future<File> getFile(int id, int fileID) async {
     try {
-      return File(getPath(id, fileID));
+      return File(await getPath(id, fileID));
     }
     catch(e){
       print(e);
       return null;
     }
   }
-  static String getPath(int id, int fileID) {
-      final path =  _userdata.datenspeicherort;
-      final username = _userdata.getKonto().getUsername();
-      if (fileID != null) {
-        return(('$path/$username/$id/$fileID'));
+  static Future<String> getPath(int id, int fileID) async {
+      final path = await _userdata.datenspeicherort;
+      final username =  _userdata.getKonto().getUsername();
+      final dir = '$path/$username/$id';
+      if (! await Directory(dir).exists()) {
+        new Directory(dir);
+        print('$dir created');
       }
-      return ('$path/$username/$id');
+      if (fileID != null)
+        return(('$dir/$fileID'));
+      return (dir);
   }
   static void writeFile(int id, File fileToWrite, int fileID) async {
-    fileToWrite.copy(getPath(id, fileID)) ;
+    fileToWrite.copy(await getPath(id, fileID)) ;
   }
 
 }

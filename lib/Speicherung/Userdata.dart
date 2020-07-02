@@ -38,7 +38,7 @@ class Userdata extends Speicherung {
     return _userdata;
   }
 
-  Userdata._internal(){init();}
+  Userdata._internal();
 
   //____________________________________Get/Set_________________________________
   Student getKonto() {
@@ -129,6 +129,7 @@ class Userdata extends Speicherung {
       case Dozent:
         {
           _konto = p;
+          init();
         }
         break;
       case Karteikarte:
@@ -236,7 +237,6 @@ class Userdata extends Speicherung {
   @override
   void init() {
     // Testdaten ____________________________
-    einfuegen(testkonto);
     LokaleDatenbankStapel.alleStapelLaden();
     // TODO: Speicherung - implement laden
     //data?

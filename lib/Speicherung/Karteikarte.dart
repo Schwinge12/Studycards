@@ -39,11 +39,7 @@ class Karteikarte extends Produkt {
   List<File> bilder = new List();
 
 //____________________________________Constructor_______________________________
-  Karteikarte() {
-    var gl = new GlobalLib();
-    this.id = gl.call();
-  }
-
+  Karteikarte();
 
 //____________________________________Builder-Chain_____________________________
 
@@ -65,11 +61,15 @@ class Karteikarte extends Produkt {
     this.rueckSeite = rueckSeite;
     return this;
   }
-  
+
+  Karteikarte mitFileSpeichern(File bild) {
+    bilder.add(bild);
+    FileManager.writeFile(id, bild,bilder.length -1); // -1 -> dateisystem startet bei 0
+    return this;
+  }
   
   Karteikarte mitFile(File bild) {
      bilder.add(bild);
-     FileManager.writeFile(id, bild,bilder.length -1); // -1 -> dateisystem startet bei 0
     return this;
   }
 
@@ -105,12 +105,18 @@ class Karteikarte extends Produkt {
 
 //____________________________________Methods___________________________________
 
-  static Karteikarte KKfromMapObject(Map<String, dynamic> map) {
+  static Future<Karteikarte> KKfromMapObject(Map<String, dynamic> map) async {
+    var id = map['_id'];
     Karteikarte s = new Karteikarte()
-    .mitID(map['_id'])
+    .mitID(id)
     .mitVorderSeite(map['stringvorderseite'])
     .mitRueckSeite(map['stringrueckseite'])
     ;
+    var bilderzahl = map['bilderanzahl'];
+    if (bilderzahl > 0 ){
+      for (int i = 0 ; i < bilderzahl; i++)
+      s.mitFile(await FileManager.getFile(id, bilderzahl));
+    }
     return s;
   }
 

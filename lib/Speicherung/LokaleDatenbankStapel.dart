@@ -83,7 +83,7 @@ import 'Userdata.dart';
   }
 
 
-  static Future<int> delete( int id) async {
+  static Future<int> delete( int id, var tabelle) async {
     Database db = await instance.database;
     return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
   }
@@ -125,9 +125,15 @@ import 'Userdata.dart';
     return await alleKarteikartenLaden(Stapel.StapelfromMapObject(allRows.last));
   }
 
-  static void stapelLoeschen(int id) async {
-    final rowsDeleted = await delete(id);
+  static void stapelLoeschen(Stapel s) async {
+    var id = s.getID();
+    var tg = s.getThemengebietName();
+
+    final rowsDeleted = await delete(id, tabelle);
     print('deleted $rowsDeleted row(s): row $id');
+
+    _database.rawQuery('DROP TABLE IF EXISTS $tg');
+    print('deleted table: $tg');
   }
 
   static void StapelmitKarteikartenLaden(var row) async {
@@ -139,7 +145,7 @@ import 'Userdata.dart';
     var tbl = s.getThemengebietName();
     final allRows = await _database.rawQuery(
         'SELECT * FROM $tbl');
-    allRows.forEach((row) => s.stapelKarten.add(Karteikarte.KKfromMapObject(row)));
+    allRows.forEach((row) async => s.stapelKarten.add(await Karteikarte.KKfromMapObject(row)));
     return s;
 
   }

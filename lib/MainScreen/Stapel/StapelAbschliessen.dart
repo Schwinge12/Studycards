@@ -56,9 +56,11 @@ class StapelAbschliessenDozent extends StatelessWidget {
                MenuButton(
                 text: 'Stapel speichern',
                 onPress: () async {
+                  //set id
                   LokaleDatenbankStapel.insertStapel(stapel);
-                  stapel  = await LokaleDatenbankStapel.lastEntry();
-                  _u.einfuegen(stapel);
+                  Stapel tmpStapel  = await LokaleDatenbankStapel.lastEntry();
+                  //kopiere / speichere - stapel/ kk / bilder
+                  _u.einfuegen(bilderKopieren(tmpStapel));
                 Navigator.pushNamed(context, 'MenuPage');
                 },
               ),
@@ -75,4 +77,13 @@ class StapelAbschliessenDozent extends StatelessWidget {
     ),
     )));
   }
+  Stapel bilderKopieren(Stapel tmpStapel){
+    for( int i = 0 ; i < tmpStapel.stapelKarten.length; i++){
+        for(int t = 0; t < stapel.stapelKarten[i].bilder.length;t++){
+          tmpStapel.stapelKarten[i].mitFileSpeichern(stapel.stapelKarten[i].bilder[t]);
+        }
+    }
+    return tmpStapel;
+  }
+
 }

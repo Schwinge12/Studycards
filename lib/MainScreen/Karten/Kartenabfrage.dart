@@ -82,7 +82,12 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
 
-                                            Text('Hier Bild Anzeigen', style: MenuButtonTextStyle)
+                                            Expanded(
+                                              child: Container(
+                                                  color: Colors.white,
+                                                  //child: new Center(child: widget.imageFile == null ? new Text("Kein Bild vorhanden.") : new Image.file(widget.imageFile, width: 400, height: 400))
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),

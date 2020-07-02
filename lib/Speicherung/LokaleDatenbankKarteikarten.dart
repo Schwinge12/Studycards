@@ -50,8 +50,8 @@ class LokaleDatenbankKarteiKarten {
    void insertKK(Karteikarte k) async {
     // row to insert
     Map<String, dynamic> row = {
-      LokaleDatenbankKarteiKarten.colStringVorderseite : k.vorderSeite,
-      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.rueckSeite,
+      LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
+      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
       LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length
     };
     final id = await _database.insert(tabelle, row);

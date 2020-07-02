@@ -24,8 +24,8 @@ class Karteikarte extends Produkt {
 
   Studiengang sg;
 
-  String vorderSeite;
-  String rueckSeite;
+  String _vorderSeite;
+  String _rueckSeite;
 
   bool keyKarte = false;
   var schwierigkeit = 0;
@@ -53,12 +53,12 @@ class Karteikarte extends Produkt {
 
 
   Karteikarte mitVorderSeite(String vorderSeite) {
-    this.vorderSeite = vorderSeite;
+    this._vorderSeite = vorderSeite;
     return this;
   }
 
   Karteikarte mitRueckSeite(String rueckSeite) {
-    this.rueckSeite = rueckSeite;
+    this._rueckSeite = rueckSeite;
     return this;
   }
 
@@ -100,10 +100,17 @@ class Karteikarte extends Produkt {
   Kurs getKurs() {
     return kurs;
   }
-
-
-
-//____________________________________Methods___________________________________
+  String getRueckSeite(){
+  if (_rueckSeite != null)
+    return _rueckSeite;
+   return '';
+  }
+  String getVorderSeite(){
+    if (_vorderSeite != null)
+      return _vorderSeite;
+    return '';
+  }
+  //____________________________________Methods___________________________________
 
   static Future<Karteikarte> KKfromMapObject(Map<String, dynamic> map) async {
     var id = map['_id'];
@@ -119,5 +126,6 @@ class Karteikarte extends Produkt {
     }
     return s;
   }
+
 
 }

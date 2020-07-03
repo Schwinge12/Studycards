@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/EinzelnerStapelStatusAnsicht.dart';
 import '../../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
-
-class QuizAuswahl extends StatefulWidget{
-
+class AlleQuizStapelStapel extends StatefulWidget{
   @override
-  _QuizAuswahl createState()=>_QuizAuswahl();
-
+  _AlleStapel createState()=>_AlleStapel();
 }
 
-
-class _QuizAuswahl extends State<QuizAuswahl> {
+//TODO Backend: Quizstapel anzeigen
+class _AlleStapel extends State<AlleQuizStapelStapel> {
 
   static Userdata userdata = new Userdata();
   Map<String, Stapel> buttons= alleStapel();
@@ -24,9 +22,8 @@ class _QuizAuswahl extends State<QuizAuswahl> {
       String kursname = userdata.stapel[i].getStudienfachName();
       String themengebiet = userdata.stapel[i].getThemengebietName();
 
-
       stapelverzeichnis[kursname + "\n" + themengebiet]= userdata.stapel[i];
-
+      print(userdata.stapel[i].getThemengebietName());
     }
 
     return stapelverzeichnis;
@@ -43,20 +40,38 @@ class _QuizAuswahl extends State<QuizAuswahl> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Meine Stapel',style: WeisserTextStyle,),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: (){
+              Navigator.pushNamed(context, 'MenuPage');
+            },
+          ) ,
+
+          title: Text('Meine Quizsammlung',style: WeisserTextStyle,),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              color: Colors.white,
+              onPressed: (){
+                Navigator.pushNamed(context, 'QuizStapelErstellen');
+              },
+            )
+          ],
+
         ),
+
         body: new ListView.builder(
             itemCount: buttons.length,
             itemBuilder: (BuildContext contex,index){
               return MenuButton(
                 text: buttons.keys.toList()[index],
                 onPress: (){
-                  Navigator.pushNamed(context,'Quizstart');
+
+                  Navigator.pushNamed(context, 'Quizstart');
                 },
               );
             }
         )
     );
   }
-
 }

@@ -13,6 +13,7 @@ class QuizStart extends StatefulWidget{
 class _QuizStartState extends State<QuizStart>{
 
 
+  //Todo Backend: anazhl der Karten die Im Quiz sind ändern
   int anzahlKartenImStapel=10;
   int auswahl=5;
 
@@ -45,10 +46,11 @@ class _QuizStartState extends State<QuizStart>{
           children: <Widget>[
             //TODO Backend: Anzahl der Karten einfügen
             Expanded(
+              flex: 2,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(60),
-                  child: Text('Anzahl Quizfragen',style: MenuButtonTextStyle,),
+                  child: Text('Wie viele Fragen willst du lernen?',style: MenuButtonTextStyle,),
                 ),
               ),
             ),

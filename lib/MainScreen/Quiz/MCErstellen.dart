@@ -278,34 +278,32 @@ class _MCErstellen extends State <MCErstellen>{
               height: 10,
             ),
 
-            Row(
-              children: <Widget>[
-                Expanded(
+            SafeArea(
+              child: Row(
+                children: <Widget>[
 
-                  child: SafeArea(
-                    child: WeiterButton(
-                      text: 'Speichern',
-                      onPress: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: widget.studiengang,studienfach: widget.studienfach,themengebiet: widget.themengebiet)));
+                  Expanded(
+                    child: IconButton( 
+                      icon: Icon(Icons.add,color: Colors.white,size: 40.0,),
+                      onPressed: (){
 
+                        Navigator.pushNamed(context, 'MCErstellen');
                       },
                     ),
                   ),
-                ),
 
-                Expanded(
-
-                  child: SafeArea(
-                    child: WeiterButton(
-                      text: 'Stapel abschliessen',
-                      onPress: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessenDozent(stapel: widget.stapel,)));
-
+                  Expanded(
+                    child: IconButton(  
+                      icon: Icon(Icons.check,color: Colors.white,size: 40.0,),
+                      onPressed: (){
+                        //TODO Backend: Quizstapel speichern
+                        Navigator.pushNamed(context, 'AlleQuizstaplAnzeigen');
                       },
                     ),
                   ),
-                )
-              ],
+
+                ],
+              ),
             )
 
 

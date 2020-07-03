@@ -273,6 +273,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                 IconButton(
                                   icon: Icon(Icons.arrow_back_ios,color: Colors.white, size: 25),
                                   onPressed: (){
+                                    LokaleDatenbankKarteiKarten.updateKk(widget.stapel.stapelKarten[widget.kartennummer]);
                                     if(-1 == widget.kartennummer-1)
                                       Navigator.pop(context, 'StapelAbschliessenDozent');
                                     else setState(() {
@@ -296,6 +297,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                 child: IconButton(
                                   icon: Icon(Icons.arrow_forward_ios,color: Colors.white, size: 25),
                                   onPressed: (){
+                                    LokaleDatenbankKarteiKarten.updateKk(widget.stapel.stapelKarten[widget.kartennummer]);
                                     if(widget.stapel.stapelKarten.length-1 == widget.kartennummer)
                                       Navigator.pop(context, 'StapelAbschliessenDozent');
                                     else setState(() {

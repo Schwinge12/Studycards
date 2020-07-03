@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
-import '../../MainScreen/Karten/KarteErstellenVorderseite.dart';
+import '../Karten/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import '../Stapel/StapelAbschliessen.dart';
 

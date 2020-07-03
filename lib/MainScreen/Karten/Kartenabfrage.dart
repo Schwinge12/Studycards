@@ -24,10 +24,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
 
   @override
   Widget build(BuildContext context) {
-    return SwipeStack(
-      children: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12].map((int index) {
-        return SwiperItem(
-            builder: (SwiperPosition position, double progress) {
               return Material(
                   elevation: 3,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -40,12 +36,11 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-
                           Expanded(
                             child: Card(
                               elevation: 0.0,
                               margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0, bottom: 20.0),
-                              color: Colors.white70,
+                              color: Colors.white,
                               child: FlipCard(
                                 direction: FlipDirection.HORIZONTAL,
                                 speed: 500,
@@ -55,11 +50,10 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                 front: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: <Widget>[
-
                                     Expanded(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.white70,
+                                          color: Colors.black12,
                                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                         ),
                                         child: Column(
@@ -71,20 +65,18 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         ),
                                       ),
                                     ),
-
                                     Expanded(
                                       child: Container( 
                                         decoration: BoxDecoration(
-                                          color: Colors.white70,
+                                          color: Colors.white30,
                                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                         ),
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-
                                             Expanded(
                                               child: Container(
-                                                  color: Colors.white,
+                                                  color: Colors.white30,
                                                   child:
                                                   new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
                                                       ? new Text("Kein Bild vorhanden.")
@@ -97,16 +89,13 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                     ),
                                   ],
                                 ),
-
-
                                 back: Column(
                                   crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: <Widget>[
-
                                     Expanded(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.white70,
+                                          color: Colors.white30,
                                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                         ),
                                         child: Column(
@@ -118,11 +107,10 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                         ),
                                       ),
                                     ),
-
                                     Expanded(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.white70,
+                                          color: Colors.white30,
                                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                         ),
                                         child: Column(
@@ -130,7 +118,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           children: <Widget>[
                                             Expanded(
                                               child: Container(
-                                                  color: Colors.white,
+                                                  color: Colors.white30,
                                                   child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
                                                       ? new Text("Kein Bild vorhanden.")
                                                       : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
@@ -145,7 +133,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                               ),
                             ),
                           ),
-
                           Row(
                             children: <Widget>[
                               Expanded(
@@ -164,7 +151,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                   else setState(() {
                                       widget.kartennummer  ++ ;
                                     });
-
                                   },
                                 ),
                               ),
@@ -179,31 +165,16 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                     Navigator.pop(context, 'StapelAbschliessenDozent');
                                     else setState(() {
                                     widget.kartennummer  ++ ;
-                                    });
+                                    }
+                                    );
                                   },
                                 ),
                               ),
                             ],
                           ),
-
-
                         ],
                       )
                   )
-              );
-            }
-        );
-      }).toList(),
-      visibleCount: 3,
-      stackFrom: StackFrom.Top,
-      translationInterval: 6,
-      scaleInterval: 0.03,
-      onEnd: () => debugPrint("onEnd"),
-      onSwipe: (int index, SwiperPosition position) => debugPrint("onSwipe $index $position"),
-      onRewind: (int index, SwiperPosition position) => debugPrint("onRewind $index $position"),
-    );
-
+                  );
   }
-
-
 }

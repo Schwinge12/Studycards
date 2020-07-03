@@ -39,11 +39,10 @@ class _EinstellungenState extends State<Einstellungen> {
                       text: 'Abmelden',
                       onPress: () {
                         _auth.signOut();
-
                         Navigator.pushNamed(context, 'LoginScreen');
                       }
                   ),
-
+                  
                 ],
               ),
             )

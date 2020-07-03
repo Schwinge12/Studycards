@@ -4,11 +4,11 @@ import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/Kartenabfrage.dart';
-import 'package:karteikartenapp/MainScreen/MenuPage.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
-import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
+import 'package:share_extend/share_extend.dart';
 class StapelStatus extends StatefulWidget{
 
   Stapel stapel;
@@ -42,6 +42,12 @@ class StapelStatusState extends State<StapelStatus>{
                 await _loeschen();
                 Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleStapel()));
               },
+            ),
+            IconButton(
+              icon: Icon(Icons.share,color: Colors.white, size: 35),
+              onPressed:() {
+                 //ShareExtend.shareMultiple(widget.stapel.stapelKarten, "Hier ist ein Stapel für dich",subject: widget.stapel.getThemengebietName());
+                }
             ),
           ]
       ),
@@ -95,11 +101,22 @@ class StapelStatusState extends State<StapelStatus>{
               child: WeiterButton(
                 color: Colors.green,
                 style: WeisserTextStyle,
-                text: 'Jetzt Lernen!',
+                text: 'Jetzt Lernen',
                 onPress: (){
                   if(widget.stapel.stapelKarten.length > 0)
                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Kartenabfrage(stapel: widget.stapel)));
-
+                },
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: WeiterButton(
+                color: Colors.blue,
+                style: WeisserTextStyle,
+                text: 'Bearbeiten',
+                onPress: (){
+                  if(widget.stapel.stapelKarten.length > 0)
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelUeberarbeiten(stapel: widget.stapel)));
                 },
               ),
             ),

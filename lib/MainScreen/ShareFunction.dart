@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
 
+
+
+
 class ShareDemo extends StatefulWidget {
   @override
   ShareDemoState createState() => ShareDemoState();
@@ -10,15 +13,14 @@ class ShareDemo extends StatefulWidget {
 
 class ShareDemoState extends State<ShareDemo> {
   String text = '';
-  String subject = '';
-
+  String subject='';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Share Plugin Demo',
+      title: 'Stapel Teilen',
       home: Scaffold(
           appBar: AppBar(
-            title: const Text('Share Plugin Demo'),
+            title: const Text('test'),
           ),
           body: Padding(
             padding: const EdgeInsets.all(24.0),
@@ -35,16 +37,7 @@ class ShareDemoState extends State<ShareDemo> {
                     text = value;
                   }),
                 ),
-                TextField(
-                  decoration: const InputDecoration(
-                    labelText: 'Share subject:',
-                    hintText: 'Enter subject to share (optional)',
-                  ),
-                  maxLines: 2,
-                  onChanged: (String value) => setState(() {
-                    subject = value;
-                  }),
-                ),
+
                 const Padding(padding: EdgeInsets.only(top: 24.0)),
                 Builder(
                   builder: (BuildContext context) {

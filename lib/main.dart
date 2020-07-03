@@ -17,11 +17,10 @@ import 'Login_Registration/LoginScreen.dart';
 import 'MainScreen/MenuPage.dart';
 import 'MainScreen/Quiz/QuizStart.dart';
 import 'MainScreen/Quiz/Quiz.dart';
-import 'MainScreen/Karten/MCErstellen.dart';
+import 'MainScreen/Quiz/MCErstellen.dart';
 import 'MainScreen/Einstellungen.dart';
 import 'package:syncfusion_flutter_core/core.dart';
-import 'MainScreen/ShareFunction.dart';
-
+import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 
 void main(){
   SyncfusionLicense.registerLicense("NT8mJyc2IWhia31ifWN9ZmFoZHxgfGFjYWNzZGliZWlnZnMSHmg+Mis6Pjo/OjI9fTchNiAwOzYhEyAnJjc2PSd9NTskIH03Ng==");
@@ -58,8 +57,7 @@ class KarteikartenApp extends StatelessWidget{
         'LoginScreen':(context)=>LoginScreen(),
         'Einstellungen':(context)=>Einstellungen(),
         'PasswortVergessenScreen':(context)=>PasswortVergessenScreen(),
-        'share':(context)=>ShareDemo(),
-
+        'StapelUeberarbeiten':(context)=>StapelUeberarbeiten(),
       },
     );
   }

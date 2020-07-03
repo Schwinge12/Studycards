@@ -56,7 +56,6 @@ class _AlleStapel extends State<AlleStapel> {
           return MenuButton(
             text: buttons.keys.toList()[index],
             onPress: (){
-
               Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelStatus(stapel:buttons.values.toList()[index] )));
             },
           );

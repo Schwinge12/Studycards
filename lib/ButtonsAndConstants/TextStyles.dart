@@ -12,7 +12,7 @@ const MenuButtonTextStyle= TextStyle(
 const KleinereAnzeigeTextStyle= TextStyle(
   color: Colors.black,
   fontSize: 25.0,
-  fontFamily: 'Pacifico-Regular',
+  fontFamily: 'BalooBhai2-ExtraBold',
 );
 
 const WeisserTextStyle=TextStyle(

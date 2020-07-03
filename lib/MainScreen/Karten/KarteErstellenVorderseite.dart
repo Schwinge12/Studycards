@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
-import 'package:karteikartenapp/MainScreen/Karten/MCErstellen.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 

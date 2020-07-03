@@ -271,11 +271,13 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                               Expanded(
                                 child:
                                 IconButton(
-                                  //TODO Backend: Aktuelle Karte aus DB löschen
-                                  //Spericherung.loeschen(Produkt zuLoeschendeKarte)
                                   icon: Icon(Icons.arrow_back_ios,color: Colors.white, size: 25),
                                   onPressed: (){
-                                    //TODo Backend: zurück zur letzten Karteikarte
+                                    if(-1 == widget.kartennummer-1)
+                                      Navigator.pop(context, 'StapelAbschliessenDozent');
+                                    else setState(() {
+                                      widget.kartennummer  -- ;
+                                    });
                                   },
                                 ),
                               ),
@@ -294,13 +296,11 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                 child: IconButton(
                                   icon: Icon(Icons.arrow_forward_ios,color: Colors.white, size: 25),
                                   onPressed: (){
-                                    print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
-                                    if(widget.stapel.stapelKarten.length +1 == widget.kartennummer)
+                                    if(widget.stapel.stapelKarten.length-1 == widget.kartennummer)
                                       Navigator.pop(context, 'StapelAbschliessenDozent');
                                     else setState(() {
                                       widget.kartennummer  ++ ;
                                     });
-                                    //TODO Backend: Nachdem letzte Karte erreicht ist Error!
 
                                   },
                                 )

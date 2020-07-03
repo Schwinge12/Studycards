@@ -113,7 +113,6 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
                       onPress: () async {
                         if(studienfachEingabe==null||themengebietEingabe==null){
 
-
                           showDialog(context: context,
                               builder: (_)=>CupertinoAlertDialog(
                                 title: Text('Fehlende Eingaben!'),

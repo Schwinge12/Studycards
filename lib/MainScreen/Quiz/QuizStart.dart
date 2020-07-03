@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
 
 
 class QuizStart extends StatefulWidget{
@@ -89,7 +90,7 @@ class _QuizStartState extends State<QuizStart>{
                 style: WeisserTextStyle,
                 text: 'Quiz starten!',
                 onPress: (){
-                  Navigator.pushNamed(context, 'Quiz');
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(anzahlKarten: anzahlKartenImStapel,)));
                 },
               ),
             ),

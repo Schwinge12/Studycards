@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizStapelErstellen.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
@@ -61,6 +62,7 @@ class KarteikartenApp extends StatelessWidget{
         'AlleQuizstaplAnzeigen':(context)=>AlleQuizStapelStapel(),
         'QuizStapelErstellen':(context)=>QuizStapelErstellen(),
         'Quizende':(context)=>Quizende(),
+        'QuizAktuelleFrageErgebnis':(context)=>QuizAkutelleFrageErgebnis(),
       },
     );
   }

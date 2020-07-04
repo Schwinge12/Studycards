@@ -56,7 +56,7 @@ class _QuizStartState extends State<QuizStart>{
               ),
             ),
 
-            Text(auswahl.toString(),style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold),),
+            Text(auswahl.toString(),style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold, color: Colors.black)),
 
             Expanded(
               child: SliderTheme(

@@ -1,24 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/QuizButtonAuswertung.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
-class Quiz extends StatefulWidget {
+class QuizAkutelleFrageErgebnis extends StatefulWidget {
   int anzahlKarten;
 
-  Quiz({@required this.anzahlKarten});
-  @override
-  _Quiz createState() => _Quiz();
-}
+  QuizAkutelleFrageErgebnis({@required this.anzahlKarten});
 
-class _Quiz extends State<Quiz> {
+  @override
+  _QuizAkutelleFrageErgebnis createState() => _QuizAkutelleFrageErgebnis();
+}
+//Werte aus klasse: Quiz werden komplett übergeben von aktueller frage
+
+class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
+          title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
           actions: <Widget>[
             // action button
             IconButton(
@@ -27,6 +30,12 @@ class _Quiz extends State<Quiz> {
                   Navigator.pushNamed(context, 'MenuPage');
                 }
             ),
+            IconButton(
+              icon: Icon(Icons.check_circle, color: Colors.green, size: 35),
+              onPressed:(){
+                Navigator.pushNamed(context, 'QuizEnde');
+              }
+            )
           ]
       ),
       body: Column(
@@ -41,7 +50,7 @@ class _Quiz extends State<Quiz> {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black54,
+                        color: Colors.transparent,
                         blurRadius: 10.0,
                         spreadRadius: 5.0,
                         offset: Offset(
@@ -69,44 +78,49 @@ class _Quiz extends State<Quiz> {
               ),
             ],
           ),
-              Column(
-                children: <Widget>[
-                  QuizButton(
-                    text: 'Frankreich',
-                    onPress: (){
-                    },
-                    auswertung: false,
-                  ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                    text: 'Italien',
-                    onPress: (){
-                    },
-                    auswertung: false,
-                  ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                    text: 'Brasilien',
-                    onPress: (){
-                      Navigator.pushNamed(context, 'QuizAktuelleFrageErgebnis');
-                    },
-                    auswertung: true,
-                  ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                    text: 'Portugal',
-                    onPress: (){
-                    },
-                    auswertung: false,
-                  ),
-                ],
+          Column(
+            children: <Widget>[
+
+              QuizButtonAuswertung(
+                text: 'Frankreich',
+                onPress: (){
+                },
+                auswertung: false,
+                farbe: Colors.red,
               ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButtonAuswertung(
+                text: 'Italien',
+                onPress: (){
+                },
+                auswertung: false,
+                farbe: Colors.red,
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButtonAuswertung(
+                text: 'Brasilien',
+                onPress: (){
+                  Navigator.pushNamed(context,"Quizende");
+                },
+                auswertung: true,
+                farbe: Colors.green,
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButtonAuswertung(
+                text: 'Portugal',
+                onPress: (){
+                  },
+                auswertung: false,
+                farbe: Colors.red,
+              ),
+            ],
+          ),
         ],
       ),
     );

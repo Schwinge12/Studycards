@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:pie_chart/pie_chart.dart';
-
-
-
 
 class Quizende extends StatefulWidget {
 
@@ -28,7 +24,6 @@ class _Quizende extends State<Quizende> {
     return ausgabe;
   }
 
-
   Map<String, double> data = new Map();
   bool _loadChart = false;
 
@@ -37,24 +32,19 @@ class _Quizende extends State<Quizende> {
     data.addAll({
       'Richtig beantwortet': prozentAusrechnen()*1000,
       'Falsch beantwortet': 100000-prozentAusrechnen()*1000
-
     });
     super.initState();
   }
-
   List<Color> _colors = [
     Colors.green,
     Colors.red,
   ];
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quizende!'),
+        title: Text('Auswertung'),
       ),
       body: Center(
         child: Column(
@@ -63,7 +53,7 @@ class _Quizende extends State<Quizende> {
               height: 50,
             ),
             Text(
-              'Number of Questions asked on StackOverflow',
+              'Auswertung der beantworteten Fragen',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
@@ -95,11 +85,9 @@ class _Quizende extends State<Quizende> {
                 chartType: ChartType.disc, //can be changed to ChartType.ring
             ),
              ),
-            
             SizedBox(
               height: 20,
             ),
-
             Expanded(
               child: SafeArea(
                 child: MenuButton(
@@ -110,9 +98,6 @@ class _Quizende extends State<Quizende> {
                 ),
               ),
             )
-
-
-
           ],
         ),
       ),

@@ -1,10 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'Dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/MultipleChoiceButton.dart';
-import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
@@ -30,6 +29,7 @@ class KarteErstellenVorderseite extends StatefulWidget {
 
 class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
+
   Future _openGallery() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
@@ -41,7 +41,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
   Future _openCamera() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
-      widget.imageFile=image;
+       widget.imageFile=image;
     });
     Navigator.of(context).pop();
   }
@@ -73,6 +73,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
       );
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,8 +84,10 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
               Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelErstellen()));
             },
           ),
-        title: Text(
-          widget.studienfach + ': ' + widget.themengebiet
+        title: AutoSizeText(widget.studienfach+': '+widget.themengebiet,
+          minFontSize: 6,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
           actions: <Widget>[
       // action button
@@ -100,41 +103,44 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
       ),
 
 
-      body: Center(
+     body: Center(
         child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
 
               Expanded(
                 child: Container(
 
-                  color: Colors.white,
-                  child: Column(
-                    children: <Widget>[
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Text('VORDERSEITE'),
+                    color: Colors.white,
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text('VORDERSEITE'),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          style: MenuButtonTextStyle,
-                          controller: widget.vorderseite,
-                          maxLines: 20,
-                          onChanged: (String s){
-                            widget.eingabe=s;
-                          },
-                        ),
-                      )
-                    ],
-                  )
+                        Expanded(
+                          child: TextField(
+                            style: MenuButtonTextStyle,
+                            controller: widget.vorderseite,
+                            maxLines: 20,
+                            onChanged: (String s){
+                              widget.eingabe=s;
+                            },
+                          ),
+                        )
+                      ],
+                    )
 
                 ),
               ),
               Expanded(
                 child: Container(
-                  color: Colors.white,
-                  child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera") : new Image.file(widget.imageFile, width: 400, height: 400))
+                    color: Colors.white,
+                    child: new Center(child: widget.imageFile == null ? new Text("Um ein Bild einzufügen drücken\n         Sie auf die Kamera", style: KleinereAnzeigeTextStyle,) : new Image.file(
+                        widget.imageFile, width: 400, height: 400))
                 ),
               ),
 
@@ -144,25 +150,16 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
                   children: <Widget>[
 
                     Expanded(
-                      child: FlatButton(onPressed: (){
-                        auswaehlen(context);
-                      },child: Icon(Icons.add_a_photo, size: 60, color: Colors.white30)
-                      )
-                    ),
-                    Expanded(
-                        child: MultipleChoiceButton(
-                          onPress:(){
-                            Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet,stapel: widget.stapel,)));
-                          },
-                          text: 'MC',
+                        child: FlatButton(onPressed: (){
+                          auswaehlen(context);
+                        },child: Icon(Icons.add_a_photo, size: 60, color: Colors.white30)
                         )
                     ),
-
                     Expanded(
                       child: FlatButton(
-                        onPressed: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet)));
-                        }, child: Icon(Icons.delete, size:60, color: Colors.white30)
+                          onPressed: (){
+                            Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studienfach: widget.studienfach,studiengang: widget.studiengang,themengebiet: widget.themengebiet)));
+                          }, child: Icon(Icons.delete, size:60, color: Colors.white30)
                       ),
                     ),
 
@@ -178,6 +175,7 @@ class _KarteErstellenVorderseite  extends State<KarteErstellenVorderseite> {
 
 
 }
+
 
 
 

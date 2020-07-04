@@ -23,7 +23,7 @@ class _QuizStartState extends State<QuizStart>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Stapelname,Thema',style: WeisserTextStyle,)),
+        title: Center(child: Text('Stapelname,Thema',)),
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),

@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
@@ -8,7 +10,7 @@ import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
-import 'package:share_extend/share_extend.dart';
+
 class StapelStatus extends StatefulWidget{
 
   Stapel stapel;
@@ -33,14 +35,36 @@ class StapelStatusState extends State<StapelStatus>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text( widget.stapel.getStudienfachName())),
+        title: Center(child: AutoSizeText(
+            widget.stapel.getStudienfachName(),
+            minFontSize: 6,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+        ),
+        ),
           actions: <Widget>[
             // action button
             IconButton(
               icon: Icon(Icons.delete, color: Colors.red, size: 35),
               onPressed: ()async{
-                await _loeschen();
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleStapel()));
+                showDialog(
+                    context: context,
+                    builder: (_) =>
+                        CupertinoAlertDialog(
+                          content:
+                          Text(
+                              'Soll der aktuelle Stapel wirklich gelöscht werden?'),
+                          actions: <Widget>[
+                            CupertinoDialogAction(
+                              child: Text('Stapel löschen'),
+                              onPressed: () async {
+                                await _loeschen();
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleStapel()));
+                              },
+                            ),
+                          ],
+                        ),
+                    barrierDismissible: true);
               },
             ),
             IconButton(

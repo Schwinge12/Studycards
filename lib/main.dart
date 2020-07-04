@@ -3,7 +3,6 @@ import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizStapelErstellen.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
-import 'package:karteikartenapp/MainScreen/Stapel/StapelVerwalten.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
 import 'package:karteikartenapp/MainScreen/MenuPage.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
@@ -43,7 +42,6 @@ class KarteikartenApp extends StatelessWidget{
       routes: {
         'MenuPage':(context) =>MenuPageStudent(),
         'StapelErstellen':(context)=>StapelErstellen(),
-        'Kartensets verwalten':(context)=>Kartensetsverwalten(),
         'KarteErstellenVorderseite':(context)=>KarteErstellenVorderseite(),
         'KarteErstellenRueckseite':(context)=>KarteErstellenRueckseite(),
         'Kartenabfrage':(context)=>Kartenabfrage(),

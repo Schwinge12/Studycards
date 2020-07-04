@@ -1,8 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:swipe_stack/swipe_stack.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 
@@ -24,7 +24,20 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
 
   @override
   Widget build(BuildContext context) {
-              return Material(
+              return Scaffold(
+                appBar: AppBar(
+                  title: Center(
+                    child: AutoSizeText(
+                      widget.stapel.getStudienfachName(),
+                      textAlign: TextAlign.center,
+                      minFontSize: 6,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                ),
+                ),
+                ),
+                body: SafeArea(
+                  child: Material(
                   elevation: 3,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   child: Container(
@@ -47,88 +60,102 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                 onFlipDone: (status) {
                                   print(status);
                                 },
-                                front: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.black12,
-                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(widget.stapel.getThemengebietName(), style: MenuButtonTextStyle),
-                                            Text(widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite(), style: MenuButtonTextStyle)
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container( 
-                                        decoration: BoxDecoration(
-                                          color: Colors.white30,
-                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                              child: Container(
-                                                  color: Colors.white30,
-                                                  child:
-                                                  new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
-                                                      ? new Text("Kein Bild vorhanden.")
-                                                      : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                front: SafeArea(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              AutoSizeText(widget.stapel.getThemengebietName()+'\n'+'\n'+widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite(),
+                                                textAlign: TextAlign.center,
+                                                style: KleinereAnzeigeTextStyle,
+                                                minFontSize: 6,
+                                                maxLines: 6,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Expanded(
+                                                child: Container(
+                                                    color: Colors.white,
+                                                    child:
+                                                    new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
+                                                        ? new Text("Kein Bild vorhanden.")
+                                                        : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                back: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white30,
-                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(widget.stapel.getThemengebietName(), style: MenuButtonTextStyle),
-                                            Text(widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite(), style: MenuButtonTextStyle)
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white30,
-                                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                              child: Container(
-                                                  color: Colors.white30,
-                                                  child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
-                                                      ? new Text("Kein Bild vorhanden.")
-                                                      : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                back: SafeArea(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white30,
+                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              AutoSizeText(widget.stapel.getThemengebietName()+'\n'+'\n'+widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite(),
+                                                textAlign: TextAlign.center,
+                                                style: KleinereAnzeigeTextStyle,
+                                                minFontSize: 6,
+                                                maxLines: 6,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Expanded(
+                                                child: Container(
+                                                    color: Colors.white,
+                                                    child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
+                                                        ? new Text("Kein Bild vorhanden.")
+                                                        : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -138,7 +165,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                               Expanded(
                                 child:
                                 IconButton(
-                                  //TODO Backend: Aktuelle Karte aus DB löschen
                                   //Spericherung.loeschen(Produkt zuLoeschendeKarte)
                                   icon: Icon(Icons.cancel,color: Colors.red,),
                                   iconSize: 60.0,
@@ -175,6 +201,8 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                         ],
                       )
                   )
-                  );
+                  ),
+                ),
+              );
   }
 }

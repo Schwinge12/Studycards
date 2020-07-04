@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:async';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,13 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.vorderSeite.studienfach+': '+widget.vorderSeite.themengebiet),
+        title: Center(child:
+        AutoSizeText(widget.vorderSeite.studienfach+': '+widget.vorderSeite.themengebiet,
+          minFontSize: 6,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        ),
       ),
       body: Center(
         child: Column(

@@ -70,7 +70,7 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
                     height: 70.0,
                     text: 'Einstellungen',
                     onPress: (){
-                      Navigator.pushNamed(context, 'share');
+                      Navigator.pushNamed(context, 'Einstellungen');
                     },
                   ),
                 ]

@@ -17,6 +17,9 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  dependencies:
+  flutter_svg: ^0.17.4
+  photo_view: ^0.9.2
   share_extend: "^1.1.9"
   shared_preferences: ^0.5.7
   image_picker: ^0.6.1+11

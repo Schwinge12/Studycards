@@ -35,8 +35,8 @@ class _Quizende extends State<Quizende> {
   @override
   void initState() {
     data.addAll({
-      'Falsch beantwortet': prozentAusrechnen()*1000,
-      'Richtig beantwortet': 100000-prozentAusrechnen()*1000
+      'Richtig beantwortet': prozentAusrechnen()*1000,
+      'Falsch beantwortet': 100000-prozentAusrechnen()*1000
 
     });
     super.initState();

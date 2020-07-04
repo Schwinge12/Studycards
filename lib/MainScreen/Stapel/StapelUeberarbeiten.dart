@@ -1,9 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankKarteikarten.dart';
-import 'package:swipe_stack/swipe_stack.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -115,11 +115,17 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Center(child: Text( widget.stapel.getThemengebietName())),
+            title: Center(child: AutoSizeText(
+              widget.stapel.getThemengebietName(),
+              minFontSize: 6,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            ),
             actions: <Widget>[
               // action button
               IconButton(
-                icon: Icon(Icons.arrow_back,color: Colors.white, size: 40),
+                icon: Icon(Icons.arrow_back,color: Colors.white, size: 30),
                 onPressed: (){
                   LokaleDatenbankKarteiKarten.updateKk(widget.stapel.stapelKarten[widget.kartennummer]);
                   if(-1 == widget.kartennummer-1)
@@ -130,7 +136,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                 },
               ),
               IconButton(
-                icon: Icon(Icons.save,color: Colors.white, size: 40),
+                icon: Icon(Icons.save,color: Colors.grey, size: 30),
                 tooltip: 'Stapel abschließen und hochladen',
                 onPressed: (){
                   LokaleDatenbankKarteiKarten.updateKk(widget.stapel.stapelKarten[widget.kartennummer]);
@@ -138,7 +144,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                 },
               ),
               IconButton(
-                icon: Icon(Icons.check_box,color: Colors.white, size: 40),
+                icon: Icon(Icons.arrow_forward,color: Colors.white, size: 30),
                 onPressed: (){
                   LokaleDatenbankKarteiKarten.updateKk(widget.stapel.stapelKarten[widget.kartennummer]);
                   if(widget.stapel.stapelKarten.length-1 == widget.kartennummer)
@@ -168,32 +174,57 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                 child: FlipCard(
                                   direction: FlipDirection.HORIZONTAL,
                                   speed: 500,
-                                  onFlipDone: (status) {
-                                    print(status);
-                                  },
+
                                   front: Column(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: <Widget>[
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color: Colors.white38,
                                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                           ),
                                           child: SafeArea(
                                             child: Column(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: <Widget>[
-                                                Text('Aktueller Text:',style:KleinereAnzeigeTextStyle),
-                                                Text(widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite()+'\n', style: MenuButtonTextStyle),
-                                                Text('Neuer Text:',style:KleinereAnzeigeTextStyle),
-                                                TextField(
+                                                AutoSizeText(
+                                                  ('Aktueller Text:'' \n'+widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite()),
+                                                  textAlign: TextAlign.center,
                                                   style: KleinereAnzeigeTextStyle,
-                                                  controller: widget.vorderseite,
-                                                  maxLines: 10,
+                                                  minFontSize: 6,
+                                                  maxLines: 6,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                                SizedBox(
+                                                  height: 15.0,
+                                                ),
+                                                TextFormField(
+                                                  obscureText: false,
+                                                  textAlign: TextAlign.center,
                                                   onChanged: (String s){
                                                     widget.stapel.stapelKarten[widget.kartennummer].mitVorderSeite(s);
                                                   },
+                                                  decoration: InputDecoration(
+                                                    filled: true,
+                                                    fillColor: Colors.black38,
+                                                    hintText: 'Neuer Text',
+                                                    contentPadding:
+                                                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                    ),
+                                                    enabledBorder: OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(color: Colors.black, width: 1.0),
+                                                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                    ),
+                                                    focusedBorder: OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(color: Colors.black, width: 2.0),
+                                                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -203,35 +234,35 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white70,
+                                            color: Colors.white38,
                                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                           ),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Text("Aktuelles Bild:"),
-                                              Expanded(
-                                                child: Container(
-                                                    color: Colors.white,
-                                                    child:
-                                                    SafeArea(
-                                                      child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
+                                          child: SafeArea(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text("Aktuelles Bild:"),
+                                                Expanded(
+                                                  child: Container(
+                                                      color: Colors.black26,
+                                                      child:
+                                                      new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
                                                           ? new Text("Kein Bild vorhanden.")
-                                                          : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400)),
-                                                    )
+                                                          : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                                  ),
                                                 ),
-                                              ),
-                                              Text("Neues Bild:"),
-                                              FlatButton(onPressed: (){
-                                                auswaehlenVorderseite(context);
-                                              },child: Icon(Icons.add_a_photo, size: 60, color: Colors.black12)
-                                              )
-                                            ],
+                                                FlatButton(onPressed: (){
+                                                  auswaehlenVorderseite(context);
+                                                },child: Icon(Icons.add_a_photo, size: 60, color: Colors.black26)
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
+
                                   back: Column(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: <Widget>[
@@ -244,22 +275,48 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
-                                              Text('Aktueller Text:'),
-                                              Text(widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite(), style: MenuButtonTextStyle),
-                                              Text('Neuer Text:'),
-                                              TextField(
-                                                style: MenuButtonTextStyle,
-                                                controller: widget.rueckseite,
-                                                maxLines: 20,
+                                              AutoSizeText(
+                                                ('Aktueller Text:'' \n'+widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite()),
+                                                textAlign: TextAlign.center,
+                                                style: KleinereAnzeigeTextStyle,
+                                                minFontSize: 6,
+                                                maxLines: 6,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              SizedBox(
+                                                height: 15.0,
+                                              ),
+                                              TextFormField(
+                                                obscureText: false,
+                                                textAlign: TextAlign.center,
                                                 onChanged: (String ss){
                                                   widget.stapel.stapelKarten[widget.kartennummer].mitRueckSeite(ss);
                                                 },
-                                              )
+                                                decoration: InputDecoration(
+                                                  filled: true,
+                                                  fillColor: Colors.black26,
+                                                  hintText: 'Neuer Text',
+                                                  contentPadding:
+                                                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                  ),
+                                                  enabledBorder: OutlineInputBorder(
+                                                    borderSide:
+                                                    BorderSide(color: Colors.black, width: 1.0),
+                                                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                  ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                    borderSide:
+                                                    BorderSide(color: Colors.black, width: 2.0),
+                                                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
                                       ),
-
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -271,7 +328,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                             children: <Widget>[
                                               Expanded(
                                                 child: Container(
-                                                    color: Colors.white,
+                                                    color: Colors.black26,
                                                     child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
                                                         ? new Text("Kein Bild vorhanden.")
                                                         : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
@@ -282,7 +339,6 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                 auswaehlenRueckseite(context);
                                               },child: Icon(Icons.add_a_photo, size: 60, color: Colors.black12)
                                               )
-
                                             ],
                                           ),
                                         ),

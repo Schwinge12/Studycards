@@ -33,7 +33,7 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
             IconButton(
               icon: Icon(Icons.check_circle, color: Colors.green, size: 35),
               onPressed:(){
-                Navigator.pushNamed(context, 'QuizEnde');
+                Navigator.pushNamed(context, 'Quizende');
               }
             )
           ]

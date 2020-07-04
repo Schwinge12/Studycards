@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButtonAuswertung.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
 
 class QuizAkutelleFrageErgebnis extends StatefulWidget {
   int anzahlKarten;
@@ -16,6 +17,12 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
 //Werte aus klasse: Quiz werden komplett übergeben von aktueller frage
 
 class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
+
+  String antwort1="";
+  String antwort2="";
+  String antwort3="";
+  String antwort4="";
+
 
   @override
   Widget build(BuildContext context) {
@@ -82,42 +89,41 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
             children: <Widget>[
 
               QuizButtonAuswertung(
-                text: 'Frankreich',
-                onPress: (){
-                },
-                auswertung: false,
-                farbe: Colors.red,
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              QuizButtonAuswertung(
-                text: 'Italien',
-                onPress: (){
-                },
-                auswertung: false,
-                farbe: Colors.red,
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              QuizButtonAuswertung(
-                text: 'Brasilien',
-                onPress: (){
-                  Navigator.pushNamed(context,"Quizende");
-                },
-                auswertung: true,
-                farbe: Colors.green,
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              QuizButtonAuswertung(
-                text: 'Portugal',
-                onPress: (){
+               'Frankreich',
+                  (){
+                    Navigator.pushNamed(context,"Quizende");
                   },
-                auswertung: false,
-                farbe: Colors.red,
+                false,
+              ),
+            SizedBox(
+                height: 5.0,
+              ),
+              QuizButtonAuswertung(
+                  'Italien',
+                      (){
+                    Navigator.pushNamed(context,"Quizende");
+                  },
+                  false
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButtonAuswertung(
+                  'Brasilien',
+                      (){
+                    Navigator.pushNamed(context,"Quizende");
+                  },
+                  true
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButtonAuswertung(
+              'Portugal',
+              (){
+                Navigator.pushNamed(context,"Quizende");
+                },
+                false
               ),
             ],
           ),

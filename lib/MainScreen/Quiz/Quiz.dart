@@ -110,5 +110,9 @@ class _Quiz extends State<Quiz> {
         ],
       ),
     );
+
+    bool istAuswertung(bool auswertung){
+      return auswertung;
+    }
   }
 }

@@ -40,8 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    _email = value;
+                  onChanged: (value){
+                    _email=value;
                   },
                   decoration: InputDecoration(
                     filled: true,
@@ -70,24 +70,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormField(
                   obscureText: true,
                   textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    _passwort = value;
-                  },
+                  onChanged: (value){
+                    _passwort=value;
+                    },
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white30,
-                    hintText: 'Passwort',
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color(0xFF58A4B0), width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
+                  filled: true,
+                  fillColor: Colors.white30,
+                  hintText: 'Passwort',
+                  contentPadding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                  border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(color: Color(0xFF58A4B0), width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
                       borderSide:
                           BorderSide(color: Color(0xFF58A4B0), width: 2.0),
                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
@@ -97,9 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 8.0,
                 ),
-                SizedBox(
-                  height: 24.0,
-                ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 16.0),
                   child: Material(

@@ -3,14 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
 class QuizButtonAuswertung extends StatelessWidget {
+  String text;
+  Function onPress;
+  bool auswertung;
+  Color farbe;
 
-  QuizButtonAuswertung(
-      {@required this.text, @required this.onPress, @required this.auswertung,@required this.farbe});
+  QuizButtonAuswertung(String text, Function onPress, bool auswertung) {
+    this.text = text;
+    this.onPress = onPress;
+    this.auswertung = auswertung;
+    if (auswertung == true) {
+      this.farbe = Colors.green;
+    }
+    else {
+      this.farbe = Colors.red;
+    }
+  }
 
-  final String text;
-  final Function onPress;
-  final bool auswertung;
-  final Color farbe;
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -21,7 +31,7 @@ class QuizButtonAuswertung extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: farbe,
-        ),
+          ),
         child: Center(
           child: AutoSizeText(
             text,
@@ -36,3 +46,4 @@ class QuizButtonAuswertung extends StatelessWidget {
     );
   }
 }
+

@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuiznamen.dart';
 //TODO Backend: Eingebene Daten abspeichern
+import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 
 class QuizStapelErstellen extends StatefulWidget{
   @override
   _QuizStapelErstellen createState()=>_QuizStapelErstellen();
 }
 class _QuizStapelErstellen extends State<QuizStapelErstellen> {
-
+  final dbHelfer = LokaleDatenbankQuiznamen.instance;
 
   String studienfachEingabe;
   String themengebietEingabe;
 
+  QuizNeu quiz = new QuizNeu();
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +84,7 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white30,
-              hintText: 'Studienfach eingeben',
+              hintText: 'Themengebiet eingeben',
               contentPadding:
               EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               border: OutlineInputBorder(
@@ -131,8 +135,7 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
                               barrierDismissible: false);
                         }
                         else{
-
-                          Navigator.pushNamed(context, 'MCErstellen');
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: studienfachEingabe , themengebiet: themengebietEingabe, quiz: quiz)));
                         }
                       },
                     )

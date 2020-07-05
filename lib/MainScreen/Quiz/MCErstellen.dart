@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/QuizStapelErstellen.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
-
-
+import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
+import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 
 
 class MCErstellen extends StatefulWidget{
 
-  Stapel stapel;
-  final String studiengang;
+
   final String studienfach;
   final String themengebiet;
 
-  MCErstellen({this.studiengang,this.studienfach,this.themengebiet,@required this.stapel});
+  QuizNeu quiz;
+
+
+  MCErstellen({@required this.studienfach,@required this.themengebiet,@required this.quiz});
 
 
   @override
@@ -284,7 +288,9 @@ class _MCErstellen extends State <MCErstellen>{
                     child: IconButton( 
                       icon: Icon(Icons.add,color: Colors.white,size: 40.0,),
                       onPressed: (){
-
+                        widget.quiz.studienfach= widget.studienfach;
+                        widget.quiz.themengebiet= widget.themengebiet;
+                        frageEinfuegen();
                         Navigator.pushNamed(context, 'MCErstellen');
                       },
                     ),
@@ -294,7 +300,11 @@ class _MCErstellen extends State <MCErstellen>{
                     child: IconButton(  
                       icon: Icon(Icons.check,color: Colors.white,size: 40.0,),
                       onPressed: (){
-                        //TODO Backend: Quizstapel speichern
+                        widget.quiz.studienfach= widget.studienfach;
+                        widget.quiz.themengebiet= widget.themengebiet;
+                        frageEinfuegen();
+                        LokaleDatenbankQuiznamen.insertQuiz(widget.quiz);
+                        LokaleDatenbankQuiznamen.ausgeben();
                         Navigator.pushNamed(context, 'AlleQuizstaplAnzeigen');
                       },
                     ),
@@ -311,5 +321,20 @@ class _MCErstellen extends State <MCErstellen>{
         ),
       ),
     );
+  }
+  void frageEinfuegen()
+  {
+    Quizfragen quizfragen= new Quizfragen();
+    quizfragen.frage=frage;
+    quizfragen.antwort1=antwort1;
+    if(checked1==false)quizfragen.bool1=0;else quizfragen.bool1 = 1;
+    quizfragen.antwort2=antwort2;
+    if(checked2==false)quizfragen.bool2=0;else quizfragen.bool2 = 1;
+    quizfragen.antwort3=antwort3;
+    if(checked3==false)quizfragen.bool3=0;else quizfragen.bool3 = 1;
+    quizfragen.antwort4=antwort4;
+    if(checked4==false)quizfragen.bool4=0;else quizfragen.bool4 = 1;
+
+    widget.quiz.fragenliste.add(quizfragen);
   }
 }

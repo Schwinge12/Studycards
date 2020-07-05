@@ -13,6 +13,7 @@ import 'Stapel.dart';
 import 'Student.dart';
 import 'Karteikarte.dart';
 import 'Speicherung.dart';
+import 'QuizNeu.dart';
 // ignore: unnecessary_statements)
 class Userdata extends Speicherung {
   //____________________________________Variables_______________________________
@@ -31,6 +32,7 @@ class Userdata extends Speicherung {
   List<Stapel> stapel = new List(); // speicherung der KK in Stapel ?
   Stapel defaultStapel = new Stapel().mitName('Default').mit_studienfach('Bsp.Fach').mit_themengebiet('Bsp.Thema');
   Student testkonto = new Student().mitUsername('Mustermann');
+  List<QuizNeu> quiz = new List();
 
   //____________________________________Constructor_____________________________
 

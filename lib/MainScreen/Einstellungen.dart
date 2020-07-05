@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/LogoutButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankKonto.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,7 +39,9 @@ class _EinstellungenState extends State<Einstellungen> {
                   LogoutButton(
                       text: 'Abmelden',
                       onPress: () {
+                        LokaleDatenbankKonto.deleteKonto();
                         _auth.signOut();
+
                         Navigator.pushNamed(context, 'LoginScreen');
                       }
                   ),

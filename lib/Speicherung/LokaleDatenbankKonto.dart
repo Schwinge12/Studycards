@@ -41,7 +41,7 @@ import 'Userdata.dart';
   static void insertKonto(Student s) async {
     try {
       Database db = await LokaleDatenbankStapel.instance.database;
-      delete(db);
+      deleteKonto();
       LokaleDatenbankKonto._onCreate(db);
       // row to insert
       Map<String, dynamic> row = getRowFromStudent(s);
@@ -57,7 +57,8 @@ import 'Userdata.dart';
      }
      catch (e){}
   }
-  static Future<int> delete(Database db) async {
+  static void deleteKonto() async {
+    Database db = await LokaleDatenbankStapel.instance.database;
     db.rawQuery('DROP TABLE IF EXISTS $tabelle');
     print('deleted table $tabelle');
   }

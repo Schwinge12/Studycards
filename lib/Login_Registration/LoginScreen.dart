@@ -176,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final user = await _auth.signInWithEmailAndPassword(
           email: s.getUsername(), password: s.getPassword());
       if (user != null){
-        _userdata.einfuegen(new Student().mitUsername(_email));
+        _userdata.einfuegen(new Student().mitUsername(s.getUsername()));
         Navigator.pushNamed(context, 'MenuPage');
       }
     }

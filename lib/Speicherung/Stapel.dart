@@ -110,7 +110,7 @@ class Stapel extends Produkt {
 
 
  static Stapel StapelfromMapObject(Map<String, dynamic> map) {
- Stapel s = new Stapel();
+  Stapel s = new Stapel();
   s._id = map['_id'];
   s._studiengang =map['studiengang'];
   s._studienfach=map['studienfach'];

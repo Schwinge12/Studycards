@@ -14,7 +14,7 @@ class Student extends Produkt{
 
   //Todo: Kryptographie?
   String _email;
-  //String _passwort;
+  String _passwort;
 
   //____________________________________Constructor_____________________________
   Student();
@@ -49,7 +49,7 @@ class Student extends Produkt{
     return this;
   }
   Student mitPasswort(String passwort){
-    this._email = passwort;
+    this._passwort = passwort;
     return this;
   }
   //____________________________________Get/Set_________________________________
@@ -58,10 +58,20 @@ class Student extends Produkt{
     if(accountName == null) return 'Username';
     else return accountName;
   }
+  String getPassword(){
+    return _passwort;
+  }
   //____________________________________Methods_________________________________
   @override
   String toString() {
     return runtimeType.toString();
   }
-  //Todo Backend : E-mailbestätigung
+
+  static Student StudentfromMapObject(Map<String, dynamic> map) {
+    Student s = new Student()
+        .mitUsername(map['username'])
+        .mitPasswort(map['password'])
+    ;
+    return s;
+  }
 }

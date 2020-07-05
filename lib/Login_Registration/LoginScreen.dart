@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankKonto.dart';
 import 'package:karteikartenapp/Speicherung/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,10 +15,15 @@ class _LoginScreenState extends State<LoginScreen> {
   String _email;
   String _passwort;
 
+  _LoginScreenState(){loginfromDB();}
+
   bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -109,6 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             email: _email.trim(), password: _passwort);
                         if (user != null) {
                           _userdata.einfuegen(new Student().mitUsername(_email));
+                          LokaleDatenbankKonto.insertKonto(new Student().mitUsername(_email.trim()).mitPasswort(_passwort));
                           Navigator.pushNamed(context, 'MenuPage');
                         }
                       },
@@ -161,5 +168,21 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> loginfromDB() async {
+    try{
+      Student s = await LokaleDatenbankKonto.getKonto();
+      final user = await _auth.signInWithEmailAndPassword(
+          email: s.getUsername(), password: s.getPassword());
+      if (user != null){
+        _userdata.einfuegen(new Student().mitUsername(_email));
+        Navigator.pushNamed(context, 'MenuPage');
+      }
+    }
+    catch(e){
+      print(e);
+    }
+
   }
 }

@@ -41,7 +41,6 @@ class _EinstellungenState extends State<Einstellungen> {
                       onPress: () {
                         LokaleDatenbankKonto.deleteKonto();
                         _auth.signOut();
-
                         Navigator.pushNamed(context, 'LoginScreen');
                       }
                   ),

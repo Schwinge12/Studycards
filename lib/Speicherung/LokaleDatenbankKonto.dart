@@ -12,9 +12,7 @@ import 'Student.dart';
 import 'Userdata.dart';
 
 
-
-
- class LokaleDatenbankKonto{
+  class LokaleDatenbankKonto{
 
   static final tabelle = 'Konto';
 
@@ -28,8 +26,8 @@ import 'Userdata.dart';
 
 
 
-   static Future _onCreate(Database db) async {
-    await db.execute('''
+  static Future _onCreate(Database db) async {
+  await db.execute('''
           CREATE TABLE $tabelle (
             $colId INTEGER PRIMARY KEY,
             $colUsername TEXT NOT NULL,
@@ -39,37 +37,43 @@ import 'Userdata.dart';
   }
 
   static void insertKonto(Student s) async {
-    try {
-      Database db = await LokaleDatenbankStapel.instance.database;
-      deleteKonto();
-      LokaleDatenbankKonto._onCreate(db);
-      // row to insert
-      Map<String, dynamic> row = getRowFromStudent(s);
-      final id = await db.insert(tabelle, row);
-      print('inserted row id: $id');
-    }
-    catch(e){}
+  try {
+  Database db = await LokaleDatenbankStapel.instance.database;
+  delete(db);
+  LokaleDatenbankKonto._onCreate(db);
+  // row to insert
+  Map<String, dynamic> row = getRowFromStudent(s);
+  final id = await db.insert(tabelle, row);
+  print('inserted row id: $id');
   }
-    static Future<Student> getKonto() async {
-     try {
-       var allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
-       return Student.StudentfromMapObject(allRows[0]);
-     }
-     catch (e){}
+  catch(e){}
   }
+  static Future<Student> getKonto() async {
+  try {
+  var allRows = await LokaleDatenbankStapel.queryAllRows(tabelle);
+  return Student.StudentfromMapObject(allRows[0]);
+  }
+  catch (e){}
+  }
+  static Future<int> delete(Database db) async {
+  db.rawQuery('DROP TABLE IF EXISTS $tabelle');
+  print('deleted table $tabelle');
+  }
+  static Map<String, dynamic> getRowFromStudent(Student s){
+  Map<String, dynamic> row = {
+  LokaleDatenbankKonto.colUsername : s.getUsername(),
+  LokaleDatenbankKonto.colPassword : s.getPassword()
+  };
+  return row;
+  }
+
+
   static void deleteKonto() async {
     Database db = await LokaleDatenbankStapel.instance.database;
     db.rawQuery('DROP TABLE IF EXISTS $tabelle');
     print('deleted table $tabelle');
   }
-static Map<String, dynamic> getRowFromStudent(Student s){
-    Map<String, dynamic> row = {
-    LokaleDatenbankKonto.colUsername : s.getUsername(),
-      LokaleDatenbankKonto.colPassword : s.getPassword()
-};
-return row;
- }
-  
 
 
- }
+
+}

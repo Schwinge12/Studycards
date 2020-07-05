@@ -26,13 +26,14 @@ class StapelStatus extends StatefulWidget{
 class StapelStatusState extends State<StapelStatus>{
   final dbHelfer = LokaleDatenbankStapel.instance;
 
-  StapelStatusState(){}
+  StapelStatusState();
 
   Userdata userdata = new Userdata();
 
 
   @override
   Widget build(BuildContext context) {
+    // LokaleDatenbankStapel.ausgeben(widget.stapel.getThemengebietName());
     return Scaffold(
       appBar: AppBar(
         title: Center(child: AutoSizeText(
@@ -118,7 +119,7 @@ class StapelStatusState extends State<StapelStatus>{
             Expanded(
               flex: 7,
               child: ErfolgsAnzeige(
-              ),
+              ).withTrueFalseRatio((widget.stapel.getantworten())/(widget.stapel.stapelKarten.length) * 100)
             ),
             Expanded(
               flex: 2,

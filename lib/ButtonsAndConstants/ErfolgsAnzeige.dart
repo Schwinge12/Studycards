@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ErfolgsAnzeige extends StatefulWidget{
-
+  double trueFalseRatio = 0;
   @override
   _ErfolgsAnzeigeState createState()=>_ErfolgsAnzeigeState();
+  ErfolgsAnzeige withTrueFalseRatio(var ratio){
+    this.trueFalseRatio = ratio;
+    //print(ratio);
+    return this;
+  }
 
 }
 
@@ -22,16 +27,17 @@ class _ErfolgsAnzeigeState extends State<ErfolgsAnzeige> {
                 GaugeRange(startValue: 50,endValue: 90,color: Colors.orange),
                 GaugeRange(startValue: 90,endValue: 100,color: Colors.green)],
               pointers: <GaugePointer>[
-                NeedlePointer(value: 90,needleColor: Colors.black)],
+                NeedlePointer(value: widget.trueFalseRatio ,needleColor: Colors.black)],
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(widget: Container(child:
                 //TODO Backend: variable erstellen um den lernfortschritt für den jeweiligen Stapel erfassen zu können
-                Text('90.0',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black))),
-                    angle: 90, positionFactor: 0.5
+                Text(widget.trueFalseRatio.round().toString() + ' %',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black))),
+                    angle:  90 , positionFactor: 0.8
                 )]
           )]
     );
   }
+
 }
 
 

@@ -13,7 +13,7 @@ import 'Userdata.dart';
 
  class LokaleDatenbankStapel{
 
-  static final _databaseName = 'Stapel.db';
+  static final _databaseName = 'Stapel0.db';
   static final _datenbankVersion = 1;
 
 
@@ -81,6 +81,13 @@ import 'Userdata.dart';
     int id = row[colId];
     return await db.update(tabelle, row, where: '$colId = ?', whereArgs: [id]);
   }
+  static Future<int> updateStapel(Stapel s) async {
+    Database db = await instance.database;
+    Map<String, dynamic> row = LokaleDatenbankStapel.getRowFromStapel(s);
+    int id = row[colId];
+    return await db.update(tabelle, row, where: '$colId = ?', whereArgs: [id]);
+  }
+
 
 
   static Future<int> delete( int id, var tabelle) async {
@@ -91,12 +98,7 @@ import 'Userdata.dart';
   static void insertStapel(Stapel s) async {
     // row to insert
 
-    Map<String, dynamic> row = {
-      LokaleDatenbankStapel.colStudiengang : s.getStudiengang(),
-      LokaleDatenbankStapel.colStudienfach  : s.getStudienfachName(),
-      LokaleDatenbankStapel.colThemengebiet : s.getThemengebietName()
-    };
-    final id = await insert(tabelle,row);
+    final id = await insert(tabelle,getRowFromStapel(s));
 
     // ^ stapel - Karteikarten v
 
@@ -107,9 +109,18 @@ import 'Userdata.dart';
     }
     print('inserted row id: $id in Table $tabelle');
   }
+  
+  static getRowFromStapel(Stapel s){
+    Map<String, dynamic> row = {
+      LokaleDatenbankStapel.colStudiengang : s.getStudiengang(),
+      LokaleDatenbankStapel.colStudienfach  : s.getStudienfachName(),
+      LokaleDatenbankStapel.colThemengebiet : s.getThemengebietName()
+    };
+    return row;
+  }
 
 
-  static void ausgeben() async {
+  static void ausgeben(String tabelle) async {
     final allRows = await queryAllRows(tabelle);
     print('query all rows:');
     allRows.forEach((row) => print(row));
@@ -138,17 +149,29 @@ import 'Userdata.dart';
 
   static void StapelmitKarteikartenLaden(var row) async {
     Stapel tmpStapel = Stapel.StapelfromMapObject(row);
-     userdata.einfuegen( await alleKarteikartenLaden(tmpStapel));
+    userdata.einfuegen( await alleKarteikartenLaden(tmpStapel));
   }
-
   static Future<Stapel> alleKarteikartenLaden(Stapel s) async{
     var tbl = s.getThemengebietName();
     final allRows = await _database.rawQuery(
         'SELECT * FROM $tbl');
     allRows.forEach((row) async => s.stapelKarten.add(await Karteikarte.KKfromMapObject(row)));
     return s;
-
   }
+  static Future<Stapel> alleKarteikartenUpdaten(Stapel s) async{
+    var tbl = s.getThemengebietName();
+    final allRows = await _database.rawQuery(
+        'SELECT * FROM $tbl');
+    for(int t = 0; t< allRows.length; t++) {
+      _database.update(
+          tbl, LokaleDatenbankKarteiKarten.getRowFromKK(s.stapelKarten[t]), where: '$colId = ?', whereArgs: [s.stapelKarten[t].id]);
+    print('updated : $t in $tbl');
+    }
+    return s;
+  }
+  
+  
+  
 
 
  }

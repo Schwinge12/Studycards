@@ -69,6 +69,15 @@ class Stapel extends Produkt {
   if (_studienfach == null) return '404 - Kurs not found';
   else return _studienfach;
  }
+ int getantworten(){
+  int i  = 0 ;
+ for (int t = 0; t < stapelKarten.length; t++){
+  i =  i + stapelKarten[t].getAnswer();
+  // print(('[$t] returned ') + ((stapelKarten[t].getAnswer() == 0)? 'false' : 'true'));
+ }
+ return i;
+ }
+
  set studiengang(String value) {
   _studiengang = value;
  }
@@ -108,5 +117,4 @@ class Stapel extends Produkt {
   s._themengebiet = map['themengebiet'];
   return s;
  }
-
 }

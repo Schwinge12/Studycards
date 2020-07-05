@@ -27,7 +27,7 @@ class Karteikarte extends Produkt {
   String _vorderSeite;
   String _rueckSeite;
 
-  bool keyKarte = false;
+  bool answeredTrue = false;
   var schwierigkeit = 0;
 
   var haufigkeitsFaktor = 1;
@@ -56,6 +56,10 @@ class Karteikarte extends Produkt {
     this._vorderSeite = vorderSeite;
     return this;
   }
+  Karteikarte mitAnswer(int  a) {
+    (a == 0)? this.answeredTrue = false: this.answeredTrue = true;
+    return this;
+  }
 
   Karteikarte mitRueckSeite(String rueckSeite) {
     this._rueckSeite = rueckSeite;
@@ -74,7 +78,7 @@ class Karteikarte extends Produkt {
   }
 
   Karteikarte mitKeyStatus() {
-    this.keyKarte = true;
+    this.answeredTrue = true;
     return this;
   }
 
@@ -110,6 +114,10 @@ class Karteikarte extends Produkt {
       return _vorderSeite;
     return '';
   }
+  int getAnswer() {
+    if (answeredTrue==true) return 1;
+    return 0;
+  }
   //____________________________________Methods___________________________________
 
   static Future<Karteikarte> KKfromMapObject(Map<String, dynamic> map) async {
@@ -118,6 +126,7 @@ class Karteikarte extends Produkt {
     .mitID(id)
     .mitVorderSeite(map['stringvorderseite'])
     .mitRueckSeite(map['stringrueckseite'])
+    .mitAnswer(map['answer'])
     ;
     var bilderzahl = map['bilderanzahl'];
     if (bilderzahl > 0 ){

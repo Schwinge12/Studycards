@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankKarteikarten.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 
 
@@ -171,9 +173,13 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                   tooltip: 'Karte falsch',
                                   onPressed: (){
                                     print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
-                                    if(widget.stapel.stapelKarten.length -1 == widget.kartennummer)
-                                    //todo Backend : logik fürs wiedererscheinen von karten
-                                    Navigator.pop(context);
+                                    widget.stapel.stapelKarten[widget.kartennummer].answeredTrue = false;
+                                    if(widget.stapel.stapelKarten.length -1 == widget.kartennummer) {
+                                      LokaleDatenbankStapel
+                                          .alleKarteikartenUpdaten(
+                                          widget.stapel);
+                                      Navigator.pop(context);
+                                    }
                                   else setState(() {
                                       widget.kartennummer  ++ ;
                                     });
@@ -187,8 +193,13 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                   tooltip: 'Stapel abschließen und hochladen',
                                   onPressed: (){
                                     print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
-                                    if(widget.stapel.stapelKarten.length -1 == widget.kartennummer)
-                                    Navigator.pop(context, 'StapelAbschliessenDozent');
+                                    widget.stapel.stapelKarten[widget.kartennummer].answeredTrue = true;
+                                    if(widget.stapel.stapelKarten.length -1 == widget.kartennummer) {
+                                      LokaleDatenbankStapel
+                                          .alleKarteikartenUpdaten(widget.stapel);
+                                      Navigator.pop(
+                                          context, 'StapelAbschliessenDozent');
+                                    }
                                     else setState(() {
                                     widget.kartennummer  ++ ;
                                     }

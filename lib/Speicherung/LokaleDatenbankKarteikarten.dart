@@ -20,6 +20,7 @@ class LokaleDatenbankKarteiKarten {
   static final colStringVorderseite = 'stringvorderseite';
   static final colStringRueckseite = 'stringrueckseite';
   static final colBilderAnzahl = 'bilderanzahl';
+  static final colAnswer = 'answer';
 
   static Database _database;
   static int stapelId;
@@ -46,7 +47,8 @@ class LokaleDatenbankKarteiKarten {
            
             $colStringVorderseite TEXT NOT NULL,
             $colStringRueckseite TEXT NOT NULL,
-            $colBilderAnzahl INTEGER NOT NULL
+            $colBilderAnzahl INTEGER NOT NULL,
+            $colAnswer INTEGER NOT NULL
           )
           ''');
     // $colStapelId INTEGER FOREIGN KEY REFERENCES karteikarten_tabelle (_id),
@@ -55,11 +57,7 @@ class LokaleDatenbankKarteiKarten {
 
   void insertKK(Karteikarte k) async {
     // row to insert
-    Map<String, dynamic> row = {
-      LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
-      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
-      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length
-    };
+    Map<String, dynamic> row = getRowFromKK(k);
     final id = await _database.insert(tabelle, row);
     print('inserted row id: $id');
   }
@@ -72,11 +70,7 @@ class LokaleDatenbankKarteiKarten {
 
   static void updateKk(Karteikarte k) async {
     // row to update
-    Map<String, dynamic> row = {
-      LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
-      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
-      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length
-    };
+    Map<String, dynamic> row = getRowFromKK(k);
     final rowsAffected = await _database.update(tabelle, row);
     print('updated $rowsAffected row(s)');
   }
@@ -90,6 +84,15 @@ class LokaleDatenbankKarteiKarten {
     var id = s.id;
     final rowsDeleted = await delete(id, tabelle);
     print('deleted $rowsDeleted row(s): row $id');
+  }
+  static getRowFromKK(Karteikarte k){
+    Map<String, dynamic> row = {
+      LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
+      LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
+      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length,
+      LokaleDatenbankKarteiKarten.colAnswer : k.getAnswer()
+    };
+    return row;
   }
 
 }

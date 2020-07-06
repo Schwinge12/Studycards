@@ -5,6 +5,7 @@ import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
 import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuizfragen.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class MCErstellen extends StatefulWidget{
 
@@ -23,6 +24,7 @@ class MCErstellen extends StatefulWidget{
 }
 
 class _MCErstellen extends State <MCErstellen>{
+  Userdata userdata = new Userdata();
 
   String frage;
   String antwort1;
@@ -305,6 +307,8 @@ class _MCErstellen extends State <MCErstellen>{
                         frageEinfuegen();
                         LokaleDatenbankQuiznamen.insertQuiz(widget.quiz);
                         LokaleDatenbankQuiznamen.ausgeben();
+                        userdata.einfuegen(widget.quiz);
+
                         Navigator.pushNamed(context, 'AlleQuizstaplAnzeigen');
                       },
                     ),

@@ -12,7 +12,7 @@ class Quiz extends StatefulWidget {
   int anzahlFragen;
   QuizNeu quiz;
   Quiz({@required this.quiz, this.anzahlFragen});
-  Random rand;
+  Random rand = new Random();
   @override
   _Quiz createState() => _Quiz();
 }

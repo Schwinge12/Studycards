@@ -19,7 +19,7 @@ class _QuizStartState extends State<QuizStart>{
 
   //Todo Backend: anazhl der Karten die Im Quiz sind ändern
 
-  int auswahl=5;
+  int auswahl=0;
 
 
   @override
@@ -76,7 +76,7 @@ class _QuizStartState extends State<QuizStart>{
                 ),
                 child: Slider(
                   value: auswahl.toDouble(),
-                  min: 1.0,
+                  min: 0,
                   max: anzahlFragenImQuiz.toDouble(),
                   onChanged: (double newValue) {
                     setState(() {

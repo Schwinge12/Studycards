@@ -5,11 +5,15 @@ import 'package:karteikartenapp/ButtonsAndConstants/QuizButtonAuswertung.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/QuizStart.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/Quizende.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 
 class QuizAkutelleFrageErgebnis extends StatefulWidget {
-  int anzahlKarten;
-
-  QuizAkutelleFrageErgebnis({@required this.anzahlKarten});
+  Quizfragen frage;
+  QuizNeu quiz;
+  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz});
 
   @override
   _QuizAkutelleFrageErgebnis createState() => _QuizAkutelleFrageErgebnis();
@@ -17,12 +21,6 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
 //Werte aus klasse: Quiz werden komplett übergeben von aktueller frage
 
 class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
-
-  String antwort1="";
-  String antwort2="";
-  String antwort3="";
-  String antwort4="";
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +71,7 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                   width: 200,
                   child: Center(
                     child: AutoSizeText(
-                      'Welches ist das Land mit den meisten Einwohnern?',
+                      widget.frage.getFrage(),
                       textAlign: TextAlign.center,
                       style: MenuButtonTextStyle,
                       minFontSize: 6,
@@ -89,46 +87,49 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
             children: <Widget>[
 
               QuizButtonAuswertung(
-               'Frankreich',
+                widget.frage.getAntwort(1),
                   (){
-                    Navigator.pushNamed(context,"Quizende");
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
                   },
-                false,
+                   istAuswertung(widget.frage.bool1),        // 0 Falsch, 1 Richtig, 2 Neutral -> falls neutral eingefügt einfach nur frage.bool1 verwenden
               ),
             SizedBox(
                 height: 5.0,
               ),
               QuizButtonAuswertung(
-                  'Italien',
+                  widget.frage.getAntwort(2),
                       (){
-                    Navigator.pushNamed(context,"Quizende");
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
                   },
-                  false
+                  istAuswertung(widget.frage.bool2)
               ),
               SizedBox(
                 height: 5.0,
               ),
               QuizButtonAuswertung(
-                  'Brasilien',
+                  widget.frage.getAntwort(3),
                       (){
-                    Navigator.pushNamed(context,"Quizende");
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
                   },
-                  true
+                  istAuswertung(widget.frage.bool3)
               ),
               SizedBox(
                 height: 5.0,
               ),
               QuizButtonAuswertung(
-              'Portugal',
+                  widget.frage.getAntwort(4),
               (){
-                Navigator.pushNamed(context,"Quizende");
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
                 },
-                false
+                  istAuswertung(widget.frage.bool4)
               ),
             ],
           ),
         ],
       ),
     );
+  }
+  bool istAuswertung(int i){
+    return (i == 1)? true : false;
   }
 }

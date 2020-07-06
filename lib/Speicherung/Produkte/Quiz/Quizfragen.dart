@@ -28,8 +28,13 @@ class Quizfragen {
 
     return qf;
   }
-
-  getAntwort(int index) {
+  getFrage(){
+    if (frage != null) {
+      return frage;
+    }
+    return 'Keine Frage angegeben?';
+  }
+  getAntwort(int index){
     switch (index) {
       case 1:
         {

@@ -1,7 +1,10 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 
@@ -49,7 +52,7 @@ class _QuizStartState extends State<QuizStart>{
         child: Column(
 
           children: <Widget>[
-            //TODO Backend: Anzahl der Karten einfügen
+
             Expanded(
               flex: 2,
               child: Center(
@@ -80,6 +83,7 @@ class _QuizStartState extends State<QuizStart>{
                   max: anzahlFragenImQuiz.toDouble(),
                   onChanged: (double newValue) {
                     setState(() {
+
                       auswahl = newValue.round();
                     });
                   },
@@ -94,6 +98,7 @@ class _QuizStartState extends State<QuizStart>{
                 style: WeisserTextStyle,
                 text: 'Quiz starten!',
                 onPress: (){
+                  if (auswahl> 0)
                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(quiz: widget.quiz,anzahlFragen: auswahl, )));
                 },
               ),

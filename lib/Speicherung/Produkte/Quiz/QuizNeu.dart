@@ -7,6 +7,9 @@ class QuizNeu extends Produkt{
   String studienfach;
   String themengebiet;
 
+  int richtigBeantwortet = 0;
+  int falschBeantwortet = 0;
+
   var map = Map<String, dynamic> ();
 
   List<Quizfragen> fragenliste=new List();

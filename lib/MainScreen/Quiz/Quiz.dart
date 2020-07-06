@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 
@@ -63,7 +64,7 @@ class _Quiz extends State<Quiz> {
                   width: 200,
                   child: Center(
                     child: AutoSizeText(
-                      'Welches ist das Land mit den meisten Einwohnern?',
+                      frage.getFrage(),
                       textAlign: TextAlign.center,
                       style: MenuButtonTextStyle,
                       minFontSize: 6,
@@ -81,7 +82,7 @@ class _Quiz extends State<Quiz> {
                     text: frage.getAntwort(1),
                     onPress: (){
                     },
-                    auswertung: false,
+                    auswertung: istAuswertung(frage.bool1),
                   ),
                   SizedBox(
                     height: 5.0,
@@ -90,7 +91,7 @@ class _Quiz extends State<Quiz> {
                     text: frage.getAntwort(2),
                     onPress: (){
                     },
-                    auswertung: false,
+                    auswertung: istAuswertung(frage.bool2),
                   ),
                   SizedBox(
                     height: 5.0,
@@ -98,9 +99,9 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     text: frage.getAntwort(3),
                     onPress: (){
-                      Navigator.pushNamed(context, 'QuizAktuelleFrageErgebnis');
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz)));
                     },
-                    auswertung: true,
+                    auswertung: istAuswertung(frage.bool3),
                   ),
                   SizedBox(
                     height: 5.0,
@@ -109,7 +110,7 @@ class _Quiz extends State<Quiz> {
                     text: frage.getAntwort(4),
                     onPress: (){
                     },
-                    auswertung: false,
+                    auswertung: istAuswertung(frage.bool4),
                   ),
                 ],
               ),
@@ -117,8 +118,9 @@ class _Quiz extends State<Quiz> {
       ),
     );
 
-    bool istAuswertung(bool auswertung){
-      return auswertung;
-    }
+
+  }
+  bool istAuswertung(int i){
+    return (i == 1)? true : false;
   }
 }

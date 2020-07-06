@@ -1,24 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class Quizende extends StatefulWidget {
 
-  int anzahlKarten;
+  QuizNeu quiz;
 
-  Quizende({@required this.anzahlKarten});
+  Quizende({@required this.quiz});
   @override
   _Quizende createState() => _Quizende();
 }
 
 class _Quizende extends State<Quizende> {
   //Anzahl nur zum test
-  int anzahl=10;
-  int falsch=1;
-  int richtig=3;
 
-  double prozentAusrechnen(){
+
+  double prozentAusrechnen(int anzahl, int falsch){
     double ausgabe=100.00*falsch;
     ausgabe=ausgabe/anzahl;
     return ausgabe;
@@ -29,9 +30,12 @@ class _Quizende extends State<Quizende> {
 
   @override
   void initState() {
+    int anzahl= widget.quiz.fragenliste.length;
+    int falsch= widget.quiz.falschBeantwortet;
+    int richtig=widget.quiz.richtigBeantwortet; // Überhaupt nötig ?
     data.addAll({
-      'Richtig beantwortet': prozentAusrechnen()*1000,
-      'Falsch beantwortet': 100000-prozentAusrechnen()*1000
+      'Richtig beantwortet': prozentAusrechnen(anzahl, richtig)*1000,
+      'Falsch beantwortet': 100000-prozentAusrechnen(anzahl,falsch)*1000
     });
     super.initState();
   }
@@ -42,6 +46,7 @@ class _Quizende extends State<Quizende> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Auswertung'),

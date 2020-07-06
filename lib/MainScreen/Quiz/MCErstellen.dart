@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class MCErstellen extends StatefulWidget{
 
@@ -10,6 +11,7 @@ class MCErstellen extends StatefulWidget{
   final String themengebiet;
 
   QuizNeu quiz;
+  Userdata _userdata = new Userdata();
 
 
   MCErstellen({@required this.studienfach,@required this.themengebiet,@required this.quiz});
@@ -300,7 +302,9 @@ class _MCErstellen extends State <MCErstellen>{
                         widget.quiz.studienfach= widget.studienfach;
                         widget.quiz.themengebiet= widget.themengebiet;
                         frageEinfuegen();
+
                         LokaleDatenbankQuiznamen.insertQuiz(widget.quiz);
+                        widget._userdata.einfuegen(widget.quiz);
                         LokaleDatenbankQuiznamen.ausgeben();
                         Navigator.pushNamed(context, 'AlleQuizstaplAnzeigen');
                       },
@@ -324,13 +328,20 @@ class _MCErstellen extends State <MCErstellen>{
     Quizfragen quizfragen= new Quizfragen();
     quizfragen.frage=frage;
     quizfragen.antwort1=antwort1;
-    if(checked1==false)quizfragen.bool1=0;else quizfragen.bool1 = 1;
+    if (antwort1 == null) quizfragen.bool1 = 2;
+    else{(checked1==false)?quizfragen.bool1=0: quizfragen.bool1 = 1;}
+
     quizfragen.antwort2=antwort2;
-    if(checked2==false)quizfragen.bool2=0;else quizfragen.bool2 = 1;
+    if (antwort2 == null) quizfragen.bool2 = 2;
+    else(checked2==false)?quizfragen.bool2=0: quizfragen.bool2 = 1;
+
     quizfragen.antwort3=antwort3;
-    if(checked3==false)quizfragen.bool3=0;else quizfragen.bool3 = 1;
+    if (antwort3 == null) quizfragen.bool3 = 2;
+    else(checked3==false)?quizfragen.bool3=0: quizfragen.bool3 = 1;
+
     quizfragen.antwort4=antwort4;
-    if(checked4==false)quizfragen.bool4=0;else quizfragen.bool4 = 1;
+    if (antwort4 == null) quizfragen.bool4 = 2;
+    else(checked4==false)?quizfragen.bool4=0: quizfragen.bool4 = 1;
 
     widget.quiz.fragenliste.add(quizfragen);
   }

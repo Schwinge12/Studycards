@@ -8,6 +8,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class LokaleDatenbankQuiznamen {
 
@@ -22,6 +23,8 @@ class LokaleDatenbankQuiznamen {
 
   LokaleDatenbankQuiznamen._privateConstructor();
   static final LokaleDatenbankQuiznamen instance = LokaleDatenbankQuiznamen._privateConstructor();
+
+  static Userdata userdata =new Userdata();
 
 
   static Database _database;
@@ -54,9 +57,9 @@ class LokaleDatenbankQuiznamen {
     return await db.insert(table, row);
   }
 
-  static Future<List<Map<String, dynamic>>> queryAllRows() async {
+  static Future<List<Map<String, dynamic>>> queryAllRows(String tabelle) async {
     Database db = await instance.database;
-    return await db.query(table);
+    return await db.query(tabelle);
   }
 
   static Future<int> queryRowCount() async {
@@ -94,19 +97,30 @@ class LokaleDatenbankQuiznamen {
   }
 
   static void ausgeben() async {
-    final allRows = await queryAllRows();
+    final allRows = await queryAllRows(table);
     print('query all rows:');
     allRows.forEach((row) => print(row));
   }
 
-  static Future<QuizNeu> alleKarteikartenLaden(QuizNeu q) async{
+  static void alleQuizeLaden() async{
+    final allRows = await queryAllRows(table);
+    print(allRows.asMap());
+    allRows.forEach((row) => QuizmitFragenLaden(row));
+  }
+
+  static void QuizmitFragenLaden(var row) async {
+    QuizNeu tmpQuiz = QuizNeu.QuizfromMapObject(row);
+    userdata.einfuegen( await alleQuizfragenLaden(tmpQuiz));
+  }
+
+  static Future<QuizNeu> alleQuizfragenLaden(QuizNeu q) async{
     var tbl = q.themengebiet;
     final allRows = await _database.rawQuery(
         'SELECT * FROM $tbl');
     allRows.forEach((row) async => q.fragenliste.add(await Quizfragen.QFfromMapObject(row)));
     return q;
   }
-  static Future<QuizNeu> alleKarteikartenUpdaten(QuizNeu q) async{
+  static Future<QuizNeu> alleQuizfragenUpdaten(QuizNeu q) async{
     var tbl = q.themengebiet;
     final allRows = await _database.rawQuery(
         'SELECT * FROM $tbl');
@@ -116,6 +130,11 @@ class LokaleDatenbankQuiznamen {
       print('updated : $t in $tbl');
     }
     return q;
+  }
+
+  static Future<QuizNeu> lastEntry() async{
+    final allRows = await queryAllRows(table);
+    return await alleQuizfragenLaden(QuizNeu.QuizfromMapObject(allRows.last));
   }
 
 

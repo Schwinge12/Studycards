@@ -1,4 +1,4 @@
-class Quizfragen{
+class Quizfragen {
 
   int id;
   String frage;
@@ -27,5 +27,47 @@ class Quizfragen{
     qf.bool4 = map['bool4'];
 
     return qf;
+  }
+
+  getAntwort(int index) {
+    switch (index) {
+      case 1:
+        {
+          if (antwort1 != null) {
+            return antwort1;
+          }
+          return '';
+        }
+        break;
+
+      case 2:
+        {
+          if (antwort2 != null) {
+            return antwort2;
+          }
+          return '';
+        }
+        break;
+      case 3:
+        {
+          if (antwort3 != null) {
+            return antwort3;
+          }
+          return '';
+        }
+        break;
+      case 2:
+        {
+          if (antwort4 != null) {
+            return antwort4;
+          }
+          return '';
+        }
+        break;
+      default:
+        {
+          return '';
+        }
+    }
   }
 }

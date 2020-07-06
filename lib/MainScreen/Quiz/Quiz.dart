@@ -1,14 +1,18 @@
+import 'dart:math';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
 
 class Quiz extends StatefulWidget {
   int anzahlFragen;
   QuizNeu quiz;
   Quiz({@required this.quiz, this.anzahlFragen});
+  Random rand;
   @override
   _Quiz createState() => _Quiz();
 }
@@ -17,6 +21,7 @@ class _Quiz extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
+    Quizfragen frage = widget.quiz.fragenliste[widget.rand.nextInt(widget.quiz.fragenliste.length)];
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
@@ -73,7 +78,7 @@ class _Quiz extends State<Quiz> {
               Column(
                 children: <Widget>[
                   QuizButton(
-                    text: 'Frankreich',
+                    text: frage.getAntwort(1),
                     onPress: (){
                     },
                     auswertung: false,
@@ -82,7 +87,7 @@ class _Quiz extends State<Quiz> {
                     height: 5.0,
                   ),
                   QuizButton(
-                    text: 'Italien',
+                    text: frage.getAntwort(2),
                     onPress: (){
                     },
                     auswertung: false,
@@ -91,7 +96,7 @@ class _Quiz extends State<Quiz> {
                     height: 5.0,
                   ),
                   QuizButton(
-                    text: 'Brasilien',
+                    text: frage.getAntwort(3),
                     onPress: (){
                       Navigator.pushNamed(context, 'QuizAktuelleFrageErgebnis');
                     },
@@ -101,7 +106,7 @@ class _Quiz extends State<Quiz> {
                     height: 5.0,
                   ),
                   QuizButton(
-                    text: 'Portugal',
+                    text: frage.getAntwort(4),
                     onPress: (){
                     },
                     auswertung: false,

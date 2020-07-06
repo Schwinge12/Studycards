@@ -180,6 +180,11 @@ class Userdata extends Speicherung {
         {
           kurse.add(p);
         }
+        break;
+      case QuizNeu:
+        {
+          quiz.add(p);
+        }
 
     break;
     default: throw new FlutterError('Nicht Implementiert!');

@@ -1,7 +1,7 @@
-import 'package:karteikartenapp/Speicherung/Studiengang.dart';
-import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Studiengang.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Themengebiet.dart';
 
-import 'Produkt.dart';
+import '../Produkt.dart';
 
 class Kurs extends Produkt {
   // Kurse eines Studiengangs bsp : Statistik

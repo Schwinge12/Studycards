@@ -1,6 +1,6 @@
-import 'package:karteikartenapp/Speicherung/Studiengang.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Studiengang.dart';
 
-import 'Produkt.dart';
+import '../Produkt.dart';
 
 class Student extends Produkt{
   //____________________________________Variables_______________________________

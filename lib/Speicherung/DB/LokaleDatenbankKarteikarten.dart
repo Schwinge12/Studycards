@@ -1,12 +1,12 @@
 import 'dart:io';
-import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Karteikarte.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'Stapel.dart';
-import 'Userdata.dart';
+import '../Produkte/Stapel/Stapel.dart';
+import '../Userdata.dart';
 
 
 

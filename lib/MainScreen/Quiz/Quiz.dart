@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
-import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 
 class Quiz extends StatefulWidget {
   int anzahlFragen;

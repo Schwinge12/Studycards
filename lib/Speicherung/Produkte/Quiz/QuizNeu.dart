@@ -1,4 +1,4 @@
-import 'package:karteikartenapp/Speicherung/Produkt.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Produkt.dart';
 import 'Quizfragen.dart';
 
 class QuizNeu extends Produkt{

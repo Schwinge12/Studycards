@@ -1,6 +1,6 @@
-import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:sqflite/sqflite.dart';
-import 'Quizfragen.dart';
+import '../Produkte/Quiz/Quizfragen.dart';
 class LokaleDatenbankQuizfragen{
 
   static var tabelle;

@@ -2,17 +2,17 @@
 import 'dart:io';
 
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuizfragen.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuizfragen.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
-import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class LokaleDatenbankQuiznamen {
 
-  static final _databaseName = "Quiz.db";
+  static final _databaseName = "Quiz0.db";
   static final _databaseVersion = 2;
 
   static final table = 'quiz_tabelle';

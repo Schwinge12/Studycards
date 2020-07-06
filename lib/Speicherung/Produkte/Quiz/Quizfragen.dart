@@ -56,7 +56,7 @@ class Quizfragen {
           return '';
         }
         break;
-      case 2:
+      case 4:
         {
           if (antwort4 != null) {
             return antwort4;

@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
-import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 
 
 class KarteErstellenVorderseite extends StatefulWidget {

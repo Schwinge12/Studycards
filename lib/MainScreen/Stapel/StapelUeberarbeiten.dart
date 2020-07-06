@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankKarteikarten.dart';
-import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:image_picker/image_picker.dart';
 
 

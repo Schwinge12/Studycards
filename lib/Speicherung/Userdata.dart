@@ -1,22 +1,22 @@
 import 'package:flutter/cupertino.dart';
-import 'package:karteikartenapp/Speicherung/Dozent.dart';
-import 'package:karteikartenapp/Speicherung/Kurs.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuiznamen.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
-import 'package:karteikartenapp/Speicherung/Studiengang.dart';
-import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
-import 'package:karteikartenapp/Speicherung/Tutor.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Konten/Dozent.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Kurs.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Studiengang.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Themengebiet.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Konten/Tutor.dart';
 import 'package:path_provider/path_provider.dart';
 
 
-import 'Produkt.dart';
-import 'Stapel.dart';
-import 'Student.dart';
-import 'Karteikarte.dart';
-import 'Speicherung.dart';
-import 'QuizNeu.dart';
+import 'Produkte/Produkt.dart';
+import 'Produkte/Stapel/Stapel.dart';
+import 'Produkte/Konten/Student.dart';
+import 'Produkte/Stapel/Karteikarte.dart';
+
+import 'Produkte/Quiz/QuizNeu.dart';
 // ignore: unnecessary_statements)
-class Userdata extends Speicherung {
+class Userdata {
   //____________________________________Variables_______________________________
 
   static final Userdata _userdata = Userdata._internal(); // singelton

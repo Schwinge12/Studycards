@@ -7,9 +7,9 @@ import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/Kartenabfrage.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
-import 'package:karteikartenapp/Speicherung/Stapel.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 
 class StapelStatus extends StatefulWidget{
 

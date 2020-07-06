@@ -1,5 +1,5 @@
 
-import 'Produkt.dart';
+import '../Produkt.dart';
 
 class Studiengang extends Produkt {
   //Klasse war als erweiterte beschreibung des Studiengangs gedacht , findet keine Verwendung in der App

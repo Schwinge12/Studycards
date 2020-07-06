@@ -1,5 +1,5 @@
 import 'Kurs.dart';
-import 'Produkt.dart';
+import '../Produkt.dart';
 import 'Stapel.dart';
 
 class Themengebiet extends Produkt {

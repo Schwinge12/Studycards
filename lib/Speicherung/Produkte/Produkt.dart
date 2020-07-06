@@ -1,4 +1,4 @@
- import 'Userdata.dart';
+ import '../Userdata.dart';
 
 abstract class Produkt {  //Todo: Speicherung - alle Unterklassen / Attribute implementieren
 Userdata userdata;

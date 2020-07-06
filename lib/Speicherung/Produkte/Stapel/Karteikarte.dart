@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/rendering.dart';
-import 'package:karteikartenapp/Speicherung/Kurs.dart';
-import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Kurs.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Themengebiet.dart';
 import 'package:karteikartenapp/Speicherung/GlobalLib.dart';
 
 
-import 'Produkt.dart';
+import '../Produkt.dart';
 import 'Stapel.dart';
 import 'Studiengang.dart';
-import 'FileManager.dart';
+import '../../FileManager.dart';
 
 class Karteikarte extends Produkt {
 

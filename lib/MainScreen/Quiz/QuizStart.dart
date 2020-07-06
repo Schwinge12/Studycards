@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
-import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 
 
 class QuizStart extends StatefulWidget{

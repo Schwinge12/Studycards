@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/Speicherung/LokaleDatenbankKonto.dart';
-import 'package:karteikartenapp/Speicherung/Student.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKonto.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Konten/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

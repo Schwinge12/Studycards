@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:karteikartenapp/Speicherung/Karteikarte.dart';
-import 'package:karteikartenapp/Speicherung/Produkt.dart';
-import 'package:karteikartenapp/Speicherung/Student.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Karteikarte.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Produkt.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Konten/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 //Todo: Jan - Unit testing zum laufen bringen :C

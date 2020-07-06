@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
+import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 
 
 class QuizStart extends StatefulWidget{
+  QuizNeu quiz;
 
+  QuizStart({@required this.quiz});
   @override
   _QuizStartState createState()=>_QuizStartState();
 }
@@ -15,12 +18,13 @@ class _QuizStartState extends State<QuizStart>{
 
 
   //Todo Backend: anazhl der Karten die Im Quiz sind ändern
-  int anzahlKartenImStapel=10;
+
   int auswahl=5;
 
 
   @override
   Widget build(BuildContext context) {
+    int anzahlFragenImQuiz= widget.quiz.fragenliste.length;
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Stapelname,Thema',)),
@@ -73,7 +77,7 @@ class _QuizStartState extends State<QuizStart>{
                 child: Slider(
                   value: auswahl.toDouble(),
                   min: 1.0,
-                  max: anzahlKartenImStapel.toDouble(),
+                  max: anzahlFragenImQuiz.toDouble(),
                   onChanged: (double newValue) {
                     setState(() {
                       auswahl = newValue.round();
@@ -90,7 +94,7 @@ class _QuizStartState extends State<QuizStart>{
                 style: WeisserTextStyle,
                 text: 'Quiz starten!',
                 onPress: (){
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(anzahlKarten: anzahlKartenImStapel,)));
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(quiz: widget.quiz,anzahlFragen: auswahl, )));
                 },
               ),
             ),

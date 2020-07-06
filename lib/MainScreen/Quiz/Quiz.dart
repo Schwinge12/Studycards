@@ -3,11 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 
 class Quiz extends StatefulWidget {
-  int anzahlKarten;
-
-  Quiz({@required this.anzahlKarten});
+  int anzahlFragen;
+  QuizNeu quiz;
+  Quiz({@required this.quiz, this.anzahlFragen});
   @override
   _Quiz createState() => _Quiz();
 }

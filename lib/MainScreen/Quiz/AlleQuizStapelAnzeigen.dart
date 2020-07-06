@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/QuizStart.dart';
+import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../../ButtonsAndConstants/MenuButton.dart';
@@ -13,19 +15,19 @@ class AlleQuizStapelStapel extends StatefulWidget{
 class _AlleStapel extends State<AlleQuizStapelStapel> {
 
   static Userdata userdata = new Userdata();
-  Map<String, Stapel> buttons= alleStapel();
+  Map<String, QuizNeu> buttons= alleQuizes();
 
-  static Map<String, Stapel> alleStapel () {
-    Map<String, Stapel> stapelverzeichnis = new Map();
-    for (int i = 0; i < userdata.stapel.length; i++) {
-      String kursname = userdata.stapel[i].getStudienfachName();
-      String themengebiet = userdata.stapel[i].getThemengebietName();
+  static Map<String, QuizNeu> alleQuizes () {
+    Map<String, QuizNeu> quizverzeichnis = new Map();
+    for (int i = 0; i < userdata.quiz.length; i++) {
+      String kursname = userdata.quiz[i].getStudienfach();
+      String themengebiet = userdata.quiz[i].getThemengebiet();
 
-      stapelverzeichnis[kursname + "\n" + themengebiet]= userdata.stapel[i];
+      quizverzeichnis[kursname + "\n" + themengebiet]= userdata.quiz[i];
       print(userdata.stapel[i].getThemengebietName());
     }
 
-    return stapelverzeichnis;
+    return quizverzeichnis;
   }
 
 
@@ -34,8 +36,6 @@ class _AlleStapel extends State<AlleQuizStapelStapel> {
 
     var _userdata = new Userdata();
 
-
-    var  verfuegbareStapel = _userdata.stapel.length;
 
     return Scaffold(
         appBar: AppBar(
@@ -66,7 +66,7 @@ class _AlleStapel extends State<AlleQuizStapelStapel> {
                 text: buttons.keys.toList()[index],
                 onPress: (){
 
-                  Navigator.pushNamed(context, 'Quizstart');
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizStart(quiz:buttons.values.toList()[index] )));
                 },
               );
             }

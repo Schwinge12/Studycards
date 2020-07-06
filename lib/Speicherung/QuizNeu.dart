@@ -13,7 +13,22 @@ class QuizNeu extends Produkt{
 
   QuizNeu();
 
-  add(Quizfragen q){fragenliste.add(q);} // convienice
+  add(Quizfragen q){fragenliste.add(q);}
+
+  String getThemengebiet(){
+    if (themengebiet != null) {
+      return themengebiet;
+    }
+    return '404';
+  }
+  String getStudienfach(){
+    if (studienfach != null) {
+      return studienfach;
+    }
+    return '404';
+  }
+
+
 
   static QuizNeu QuizfromMapObject(Map<String, dynamic> map) {
     QuizNeu s = new QuizNeu();

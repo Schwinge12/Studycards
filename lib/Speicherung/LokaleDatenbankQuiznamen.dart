@@ -81,6 +81,12 @@ class LokaleDatenbankQuiznamen {
     };
     final id = await insert(row);
 
+    LokaleDatenbankQuizfragen qf =
+    new LokaleDatenbankQuizfragen(_database, _databaseVersion, q.themengebiet, id);
+    for (int i = 0 ; i < q.fragenliste.length; i++){
+      qf.insertQF(q.fragenliste[i]);
+    }
+
     print('inserted row id: $id');
   }
 

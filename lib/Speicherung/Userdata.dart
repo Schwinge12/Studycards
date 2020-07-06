@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/Speicherung/Dozent.dart';
 import 'package:karteikartenapp/Speicherung/Kurs.dart';
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Studiengang.dart';
 import 'package:karteikartenapp/Speicherung/Themengebiet.dart';
@@ -245,6 +246,7 @@ class Userdata extends Speicherung {
   void init() {
     // Testdaten ____________________________
     LokaleDatenbankStapel.alleStapelLaden();
+    LokaleDatenbankQuiznamen.alleQuizeLaden();
     // TODO: Speicherung - implement laden
     //data?
     // + load data

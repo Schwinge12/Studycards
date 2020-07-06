@@ -24,7 +24,7 @@ class _AlleStapel extends State<AlleQuizStapelStapel> {
       String themengebiet = userdata.quiz[i].getThemengebiet();
 
       quizverzeichnis[kursname + "\n" + themengebiet]= userdata.quiz[i];
-      print(userdata.stapel[i].getThemengebietName());
+      print(userdata.quiz[i].getThemengebiet());
     }
 
     return quizverzeichnis;

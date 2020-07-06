@@ -7,6 +7,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
+import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
 
 class LokaleDatenbankQuiznamen {
 
@@ -81,8 +82,10 @@ class LokaleDatenbankQuiznamen {
     };
     final id = await insert(row);
 
+    Database db = await instance.database;
+
     LokaleDatenbankQuizfragen qf =
-    new LokaleDatenbankQuizfragen(_database, _databaseVersion, q.themengebiet, id);
+    new LokaleDatenbankQuizfragen(db, _databaseVersion, q.themengebiet, id);
     for (int i = 0 ; i < q.fragenliste.length; i++){
       qf.insertQF(q.fragenliste[i]);
     }
@@ -94,6 +97,25 @@ class LokaleDatenbankQuiznamen {
     final allRows = await queryAllRows();
     print('query all rows:');
     allRows.forEach((row) => print(row));
+  }
+
+  static Future<QuizNeu> alleKarteikartenLaden(QuizNeu q) async{
+    var tbl = q.themengebiet;
+    final allRows = await _database.rawQuery(
+        'SELECT * FROM $tbl');
+    allRows.forEach((row) async => q.fragenliste.add(await Quizfragen.QFfromMapObject(row)));
+    return q;
+  }
+  static Future<QuizNeu> alleKarteikartenUpdaten(QuizNeu q) async{
+    var tbl = q.themengebiet;
+    final allRows = await _database.rawQuery(
+        'SELECT * FROM $tbl');
+    for(int t = 0; t< allRows.length; t++) {
+      _database.update(
+          tbl, LokaleDatenbankQuizfragen.getRowFromKK(q.fragenliste[t]), where: '$colId = ?', whereArgs: [q.fragenliste[t].id]);
+      print('updated : $t in $tbl');
+    }
+    return q;
   }
 
 

@@ -1,3 +1,4 @@
+import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
 import 'package:sqflite/sqflite.dart';
 import 'Quizfragen.dart';
 class LokaleDatenbankQuizfragen{
@@ -45,7 +46,7 @@ class LokaleDatenbankQuizfragen{
             $colAntwort3 TEXT NOT NULL,
             $colBool3 INTEGER NOT NULL,
             $colAntwort4 TEXT NOT NULL,
-            $colBool4 INTEGER NOT NULL,
+            $colBool4 INTEGER NOT NULL
           )
           ''');
     // $colStapelId INTEGER FOREIGN KEY REFERENCES karteikarten_tabelle (_id),
@@ -54,6 +55,20 @@ class LokaleDatenbankQuizfragen{
 
   void insertQF(Quizfragen qf) async {
     // row to insert
+    Map<String, dynamic> row = getRowFromKK(qf);
+    final id = await _database.insert(tabelle, row);
+    print('inserted row id: $id');
+  }
+  static Future<List<Map<String, dynamic>>> queryAllRows() async {
+    Database db = await instance.database;
+    return await db.query(tabelle);
+  }
+  static void ausgeben() async {
+    final allRows = await queryAllRows();
+    print('query all rows:');
+    allRows.forEach((row) => print(row));
+  }
+  static getRowFromKK(Quizfragen qf){
     Map<String, dynamic> row = {
       LokaleDatenbankQuizfragen.colFrage : qf.frage,
       LokaleDatenbankQuizfragen.colAntwort1 : qf.antwort1,
@@ -65,7 +80,8 @@ class LokaleDatenbankQuizfragen{
       LokaleDatenbankQuizfragen.colAntwort4 : qf.antwort4,
       LokaleDatenbankQuizfragen.colBool4 : qf.bool4,
     };
-    final id = await _database.insert(tabelle, row);
-    print('inserted row id: $id');
+    return row;
   }
+
+
 }

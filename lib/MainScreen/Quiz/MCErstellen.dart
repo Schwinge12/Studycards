@@ -4,7 +4,7 @@ import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Quizfragen.dart';
 import 'package:karteikartenapp/Speicherung/QuizNeu.dart';
-
+import 'package:karteikartenapp/Speicherung/LokaleDatenbankQuizfragen.dart';
 
 class MCErstellen extends StatefulWidget{
 

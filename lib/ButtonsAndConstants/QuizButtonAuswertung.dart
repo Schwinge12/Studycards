@@ -10,7 +10,6 @@ class QuizButtonAuswertung extends StatelessWidget {
 
   QuizButtonAuswertung(String text, Function onPress, bool auswertung) {
     this.text = text;
-    this.onPress = onPress;
     this.auswertung = auswertung;
     if (auswertung == true) {
       this.farbe = Colors.green;
@@ -19,7 +18,6 @@ class QuizButtonAuswertung extends StatelessWidget {
       this.farbe = Colors.red;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

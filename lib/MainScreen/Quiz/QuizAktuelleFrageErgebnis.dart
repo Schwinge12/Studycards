@@ -2,10 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButtonAuswertung.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
-import 'package:karteikartenapp/MainScreen/Quiz/QuizStart.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quizende.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
@@ -18,7 +15,7 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
   @override
   _QuizAkutelleFrageErgebnis createState() => _QuizAkutelleFrageErgebnis();
 }
-//Werte aus klasse: Quiz werden komplett übergeben von aktueller frage
+
 
 class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
 
@@ -36,7 +33,7 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                 }
             ),
             IconButton(
-              icon: Icon(Icons.check_circle, color: Colors.green, size: 35),
+              icon: Icon(Icons.arrow_forward, color: Colors.green, size: 35),
               onPressed:(){
                 Navigator.pushNamed(context, 'Quizende');
               }

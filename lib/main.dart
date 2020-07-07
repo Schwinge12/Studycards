@@ -21,7 +21,6 @@ import 'MainScreen/Quiz/Quiz.dart';
 import 'MainScreen/Quiz/MCErstellen.dart';
 import 'MainScreen/Einstellungen.dart';
 import 'package:syncfusion_flutter_core/core.dart';
-import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 import 'MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'MainScreen/Quiz/QuizStapelErstellen.dart';
 import 'MainScreen/Quiz/Quizende.dart';
@@ -37,7 +36,6 @@ class KarteikartenApp extends StatelessWidget{
     return MaterialApp(
       theme:ThemeData.light(
       ).copyWith(primaryColor: Color(0xFF3E7882),scaffoldBackgroundColor: Color(0xFF3E7882), accentColor: Colors.grey ),
-
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
       home: LoginScreen(),
       routes: {

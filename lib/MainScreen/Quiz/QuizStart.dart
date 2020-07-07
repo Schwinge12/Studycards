@@ -1,6 +1,8 @@
 
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
@@ -30,7 +32,44 @@ class _QuizStartState extends State<QuizStart>{
     int anzahlFragenImQuiz= widget.quiz.fragenliste.length;
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Stapelname,Thema',)),
+          title: Center(child: AutoSizeText(
+            widget.quiz.themengebiet,
+            minFontSize: 6,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          ),
+          actions: <Widget>[
+            // action button
+            IconButton(
+              icon: Icon(Icons.delete, color: Colors.red, size: 35),
+              onPressed: ()async{
+                showDialog(
+                    context: context,
+                    builder: (_) =>
+                        CupertinoAlertDialog(
+                          content:
+                          Text(
+                              'Soll das akutelle Quiz gelöscht werden?'),
+                          actions: <Widget>[
+                            CupertinoDialogAction(
+                              child: Text('Quiz löschen'),
+                              onPressed: () async {
+                                //TODO backend: quiz löschen einfügen
+                              },
+                            ),
+                          ],
+                        ),
+                    barrierDismissible: true);
+              },
+            ),
+            IconButton(
+                icon: Icon(Icons.share,color: Colors.white, size: 35),
+                onPressed:() {
+                  //ShareExtend.shareMultiple(widget.stapel.stapelKarten, "Hier ist ein Stapel für dich",subject: widget.stapel.getThemengebietName());
+                }
+            ),
+          ]
       ),
       body: Container(
         margin: EdgeInsets.all(30.0),

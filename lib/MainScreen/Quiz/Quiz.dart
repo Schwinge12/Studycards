@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 
@@ -34,7 +33,13 @@ class _Quiz extends State<Quiz> {
                   Navigator.pushNamed(context, 'MenuPage');
                 }
             ),
-          ]
+            IconButton(
+               icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
+                onPressed:() {
+                  Navigator.pushNamed(context, 'QuizAktuelleFrageErgebnis');
+            }
+            ),
+            ]
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -79,46 +84,35 @@ class _Quiz extends State<Quiz> {
               Column(
                 children: <Widget>[
                   QuizButton(
-                    text: frage.getAntwort(1),
-                    onPress: (){
-                    },
-                    auswertung: istAuswertung(frage.bool1),
+                    frage.getAntwort(1),
+                    istAuswertung(frage.bool1),
                   ),
                   SizedBox(
                     height: 5.0,
                   ),
                   QuizButton(
-                    text: frage.getAntwort(2),
-                    onPress: (){
-                    },
-                    auswertung: istAuswertung(frage.bool2),
+                  frage.getAntwort(2),
+                    istAuswertung(frage.bool2),
                   ),
                   SizedBox(
                     height: 5.0,
                   ),
                   QuizButton(
-                    text: frage.getAntwort(3),
-                    onPress: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz)));
-                    },
-                    auswertung: istAuswertung(frage.bool3),
+                    frage.getAntwort(3),
+                    istAuswertung(frage.bool3),
                   ),
                   SizedBox(
                     height: 5.0,
                   ),
                   QuizButton(
-                    text: frage.getAntwort(4),
-                    onPress: (){
-                    },
-                    auswertung: istAuswertung(frage.bool4),
+                    frage.getAntwort(4),
+                    istAuswertung(frage.bool4),
                   ),
                 ],
               ),
         ],
       ),
     );
-
-
   }
   bool istAuswertung(int i){
     return (i == 1)? true : false;

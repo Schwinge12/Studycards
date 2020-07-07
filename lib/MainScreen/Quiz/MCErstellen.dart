@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
@@ -20,6 +22,7 @@ class MCErstellen extends StatefulWidget{
   @override
   _MCErstellen createState()=>_MCErstellen();
 }
+//TODO cupertion alert dialog
 
 class _MCErstellen extends State <MCErstellen>{
 
@@ -43,7 +46,6 @@ class _MCErstellen extends State <MCErstellen>{
         child: Column(
 
           children: <Widget>[
-
             SizedBox(
               height: 20.0,
             ),
@@ -109,16 +111,31 @@ class _MCErstellen extends State <MCErstellen>{
                     ),
                   ),
                 ),
-
                 Expanded(
                   child: Checkbox(
                     checkColor: Colors.green,
                     value: checked1,
                     onChanged: (bool value){
-                      setState(() {
-                        checked1=value;
-                      });
-                    },
+                      showDialog(
+                          context: context,
+                          builder: (_) =>
+                              CupertinoAlertDialog(
+                                content:
+                                Text(
+                                    'Bitte die korrekten Antworten mit Hacken markieren!'),
+                                actions: <Widget>[
+                                  CupertinoDialogAction(
+                                    child: Text('Ok'),
+                                    onPressed: () {
+                                      setState(() {
+                                        checked1=value;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                          barrierDismissible: true);
+                      },
                   ),
                 ),
 
@@ -310,7 +327,14 @@ class _MCErstellen extends State <MCErstellen>{
                       },
                     ),
                   ),
-
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back,color: Colors.white,size: 40.0,),
+                      onPressed: (){
+                        Navigator.pushNamed(context, 'QuizStapelErstellen');
+                      },
+                    ),
+                  ),
                 ],
               ),
             )

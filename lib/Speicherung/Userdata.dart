@@ -236,6 +236,11 @@ class Userdata {
         {
           kurse.remove(p);
         }
+        break;
+      case QuizNeu:
+        {
+          quiz.remove(p);
+        }
 
         break;
       default: throw new FlutterError('Nicht Implementiert!');

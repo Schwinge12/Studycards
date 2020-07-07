@@ -73,9 +73,9 @@ class LokaleDatenbankQuiznamen {
     return await db.update(table, row, where: '$colId = ?', whereArgs: [id]);
   }
 
-  static Future<int> delete(int id) async {
+  static Future<int> delete(int id, var tabelle) async {
     Database db = await instance.database;
-    return await db.delete(table, where: '$colId = ?', whereArgs: [id]);
+    return await db.delete(tabelle, where: '$colId = ?', whereArgs: [id]);
   }
 
   static void insertQuiz(QuizNeu q) async {
@@ -100,6 +100,17 @@ class LokaleDatenbankQuiznamen {
     final allRows = await queryAllRows(table);
     print('query all rows:');
     allRows.forEach((row) => print(row));
+  }
+
+  static void stapelLoeschen(QuizNeu s) async {
+    var id = s.id;
+    var tg = s.themengebiet;
+
+    final rowsDeleted = await delete(id, table);
+    print('deleted $rowsDeleted row(s): row $id');
+
+    _database.rawQuery('DROP TABLE IF EXISTS $tg');
+    print('deleted table: $tg');
   }
 
   static void alleQuizeLaden() async{

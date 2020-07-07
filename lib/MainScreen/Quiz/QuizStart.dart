@@ -8,8 +8,9 @@ import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
-
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 class QuizStart extends StatefulWidget{
   QuizNeu quiz;
@@ -23,6 +24,7 @@ class _QuizStartState extends State<QuizStart>{
 
 
   //Todo Backend: anazhl der Karten die Im Quiz sind ändern
+  Userdata userdata = new Userdata();
 
   int auswahl=0;
   Random rand = new Random();
@@ -55,7 +57,8 @@ class _QuizStartState extends State<QuizStart>{
                             CupertinoDialogAction(
                               child: Text('Quiz löschen'),
                               onPressed: () async {
-                                //TODO backend: quiz löschen einfügen
+                                await _loeschen();
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleQuizStapelStapel()));
                               },
                             ),
                           ],
@@ -146,5 +149,11 @@ class _QuizStartState extends State<QuizStart>{
         ),
       ),
     );
+  }
+  void _loeschen() async{
+
+    print(widget.quiz.id);
+    await LokaleDatenbankQuiznamen.stapelLoeschen(widget.quiz);
+    await userdata.loeschen(widget.quiz);
   }
 }

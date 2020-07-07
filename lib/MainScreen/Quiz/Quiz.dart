@@ -5,23 +5,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 
 class Quiz extends StatefulWidget {
   int anzahlFragen;
   QuizNeu quiz;
-  Quiz({@required this.quiz, this.anzahlFragen});
-  Random rand = new Random();
+  Quiz({@required this.quiz, this.anzahlFragen,this.rand});
+  Random rand;
   @override
   _Quiz createState() => _Quiz();
 }
 
 class _Quiz extends State<Quiz> {
+int anzahl =0;
 
   @override
   Widget build(BuildContext context) {
     Quizfragen frage = widget.quiz.fragenliste[widget.rand.nextInt(widget.quiz.fragenliste.length)];
+
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
@@ -36,7 +39,7 @@ class _Quiz extends State<Quiz> {
             IconButton(
                icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
                 onPressed:() {
-                  Navigator.pushNamed(context, 'QuizAktuelleFrageErgebnis');
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahl: anzahl)));
             }
             ),
             ]

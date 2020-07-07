@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/QuizButtonAuswertung.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quizende.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
@@ -10,7 +13,8 @@ import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 class QuizAkutelleFrageErgebnis extends StatefulWidget {
   Quizfragen frage;
   QuizNeu quiz;
-  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz});
+  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahl});
+  int anzahl;
 
   @override
   _QuizAkutelleFrageErgebnis createState() => _QuizAkutelleFrageErgebnis();
@@ -19,8 +23,12 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
 
 class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
 
+
   @override
   Widget build(BuildContext context) {
+    int anzahl=widget.anzahl;
+    anzahl++;
+    Random rand = new Random();
     return Scaffold(
       appBar: AppBar(
           title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
@@ -33,11 +41,24 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                 }
             ),
             IconButton(
-              icon: Icon(Icons.arrow_forward, color: Colors.green, size: 35),
+              icon: Icon(Icons.beenhere, color: Colors.white, size: 35),
               onPressed:(){
-                Navigator.pushNamed(context, 'Quizende');
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
               }
-            )
+            ),
+            IconButton(
+                icon: Icon(Icons.arrow_forward, color: Colors.white, size: 35),
+                onPressed:() {
+                  if (anzahl == widget.quiz.fragenliste.length) {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Quizende(quiz: widget.quiz,)));
+                  }
+                  else {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Quiz(quiz: widget.quiz, rand: rand)));
+                  }
+                }
+                  ),
           ]
       ),
       body: Column(

@@ -25,7 +25,7 @@ class _QuizStartState extends State<QuizStart>{
   //Todo Backend: anazhl der Karten die Im Quiz sind ändern
 
   int auswahl=0;
-
+  Random rand = new Random();
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +138,7 @@ class _QuizStartState extends State<QuizStart>{
                 text: 'Quiz starten!',
                 onPress: (){
                   if (auswahl> 0)
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(quiz: widget.quiz,anzahlFragen: auswahl, )));
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(quiz: widget.quiz,anzahlFragen: auswahl, rand: rand)));
                 },
               ),
             ),

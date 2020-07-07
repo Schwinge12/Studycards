@@ -307,7 +307,7 @@ class _MCErstellen extends State <MCErstellen>{
                         widget.quiz.studienfach= widget.studienfach;
                         widget.quiz.themengebiet= widget.themengebiet;
                         frageEinfuegen();
-                        Navigator.pushNamed(context, 'MCErstellen');
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MCErstellen(studienfach: widget.studienfach, themengebiet: widget.themengebiet, quiz: widget.quiz)));
                       },
                     ),
                   ),

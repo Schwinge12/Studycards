@@ -16,7 +16,6 @@ class Quizende extends StatefulWidget {
 }
 
 class _Quizende extends State<Quizende> {
-  //Anzahl nur zum test
 
 
   double prozentAusrechnen(int anzahl, int falsch){

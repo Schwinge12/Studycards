@@ -6,7 +6,7 @@ class QuizButton extends StatefulWidget {
   String text;
    bool auswertung;
 
-  QuizButton(String text, bool auswertung){
+  QuizButton(@required this.text, @required this.auswertung){
     this.text=text;
     this.auswertung=auswertung;
   }

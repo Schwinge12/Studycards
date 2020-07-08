@@ -26,6 +26,7 @@ class _QuizButtonState extends State<QuizButton> {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: (){
+          widget.anzahlHochzaehlen++;
         setState(() {
           pressed =!pressed;
         });

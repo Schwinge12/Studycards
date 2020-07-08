@@ -14,18 +14,23 @@ class Quiz extends StatefulWidget {
   QuizNeu quiz;
   Random rand;
   int zaehler;
-  Quiz({@required this.quiz, this.anzahlFragen,this.rand,this.zaehler});
+  int richtigeAntworten;
+  int richtigeAntwortenGedruecktHochzaehlen;
+  Quiz({@required this.quiz, this.anzahlFragen,this.rand,this.zaehler,this.richtigeAntworten,this.richtigeAntwortenGedruecktHochzaehlen});
 
   @override
   _Quiz createState() => _Quiz();
 }
 
 class _Quiz extends State<Quiz> {
- int anzahlhochzaehlen=0;
+
+
+
 
   @override
   Widget build(BuildContext context) {
     Quizfragen frage = widget.quiz.fragenliste[widget.rand.nextInt(widget.quiz.fragenliste.length)];
+
 
     return Scaffold(
       appBar: AppBar(
@@ -47,9 +52,7 @@ class _Quiz extends State<Quiz> {
             IconButton(
                icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
                 onPressed:() {
-                 print(widget.zaehler);
-                 print(widget.anzahlFragen);
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahlFragen: widget.anzahlFragen,zaehler: widget.zaehler,)));
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahlFragen: widget.anzahlFragen,zaehler: widget.zaehler, richtigeAntworten: widget.richtigeAntworten,richtigeAntwortenGedruecktHochzaehlen: widget.richtigeAntwortenGedruecktHochzaehlen,)));
             }
             ),
             ]
@@ -99,7 +102,7 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     frage.getAntwort(1),
                     istAuswertung(frage.bool1),
-                    anzahlhochzaehlen++,
+                    widget.richtigeAntwortenGedruecktHochzaehlen= widget.richtigeAntwortenGedruecktHochzaehlen+hochZaehlenRichtigGedrueckteAntworten(frage.bool1),
                   ),
                   SizedBox(
                     height: 5.0,
@@ -107,6 +110,8 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                   frage.getAntwort(2),
                     istAuswertung(frage.bool2),
+                      widget.richtigeAntwortenGedruecktHochzaehlen= widget.richtigeAntwortenGedruecktHochzaehlen+hochZaehlenRichtigGedrueckteAntworten(frage.bool2)
+
                   ),
                   SizedBox(
                     height: 5.0,
@@ -114,6 +119,7 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     frage.getAntwort(3),
                     istAuswertung(frage.bool3),
+                      widget.richtigeAntwortenGedruecktHochzaehlen= widget.richtigeAntwortenGedruecktHochzaehlen+hochZaehlenRichtigGedrueckteAntworten(frage.bool3)
                   ),
                   SizedBox(
                     height: 5.0,
@@ -121,6 +127,7 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     frage.getAntwort(4),
                     istAuswertung(frage.bool4),
+                      widget.richtigeAntwortenGedruecktHochzaehlen= widget.richtigeAntwortenGedruecktHochzaehlen+hochZaehlenRichtigGedrueckteAntworten(frage.bool4)
                   ),
                 ],
               ),
@@ -130,5 +137,14 @@ class _Quiz extends State<Quiz> {
   }
   bool istAuswertung(int i){
     return (i == 1)? true : false;
+  }
+  int hochZaehlenRichtigGedrueckteAntworten( int bool)
+  {
+    int i=0;
+    if(bool == 1)
+      {
+        i=1;
+      }
+    return i;
   }
 }

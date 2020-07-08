@@ -9,8 +9,10 @@ import 'package:pie_chart/pie_chart.dart';
 class Quizende extends StatefulWidget {
 
   QuizNeu quiz;
+  int richtigeAntworten;
+  int richtigeAntwortenGedruecktHochzaehlen;
 
-  Quizende({@required this.quiz});
+  Quizende({@required this.quiz, this.richtigeAntworten, this.richtigeAntwortenGedruecktHochzaehlen});
   @override
   _Quizende createState() => _Quizende();
 }
@@ -29,9 +31,9 @@ class _Quizende extends State<Quizende> {
 
   @override
   void initState() {
-    int anzahl= widget.quiz.fragenliste.length;
-    int falsch= widget.quiz.falschBeantwortet;
-    int richtig=widget.quiz.richtigBeantwortet; // Überhaupt nötig ?
+    int anzahl= widget.richtigeAntworten;
+    int falsch= widget.richtigeAntworten-widget.richtigeAntwortenGedruecktHochzaehlen;
+    int richtig=widget.richtigeAntwortenGedruecktHochzaehlen; // Überhaupt nötig ?
     data.addAll({
       'Richtig beantwortet': prozentAusrechnen(anzahl, richtig)*1000,
       'Falsch beantwortet': 100000-prozentAusrechnen(anzahl,falsch)*1000

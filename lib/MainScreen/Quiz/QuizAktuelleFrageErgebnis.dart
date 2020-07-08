@@ -15,7 +15,9 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
   QuizNeu quiz;
   int anzahlFragen;
   int zaehler;
-  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahlFragen,this.zaehler});
+  int richtigeAntworten;
+  int richtigeAntwortenGedruecktHochzaehlen;
+  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahlFragen,this.zaehler,this.richtigeAntworten, this.richtigeAntwortenGedruecktHochzaehlen});
 
 
   @override
@@ -24,6 +26,7 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
 
 
 class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
+
 
 
   @override
@@ -53,14 +56,16 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
 
                   print(widget.zaehler);
                   print(widget.anzahlFragen);
+                  print(widget.richtigeAntworten);
+                  print(widget.richtigeAntwortenGedruecktHochzaehlen);
                   if(widget.zaehler<widget.anzahlFragen){
                     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,)));
+                        builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,richtigeAntworten: widget.richtigeAntworten+1,richtigeAntwortenGedruecktHochzaehlen: widget.richtigeAntwortenGedruecktHochzaehlen,)));
                   }
 
                   else{
                     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Quizende(quiz: widget.quiz,)));
+                        builder: (context) => Quizende(quiz: widget.quiz, richtigeAntworten: widget.richtigeAntworten, richtigeAntwortenGedruecktHochzaehlen: widget.richtigeAntwortenGedruecktHochzaehlen,)));
                   }
                 }
                   ),

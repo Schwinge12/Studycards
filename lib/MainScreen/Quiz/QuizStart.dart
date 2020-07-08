@@ -16,6 +16,7 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 class QuizStart extends StatefulWidget{
   QuizNeu quiz;
 
+
   QuizStart({@required this.quiz});
   @override
   _QuizStartState createState()=>_QuizStartState();
@@ -32,6 +33,8 @@ class _QuizStartState extends State<QuizStart>{
 
   @override
   Widget build(BuildContext context) {
+    widget.quiz.richtigBeantwortet =0;
+    widget.quiz.richtigeFragenimQuizInsgesamt=0;
     int anzahlFragenImQuiz= widget.quiz.fragenliste.length;
     return Scaffold(
       appBar: AppBar(

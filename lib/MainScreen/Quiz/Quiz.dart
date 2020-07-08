@@ -14,6 +14,7 @@ class Quiz extends StatefulWidget {
   QuizNeu quiz;
   Random rand;
   int zaehler;
+  Function onPressed;
   Quiz({@required this.quiz, this.anzahlFragen,this.rand,this.zaehler});
 
   @override
@@ -98,19 +99,16 @@ class _Quiz extends State<Quiz> {
               Column(
                 children: <Widget>[
                   QuizButton(
-                    frage.getAntwort(1),
-                    istAuswertung(frage.bool1),
-                      widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool1)
-                  ),
+                      frage.getAntwort(1),
+                        istAuswertung(1),
+                         widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool1))),
                   SizedBox(
                     height: 5.0,
                   ),
                   QuizButton(
                   frage.getAntwort(2),
                     istAuswertung(frage.bool2),
-                      widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool2)
-
-
+                      widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool2)),
                   ),
                   SizedBox(
                     height: 5.0,
@@ -118,8 +116,7 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     frage.getAntwort(3),
                     istAuswertung(frage.bool3),
-                      widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool3)
-
+                    widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool3)),
                   ),
                   SizedBox(
                     height: 5.0,
@@ -127,7 +124,7 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     frage.getAntwort(4),
                     istAuswertung(frage.bool4),
-                      widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool4)
+                    widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool4)),
                   ),
                 ],
               ),

@@ -6,11 +6,12 @@ class QuizButton extends StatefulWidget {
   String text;
    bool auswertung;
   int anzahlHochzaehlen;
+  Function onPressed;
 
-  QuizButton(@required this.text, @required this.auswertung,@required this.anzahlHochzaehlen){
+  QuizButton(@required this.text, @required this.auswertung,@required this.onPressed){
     this.text=text;
     this.auswertung=auswertung;
-    this.anzahlHochzaehlen =anzahlHochzaehlen;
+    this.onPressed=onPressed;
   }
 
 
@@ -26,7 +27,7 @@ class _QuizButtonState extends State<QuizButton> {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: (){
-          widget.anzahlHochzaehlen;
+          widget.onPressed();
         setState(() {
           pressed =!pressed;
         });

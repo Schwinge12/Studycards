@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
@@ -38,14 +39,13 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
                   ),
 
 
-                  Text(username,
+                  AutoSizeText(username,
                       style: WeisserTextStyle
                   ),
 
-                  Text(status,
+                  AutoSizeText(status,
                       style: WeisserTextStyle
                   ),
-
                   MenuButton(
                     height: 70.0,
                     text: 'Stapel Erstellen',

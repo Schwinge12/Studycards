@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'TextStyles.dart';
@@ -27,7 +28,7 @@ class MultipleChoiceButton extends StatelessWidget{
             child: Column(
               children: <Widget>[
                 Icon (Icons.format_list_bulleted, size:40, color: Colors.black),
-                Text (text,style: TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 )),
+                AutoSizeText (text,style: TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 )),
               ],
             )
         )

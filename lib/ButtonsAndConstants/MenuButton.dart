@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
@@ -15,8 +16,9 @@ class MenuButton extends StatelessWidget{
       width: 300.0,
       height: height??80.0,
       child: Center(
-        child: Text(
+        child: AutoSizeText(
           text,
+          textAlign: TextAlign.center,
           style: MenuButtonTextStyle,
         ),
       ),

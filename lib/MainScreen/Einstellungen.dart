@@ -20,8 +20,10 @@ class _EinstellungenState extends State<Einstellungen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body: Center(
+        appBar: AppBar(
+        title: Text('Einstellungen'),
+        ),
+    body: Center(
             child: SafeArea(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +33,7 @@ class _EinstellungenState extends State<Einstellungen> {
                       child: Container(
                         height: 200.0,
 
-                        child: Icon(Icons.settings, size: 100,),
+                        child: Icon(Icons.settings, size: 100,color: Colors.white70),
                       ),
                     ),
                   ),

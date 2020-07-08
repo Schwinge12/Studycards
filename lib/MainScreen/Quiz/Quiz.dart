@@ -8,6 +8,7 @@ import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
 
 class Quiz extends StatefulWidget {
   int anzahlFragen;
@@ -80,7 +81,7 @@ class _Quiz extends State<Quiz> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  height: 350,
+                  height: 280,
                   width: 200,
                   child: Center(
                     child: AutoSizeText(
@@ -98,34 +99,41 @@ class _Quiz extends State<Quiz> {
           ),
               Column(
                 children: <Widget>[
-                  QuizButton(
-                      frage.getAntwort(1),
-                        istAuswertung(1),
-                         widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool1))),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                  frage.getAntwort(2),
-                    istAuswertung(frage.bool2),
-                      widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool2)),
+                  MenuButton(
+                      onPress: (){
+                        widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool1));
+                      },
+                  text: frage.getAntwort(1),
+                  height: 50,
                   ),
                   SizedBox(
                     height: 5.0,
                   ),
-                  QuizButton(
-                    frage.getAntwort(3),
-                    istAuswertung(frage.bool3),
-                    widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool3)),
+                  MenuButton(
+                    onPress: (){
+                      widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool2));
+                    },
+                    text: frage.getAntwort(2),
+                  height: 50,),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  MenuButton(
+                    onPress: (){
+                      widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool3));
+                    },
+                    text: frage.getAntwort(3),
+                  height: 50,
                   ),
                   SizedBox(
                     height: 5.0,
                   ),
-                  QuizButton(
-                    frage.getAntwort(4),
-                    istAuswertung(frage.bool4),
-                    widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool4)),
-                  ),
+                  MenuButton(
+                    onPress: (){
+                      widget.onPressed(widget.quiz.richtigBeantwortet= widget.quiz.richtigBeantwortet+hochZaehlenRichtigGedrueckteAntworten(frage.bool4));
+                    },
+                    text: frage.getAntwort(4),
+                  height: 50,),
                 ],
               ),
         ],

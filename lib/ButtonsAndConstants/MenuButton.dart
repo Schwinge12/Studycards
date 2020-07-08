@@ -12,6 +12,7 @@ class MenuButton extends StatelessWidget{
   Widget build(BuildContext context) {
   return FlatButton(
     onPressed: onPress,
+    highlightColor: Colors.white70,
     child: Container(
       width: 300.0,
       height: height??80.0,

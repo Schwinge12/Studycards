@@ -97,6 +97,12 @@ class _Quizende extends State<Quizende> {
                 child: MenuButton(
                   text: 'Fertig',
                   onPress: (){
+                    int anzahl= widget.quiz.fragenliste.length;
+                    int falsch= widget.quiz.falschBeantwortet;
+                    int richtig=widget.quiz.richtigBeantwortet;
+                    print(richtig);
+                    print(falsch);
+                    print(anzahl);
                     Navigator.pushNamed(context, 'MenuPage');
                   },
                 ),

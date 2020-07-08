@@ -12,14 +12,16 @@ import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 class Quiz extends StatefulWidget {
   int anzahlFragen;
   QuizNeu quiz;
-  Quiz({@required this.quiz, this.anzahlFragen,this.rand});
   Random rand;
+  int zaehler;
+  Quiz({@required this.quiz, this.anzahlFragen,this.rand,this.zaehler});
+
   @override
   _Quiz createState() => _Quiz();
 }
 
 class _Quiz extends State<Quiz> {
-int anzahl =0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,9 @@ int anzahl =0;
             IconButton(
                icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
                 onPressed:() {
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahl: anzahl)));
+                 print(widget.zaehler);
+                 print(widget.anzahlFragen);
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahlFragen: widget.anzahlFragen,zaehler: widget.zaehler,)));
             }
             ),
             ]

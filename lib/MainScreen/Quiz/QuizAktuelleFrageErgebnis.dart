@@ -13,8 +13,10 @@ import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 class QuizAkutelleFrageErgebnis extends StatefulWidget {
   Quizfragen frage;
   QuizNeu quiz;
-  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahl});
-  int anzahl;
+  int anzahlFragen;
+  int zaehler;
+  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahlFragen,this.zaehler});
+
 
   @override
   _QuizAkutelleFrageErgebnis createState() => _QuizAkutelleFrageErgebnis();
@@ -26,8 +28,7 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
 
   @override
   Widget build(BuildContext context) {
-    int anzahl=widget.anzahl;
-    anzahl++;
+
     Random rand = new Random();
     return Scaffold(
       appBar: AppBar(
@@ -49,13 +50,17 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
             IconButton(
                 icon: Icon(Icons.arrow_forward, color: Colors.white, size: 35),
                 onPressed:() {
-                  if (anzahl == widget.quiz.fragenliste.length) {
+
+                  print(widget.zaehler);
+                  print(widget.anzahlFragen);
+                  if(widget.zaehler<widget.anzahlFragen){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,)));
+                  }
+
+                  else{
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => Quizende(quiz: widget.quiz,)));
-                  }
-                  else {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Quiz(quiz: widget.quiz, rand: rand)));
                   }
                 }
                   ),

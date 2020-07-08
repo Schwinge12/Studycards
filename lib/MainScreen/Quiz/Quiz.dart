@@ -33,6 +33,12 @@ class _Quiz extends State<Quiz> {
           actions: <Widget>[
             // action button
             IconButton(
+              icon: Icon(Icons.delete, color: Colors.red, size: 35),
+              onPressed: ()async{
+
+              },
+            ),
+            IconButton(
                 icon: Icon(Icons.home,color: Colors.white, size: 35),
                 onPressed:() {
                   Navigator.pushNamed(context, 'MenuPage');

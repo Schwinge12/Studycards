@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
+import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
@@ -43,6 +44,12 @@ class _QuizStartState extends State<QuizStart>{
           ),
           actions: <Widget>[
             // action button
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>MCErstellen(quiz: widget.quiz,studienfach: widget.quiz.studienfach,themengebiet: widget.quiz.themengebiet,)));
+              },
+            ),
             IconButton(
               icon: Icon(Icons.delete, color: Colors.red, size: 35),
               onPressed: ()async{

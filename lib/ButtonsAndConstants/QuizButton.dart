@@ -26,7 +26,9 @@ class _QuizButtonState extends State<QuizButton> {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: (){
+        if(pressed==true) {
           widget.anzahlHochzaehlen++;
+        }
         setState(() {
           pressed =!pressed;
         });
@@ -36,7 +38,7 @@ class _QuizButtonState extends State<QuizButton> {
         width:500,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: pressed ? Colors.white30 : Colors.white70,
+          color: pressed ? Colors.white70 : Colors.white30,
         ),
         child: Center(
           child: AutoSizeText(

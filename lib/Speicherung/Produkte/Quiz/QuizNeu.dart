@@ -9,6 +9,7 @@ class QuizNeu extends Produkt{
 
   int richtigBeantwortet = 0;
   int falschBeantwortet = 0;
+  int richtigeFragenimQuizInsgesamt = 0;
 
   var map = Map<String, dynamic> ();
 

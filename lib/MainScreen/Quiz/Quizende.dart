@@ -9,10 +9,8 @@ import 'package:pie_chart/pie_chart.dart';
 class Quizende extends StatefulWidget {
 
   QuizNeu quiz;
-  int richtigeAntworten;
-  int richtigeAntwortenGedruecktHochzaehlen;
 
-  Quizende({@required this.quiz, this.richtigeAntworten, this.richtigeAntwortenGedruecktHochzaehlen});
+  Quizende({@required this.quiz});
   @override
   _Quizende createState() => _Quizende();
 }
@@ -31,12 +29,12 @@ class _Quizende extends State<Quizende> {
 
   @override
   void initState() {
-    int anzahl= widget.richtigeAntworten;
-    int falsch= widget.richtigeAntworten-widget.richtigeAntwortenGedruecktHochzaehlen;
-    int richtig=widget.richtigeAntwortenGedruecktHochzaehlen; // Überhaupt nötig ?
+    int anzahl= widget.quiz.richtigeFragenimQuizInsgesamt;
+    int falsch= widget.quiz.richtigeFragenimQuizInsgesamt-widget.quiz.richtigBeantwortet;
+    int richtig=widget.quiz.richtigBeantwortet; // Überhaupt nötig ?
     data.addAll({
-      'Richtig beantwortet': prozentAusrechnen(anzahl, richtig)*1000,
-      'Falsch beantwortet': 100000-prozentAusrechnen(anzahl,falsch)*1000
+      'Richtig beantwortet': richtig.toDouble(),
+      'Falsch beantwortet': falsch.toDouble()
     });
     super.initState();
   }
@@ -99,9 +97,9 @@ class _Quizende extends State<Quizende> {
                 child: MenuButton(
                   text: 'Fertig',
                   onPress: (){
-                    int anzahl= widget.quiz.fragenliste.length;
-                    int falsch= widget.quiz.falschBeantwortet;
-                    int richtig=widget.quiz.richtigBeantwortet;
+                    int anzahl= widget.quiz.richtigeFragenimQuizInsgesamt;
+                    int falsch= widget.quiz.richtigeFragenimQuizInsgesamt-widget.quiz.richtigeFragenimQuizInsgesamt;;
+                    int richtig=widget.quiz.richtigeFragenimQuizInsgesamt;
                     print(richtig);
                     print(falsch);
                     print(anzahl);

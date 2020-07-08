@@ -21,7 +21,7 @@ class Quiz extends StatefulWidget {
 }
 
 class _Quiz extends State<Quiz> {
-
+ int anzahlhochzaehlen=0;
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +99,7 @@ class _Quiz extends State<Quiz> {
                   QuizButton(
                     frage.getAntwort(1),
                     istAuswertung(frage.bool1),
+                    anzahlhochzaehlen++,
                   ),
                   SizedBox(
                     height: 5.0,

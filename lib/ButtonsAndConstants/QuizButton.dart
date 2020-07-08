@@ -5,12 +5,12 @@ import 'TextStyles.dart';
 class QuizButton extends StatefulWidget {
   String text;
    bool auswertung;
-  Function onPress;
+  int anzahlHochzaehlen;
 
-  QuizButton(@required this.text, @required this.auswertung,@required this.onPress){
+  QuizButton(@required this.text, @required this.auswertung,@required this.anzahlHochzaehlen){
     this.text=text;
     this.auswertung=auswertung;
-    this.onPress=onPress;
+    this.anzahlHochzaehlen =anzahlHochzaehlen;
   }
 
 
@@ -26,7 +26,6 @@ class _QuizButtonState extends State<QuizButton> {
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: (){
-
         setState(() {
           pressed =!pressed;
         });

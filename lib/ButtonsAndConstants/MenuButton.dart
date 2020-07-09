@@ -4,7 +4,7 @@ import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
 class MenuButton extends StatelessWidget{
 
-  MenuButton({@required this.text,@required this.onPress,this.height});
+  MenuButton({@required this.text,@required this.onPress,this.height,});
   final double height;
   final String text;
   final Function onPress;

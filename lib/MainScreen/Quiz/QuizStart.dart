@@ -153,7 +153,7 @@ class _QuizStartState extends State<QuizStart>{
                 text: 'Quiz starten!',
                 onPress: (){
                   if (auswahl> 0)
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(quiz: widget.quiz,anzahlFragen: auswahl, rand: rand,zaehler: 1,)));
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Quiz(quiz: widget.quiz,anzahlFragen: auswahl, rand: rand,zaehler: 1,richtigbeantwortet: 0,)));
                 },
               ),
             ),

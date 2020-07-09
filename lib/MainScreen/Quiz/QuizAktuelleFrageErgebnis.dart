@@ -15,9 +15,10 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
   QuizNeu quiz;
   int anzahlFragen;
   int zaehler;
+  int richtigbeantwortet;
 
 
-  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahlFragen,this.zaehler});
+  QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahlFragen,this.zaehler,this.richtigbeantwortet});
 
 
   @override
@@ -34,77 +35,48 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
 
     Random rand = new Random();
     return Scaffold(
-      appBar: AppBar(
-          title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
-          actions: <Widget>[
-            // action button
-            IconButton(
-                icon: Icon(Icons.home,color: Colors.white, size: 35),
-                onPressed:() {
-                  Navigator.pushNamed(context, 'MenuPage');
-                }
-            ),
-            IconButton(
-              icon: Icon(Icons.beenhere, color: Colors.white, size: 35),
-              onPressed:(){
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
-              }
-            ),
-            IconButton(
-                icon: Icon(Icons.arrow_forward, color: Colors.white, size: 35),
-                onPressed:() {
-
-                  if(widget.zaehler<widget.anzahlFragen){
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen)));
-                  }
-                  else{
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Quizende(quiz: widget.quiz,)));
-                  }
-                }
-                  ),
-          ]
-      ),
+      
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.transparent,
-                        blurRadius: 10.0,
-                        spreadRadius: 5.0,
-                        offset: Offset(
-                          10.0,
-                          10.0,
+          SafeArea(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.transparent,
+                          blurRadius: 10.0,
+                          spreadRadius: 5.0,
+                          offset: Offset(
+                            10.0,
+                            10.0,
+                          ),
                         ),
+                      ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    height: 350,
+                    width: 200,
+                    child: Center(
+                      child: AutoSizeText(
+                        widget.frage.getFrage(),
+                        textAlign: TextAlign.center,
+                        style: MenuButtonTextStyle,
+                        minFontSize: 6,
+                        maxLines: 6,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  height: 350,
-                  width: 200,
-                  child: Center(
-                    child: AutoSizeText(
-                      widget.frage.getFrage(),
-                      textAlign: TextAlign.center,
-                      style: MenuButtonTextStyle,
-                      minFontSize: 6,
-                      maxLines: 6,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Column(
             children: <Widget>[
@@ -142,10 +114,53 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
               QuizButtonAuswertung(
                   widget.frage.getAntwort(4),
               (){
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz)));
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet,anzahlFragen: widget.anzahlFragen,)));
                 },
                   istAuswertung(widget.frage.bool4)
               ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(Icons.check,color: Colors.green,size: 50.0,),
+                        onPressed:() {
+
+                          if(widget.zaehler<widget.anzahlFragen){
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,richtigbeantwortet: widget.richtigbeantwortet+1,)));
+                          }
+                          else{
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet)));
+                          }
+                        }
+                    ),
+                  ),
+
+                  Expanded(
+                    child: IconButton(
+                      icon: Icon(Icons.cancel,color: Colors.red,size: 50.0,),
+                        onPressed:() {
+
+                          if(widget.zaehler<widget.anzahlFragen){
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,richtigbeantwortet: widget.richtigbeantwortet)));
+                          }
+                          else{
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => Quizende(quiz: widget.quiz,)));
+                          }
+                        }
+                    ),
+                  ),
+                ],
+
+
+              ),
+
+
             ],
           ),
         ],

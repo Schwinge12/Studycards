@@ -16,9 +16,9 @@ class Quiz extends StatefulWidget {
   Random rand;
   int zaehler;
   int anzahl;
+  int richtigbeantwortet;
 
-
-  Quiz({@required this.quiz, this.anzahlFragen,this.rand,this.zaehler});
+  Quiz({@required this.quiz, this.anzahlFragen,this.rand,this.zaehler,this.richtigbeantwortet});
 
   @override
   _Quiz createState() => _Quiz();
@@ -32,16 +32,10 @@ class _Quiz extends State<Quiz> {
   Widget build(BuildContext context) {
     Quizfragen frage = widget.quiz.fragenliste[widget.rand.nextInt(widget.quiz.fragenliste.length)];
 
-    int zaehleRichtigeAntwortenInFrage(){
-      int richtigeInFrage=0;
-      richtigeInFrage=frage.bool1+frage.bool2+frage.bool3+frage.bool4;
-      return richtigeInFrage;
-    }
-
     var pressed= true;
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
+          title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
           actions: <Widget>[
             // action button
             IconButton(
@@ -57,12 +51,12 @@ class _Quiz extends State<Quiz> {
                 }
             ),
             IconButton(
-               icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
+                icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
                 onPressed:() {
                   Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahlFragen: widget.anzahlFragen,zaehler: widget.zaehler)));
-            }
+                }
             ),
-            ]
+          ]
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -104,50 +98,39 @@ class _Quiz extends State<Quiz> {
               ),
             ],
           ),
-              Column(
-                children: <Widget>[
-                 QuizButton(
-                     text: frage.getAntwort(1),
-                     onPress: (){
-                          print(zaehleRichtigeAntwortenInFrage().toString());
-                        },
-                     auswertung: istAuswertung(1),
-                 ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                    text: frage.getAntwort(2),
-                    onPress: (){
-
-
-                    },
-                    auswertung: istAuswertung(2),
-
-                  ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                    text: frage.getAntwort(3),
-                    onPress: (){
-
-                    },
-                    auswertung: istAuswertung(3),
-                  ),
-                  SizedBox(
-                    height: 5.0,
-                  ),
-                  QuizButton(
-                    text: frage.getAntwort(4),
-                    onPress: (){
-
-                    },
-                    auswertung: istAuswertung(4),
-
-                  ),
-                ],
+          Column(
+            children: <Widget>[
+              QuizButton(
+                text: frage.getAntwort(1),
+                auswertung: istAuswertung(1),
               ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButton(
+                text: frage.getAntwort(2),
+                auswertung: istAuswertung(2),
+                hilf:0
+
+
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButton(
+                text: frage.getAntwort(3),
+                auswertung: istAuswertung(3),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              QuizButton(
+                text: frage.getAntwort(4),
+                auswertung: istAuswertung(4),
+              ),
+
+            ],
+          ),
         ],
       ),
     );
@@ -157,4 +140,3 @@ class _Quiz extends State<Quiz> {
   }
 
 }
-

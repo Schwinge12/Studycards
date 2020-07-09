@@ -23,6 +23,7 @@ class KarteErstellenVorderseite extends StatefulWidget {
 
   String get getEingabe => eingabe;
 
+
   @override
   _KarteErstellenVorderseite createState() => _KarteErstellenVorderseite();
 }

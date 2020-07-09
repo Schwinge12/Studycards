@@ -8,7 +8,9 @@ class Quizende extends StatefulWidget {
 
   QuizNeu quiz;
   int hilf;
-  Quizende({@required this.quiz,this.hilf});
+  int richtigbeantwortet;
+  int anzahlFragen;
+  Quizende({@required this.quiz,this.hilf,this.richtigbeantwortet,this.anzahlFragen});
   @override
   _Quizende createState() => _Quizende();
 }
@@ -16,17 +18,21 @@ class Quizende extends StatefulWidget {
 class _Quizende extends State<Quizende> {
 
 
-  double prozentAusrechnen(int anzahl, int falsch){
-    double ausgabe=100.00*falsch;
-    ausgabe=ausgabe/anzahl;
-    return ausgabe;
-  }
+
+
 
   Map<String, double> data = new Map();
   bool _loadChart = false;
 
   @override
   void initState() {
+    int richig=widget.richtigbeantwortet;
+    int anzahl=widget.anzahlFragen;
+    double prozentAusrechnen(int anzahl, int falsch){
+    double ausgabe=100.00*falsch;
+    ausgabe=ausgabe/anzahl;
+    return ausgabe;
+  }
     int falsch= 0;
     int richtig= 0;// Überhaupt nötig ?
 

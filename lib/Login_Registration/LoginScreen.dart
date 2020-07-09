@@ -4,6 +4,7 @@ import 'package:karteikartenapp/Speicherung/Produkte/Konten/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -18,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   _LoginScreenState(){loginfromDB();}
 
   bool showSpinner = false;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +131,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+
+
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 16.0),
                   child: Material(

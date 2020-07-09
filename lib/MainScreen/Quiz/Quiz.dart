@@ -53,10 +53,11 @@ class _Quiz extends State<Quiz> {
             IconButton(
                 icon: Icon(Icons.arrow_forward,color: Colors.white, size: 35),
                 onPressed:() {
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahlFragen: widget.anzahlFragen,zaehler: widget.zaehler)));
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>QuizAkutelleFrageErgebnis(frage: frage, quiz: widget.quiz,anzahlFragen: widget.anzahlFragen,zaehler: widget.zaehler,richtigbeantwortet: widget.richtigbeantwortet,)));
                 }
             ),
           ]
+
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

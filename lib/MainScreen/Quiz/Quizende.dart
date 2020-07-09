@@ -26,19 +26,17 @@ class _Quizende extends State<Quizende> {
 
   @override
   void initState() {
-    int richig=widget.richtigbeantwortet;
+    int richtig=widget.richtigbeantwortet;
     int anzahl=widget.anzahlFragen;
-    double prozentAusrechnen(int anzahl, int falsch){
-    double ausgabe=100.00*falsch;
-    ausgabe=ausgabe/anzahl;
+    double prozentAusrechnen(int richtig, int anzahl){
+    double ausgabe=100.0*(anzahl-richtig);
     return ausgabe;
   }
-    int falsch= 0;
-    int richtig= 0;// Überhaupt nötig ?
+
 
     data.addAll({
       'Richtig beantwortet': richtig.toDouble(),
-      'Falsch beantwortet': falsch.toDouble()
+      'Falsch beantwortet': (anzahl-richtig).toDouble()
     });
     super.initState();
   }
@@ -101,12 +99,7 @@ class _Quizende extends State<Quizende> {
                 child: MenuButton(
                   text: 'Fertig',
                   onPress: (){
-                    int anzahl= widget.quiz.richtigeFragenimQuizInsgesamt;
-                    int falsch= widget.quiz.richtigeFragenimQuizInsgesamt-widget.quiz.richtigeFragenimQuizInsgesamt;
-                    int richtig=widget.quiz.richtigeFragenimQuizInsgesamt;
-                    print(richtig);
-                    print(falsch);
-                    print(anzahl);
+
                     Navigator.pushNamed(context, 'MenuPage');
                   },
                 ),

@@ -114,7 +114,7 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
               QuizButtonAuswertung(
                   widget.frage.getAntwort(4),
               (){
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet,anzahlFragen: widget.anzahlFragen,)));
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet,anzahlFragen:widget.anzahlFragen,)));
                 },
                   istAuswertung(widget.frage.bool4)
               ),
@@ -126,14 +126,14 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                     child: IconButton(
                       icon: Icon(Icons.check,color: Colors.green,size: 50.0,),
                         onPressed:() {
-
                           if(widget.zaehler<widget.anzahlFragen){
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,richtigbeantwortet: widget.richtigbeantwortet+1,)));
+
                           }
                           else{
                             Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet)));
+                                builder: (context) => Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet,anzahlFragen: widget.anzahlFragen,)));
                           }
                         }
                     ),
@@ -149,8 +149,9 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                                 builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,richtigbeantwortet: widget.richtigbeantwortet)));
                           }
                           else{
+
                             Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => Quizende(quiz: widget.quiz,)));
+                                builder: (context) => Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet,anzahlFragen: widget.anzahlFragen,)));
                           }
                         }
                     ),

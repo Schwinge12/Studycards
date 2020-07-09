@@ -4,34 +4,24 @@ import 'TextStyles.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 
 class QuizButton extends StatefulWidget {
-
-
-  QuizButton({@required this.text,@required this.auswertung,@required this.function,this.frage,this.hilf});
+  QuizButton({@required this.text,@required this.auswertung,@required this.function,});
   String text;
   bool auswertung;
   Function function;
   Quizfragen frage;
-  int hilf;
-
 
   @override
   _QuizButtonState createState() => new _QuizButtonState();
 }
-
 class _QuizButtonState extends State<QuizButton> {
   var pressed=false;
-
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
-        var function = widget.function;
         setState(() {
           pressed = !pressed;
-          widget.auswertung!=widget.auswertung;
         });
-
-
       },
       child: Container(
         height: 50,

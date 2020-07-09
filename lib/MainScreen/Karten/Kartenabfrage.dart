@@ -59,9 +59,6 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                               child: FlipCard(
                                 direction: FlipDirection.HORIZONTAL,
                                 speed: 500,
-                                onFlipDone: (status) {
-                                  print(status);
-                                },
                                 front: SafeArea(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,7 +72,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
-                                              AutoSizeText(widget.stapel.getThemengebietName()+'\n'+'\n'+widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite(),
+                                              AutoSizeText(widget.stapel.stapelKarten[widget.kartennummer].getVorderSeite(),
                                                 textAlign: TextAlign.center,
                                                 style: KleinereAnzeigeTextStyle,
                                                 minFontSize: 6,
@@ -124,7 +121,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
-                                              AutoSizeText(widget.stapel.getThemengebietName()+'\n'+'\n'+widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite(),
+                                              AutoSizeText(widget.stapel.stapelKarten[widget.kartennummer].getRueckSeite(),
                                                 textAlign: TextAlign.center,
                                                 style: KleinereAnzeigeTextStyle,
                                                 minFontSize: 6,
@@ -170,9 +167,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                   //Spericherung.loeschen(Produkt zuLoeschendeKarte)
                                   icon: Icon(Icons.cancel,color: Colors.red,),
                                   iconSize: 60.0,
-                                  tooltip: 'Karte falsch',
                                   onPressed: (){
-                                    print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
                                     widget.stapel.stapelKarten[widget.kartennummer].answeredTrue = false;
                                     if(widget.stapel.stapelKarten.length -1 == widget.kartennummer) {
                                       LokaleDatenbankStapel
@@ -190,9 +185,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                 child: IconButton(
                                   icon: Icon(Icons.check_circle,color: Colors.green,),
                                   iconSize: 60.0,
-                                  tooltip: 'Stapel abschließen und hochladen',
                                   onPressed: (){
-                                    print(widget.stapel.stapelKarten.length.toString() + '- 1 :' + widget.kartennummer.toString());
                                     widget.stapel.stapelKarten[widget.kartennummer].answeredTrue = true;
                                     if(widget.stapel.stapelKarten.length -1 == widget.kartennummer) {
                                       LokaleDatenbankStapel

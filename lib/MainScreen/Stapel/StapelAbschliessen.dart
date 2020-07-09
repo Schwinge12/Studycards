@@ -7,12 +7,9 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../../ButtonsAndConstants/TextStyles.dart';
 import '../../ButtonsAndConstants/MenuButton.dart';
 
+class StapelAbschliessen extends StatelessWidget {
 
-
-class StapelAbschliessenDozent extends StatelessWidget {
-
-
-  StapelAbschliessenDozent({this.kurse,this.stapel});
+  StapelAbschliessen({this.kurse,this.stapel});
   var _userdata = new Userdata();
   Stapel stapel;
   final String kurse;

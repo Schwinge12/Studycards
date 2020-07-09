@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
@@ -23,7 +23,7 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(title: Center(child: Text('Quiz Stapel Erstellen')),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: (){
@@ -31,7 +31,6 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
           },
         ),
       ),
-
       body: Column(
 
         children: <Widget>[
@@ -112,7 +111,7 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
 
 
                 Expanded(
-                    child: WeiterButton(
+                    child: FlexButton(
                       text: 'Quiz Erstellen',
                       onPress: () async {
                         if(studienfachEingabe==null||themengebietEingabe==null){

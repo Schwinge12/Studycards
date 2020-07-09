@@ -5,7 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
@@ -70,7 +70,7 @@ class _QuizStartState extends State<QuizStart>{
                               child: Text('Quiz löschen'),
                               onPressed: () async {
                                 await _loeschen();
-                                Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleQuizStapelStapel()));
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>AlleQuizStapelAnzeigen()));
                               },
                             ),
                           ],
@@ -147,7 +147,7 @@ class _QuizStartState extends State<QuizStart>{
 
 
             Expanded(
-              child: WeiterButton(
+              child: FlexButton(
                 color: Colors.green,
                 style: WeisserTextStyle,
                 text: 'Quiz starten!',
@@ -163,8 +163,6 @@ class _QuizStartState extends State<QuizStart>{
     );
   }
   void _loeschen() async{
-
-    print(widget.quiz.id);
     await LokaleDatenbankQuiznamen.stapelLoeschen(widget.quiz);
     await userdata.loeschen(widget.quiz);
   }

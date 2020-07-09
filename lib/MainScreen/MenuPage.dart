@@ -6,14 +6,14 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../ButtonsAndConstants/MenuButton.dart';
 
 
-class MenuPageStudent extends StatefulWidget{
+class MenuPage extends StatefulWidget{
 
 
   @override
-  _MenuPageStudentState createState()=>_MenuPageStudentState();
+  _MenuPageState createState()=>_MenuPageState();
 }
 
-class _MenuPageStudentState extends State<MenuPageStudent>{
+class _MenuPageState extends State<MenuPage>{
 
   static var _userdata = new Userdata();
   String username= _userdata.getKonto().getUsername();
@@ -55,7 +55,7 @@ class _MenuPageStudentState extends State<MenuPageStudent>{
                   ),
                   MenuButton(
                     height: 70.0,
-                    text: 'Meine Sets',
+                    text: 'Meine Stapel',
                     onPress: (){
                       Navigator.pushNamed(context, 'AlleStapelAnzeigen');
                     },

@@ -49,8 +49,6 @@ class _MCErstellen extends State <MCErstellen>{
             SizedBox(
               height: 20.0,
             ),
-
-
             Expanded(
               child: TextField(
 
@@ -78,9 +76,6 @@ class _MCErstellen extends State <MCErstellen>{
                 ),
               ),
             ),
-
-
-
             Row(
               children: <Widget>[
                 Expanded(
@@ -116,34 +111,16 @@ class _MCErstellen extends State <MCErstellen>{
                     checkColor: Colors.green,
                     value: checked1,
                     onChanged: (bool value){
-                      showDialog(
-                          context: context,
-                          builder: (_) =>
-                              CupertinoAlertDialog(
-                                content:
-                                Text(
-                                    'Bitte die korrekten Antworten mit Hacken markieren!'),
-                                actions: <Widget>[
-                                  CupertinoDialogAction(
-                                    child: Text('Ok'),
-                                    onPressed: () {
-                                      setState(() {
-                                        checked1=value;
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                          barrierDismissible: true);
-                      },
+                      setState(() {
+                        checked1=value;
+                      });
+                    },
                   ),
                 ),
 
               ],
             ),
-
             SizedBox(
-
               height: 20,
             ),
             Row(
@@ -338,10 +315,6 @@ class _MCErstellen extends State <MCErstellen>{
                 ],
               ),
             )
-
-
-
-
           ],
         ),
       ),

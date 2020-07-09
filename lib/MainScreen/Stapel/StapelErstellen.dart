@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 //TODO Backend: Eingebene Daten abspeichern
 
@@ -22,14 +22,14 @@ class _StapelErstellen extends State<StapelErstellen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title:  Center(child: Text('Stapel Erstellen')),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: (){
             Navigator.pushNamed(context,'MenuPage');
           },
         ),
-      ),
-
+        ),
       body: Column(
 
         children: <Widget>[
@@ -138,7 +138,7 @@ class _StapelErstellen extends State<StapelErstellen> {
 
 
                 Expanded(
-                    child: WeiterButton(
+                    child: FlexButton(
                       text: 'Speichern',
                       onPress: () async {
                         if(kursEingabe==null||studiengangEingabe==null||themengebietEingabe==null){

@@ -46,7 +46,7 @@ class _AlleStapel extends State<AlleStapel> {
             Navigator.pushNamed(context, 'MenuPage');
           },
         ) ,
-        title: Text('Meine Sets',style: WeisserTextStyle,),
+        title: Text('Meine Stapel',style: WeisserTextStyle,),
 
       ),
 

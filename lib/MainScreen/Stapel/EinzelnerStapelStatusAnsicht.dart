@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/MainScreen/ShareFunction.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/Kartenabfrage.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
@@ -71,6 +72,7 @@ class StapelStatusState extends State<StapelStatus>{
             IconButton(
               icon: Icon(Icons.share,color: Colors.white, size: 35),
               onPressed:() {
+                Navigator.pushNamed(context, 'ShareFunction');
                  //ShareExtend.shareMultiple(widget.stapel.stapelKarten, "Hier ist ein Stapel für dich",subject: widget.stapel.getThemengebietName());
                 }
             ),
@@ -99,18 +101,20 @@ class StapelStatusState extends State<StapelStatus>{
             Expanded(
               child: Center(child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: AutoSizeText('Anzahl der Karten:'+widget.stapel.stapelKarten.length.toString(),
-                  style: MenuButtonTextStyle,
-                  minFontSize: 20,
-                ),
+                child: Text('Anzahl der Karten:'+widget.stapel.stapelKarten.length.toString(),
+                  style: TextStyle(fontFamily: 'BalooBhai2-ExtraBold',
+                  fontSize: 25.0
+                  ),
                 ),
               ),
               ),
+            ),
             Expanded(
               child: Center(child:
-              AutoSizeText('Aktueller Lernfortschritt:',
-                style: MenuButtonTextStyle,
-                minFontSize: 20,
+              Text('Aktueller Lernfortschritt:',
+                style: TextStyle(fontFamily:'BalooBhai2-ExtraBold',
+                    fontSize: 25.0
+                ),
               ),
               ),
             ),
@@ -121,7 +125,7 @@ class StapelStatusState extends State<StapelStatus>{
             ),
             Expanded(
               flex: 2,
-              child: FlexButton(
+              child: WeiterButton(
                 color: Colors.green,
                 style: WeisserTextStyle,
                 text: 'Jetzt Lernen',
@@ -133,7 +137,7 @@ class StapelStatusState extends State<StapelStatus>{
             ),
             Expanded(
               flex: 2,
-              child: FlexButton(
+              child: WeiterButton(
                 color: Colors.blue,
                 style: WeisserTextStyle,
                 text: 'Bearbeiten',

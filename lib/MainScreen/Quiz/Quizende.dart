@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
-import 'package:karteikartenapp/MainScreen/Quiz/Quiz.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
-import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class Quizende extends StatefulWidget {
 
   QuizNeu quiz;
-
-  Quizende({@required this.quiz});
+  int hilf;
+  Quizende({@required this.quiz,this.hilf});
   @override
   _Quizende createState() => _Quizende();
 }
@@ -29,9 +27,9 @@ class _Quizende extends State<Quizende> {
 
   @override
   void initState() {
-    int anzahl= widget.quiz.richtigeFragenimQuizInsgesamt;
-    int falsch= widget.quiz.richtigeFragenimQuizInsgesamt-widget.quiz.richtigBeantwortet;
-    int richtig=widget.quiz.richtigBeantwortet; // Überhaupt nötig ?
+    int falsch= 0;
+    int richtig= 0;// Überhaupt nötig ?
+
     data.addAll({
       'Richtig beantwortet': richtig.toDouble(),
       'Falsch beantwortet': falsch.toDouble()
@@ -98,7 +96,7 @@ class _Quizende extends State<Quizende> {
                   text: 'Fertig',
                   onPress: (){
                     int anzahl= widget.quiz.richtigeFragenimQuizInsgesamt;
-                    int falsch= widget.quiz.richtigeFragenimQuizInsgesamt-widget.quiz.richtigeFragenimQuizInsgesamt;;
+                    int falsch= widget.quiz.richtigeFragenimQuizInsgesamt-widget.quiz.richtigeFragenimQuizInsgesamt;
                     int richtig=widget.quiz.richtigeFragenimQuizInsgesamt;
                     print(richtig);
                     print(falsch);

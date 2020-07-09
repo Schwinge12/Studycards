@@ -15,6 +15,8 @@ class QuizAkutelleFrageErgebnis extends StatefulWidget {
   QuizNeu quiz;
   int anzahlFragen;
   int zaehler;
+
+
   QuizAkutelleFrageErgebnis({@required this.frage, this.quiz,this.anzahlFragen,this.zaehler});
 
 
@@ -52,16 +54,13 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                 icon: Icon(Icons.arrow_forward, color: Colors.white, size: 35),
                 onPressed:() {
 
-                  print(widget.quiz.richtigeFragenimQuizInsgesamt);
-                  print(widget.quiz.richtigBeantwortet);
                   if(widget.zaehler<widget.anzahlFragen){
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen)));
                   }
-
                   else{
                     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => Quizende(quiz: widget.quiz)));
+                        builder: (context) => Quizende(quiz: widget.quiz,)));
                   }
                 }
                   ),

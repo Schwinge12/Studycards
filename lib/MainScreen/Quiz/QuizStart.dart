@@ -30,12 +30,14 @@ class _QuizStartState extends State<QuizStart>{
 
   int auswahl=0;
   Random rand = new Random();
+  int hilf;
 
   @override
   Widget build(BuildContext context) {
     widget.quiz.richtigBeantwortet =0;
     widget.quiz.richtigeFragenimQuizInsgesamt=0;
     int anzahlFragenImQuiz= widget.quiz.fragenliste.length;
+
     return Scaffold(
       appBar: AppBar(
           title: Center(child: AutoSizeText(

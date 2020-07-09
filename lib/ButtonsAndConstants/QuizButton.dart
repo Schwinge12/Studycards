@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'TextStyles.dart';
 
 class QuizButton extends StatefulWidget {
+
+
+  QuizButton({@required this.text,@required this.auswertung,@required this.onPress,});
   String text;
-   bool auswertung;
-  int anzahlHochzaehlen;
-  Function onPressed;
-
-  QuizButton(@required this.text, @required this.auswertung,@required this.onPressed){
-    this.text=text;
-    this.auswertung=auswertung;
-    this.onPressed=onPressed;
-  }
-
+  bool auswertung;
+  Function onPress;
 
   @override
   _QuizButtonState createState() => new _QuizButtonState();
@@ -21,15 +16,14 @@ class QuizButton extends StatefulWidget {
 
 class _QuizButtonState extends State<QuizButton> {
 
-  var pressed = false ;
-
+var pressed=true;
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: (){
-          widget.onPressed();
+      onPressed: () {
+        widget.onPress;
         setState(() {
-          pressed =!pressed;
+          pressed = !pressed;
         });
       },
       child: Container(

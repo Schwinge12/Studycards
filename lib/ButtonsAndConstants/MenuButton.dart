@@ -8,11 +8,11 @@ class MenuButton extends StatelessWidget{
   final double height;
   final String text;
   final Function onPress;
+
   @override
   Widget build(BuildContext context) {
   return FlatButton(
     onPressed: onPress,
-    highlightColor: Colors.white70,
     child: Container(
       width: 300.0,
       height: height??80.0,

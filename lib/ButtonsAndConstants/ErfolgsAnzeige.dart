@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ErfolgsAnzeige extends StatefulWidget{
@@ -31,7 +32,7 @@ class _ErfolgsAnzeigeState extends State<ErfolgsAnzeige> {
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(widget: Container(child:
                 //TODO Backend: variable erstellen um den lernfortschritt für den jeweiligen Stapel erfassen zu können
-                Text(widget.trueFalseRatio.round().toString() + ' %',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black))),
+                Text(widget.trueFalseRatio.round().toString() + ' %',style: MenuButtonTextStyle)),
                     angle:  90 , positionFactor: 0.8
                 )]
           )]

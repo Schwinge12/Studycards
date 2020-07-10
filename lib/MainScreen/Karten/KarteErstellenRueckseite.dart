@@ -9,7 +9,7 @@ import 'package:karteikartenapp/MainScreen/Stapel/StapelAbschliessen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/WeiterButton.dart';
+import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
 
@@ -105,7 +105,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                         ){
                       karteikarteEinfuegen();
 
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessenDozent(stapel: widget.stapel,)));
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessen(stapel: widget.stapel,)));
                         },
                     child: Container(
                       width: 100,
@@ -157,7 +157,7 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
                   ),
 
                   Expanded(
-                    child: WeiterButton(
+                    child: FlexButton(
                       text: 'Weiter',
                       onPress: (){
 

@@ -16,11 +16,6 @@ class Quizende extends StatefulWidget {
 }
 
 class _Quizende extends State<Quizende> {
-
-
-
-
-
   Map<String, double> data = new Map();
   bool _loadChart = false;
 
@@ -28,12 +23,8 @@ class _Quizende extends State<Quizende> {
   void initState() {
     int richtig=widget.richtigbeantwortet;
     int anzahl=widget.anzahlFragen;
-    double prozentAusrechnen(int richtig, int anzahl){
-    double ausgabe=100.0*(anzahl-richtig);
-    return ausgabe;
-  }
-
-
+    print(richtig);
+    print(anzahl);
     data.addAll({
       'Richtig beantwortet': richtig.toDouble(),
       'Falsch beantwortet': (anzahl-richtig).toDouble()
@@ -99,7 +90,6 @@ class _Quizende extends State<Quizende> {
                 child: MenuButton(
                   text: 'Fertig',
                   onPress: (){
-
                     Navigator.pushNamed(context, 'MenuPage');
                   },
                 ),

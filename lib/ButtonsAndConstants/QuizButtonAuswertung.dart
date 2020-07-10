@@ -21,7 +21,6 @@ class QuizButtonAuswertung extends StatefulWidget {
   @override
   _QuizButtonAuswertungState createState() => new _QuizButtonAuswertungState();
 }
-
 class _QuizButtonAuswertungState extends State<QuizButtonAuswertung> {
   @override
   Widget build(BuildContext context) {

@@ -6,13 +6,13 @@ import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 
-class AlleQuizStapelStapel extends StatefulWidget{
+class AlleQuizStapelAnzeigen extends StatefulWidget{
   @override
   _AlleStapel createState()=>_AlleStapel();
 }
 
 //TODO Backend: Quizstapel anzeigen
-class _AlleStapel extends State<AlleQuizStapelStapel> {
+class _AlleStapel extends State<AlleQuizStapelAnzeigen> {
 
   static Userdata userdata = new Userdata();
   Map<String, QuizNeu> buttons= alleQuizes();
@@ -24,7 +24,6 @@ class _AlleStapel extends State<AlleQuizStapelStapel> {
       String themengebiet = userdata.quiz[i].getThemengebiet();
 
       quizverzeichnis[kursname + "\n" + themengebiet]= userdata.quiz[i];
-      print(userdata.quiz[i].getThemengebiet());
     }
 
     return quizverzeichnis;

@@ -129,11 +129,10 @@ class _QuizAkutelleFrageErgebnis extends State<QuizAkutelleFrageErgebnis> {
                           if(widget.zaehler<widget.anzahlFragen){
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (context) => Quiz(quiz: widget.quiz, rand: rand,zaehler: widget.zaehler+1,anzahlFragen: widget.anzahlFragen,richtigbeantwortet: widget.richtigbeantwortet+1,)));
-
                           }
                           else{
                             Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet,anzahlFragen: widget.anzahlFragen,)));
+                                builder: (context) => Quizende(quiz: widget.quiz,richtigbeantwortet: widget.richtigbeantwortet+1,anzahlFragen: widget.anzahlFragen,)));
                           }
                         }
                     ),

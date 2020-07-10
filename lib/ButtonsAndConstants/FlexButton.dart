@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'TextStyles.dart';
 
-class WeiterButton extends StatelessWidget{
+class FlexButton extends StatelessWidget{
 
 
-  WeiterButton({@required this.onPress,@required this.text,this.color,this.style});
+  FlexButton({@required this.onPress,@required this.text,this.color,this.style});
 
   Color color;
   String text;

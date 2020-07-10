@@ -37,13 +37,6 @@ class _Quiz extends State<Quiz> {
       appBar: AppBar(
           title: Center(child: Text('Quiz',style: WeisserTextStyle,)),
           actions: <Widget>[
-            // action button
-            IconButton(
-              icon: Icon(Icons.delete, color: Colors.red, size: 35),
-              onPressed: ()async{
-
-              },
-            ),
             IconButton(
                 icon: Icon(Icons.home,color: Colors.white, size: 35),
                 onPressed:() {
@@ -111,9 +104,6 @@ class _Quiz extends State<Quiz> {
               QuizButton(
                 text: frage.getAntwort(2),
                 auswertung: istAuswertung(2),
-                hilf:0
-
-
               ),
               SizedBox(
                 height: 5.0,

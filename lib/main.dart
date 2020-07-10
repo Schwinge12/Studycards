@@ -25,7 +25,6 @@ import 'MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'MainScreen/Quiz/QuizStapelErstellen.dart';
 import 'MainScreen/Quiz/Quizende.dart';
 import 'MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
-
 void main(){
   SyncfusionLicense.registerLicense("NT8mJyc2IWhia31ifWN9ZmFoZHxgfGFjYWNzZGliZWlnZnMSHmg+Mis6Pjo/OjI9fTchNiAwOzYhEyAnJjc2PSd9NTskIH03Ng==");
   return runApp(KarteikartenApp());
@@ -41,12 +40,12 @@ class KarteikartenApp extends StatelessWidget{
       darkTheme: ThemeData.dark().copyWith(accentColor: Colors.grey ),
       home: LoginScreen(),
       routes: {
-        'MenuPage':(context) =>MenuPageStudent(),
+        'MenuPage':(context) =>MenuPage(),
         'StapelErstellen':(context)=>StapelErstellen(),
         'KarteErstellenVorderseite':(context)=>KarteErstellenVorderseite(),
         'KarteErstellenRueckseite':(context)=>KarteErstellenRueckseite(),
         'Kartenabfrage':(context)=>Kartenabfrage(),
-        'StapelAbschliessenDozent':(context)=>StapelAbschliessenDozent(),
+        'StapelAbschliessenDozent':(context)=>StapelAbschliessen(),
         'StapelUeberarbeiten':(context)=>StapelUeberarbeiten(),
         'AlleStapelAnzeigen':(context)=>AlleStapel(),
         'EinzelnerStapelStatus':(context)=>StapelStatus(),
@@ -59,7 +58,7 @@ class KarteikartenApp extends StatelessWidget{
         'Einstellungen':(context)=>Einstellungen(),
         'PasswortVergessenScreen':(context)=>PasswortVergessenScreen(),
         'StapelUeberarbeiten':(context)=>StapelUeberarbeiten(),
-        'AlleQuizstaplAnzeigen':(context)=>AlleQuizStapelStapel(),
+        'AlleQuizstaplAnzeigen':(context)=>AlleQuizStapelAnzeigen(),
         'QuizStapelErstellen':(context)=>QuizStapelErstellen(),
         'Quizende':(context)=>Quizende(),
         'QuizAktuelleFrageErgebnis':(context)=>QuizAkutelleFrageErgebnis(),

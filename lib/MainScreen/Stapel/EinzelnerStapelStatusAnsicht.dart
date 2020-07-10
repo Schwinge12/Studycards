@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
+import 'package:karteikartenapp/MainScreen/ShareFunction.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/Kartenabfrage.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
@@ -71,7 +72,7 @@ class StapelStatusState extends State<StapelStatus>{
             IconButton(
               icon: Icon(Icons.share,color: Colors.white, size: 35),
               onPressed:() {
-                 //ShareExtend.shareMultiple(widget.stapel.stapelKarten, "Hier ist ein Stapel für dich",subject: widget.stapel.getThemengebietName());
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>ShareDemo(stapel: widget.stapel)));
                 }
             ),
           ]

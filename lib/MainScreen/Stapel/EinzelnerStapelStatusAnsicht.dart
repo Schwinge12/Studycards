@@ -73,11 +73,20 @@ class StapelStatusState extends State<StapelStatus>{
               icon: Icon(Icons.share,color: Colors.white, size: 35),
               onPressed:() {
                 final RenderBox box = context.findRenderObject();
-                Share.share('hallo',
-                    subject: 'jonas',
+                Share.share(widget.stapel.getStudiengang(),
+                    subject: widget.stapel.getThemengebietName(),
                     sharePositionOrigin:
                     box.localToGlobal(Offset.zero) &
                     box.size);
+                //for(int i =0; i<widget.stapel.stapelKarten.length;i++)
+                //{
+                  //widget.stapel.stapelKarten[i].getVorderSeite();
+                 // widget.stapel.stapelKarten[i].getRueckSeite();
+                 // for(int j =0; j<widget.stapel.stapelKarten[i].bilder.length;j++)
+                  //{
+                  //  widget.stapel.stapelKarten[i].bilder[j];
+                 // }
+                //}
 
                 }
             ),

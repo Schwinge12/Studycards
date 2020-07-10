@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
-
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 
 
 
 
 class ShareDemo extends StatefulWidget {
+
+  Stapel stapel;
+
+  ShareDemo({@required this.stapel});
   @override
   ShareDemoState createState() => ShareDemoState();
 }

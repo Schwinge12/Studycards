@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizStapelErstellen.dart';
-import 'package:karteikartenapp/MainScreen/ShareFunction.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
@@ -26,8 +25,7 @@ import 'MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'MainScreen/Quiz/QuizStapelErstellen.dart';
 import 'MainScreen/Quiz/Quizende.dart';
 import 'MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
-
-
+import 'MainScreen/ShareFunction.dart';
 void main(){
   SyncfusionLicense.registerLicense("NT8mJyc2IWhia31ifWN9ZmFoZHxgfGFjYWNzZGliZWlnZnMSHmg+Mis6Pjo/OjI9fTchNiAwOzYhEyAnJjc2PSd9NTskIH03Ng==");
   return runApp(KarteikartenApp());
@@ -65,7 +63,7 @@ class KarteikartenApp extends StatelessWidget{
         'QuizStapelErstellen':(context)=>QuizStapelErstellen(),
         'Quizende':(context)=>Quizende(),
         'QuizAktuelleFrageErgebnis':(context)=>QuizAkutelleFrageErgebnis(),
-        'ShareFunction':(context) => ShareDemo(),
+        'ShareFunction' :(context)=>ShareDemo(),
       },
     );
   }

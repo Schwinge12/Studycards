@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/ErfolgsAnzeige.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
-import 'package:karteikartenapp/MainScreen/ShareFunction.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/AlleStapelAnzeigen.dart';
 import 'package:karteikartenapp/MainScreen/Karten/Kartenabfrage.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
+import 'package:share/share.dart';
 
 class StapelStatus extends StatefulWidget{
 
@@ -72,7 +72,13 @@ class StapelStatusState extends State<StapelStatus>{
             IconButton(
               icon: Icon(Icons.share,color: Colors.white, size: 35),
               onPressed:() {
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>ShareDemo(stapel: widget.stapel)));
+                final RenderBox box = context.findRenderObject();
+                Share.share('hallo',
+                    subject: 'jonas',
+                    sharePositionOrigin:
+                    box.localToGlobal(Offset.zero) &
+                    box.size);
+
                 }
             ),
           ]

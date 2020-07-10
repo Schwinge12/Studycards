@@ -179,15 +179,16 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
   void karteikarteEinfuegen(){
 
     Karteikarte kk =  new Karteikarte()
-        .mitVorderSeite(widget.vorderSeite.getEingabe)
-        .mitRueckSeite(widget.eingabe);
+        .mitVorderSeite(widget.vorderSeite.getEingabe.toString())
+        .mitRueckSeite(widget.eingabe.toString())
+        .mitThemengebiet(widget.stapel.getThemengebietName());
    if(widget.vorderSeite.imageFile != null)
      kk.mitFile(widget.vorderSeite.imageFile);
     if(_imageFile != null )
       kk.mitFile(_imageFile);
 
-    widget.stapel.stapelKarten.add(kk);
   print(widget.stapel.stapelKarten.length.toString());
+    widget.stapel.stapelKarten.add(kk);
   }
 
 }

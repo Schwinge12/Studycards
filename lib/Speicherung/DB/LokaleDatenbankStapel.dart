@@ -13,7 +13,7 @@ import '../Userdata.dart';
 
  class LokaleDatenbankStapel{
 
-  static final _databaseName = 'Stapel3.db';
+  static final _databaseName = 'Stapel10.db';
   static final _datenbankVersion = 1;
 
 
@@ -133,7 +133,7 @@ import '../Userdata.dart';
   }
   static Future<Stapel> lastEntry() async{
     final allRows = await queryAllRows(tabelle);
-    return await alleKarteikartenLaden(Stapel.StapelfromMapObject(allRows.last));
+    return await alleKarteikartenLaden( Stapel.StapelfromMapObject(allRows.last));
   }
 
   static void stapelLoeschen(Stapel s) async {

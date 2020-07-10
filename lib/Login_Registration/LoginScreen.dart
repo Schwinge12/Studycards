@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.center,
                   onChanged: (value){
-                    _email=value;
+                    _email=value.trim();
                   },
                   decoration: InputDecoration(
                     filled: true,
@@ -115,10 +115,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: MaterialButton(
                       onPressed: () async {
                         final user = await _auth.signInWithEmailAndPassword(
-                            email: _email.trim(), password: _passwort);
+                            email: _email, password: _passwort);
                         if (user != null) {
                           _userdata.einfuegen(new Student().mitUsername(_email));
-                          LokaleDatenbankKonto.insertKonto(new Student().mitUsername(_email.trim()).mitPasswort(_passwort));
+                          LokaleDatenbankKonto.insertKonto(new Student().mitUsername(_email).mitPasswort(_passwort));
                           Navigator.pushNamed(context, 'MenuPage');
                         }
                       },

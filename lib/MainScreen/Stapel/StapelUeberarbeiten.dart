@@ -54,7 +54,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
   Future _openGalleryVorderseite() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFileSpeichern(image);
+      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
     });
     Navigator.of(context).pop();
   }
@@ -62,7 +62,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
   Future _openCameraVorderseite() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFileSpeichern(image);
+      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
     });
     Navigator.of(context).pop();
   }
@@ -98,7 +98,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
   Future _openGalleryRueckseite() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFileSpeichern(image);
+      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
     });
     Navigator.of(context).pop();
   }
@@ -106,7 +106,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
   Future _openCameraRueckseite() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFileSpeichern(image);
+      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
     });
     Navigator.of(context).pop();
   }

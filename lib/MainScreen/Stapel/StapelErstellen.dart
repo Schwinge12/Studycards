@@ -162,7 +162,7 @@ class _StapelErstellen extends State<StapelErstellen> {
                               barrierDismissible: false);
                         }
                         else{
-                          stapel = new Stapel().mit_themengebiet(this.themengebietEingabe).mit_studiengang(this.studiengangEingabe).mit_studienfach(this.kursEingabe);
+                          stapel = new Stapel().mit_themengebiet(this.themengebietEingabe.toString()).mit_studiengang(this.studiengangEingabe.toString()).mit_studienfach(this.kursEingabe.toString());
                           Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenVorderseite(studiengang: studiengangEingabe,studienfach: kursEingabe,themengebiet: themengebietEingabe,stapel:this.stapel)));
                         }
                       },

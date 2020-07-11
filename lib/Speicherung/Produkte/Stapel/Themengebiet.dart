@@ -10,7 +10,7 @@ class Themengebiet extends Produkt {
   String name;
 
 //____________________________________Constructor_____________________________
-  Themengebiet(Kurs kurs);
+  Themengebiet();
 
   //____________________________________Builder-Chain___________________________
   Themengebiet mitName(String name){

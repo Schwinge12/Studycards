@@ -146,7 +146,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                                     color: Colors.white,
                                                     child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
                                                         ? new Text("Kein Bild vorhanden.")
-                                                        : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                                        : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[1], width: 400, height: 400))
                                                 ),
                                               ),
                                             ],

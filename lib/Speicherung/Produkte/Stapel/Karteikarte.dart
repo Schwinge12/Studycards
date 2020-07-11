@@ -20,10 +20,6 @@ class Karteikarte extends Produkt {
 
 //Todo Jan Themengebiet / Studiengang / Kurs von KK in Stapel verschieben
 
-  Kurs kurs;
-
-  Studiengang sg;
-
   String _vorderSeite;
   String _rueckSeite;
   String themengebiet;
@@ -32,8 +28,6 @@ class Karteikarte extends Produkt {
   var schwierigkeit = 0;
 
   var haufigkeitsFaktor = 1;
-
-  List<String> multipleChoice;
 
   var id;
 
@@ -92,23 +86,13 @@ class Karteikarte extends Produkt {
     return this;
   }
 
-  Karteikarte mitMultipleChoice(List<String> choice) {
-    this.multipleChoice = choice;
-    return this;
-  }
 
 //____________________________________Get/Set___________________________________
   void setID(var x) {
     this.id = x;
   }
 
-  Stapel getStapel() {
-    return Stapel();
-  }
 
-  Kurs getKurs() {
-    return kurs;
-  }
   String getRueckSeite(){
   if (_rueckSeite != null)
     return _rueckSeite;

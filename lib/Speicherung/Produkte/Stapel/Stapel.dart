@@ -53,9 +53,6 @@ class Stapel extends Produkt {
  int getID(){
   return _id;
  }
- bool istID(var zuPruefen){
-  return (zuPruefen == _id);
- }
 
  String getThemengebietName(){
   if (_themengebiet == null) return '404 - Themengebiet not found';

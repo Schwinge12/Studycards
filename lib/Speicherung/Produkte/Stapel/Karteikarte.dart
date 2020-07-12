@@ -20,19 +20,14 @@ class Karteikarte extends Produkt {
 
 //Todo Jan Themengebiet / Studiengang / Kurs von KK in Stapel verschieben
 
-  Kurs kurs;
-
-  Studiengang sg;
-
   String _vorderSeite;
   String _rueckSeite;
+  String themengebiet;
 
   bool answeredTrue = false;
   var schwierigkeit = 0;
 
   var haufigkeitsFaktor = 1;
-
-  List<String> multipleChoice;
 
   var id;
 
@@ -66,15 +61,19 @@ class Karteikarte extends Produkt {
     return this;
   }
 
-  Karteikarte mitFileSpeichern(File bild) {
+  Karteikarte mitFileSpeichern(String themengebiet, File bild) {
     bilder.add(bild);
-    FileManager.writeFile(id, bild,bilder.length -1); // -1 -> dateisystem startet bei 0
+    FileManager.writeFile(themengebiet,id , bild,bilder.length -1); // -1 -> dateisystem startet bei 0
+    print('saving file ' + bilder.indexOf(bild).toString());
     return this;
   }
 
-  Karteikarte mitFile(File bild) {
-    bilder.add(bild);
-    return this;
+  void mitFile(File bild) {
+    this.bilder.add(bild);
+  }
+  Karteikarte mitThemengebiet(String themengebiet) {
+   this.themengebiet = themengebiet;
+   return this;
   }
 
   Karteikarte mitKeyStatus() {
@@ -87,23 +86,13 @@ class Karteikarte extends Produkt {
     return this;
   }
 
-  Karteikarte mitMultipleChoice(List<String> choice) {
-    this.multipleChoice = choice;
-    return this;
-  }
 
 //____________________________________Get/Set___________________________________
   void setID(var x) {
     this.id = x;
   }
 
-  Stapel getStapel() {
-    return Stapel();
-  }
 
-  Kurs getKurs() {
-    return kurs;
-  }
   String getRueckSeite(){
   if (_rueckSeite != null)
     return _rueckSeite;
@@ -114,6 +103,9 @@ class Karteikarte extends Produkt {
       return _vorderSeite;
     return '';
   }
+  String getThemengebiet(){
+    return themengebiet;
+  }
   int getAnswer() {
     if (answeredTrue==true) return 1;
     return 0;
@@ -121,18 +113,23 @@ class Karteikarte extends Produkt {
   //____________________________________Methods___________________________________
 
   static Future<Karteikarte> KKfromMapObject(Map<String, dynamic> map) async {
+    var bilderzahl = map['bilderanzahl'];
     var id = map['_id'];
+    String themengebiet = map['themengebiet'];
     Karteikarte s = new Karteikarte()
     .mitID(id)
     .mitVorderSeite(map['stringvorderseite'])
     .mitRueckSeite(map['stringrueckseite'])
     .mitAnswer(map['answer'])
+    .mitThemengebiet(themengebiet)
     ;
-    var bilderzahl = map['bilderanzahl'];
+
     if (bilderzahl > 0 ){
-      for (int i = 0 ; i < bilderzahl; i++)
-        print('getting file $id, $bilderzahl');
-      s.mitFile(await FileManager.getFile(id, bilderzahl));
+      print('Bilderzahl : ' + bilderzahl.toString());
+      for (int i = 0 ; i < bilderzahl; i++) {
+        print('getting file ' + themengebiet + ' , Karte : $id , Bild : $i');
+        s.mitFile(await FileManager.getFile(themengebiet, id, i));
+      }
     }
     return s;
   }

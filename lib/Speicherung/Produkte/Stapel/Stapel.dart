@@ -10,9 +10,9 @@ class Stapel extends Produkt {
  List<Karteikarte> stapelKarten = new List();
  String name;
  int _id;
- String _studiengang;
- String _studienfach;
- String _themengebiet;
+ Studiengang _studiengang;
+ Kurs _studienfach;
+ Themengebiet _themengebiet;
  var map = Map<String, dynamic> ();
 
 
@@ -25,15 +25,15 @@ class Stapel extends Produkt {
   return this;
  }
  Stapel mit_studiengang(String _studiengang){
-  this._studiengang = _studiengang;
+  this._studiengang = new Studiengang(_studiengang);
   return this;
  }
  Stapel mit_studienfach(String _studienfach){
-  this._studienfach = _studienfach;
+  this._studienfach = new Kurs().mitName(_studienfach);
   return this;
  }
  Stapel mit_themengebiet(String _themengebiet){
-  this._themengebiet = _themengebiet;
+  this._themengebiet = new Themengebiet().mitName(_themengebiet);
   return this;
  }
  Stapel mit_karte(Karteikarte k){
@@ -53,21 +53,18 @@ class Stapel extends Produkt {
  int getID(){
   return _id;
  }
- bool istID(var zuPruefen){
-  return (zuPruefen == _id);
- }
 
  String getThemengebietName(){
   if (_themengebiet == null) return '404 - Themengebiet not found';
-  else return _themengebiet;
+  else return _themengebiet.getName();
  }
  String getStudiengang(){
   if (_themengebiet == null) return '404 - Studiengang not found';
-  else return _studiengang;
+  else return _studiengang.name;
  }
  String getStudienfachName(){
   if (_studienfach == null) return '404 - Kurs not found';
-  else return _studienfach;
+  else return _studienfach.getName();
  }
  int getantworten(){
   int i  = 0 ;
@@ -79,15 +76,15 @@ class Stapel extends Produkt {
  }
 
  set studiengang(String value) {
-  _studiengang = value;
+  _studiengang.name = value;
  }
 
  set studienfach(String value) {
-  _studienfach = value;
+  _studienfach.name = value;
  }
 
  set themengebiet(String value) {
-  _themengebiet = value;
+  _themengebiet.name = value;
  }
 
  set id(int value){
@@ -112,9 +109,9 @@ class Stapel extends Produkt {
  static Stapel StapelfromMapObject(Map<String, dynamic> map) {
   Stapel s = new Stapel();
   s._id = map['_id'];
-  s._studiengang =map['studiengang'];
-  s._studienfach=map['studienfach'];
-  s._themengebiet = map['themengebiet'];
+  s._studiengang = new Studiengang(map['studiengang']);
+  s._studienfach=new Kurs().mitName(map['studienfach']);
+  s._themengebiet = new Themengebiet().mitName(map['themengebiet']);
   return s;
  }
 }

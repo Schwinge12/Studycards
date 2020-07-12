@@ -1,8 +1,11 @@
+import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart';
+import 'package:karteikartenapp/Login_Registration/Encryption.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKonto.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Konten/Student.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 
 class LoginScreen extends StatefulWidget {
@@ -14,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   var _userdata = new Userdata();
   String _email;
-  String _passwort;
+  Encrypted _passwort;
 
   _LoginScreenState(){loginfromDB();}
 
@@ -50,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.center,
                   onChanged: (value){
-                    _email=value;
+                    _email=value.trim();
                   },
                   decoration: InputDecoration(
                     filled: true,
@@ -80,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                   textAlign: TextAlign.center,
                   onChanged: (value){
-                    _passwort=value;
+                    _passwort=Encryption.encrypt(value);
                     },
                   decoration: InputDecoration(
                   filled: true,
@@ -115,10 +118,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: MaterialButton(
                       onPressed: () async {
                         final user = await _auth.signInWithEmailAndPassword(
-                            email: _email.trim(), password: _passwort);
+                            email: _email, password: Encryption.decrypt(_passwort));
                         if (user != null) {
                           _userdata.einfuegen(new Student().mitUsername(_email));
-                          LokaleDatenbankKonto.insertKonto(new Student().mitUsername(_email.trim()).mitPasswort(_passwort));
+                          LokaleDatenbankKonto.insertKonto(new Student().mitUsername(_email).mitPasswort(_passwort.base64));
                           Navigator.pushNamed(context, 'MenuPage');
                         }
                       },
@@ -179,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try{
       Student s = await LokaleDatenbankKonto.getKonto();
       final user = await _auth.signInWithEmailAndPassword(
-          email: s.getUsername(), password: s.getPassword());
+          email: s.getUsername(), password: Encryption.decrypt(Encrypted.fromBase64(s.getPassword())));
       if (user != null){
         _userdata.einfuegen(new Student().mitUsername(s.getUsername()));
         Navigator.pushNamed(context, 'MenuPage');
@@ -189,5 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print(e);
     }
 
+
   }
 }
+

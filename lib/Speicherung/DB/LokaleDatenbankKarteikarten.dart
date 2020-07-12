@@ -21,6 +21,7 @@ class LokaleDatenbankKarteiKarten {
   static final colStringRueckseite = 'stringrueckseite';
   static final colBilderAnzahl = 'bilderanzahl';
   static final colAnswer = 'answer';
+  static final colThemengebiet = 'themengebiet'; // benötigt für bilderpfad ... redundanz
 
   static Database _database;
   static int stapelId;
@@ -43,12 +44,13 @@ class LokaleDatenbankKarteiKarten {
   Future _onCreate() async {
     await _database.execute('''
           CREATE TABLE $tabelle (
-            $colId INTEGER PRIMARY KEY,
+            $colId INTEGER PRIMARY KEY ,
            
             $colStringVorderseite TEXT NOT NULL,
             $colStringRueckseite TEXT NOT NULL,
             $colBilderAnzahl INTEGER NOT NULL,
-            $colAnswer INTEGER NOT NULL
+            $colAnswer INTEGER NOT NULL,
+            $colThemengebiet TEXT NOT NULL
           )
           ''');
     // $colStapelId INTEGER FOREIGN KEY REFERENCES karteikarten_tabelle (_id),
@@ -90,7 +92,8 @@ class LokaleDatenbankKarteiKarten {
       LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
       LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
       LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length,
-      LokaleDatenbankKarteiKarten.colAnswer : k.getAnswer()
+      LokaleDatenbankKarteiKarten.colAnswer : k.getAnswer(),
+      LokaleDatenbankKarteiKarten.colThemengebiet : k.getThemengebiet()
     };
     return row;
   }

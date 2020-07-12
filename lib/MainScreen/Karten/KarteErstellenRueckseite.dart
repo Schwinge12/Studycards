@@ -89,49 +89,58 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
           overflow: TextOverflow.ellipsis,
         ),
         ),
+          actions: <Widget>[
+            FlatButton(
+
+              onPressed: (
+                  ){
+                karteikarteEinfuegen();
+
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessen(stapel: widget.stapel,)));
+              },
+              child: Container(
+                width: 100,
+                height: 30,
+                color: Colors.white30,
+                child: Center(child: Text('Fertig',style:
+                TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,
+                )),
+              ),
+            ),
+          ]
       ),
       body: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Center(child: Text('Rückseite:',style: WeisserTextStyle,)),
-                  FlatButton(
-
-                    onPressed: (
-                        ){
-                      karteikarteEinfuegen();
-
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessen(stapel: widget.stapel,)));
-                        },
-                    child: Container(
-                      width: 100,
-                      height: 30,
-                      color: Colors.white30,
-                      child: Center(child: Text('Fertig',style:
-                        TextStyle(color: Colors.black,fontFamily: 'Baloobhai2-ExtraBold.ttf', fontSize: 16.0 ) ,
-                      )),
-                    ),
-                  ),
-                ],
-              ),
 
               Expanded(
                 child: Container(
-                  color: Colors.white,
-                  child: TextField(
-                    style: MenuButtonTextStyle,
-                    controller: widget.vorderseite,
-                    maxLines: 20,
-                    onChanged: (String s){
-                      widget.eingabe=s;
-                    },
-                  ),
-                ),
 
+                    color: Colors.white,
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text('RÜCKSEITE'),
+                          ),
+                        ),
+                        Expanded(
+                          child: TextField(
+                            style: MenuButtonTextStyle,
+                            controller: widget.vorderseite,
+                            maxLines: 20,
+                            onChanged: (String s){
+                              widget.eingabe=s;
+                            },
+                          ),
+                        )
+                      ],
+                    )
+
+                ),
               ),
               Expanded(
                 child: Container(
@@ -179,15 +188,16 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
   void karteikarteEinfuegen(){
 
     Karteikarte kk =  new Karteikarte()
-        .mitVorderSeite(widget.vorderSeite.getEingabe)
-        .mitRueckSeite(widget.eingabe);
+        .mitVorderSeite(widget.vorderSeite.getEingabe.toString())
+        .mitRueckSeite(widget.eingabe.toString())
+        .mitThemengebiet(widget.stapel.getThemengebietName());
    if(widget.vorderSeite.imageFile != null)
      kk.mitFile(widget.vorderSeite.imageFile);
     if(_imageFile != null )
       kk.mitFile(_imageFile);
 
-    widget.stapel.stapelKarten.add(kk);
   print(widget.stapel.stapelKarten.length.toString());
+    widget.stapel.stapelKarten.add(kk);
   }
 
 }

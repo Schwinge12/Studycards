@@ -115,7 +115,7 @@ class StapelStatusState extends State<StapelStatus>{
             Expanded(
               child: Center(child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: AutoSizeText('Anzahl der Karten:'+widget.stapel.stapelKarten.length.toString(),
+                child: AutoSizeText('Anzahl der Karten: '+widget.stapel.stapelKarten.length.toString(),
                   style: MenuButtonTextStyle,
                   minFontSize: 20,
                 ),

@@ -106,6 +106,15 @@ class LokaleDatenbankKarteiKarten {
     return i;
 }
 
-static List<String> toStringList(Karteikarte k) => getRowFromKK(k).keys.toList();
+static List<String> kkToStringList(Karteikarte k){
+    List<String> s = new List();
+    getRowFromKK(k).forEach((key, value) => s.add(key.toString() + ':' + value.toString() ));
+    return s;
+}
+  static Map<String, dynamic> rowFromStringList(List<String> s)  {
+    Map<String, dynamic> row = new Map();
+    s.forEach((e) => row[e.split(":").first] = e.split(":").last);
+    return row;
+  }
 
 }

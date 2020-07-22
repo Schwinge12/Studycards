@@ -51,7 +51,9 @@ class Karteikarte extends Produkt {
     this._vorderSeite = vorderSeite;
     return this;
   }
-  Karteikarte mitAnswer(int  a) {
+  Karteikarte mitAnswer(dynamic  a) {
+    if (a.runtimeType == String)
+      a = int.parse(a as String);
     (a == 0)? this.answeredTrue = false: this.answeredTrue = true;
     return this;
   }

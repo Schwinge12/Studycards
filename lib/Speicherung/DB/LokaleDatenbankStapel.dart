@@ -13,7 +13,7 @@ import '../Userdata.dart';
 
  class LokaleDatenbankStapel{
 
-  static final _databaseName = 'Stapel11.db';
+  static final _databaseName = 'Stapel12.db';
   static final _datenbankVersion = 1;
 
 

@@ -124,15 +124,26 @@ class Karteikarte extends Produkt {
     .mitThemengebiet(themengebiet)
     ;
 
-    if (bilderzahl > 0 ){
-      print('Bilderzahl : ' + bilderzahl.toString());
-      for (int i = 0 ; i < bilderzahl; i++) {
-        print('getting file ' + themengebiet + ' , Karte : $id , Bild : $i');
-        s.mitFile(await FileManager.getFile(themengebiet, id, i), i);
+    switch (bilderzahl){
+      case 1:{
+        //k.bilder[1]
+        s.mitFile(await FileManager.getFile(themengebiet, id, 1), 1);
       }
+      break;
+      case 2:{
+        //k.bilder[0]
+        s.mitFile(await FileManager.getFile(themengebiet, id, 0), 0);
+      }
+      break;
+      case 3:{
+        s.mitFile(await FileManager.getFile(themengebiet, id, 0), 0);
+        s.mitFile(await FileManager.getFile(themengebiet, id, 1), 1);
+      }
+      break;
     }
     return s;
   }
+
 
 
 

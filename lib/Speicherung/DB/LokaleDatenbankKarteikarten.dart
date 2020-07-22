@@ -91,11 +91,19 @@ class LokaleDatenbankKarteiKarten {
     Map<String, dynamic> row = {
       LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
       LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
-      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length,
+      LokaleDatenbankKarteiKarten.colBilderAnzahl : bilderAlsInt(k),
       LokaleDatenbankKarteiKarten.colAnswer : k.getAnswer(),
       LokaleDatenbankKarteiKarten.colThemengebiet : k.getThemengebiet()
     };
     return row;
   }
+  static int bilderAlsInt(Karteikarte k){
+    int i ;
+    (k.bilder[0] == null && k.bilder[1] != null)? i = 1 :     // Vorderseite kein bild - rueckseite  bild
+    (k.bilder[1] == null  && k.bilder[0] != null)? i = 2 :    // Vorderseite  bild - rueckseite kein bild
+    (k.bilder[1] != null  && k.bilder[0] != null)? i = 3 :    // beide seiten bild
+       i=  0;                                                 // keine seite bild
+    return i;
+}
 
 }

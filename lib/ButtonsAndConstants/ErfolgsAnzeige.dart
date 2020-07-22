@@ -22,8 +22,8 @@ class _ErfolgsAnzeigeState extends State<ErfolgsAnzeige> {
     return SfRadialGauge(
         axes: <RadialAxis>[
           RadialAxis(minimum: 0, maximum: 100,
-              ranges: <GaugeRange>[
 
+              ranges: <GaugeRange>[
                 GaugeRange(startValue: 0, endValue: 50, color:Colors.red),
                 GaugeRange(startValue: 50,endValue: 90,color: Colors.orange),
                 GaugeRange(startValue: 90,endValue: 100,color: Colors.green)],
@@ -31,8 +31,7 @@ class _ErfolgsAnzeigeState extends State<ErfolgsAnzeige> {
                 NeedlePointer(value: widget.trueFalseRatio ,needleColor: Colors.black)],
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(widget: Container(child:
-                //TODO Backend: variable erstellen um den lernfortschritt für den jeweiligen Stapel erfassen zu können
-                Text(widget.trueFalseRatio.round().toString() + ' %',style: MenuButtonTextStyle)),
+                Text(widget.trueFalseRatio.round().toString() + ' %',style: KleinereAnzeigeTextStyle)),
                     angle:  90 , positionFactor: 0.8
                 )]
           )]

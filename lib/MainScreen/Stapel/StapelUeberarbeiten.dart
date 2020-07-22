@@ -117,7 +117,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
              body: SafeArea(
                     child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.black26,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: Column(
@@ -130,17 +130,16 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                 margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0, bottom: 20.0),
                                 color: Colors.white,
                                 child: FlipCard(
-                                  direction: FlipDirection.HORIZONTAL,
+                                  direction: FlipDirection.VERTICAL,
                                   speed: 500,
-
                                   front: Column(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: <Widget>[
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white38,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: SafeArea(
                                             child: Column(
@@ -165,7 +164,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                   },
                                                   decoration: InputDecoration(
                                                     filled: true,
-                                                    fillColor: Colors.black38,
+                                                    fillColor: Colors.black26,
                                                     hintText: 'Neuer Text',
                                                     contentPadding:
                                                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -174,12 +173,12 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                     ),
                                                     enabledBorder: OutlineInputBorder(
                                                       borderSide:
-                                                      BorderSide(color: Colors.black, width: 1.0),
+                                                      BorderSide(color: Colors.black12, width: 1.0),
                                                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                     ),
                                                     focusedBorder: OutlineInputBorder(
                                                       borderSide:
-                                                      BorderSide(color: Colors.black, width: 2.0),
+                                                      BorderSide(color: Colors.black12, width: 2.0),
                                                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                     ),
                                                   ),
@@ -192,8 +191,8 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white38,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            color: Colors.white70,
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: SafeArea(
                                             child: Column(
@@ -228,7 +227,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             color: Colors.white70,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -261,12 +260,12 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                   ),
                                                   enabledBorder: OutlineInputBorder(
                                                     borderSide:
-                                                    BorderSide(color: Colors.black, width: 1.0),
+                                                    BorderSide(color: Colors.black12, width: 1.0),
                                                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                   ),
                                                   focusedBorder: OutlineInputBorder(
                                                     borderSide:
-                                                    BorderSide(color: Colors.black, width: 2.0),
+                                                    BorderSide(color: Colors.black12, width: 2.0),
                                                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                   ),
                                                 ),
@@ -278,13 +277,15 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white70,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            color: Colors.white30,
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
+                                              Text("Aktuelles Bild:"),
                                               Expanded(
+
                                                 child: Container(
                                                     color: Colors.black26,
                                                     child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder[1] == null
@@ -292,7 +293,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                         : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[1], width: 400, height: 400))
                                                 ),
                                               ),
-                                              Text("Neues Bild:"),
+
                                               FlatButton(onPressed: (){
                                                 auswaehlenBild(context, 1);
                                               },child: Icon(Icons.add_a_photo, size: 60, color: Colors.black12)

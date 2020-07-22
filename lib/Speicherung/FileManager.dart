@@ -36,6 +36,7 @@ class FileManager {
       return (dir);
   }
   static void writeFile(String id, int kartenID, File fileToWrite, int fileID) async {
+    if (fileToWrite != null)
     fileToWrite.copy(await getPath(id, kartenID, fileID)) ;
     print(await getPath(id, kartenID, fileID) + ' created : File');
   }

@@ -96,7 +96,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                                 child: Container(
                                                     color: Colors.white,
                                                     child:
-                                                    new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
+                                                    new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder[0] == null
                                                         ? new Text("Kein Bild vorhanden.")
                                                         : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
                                                 ),
@@ -144,7 +144,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                               Expanded(
                                                 child: Container(
                                                     color: Colors.white,
-                                                    child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
+                                                    child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder[1] == null
                                                         ? new Text("Kein Bild vorhanden.")
                                                         : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[1], width: 400, height: 400))
                                                 ),

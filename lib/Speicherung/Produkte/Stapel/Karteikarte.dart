@@ -31,7 +31,7 @@ class Karteikarte extends Produkt {
 
   var id;
 
-  List<File> bilder = new List();
+  List<File> bilder = new List(2);
 
 //____________________________________Constructor_______________________________
   Karteikarte();
@@ -68,8 +68,8 @@ class Karteikarte extends Produkt {
     return this;
   }
 
-  void mitFile(File bild) {
-    this.bilder.add(bild);
+  void mitFile(File bild, int index) {
+    this.bilder[index] = bild;
   }
   Karteikarte mitThemengebiet(String themengebiet) {
    this.themengebiet = themengebiet;
@@ -128,7 +128,7 @@ class Karteikarte extends Produkt {
       print('Bilderzahl : ' + bilderzahl.toString());
       for (int i = 0 ; i < bilderzahl; i++) {
         print('getting file ' + themengebiet + ' , Karte : $id , Bild : $i');
-        s.mitFile(await FileManager.getFile(themengebiet, id, i));
+        s.mitFile(await FileManager.getFile(themengebiet, id, i), i);
       }
     }
     return s;

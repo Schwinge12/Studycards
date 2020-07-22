@@ -87,7 +87,7 @@ class LokaleDatenbankKarteiKarten {
     final rowsDeleted = await delete(id, tabelle);
     print('deleted $rowsDeleted row(s): row $id');
   }
-  static getRowFromKK(Karteikarte k){
+  static  Map<String, dynamic> getRowFromKK(Karteikarte k){
     Map<String, dynamic> row = {
       LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
       LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
@@ -105,5 +105,7 @@ class LokaleDatenbankKarteiKarten {
        i=  0;                                                 // keine seite bild
     return i;
 }
+
+static List<String> toStringList(Karteikarte k) => getRowFromKK(k).keys.toList();
 
 }

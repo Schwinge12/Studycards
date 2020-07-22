@@ -87,7 +87,6 @@ class StapelStatusState extends State<StapelStatus>{
                   //  widget.stapel.stapelKarten[i].bilder[j];
                  // }
                 //}
-
                 }
             ),
           ]

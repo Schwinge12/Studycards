@@ -128,7 +128,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                               child: Card(
                                 elevation: 0.0,
                                 margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0, bottom: 20.0),
-                                color: Colors.black,
+                                color: Colors.white,
                                 child: FlipCard(
                                   direction: FlipDirection.VERTICAL,
                                   speed: 500,
@@ -138,7 +138,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white70,
+                                            color: Colors.white,
                                             borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: SafeArea(
@@ -173,12 +173,12 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                     ),
                                                     enabledBorder: OutlineInputBorder(
                                                       borderSide:
-                                                      BorderSide(color: Colors.black, width: 1.0),
+                                                      BorderSide(color: Colors.black12, width: 1.0),
                                                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                     ),
                                                     focusedBorder: OutlineInputBorder(
                                                       borderSide:
-                                                      BorderSide(color: Colors.black, width: 2.0),
+                                                      BorderSide(color: Colors.black12, width: 2.0),
                                                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                     ),
                                                   ),
@@ -260,12 +260,12 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                   ),
                                                   enabledBorder: OutlineInputBorder(
                                                     borderSide:
-                                                    BorderSide(color: Colors.black, width: 1.0),
+                                                    BorderSide(color: Colors.black12, width: 1.0),
                                                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                   ),
                                                   focusedBorder: OutlineInputBorder(
                                                     borderSide:
-                                                    BorderSide(color: Colors.black, width: 2.0),
+                                                    BorderSide(color: Colors.black12, width: 2.0),
                                                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                   ),
                                                 ),
@@ -277,7 +277,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white70,
+                                            color: Colors.white30,
                                             borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: Column(

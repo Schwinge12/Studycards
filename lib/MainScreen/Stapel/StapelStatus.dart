@@ -29,10 +29,10 @@ class StapelStatusState extends State<StapelStatus>{
   final dbHelfer = LokaleDatenbankStapel.instance;
 
   StapelStatusState();
-String ueberschrift="Viel Spaß damit";
+
   Userdata userdata = new Userdata();
 
-//test test
+
   @override
   Widget build(BuildContext context) {
     // LokaleDatenbankStapel.ausgeben(widget.stapel.getThemengebietName());

@@ -31,7 +31,7 @@ class Karteikarte extends Produkt {
 
   var id;
 
-  List<File> bilder = new List();
+  List<File> bilder = new List(2);
 
 //____________________________________Constructor_______________________________
   Karteikarte();
@@ -51,7 +51,9 @@ class Karteikarte extends Produkt {
     this._vorderSeite = vorderSeite;
     return this;
   }
-  Karteikarte mitAnswer(int  a) {
+  Karteikarte mitAnswer(dynamic  a) {
+    if (a.runtimeType == String)
+      a = int.parse(a as String);
     (a == 0)? this.answeredTrue = false: this.answeredTrue = true;
     return this;
   }
@@ -68,8 +70,8 @@ class Karteikarte extends Produkt {
     return this;
   }
 
-  void mitFile(File bild) {
-    this.bilder.add(bild);
+  void mitFile(File bild, int index) {
+    this.bilder[index] = bild;
   }
   Karteikarte mitThemengebiet(String themengebiet) {
    this.themengebiet = themengebiet;
@@ -124,15 +126,26 @@ class Karteikarte extends Produkt {
     .mitThemengebiet(themengebiet)
     ;
 
-    if (bilderzahl > 0 ){
-      print('Bilderzahl : ' + bilderzahl.toString());
-      for (int i = 0 ; i < bilderzahl; i++) {
-        print('getting file ' + themengebiet + ' , Karte : $id , Bild : $i');
-        s.mitFile(await FileManager.getFile(themengebiet, id, i));
+    switch (bilderzahl){
+      case 1:{
+        //k.bilder[1]
+        s.mitFile(await FileManager.getFile(themengebiet, id, 1), 1);
       }
+      break;
+      case 2:{
+        //k.bilder[0]
+        s.mitFile(await FileManager.getFile(themengebiet, id, 0), 0);
+      }
+      break;
+      case 3:{
+        s.mitFile(await FileManager.getFile(themengebiet, id, 0), 0);
+        s.mitFile(await FileManager.getFile(themengebiet, id, 1), 1);
+      }
+      break;
     }
     return s;
   }
+
 
 
 

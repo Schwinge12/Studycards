@@ -87,14 +87,33 @@ class LokaleDatenbankKarteiKarten {
     final rowsDeleted = await delete(id, tabelle);
     print('deleted $rowsDeleted row(s): row $id');
   }
-  static getRowFromKK(Karteikarte k){
+  static  Map<String, dynamic> getRowFromKK(Karteikarte k){
     Map<String, dynamic> row = {
       LokaleDatenbankKarteiKarten.colStringVorderseite : k.getVorderSeite(),
       LokaleDatenbankKarteiKarten.colStringRueckseite  : k.getRueckSeite(),
-      LokaleDatenbankKarteiKarten.colBilderAnzahl : k.bilder.length,
+      LokaleDatenbankKarteiKarten.colBilderAnzahl : bilderAlsInt(k),
       LokaleDatenbankKarteiKarten.colAnswer : k.getAnswer(),
       LokaleDatenbankKarteiKarten.colThemengebiet : k.getThemengebiet()
     };
+    return row;
+  }
+  static int bilderAlsInt(Karteikarte k){
+    int i ;
+    (k.bilder[0] == null && k.bilder[1] != null)? i = 1 :     // Vorderseite kein bild - rueckseite  bild
+    (k.bilder[1] == null  && k.bilder[0] != null)? i = 2 :    // Vorderseite  bild - rueckseite kein bild
+    (k.bilder[1] != null  && k.bilder[0] != null)? i = 3 :    // beide seiten bild
+       i=  0;                                                 // keine seite bild
+    return i;
+}
+
+static List<String> kkToStringList(Karteikarte k){
+    List<String> s = new List();
+    getRowFromKK(k).forEach((key, value) => s.add(key.toString() + ':' + value.toString() ));
+    return s;
+}
+  static Map<String, dynamic> rowFromStringList(List<String> s)  {
+    Map<String, dynamic> row = new Map();
+    s.forEach((e) => row[e.split(":").first] = e.split(":").last);
     return row;
   }
 

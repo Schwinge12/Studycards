@@ -192,9 +192,9 @@ class _KarteErstellenRueckseite extends State<KarteErstellenRueckseite> {
         .mitRueckSeite(widget.eingabe.toString())
         .mitThemengebiet(widget.stapel.getThemengebietName());
    if(widget.vorderSeite.imageFile != null)
-     kk.mitFile(widget.vorderSeite.imageFile);
+     kk.mitFile(widget.vorderSeite.imageFile, 0);
     if(_imageFile != null )
-      kk.mitFile(_imageFile);
+      kk.mitFile(_imageFile , 1);
 
   print(widget.stapel.stapelKarten.length.toString());
     widget.stapel.stapelKarten.add(kk);

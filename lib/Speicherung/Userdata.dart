@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Konten/Dozent.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Kurs.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
@@ -130,9 +131,7 @@ class Userdata {
     LokaleDatenbankStapel.alleStapelLaden();
     LokaleDatenbankQuiznamen.alleQuizeLaden();
     // TODO: Speicherung - implement laden
-    //data?
-    // + load data
-    // - create new lists (karteikarten)
+   kkStringListTest();
   }
 
 
@@ -150,6 +149,16 @@ class Userdata {
     return null;
   }
 
+  Future<void> kkStringListTest() async {
+    Karteikarte k = new Karteikarte().mitVorderSeite('vorderSe o!ite').mitRueckSeite('rueckAs Seite').mitThemengebiet('themedddngebiet').mitAnswer(1);
+    print ( '\n _____KarteikareteToStringListTest_____________');
+    print (LokaleDatenbankKarteiKarten.kkToStringList(k));
+    Karteikarte kart = await Karteikarte.KKfromMapObject(LokaleDatenbankKarteiKarten.rowFromStringList(LokaleDatenbankKarteiKarten.kkToStringList(k)));
+    print(kart.getRueckSeite());
+    print(kart.getVorderSeite());
+    print(kart.answeredTrue);
+    print ('_____/KarteikareteToStringListTest_____________');
+  }
 
 
 }

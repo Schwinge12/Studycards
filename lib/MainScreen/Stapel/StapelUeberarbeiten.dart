@@ -25,7 +25,8 @@ class StapelUeberarbeiten extends StatefulWidget {
 class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
 
 
-  Future<void> auswaehlenVorderseite(BuildContext context) {
+
+  Future<void> auswaehlenBild(BuildContext context, int seite) {
     return showDialog(context: context, builder: (BuildContext context) {
       return AlertDialog(
         title: Text("Auswählen"),
@@ -35,57 +36,14 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
               GestureDetector(
                 child: Text("Galerie"),
                 onTap: () {
-                  _openGalleryVorderseite();
+                  _openGallery(seite);
                 },
               ),
               Padding(padding: EdgeInsets.all(8.0)),
               GestureDetector(
                 child: Text("Kamera"),
                 onTap: () {
-                  _openCameraVorderseite();
-                },
-              )
-            ],
-          ),
-        ),
-      );
-    });
-  }
-  Future _openGalleryVorderseite() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
-    });
-    Navigator.of(context).pop();
-  }
-
-  Future _openCameraVorderseite() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-    this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
-    });
-    Navigator.of(context).pop();
-  }
-
-
-  Future<void> auswaehlenRueckseite(BuildContext context) {
-    return showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Auswählen"),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              GestureDetector(
-                child: Text("Galerie"),
-                onTap: () {
-                  _openGalleryRueckseite();
-                },
-              ),
-              Padding(padding: EdgeInsets.all(8.0)),
-              GestureDetector(
-                child: Text("Kamera"),
-                onTap: () {
-                  _openCameraRueckseite();
+                  _openCamera(seite);
                 },
               )
             ],
@@ -95,18 +53,18 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
     });
   }
 
-  Future _openGalleryRueckseite() async {
+  Future _openGallery(int seite) async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
+      widget.stapel.stapelKarten[widget.kartennummer].bilder[seite] = image;
     });
     Navigator.of(context).pop();
   }
 
-  Future _openCameraRueckseite() async {
+  Future _openCamera(int seite) async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
-      widget.stapel.stapelKarten[widget.kartennummer].mitFile(image);
+      widget.stapel.stapelKarten[widget.kartennummer].bilder[seite] = image;
     });
     Navigator.of(context).pop();
   }
@@ -139,7 +97,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                 icon: Icon(Icons.save,color: Colors.grey, size: 30),
                 tooltip: 'Stapel abschließen und hochladen',
                 onPressed: (){
-                  LokaleDatenbankKarteiKarten.updateKk(widget.stapel.stapelKarten[widget.kartennummer]);
+
                   Navigator.pop(context, 'StapelAbschliessenDozent');
                 },
               ),
@@ -159,7 +117,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
              body: SafeArea(
                     child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.black26,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: Column(
@@ -172,17 +130,16 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                 margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 20.0, bottom: 20.0),
                                 color: Colors.white,
                                 child: FlipCard(
-                                  direction: FlipDirection.HORIZONTAL,
+                                  direction: FlipDirection.VERTICAL,
                                   speed: 500,
-
                                   front: Column(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: <Widget>[
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white38,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: SafeArea(
                                             child: Column(
@@ -207,7 +164,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                   },
                                                   decoration: InputDecoration(
                                                     filled: true,
-                                                    fillColor: Colors.black38,
+                                                    fillColor: Colors.black26,
                                                     hintText: 'Neuer Text',
                                                     contentPadding:
                                                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -216,12 +173,12 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                     ),
                                                     enabledBorder: OutlineInputBorder(
                                                       borderSide:
-                                                      BorderSide(color: Colors.black, width: 1.0),
+                                                      BorderSide(color: Colors.black12, width: 1.0),
                                                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                     ),
                                                     focusedBorder: OutlineInputBorder(
                                                       borderSide:
-                                                      BorderSide(color: Colors.black, width: 2.0),
+                                                      BorderSide(color: Colors.black12, width: 2.0),
                                                       borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                     ),
                                                   ),
@@ -234,8 +191,8 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white38,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            color: Colors.white70,
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: SafeArea(
                                             child: Column(
@@ -246,13 +203,13 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                   child: Container(
                                                       color: Colors.black26,
                                                       child:
-                                                      new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length == 0
+                                                      new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder[0] == null
                                                           ? new Text("Kein Bild vorhanden.")
                                                           : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
                                                   ),
                                                 ),
                                                 FlatButton(onPressed: (){
-                                                  auswaehlenVorderseite(context);
+                                                  auswaehlenBild(context, 0);
                                                 },child: Icon(Icons.add_a_photo, size: 60, color: Colors.black26)
                                                 )
                                               ],
@@ -270,7 +227,7 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             color: Colors.white70,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -303,12 +260,12 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                                   ),
                                                   enabledBorder: OutlineInputBorder(
                                                     borderSide:
-                                                    BorderSide(color: Colors.black, width: 1.0),
+                                                    BorderSide(color: Colors.black12, width: 1.0),
                                                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                   ),
                                                   focusedBorder: OutlineInputBorder(
                                                     borderSide:
-                                                    BorderSide(color: Colors.black, width: 2.0),
+                                                    BorderSide(color: Colors.black12, width: 2.0),
                                                     borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                   ),
                                                 ),
@@ -320,23 +277,25 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                                       Expanded(
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: Colors.white70,
-                                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                            color: Colors.white30,
+                                            borderRadius: BorderRadius.all(Radius.circular(1.0)),
                                           ),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
+                                              Text("Aktuelles Bild:"),
                                               Expanded(
+
                                                 child: Container(
                                                     color: Colors.black26,
-                                                    child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder.length < 2
+                                                    child: new Center(child: widget.stapel.stapelKarten[widget.kartennummer].bilder[1] == null
                                                         ? new Text("Kein Bild vorhanden.")
-                                                        : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[0], width: 400, height: 400))
+                                                        : new Image.file(widget.stapel.stapelKarten[widget.kartennummer].bilder[1], width: 400, height: 400))
                                                 ),
                                               ),
-                                              Text("Neues Bild:"),
+
                                               FlatButton(onPressed: (){
-                                                auswaehlenRueckseite(context);
+                                                auswaehlenBild(context, 1);
                                               },child: Icon(Icons.add_a_photo, size: 60, color: Colors.black12)
                                               )
                                             ],

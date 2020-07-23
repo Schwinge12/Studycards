@@ -87,7 +87,6 @@ class StapelStatusState extends State<StapelStatus>{
                   //  widget.stapel.stapelKarten[i].bilder[j];
                  // }
                 //}
-
                 }
             ),
           ]
@@ -106,7 +105,7 @@ class StapelStatusState extends State<StapelStatus>{
               ),
             )
           ],
-          color: Colors.white,
+          color: Colors.grey,
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Column(

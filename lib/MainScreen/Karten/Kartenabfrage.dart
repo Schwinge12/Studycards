@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
+import 'package:karteikartenapp/MainScreen/Stapel/StapelStatus.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
@@ -173,7 +174,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                       LokaleDatenbankStapel
                                           .alleKarteikartenUpdaten(
                                           widget.stapel);
-                                      Navigator.pop(context);
+                                      Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelStatus(stapel: widget.stapel)));
                                     }
                                   else setState(() {
                                       widget.kartennummer  ++ ;
@@ -190,8 +191,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                                     if(widget.stapel.stapelKarten.length -1 == widget.kartennummer) {
                                       LokaleDatenbankStapel
                                           .alleKarteikartenUpdaten(widget.stapel);
-                                      Navigator.pop(
-                                          context, 'StapelAbschliessenDozent');
+                                      Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelStatus(stapel: widget.stapel)));
                                     }
                                     else setState(() {
                                     widget.kartennummer  ++ ;

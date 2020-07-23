@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenVorderseite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
-import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
 //TODO Backend: Eingebene Daten abspeichern
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
@@ -27,7 +25,7 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: (){
-            Navigator.pushNamed(context,'MenuPage');
+            Navigator.pushNamed(context,'AlleStapelAnzeigen');
           },
         ),
       ),

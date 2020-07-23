@@ -11,7 +11,7 @@ import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:share/share.dart';
-import 'package:share_extend/share_extend.dart';
+
 
 class StapelStatus extends StatefulWidget{
 
@@ -32,7 +32,7 @@ class StapelStatusState extends State<StapelStatus>{
 String ueberschrift="Viel Spaß damit";
   Userdata userdata = new Userdata();
 
-
+//test test
   @override
   Widget build(BuildContext context) {
     // LokaleDatenbankStapel.ausgeben(widget.stapel.getThemengebietName());

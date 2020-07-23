@@ -11,6 +11,7 @@ import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:share/share.dart';
+import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
 
 
 class StapelStatus extends StatefulWidget{
@@ -27,7 +28,6 @@ class StapelStatus extends StatefulWidget{
 
 class StapelStatusState extends State<StapelStatus>{
   final dbHelfer = LokaleDatenbankStapel.instance;
-
   StapelStatusState();
 
   Userdata userdata = new Userdata();
@@ -87,6 +87,9 @@ class StapelStatusState extends State<StapelStatus>{
                     sharePositionOrigin:
                     box.localToGlobal(Offset.zero) &
                     box.size);
+
+                List<String> kk = new List<String>();
+                kk= LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[0]);
 
                 //for(int i =0; i<widget.stapel.stapelKarten.length;i++)
                 //{

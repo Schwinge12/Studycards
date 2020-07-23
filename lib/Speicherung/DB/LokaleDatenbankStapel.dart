@@ -81,6 +81,7 @@ import '../Userdata.dart';
     int id = row[colId];
     return await db.update(tabelle, row, where: '$colId = ?', whereArgs: [id]);
   }
+
   static Future<int> updateStapel(Stapel s) async {
     Database db = await instance.database;
     Map<String, dynamic> row = LokaleDatenbankStapel.getRowFromStapel(s);
@@ -96,12 +97,7 @@ import '../Userdata.dart';
   }
 
   static void insertStapel(Stapel s) async {
-    // row to insert
-
     final id = await insert(tabelle,getRowFromStapel(s));
-
-    // ^ stapel - Karteikarten v
-
     LokaleDatenbankKarteiKarten kk =
     new LokaleDatenbankKarteiKarten(_database, _datenbankVersion, s.getThemengebietName(), id);
     for (int i = 0 ; i < s.stapelKarten.length; i++){

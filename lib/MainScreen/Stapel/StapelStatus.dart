@@ -11,8 +11,8 @@ import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:share/share.dart';
+import 'package:share_extend/share_extend.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
-
 
 class StapelStatus extends StatefulWidget{
 
@@ -28,8 +28,9 @@ class StapelStatus extends StatefulWidget{
 
 class StapelStatusState extends State<StapelStatus>{
   final dbHelfer = LokaleDatenbankStapel.instance;
-  StapelStatusState();
 
+  StapelStatusState();
+String ueberschrift="Viel Spaß damit";
   Userdata userdata = new Userdata();
 
 
@@ -82,14 +83,25 @@ class StapelStatusState extends State<StapelStatus>{
               icon: Icon(Icons.share,color: Colors.white, size: 35),
               onPressed:() {
                 final RenderBox box = context.findRenderObject();
-                Share.share(widget.stapel.getStudiengang(),
-                    subject: widget.stapel.getThemengebietName(),
-                    sharePositionOrigin:
-                    box.localToGlobal(Offset.zero) &
-                    box.size);
+               // for (int i=1; i<widget.stapel.stapelKarten.length; i++)
 
-                List<String> kk = new List<String>();
-                kk= LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[0]);
+                List<List<String>> stapelliste = new List<List<String>>();
+                for(int i=0; i<widget.stapel.stapelKarten.length; i++){
+                  List<String> kkListe = new List<String>();
+                  kkListe = LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]);
+                  stapelliste.add(kkListe);
+                  ShareExtend.shareMultiple(kkListe, "Servus");
+                }
+
+                //ShareExtend.shareMultiple();
+
+                //Share.share(
+
+                   // widget.stapel.getStudiengang(),
+                  //  subject: widget.stapel.getThemengebietName(),
+                   // sharePositionOrigin:
+                    //box.localToGlobal(Offset.zero) &
+                   // box.size);
 
                 //for(int i =0; i<widget.stapel.stapelKarten.length;i++)
                 //{

@@ -106,7 +106,7 @@ class LokaleDatenbankKarteiKarten {
     return i;
 }
 
-static List<String> kkToStringList(Karteikarte k){
+  static List<String> kkToStringList(Karteikarte k){
       List<String> s = new List();
       getRowFromKK(k).forEach((key, value) => s.add(key.toString() + ':' + value.toString() ));
       return s;

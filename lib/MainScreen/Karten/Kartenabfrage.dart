@@ -29,16 +29,21 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
   Widget build(BuildContext context) {
               return Scaffold(
                 appBar: AppBar(
-                  title: Center(
-                    child: AutoSizeText(
-                      widget.stapel.getStudienfachName(),
-                      textAlign: TextAlign.center,
-                      minFontSize: 6,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                ),
-                ),
-                ),
+                  title:Center(
+                  child: AutoSizeText(
+                    widget.stapel.getStudienfachName(),
+                    textAlign: TextAlign.center,
+                    minFontSize: 6,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),),
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ),
                 body: SafeArea(
                   child: Material(
                   elevation: 3,

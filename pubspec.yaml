@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  share_extend: "^1.1.9"
   encrypt: any
   shared_preferences: ^0.5.7
   image_picker: ^0.6.1+11

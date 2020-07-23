@@ -11,6 +11,7 @@ import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:share/share.dart';
+import 'package:share_extend/share_extend.dart';
 
 class StapelStatus extends StatefulWidget{
 
@@ -28,7 +29,7 @@ class StapelStatusState extends State<StapelStatus>{
   final dbHelfer = LokaleDatenbankStapel.instance;
 
   StapelStatusState();
-
+String ueberschrift="Viel Spaß damit";
   Userdata userdata = new Userdata();
 
 
@@ -36,14 +37,22 @@ class StapelStatusState extends State<StapelStatus>{
   Widget build(BuildContext context) {
     // LokaleDatenbankStapel.ausgeben(widget.stapel.getThemengebietName());
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: AutoSizeText(
-            widget.stapel.getStudienfachName(),
-            minFontSize: 6,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-        ),
-        ),
+        appBar: AppBar(
+          title:Center(
+            child: AutoSizeText(
+              widget.stapel.getStudienfachName(),
+              textAlign: TextAlign.center,
+              minFontSize: 6,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: (){
+              Navigator.pushNamed(context,'AlleStapelAnzeigen');
+            },
+          ),
+
           actions: <Widget>[
             // action button
             IconButton(
@@ -78,6 +87,7 @@ class StapelStatusState extends State<StapelStatus>{
                     sharePositionOrigin:
                     box.localToGlobal(Offset.zero) &
                     box.size);
+
                 //for(int i =0; i<widget.stapel.stapelKarten.length;i++)
                 //{
                   //widget.stapel.stapelKarten[i].getVorderSeite();

@@ -27,7 +27,7 @@ import 'MainScreen/Quiz/Quizende.dart';
 import 'MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 
 void main(){
-  SyncfusionLicense.registerLicense("NT8mJyc2IWhia31ifWN9ZmFoZHxgfGFjYWNzZGliZWlnZnMSHmg+Mis6Pjo/OjI9fTchNiAwOzYhEyAnJjc2PSd9NTskIH03Ng==");
+  SyncfusionLicense.registerLicense("NT8mJyc2IWhia31hfWN9Z2doa3xhYXxhY2Fjc2tpYGtpYmdzEh5oOj01PBM+Mis6Pjo/OjI9fjchNiAwOzYhfTc2");
   return runApp(KarteikartenApp());
 }
 

@@ -21,7 +21,8 @@ class _QuizStapelErstellen extends State<QuizStapelErstellen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text('Quiz Stapel Erstellen')),
+      appBar: AppBar(title: Center(
+          child: Text('Quiz Stapel Erstellen')),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: (){

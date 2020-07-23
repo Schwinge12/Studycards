@@ -47,7 +47,6 @@ class _AlleStapel extends State<AlleStapel> {
           },
         ) ,
         title: Text('Meine Stapel',style: WeisserTextStyle,),
-
       ),
 
       body: new ListView.builder(

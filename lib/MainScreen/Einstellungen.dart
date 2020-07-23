@@ -22,6 +22,12 @@ class _EinstellungenState extends State<Einstellungen> {
     return Scaffold(
         appBar: AppBar(
         title: Text('Einstellungen'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: (){
+            Navigator.pushNamed(context,'MenuPage');
+          },
+        ),
         ),
     body: Center(
             child: SafeArea(
@@ -41,6 +47,7 @@ class _EinstellungenState extends State<Einstellungen> {
                   LogoutButton(
                       text: 'Abmelden',
                       onPress: () {
+                        //TODO Android zurück Button an handys wirft auf abmelden zurück - bleibt nicht auf menü seite
                         LokaleDatenbankKonto.deleteKonto();
                         _auth.signOut();
                         Navigator.pushNamed(context, 'LoginScreen');

@@ -80,18 +80,20 @@ String ueberschrift="Viel Spaß damit";
             ),
             IconButton(
               icon: Icon(Icons.share,color: Colors.white, size: 35),
-              onPressed:() {
+              onPressed:()  {
                 final RenderBox box = context.findRenderObject();
                // for (int i=1; i<widget.stapel.stapelKarten.length; i++)
 
-                List<List<String>> stapelliste = new List<List<String>>();
-                for(int i=0; i<widget.stapel.stapelKarten.length; i++){
-                  List<String> kkListe = new List<String>();
-                  kkListe = LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]);
-                  stapelliste.add(kkListe);
-                  ShareExtend.shareMultiple(kkListe, "Servus");
+                List<String> stapelliste = Stapel.listfromStapel(widget.stapel);
+    for(int i=0; i<widget.stapel.stapelKarten.length; i++){
+    stapelliste.addAll(LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]));
+    }
+    ShareExtend.share(stapelliste.toString(), "text");
 
-                }
+
+
+
+
 
                 //ShareExtend.shareMultiple();
 
@@ -193,5 +195,19 @@ String ueberschrift="Viel Spaß damit";
     print(widget.stapel.getID());
     await LokaleDatenbankStapel.stapelLoeschen(widget.stapel);
     await userdata.loeschen(widget.stapel);
+  }
+
+  void importtest(List <String> stapelliste )async {
+    print("Importtest--------------------------------");
+    Stapel s = await Stapel.StapelfromList(stapelliste);
+
+  print(s.getThemengebietName());
+  print(s.getStudiengang());
+  print(s.getStudienfachName());
+  print(s.stapelKarten.length);
+  if (s.stapelKarten.length > 0){
+    print(s.stapelKarten[0].getVorderSeite());
+  }
+
   }
 }

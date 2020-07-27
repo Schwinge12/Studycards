@@ -3,6 +3,7 @@ import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Karteikarte.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Studiengang.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Themengebiet.dart';
+import 'package:karteikartenapp/Speicherung/Userdata.dart';
 
 import 'Kurs.dart';
 import '../Produkt.dart';
@@ -106,7 +107,10 @@ class Stapel extends Produkt {
   map['themengebiet'] = _themengebiet;
   return map;
  }
-
+ @override
+String toString(){
+  return getThemengebietName();
+ }
 
  static Stapel StapelfromMapObject(Map<String, dynamic> map) {
   Stapel s = new Stapel();
@@ -125,19 +129,24 @@ class Stapel extends Produkt {
  static  Future<Stapel> StapelfromList(List<String> l) async{
  Stapel s =
  StapelfromMapObject(LokaleDatenbankKarteiKarten.rowFromStringList(l.sublist(0, 3)));
+
+ //Abfrage auf doppelten stapel
+ Userdata userdata = new Userdata();
+ while(userdata.sucheInListe(userdata.stapel, s.getThemengebietName()) != null ){
+  s.mit_themengebiet(s.getThemengebietName() + "´");
+  for(int i = 8; i < l.length; i = i +5) {
+   l[i] = l[i]+"´";
+  }
+ }
+
+
+
   for(int i = 3; i < l.length; i = i + 5) {
    s.stapelKarten.add(await Karteikarte.KKfromMapObject(
+
        LokaleDatenbankKarteiKarten.rowFromStringList(l.sublist(i, i + 5))));
   }
   return s;
  }
- static List<String> stringParser(String s) {
-  s = s.trimLeft().trimRight().substring(1, s.length - 1);
-  List<String> l = s.split(',');
-  print(s.toString());
-  for (int i = 0; i < l.length; i++) {
-   l[i] = l[i].trimLeft();
-   //print(l[i]);
-  }
- }
+
 }

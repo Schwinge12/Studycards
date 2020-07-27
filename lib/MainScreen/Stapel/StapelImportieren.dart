@@ -1,9 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'Dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
+import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
+import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 
+import 'StapelAbschliessen.dart';
 
 
 class StapelImportieren extends StatefulWidget {
@@ -24,7 +29,6 @@ class _StapelImportieren  extends State<StapelImportieren> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             onPressed: (){
-              //Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelErstellen()));
               Navigator.pushNamed(context, 'AlleStapelAnzeigen');
             },
           ),
@@ -41,16 +45,22 @@ class _StapelImportieren  extends State<StapelImportieren> {
               onPressed: (){
                 Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,stapel: widget.stapel)));
               },
+
             ),*/
           ]
+
       ),
+
+
       body: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
+
               Expanded(
                 child: Container(
+
                     color: Colors.white,
                     child: Column(
                       children: <Widget>[
@@ -72,13 +82,21 @@ class _StapelImportieren  extends State<StapelImportieren> {
                         )
                       ],
                     )
+
                 ),
               ),
+
               SafeArea(
                 child: Row(
+
                   children: <Widget>[
+
                     Expanded(
-                        child: MenuButton(text: "Stapel Importieren", onPress: null)
+                        child: MenuButton(text: "Stapel Importieren", onPress: () async {
+                              Stapel stapel = await Stapel.StapelfromList(stringParser(widget.eingabe));
+
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelAbschliessen(stapel: stapel)));
+                        })
                     ),
                   ],
                 ),
@@ -88,6 +106,16 @@ class _StapelImportieren  extends State<StapelImportieren> {
     );
   }
 
+  static List<String> stringParser(String s) {
+    s = s.trimLeft().trimRight().substring(1, s.length - 1);
+    List<String> l = s.split(',');
+    print(s.toString());
+    for (int i = 0; i < l.length; i++) {
+      l[i] = l[i].trimLeft();
+      //print(l[i]);
+    }
+    return l;
+  }
 
 }
 

@@ -85,10 +85,10 @@ String ueberschrift="Viel Spaß damit";
                // for (int i=1; i<widget.stapel.stapelKarten.length; i++)
 
                 List<String> stapelliste = Stapel.listfromStapel(widget.stapel);
-    for(int i=0; i<widget.stapel.stapelKarten.length; i++){
-    stapelliste.addAll(LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]));
-    }
-    ShareExtend.share(stapelliste.toString(), "text");
+                for(int i=0; i<widget.stapel.stapelKarten.length; i++){
+                stapelliste.addAll(LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]));
+                }
+                ShareExtend.share(stapelliste.toString(), "text");
 
 
 

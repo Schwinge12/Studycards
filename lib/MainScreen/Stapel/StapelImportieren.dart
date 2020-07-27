@@ -1,12 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'Dart:io';
-import 'package:image_picker/image_picker.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
-import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
-import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
+
 
 
 class StapelImportieren extends StatefulWidget {
@@ -27,7 +24,8 @@ class _StapelImportieren  extends State<StapelImportieren> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             onPressed: (){
-              Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelErstellen()));
+              //Navigator.push(context,MaterialPageRoute(builder: (context)=>StapelErstellen()));
+              Navigator.pushNamed(context, 'AlleStapelAnzeigen');
             },
           ),
           title: AutoSizeText(
@@ -43,29 +41,23 @@ class _StapelImportieren  extends State<StapelImportieren> {
               onPressed: (){
                 Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,stapel: widget.stapel)));
               },
-
             ),*/
           ]
-
       ),
-
-
       body: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment:CrossAxisAlignment.stretch,
             children: <Widget>[
-
               Expanded(
                 child: Container(
-
                     color: Colors.white,
                     child: Column(
                       children: <Widget>[
                         Center(
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Text('VORDERSEITE'),
+                            child: Text('Hier kopierten Stapel einfügen'),
                           ),
                         ),
                         Expanded(
@@ -80,15 +72,11 @@ class _StapelImportieren  extends State<StapelImportieren> {
                         )
                       ],
                     )
-
                 ),
               ),
-
               SafeArea(
                 child: Row(
-
                   children: <Widget>[
-
                     Expanded(
                         child: MenuButton(text: "Stapel Importieren", onPress: null)
                     ),

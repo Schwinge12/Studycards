@@ -25,7 +25,7 @@ import 'MainScreen/Quiz/AlleQuizStapelAnzeigen.dart';
 import 'MainScreen/Quiz/QuizStapelErstellen.dart';
 import 'MainScreen/Quiz/Quizende.dart';
 import 'MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
-import 'MainScreen/Stapel/StapelImprotieren.dart';
+import 'MainScreen/Stapel/StapelImportieren.dart';
 
 void main(){
   SyncfusionLicense.registerLicense("NT8mJyc2IWhia31hfWN9Z2doa3xhYXxhY2Fjc2tpYGtpYmdzEh5oOj01PBM+Mis6Pjo/OjI9fjchNiAwOzYhfTc2");
@@ -65,7 +65,7 @@ class KarteikartenApp extends StatelessWidget{
         'Quizende':(context)=>Quizende(),
         'QuizAktuelleFrageErgebnis':(context)=>QuizAkutelleFrageErgebnis(),
         'StapelStatus':(context)=>StapelStatus(),
-
+        'StapelImportieren':(context)=>StapelImportieren(),
       },
     );
   }

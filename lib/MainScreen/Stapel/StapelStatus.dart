@@ -10,7 +10,6 @@ import 'package:karteikartenapp/MainScreen/Stapel/StapelUeberarbeiten.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
-import 'package:share/share.dart';
 import 'package:share_extend/share_extend.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
 
@@ -91,6 +90,7 @@ String ueberschrift="Viel Spaß damit";
                   kkListe = LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]);
                   stapelliste.add(kkListe);
                   ShareExtend.shareMultiple(kkListe, "Servus");
+
                 }
 
                 //ShareExtend.shareMultiple();

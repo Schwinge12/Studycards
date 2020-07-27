@@ -17,20 +17,7 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		B1D7D447F045680C334C543D /* libPods-Runner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5891CFD4C39F370E33455CAC /* libPods-Runner.a */; };
 		C851E6D3248F6D160079AB2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C851E6D2248F6D160079AB2A /* GoogleService-Info.plist */; };
-		C8B4ED4924BAE98800D31E9E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B4ED4824BAE98800D31E9E /* ShareViewController.swift */; };
-		C8B4ED4C24BAE98800D31E9E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B4ED4A24BAE98800D31E9E /* MainInterface.storyboard */; };
-		C8B4ED5024BAE98800D31E9E /* Karteikartenapp.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C8B4ED4624BAE98800D31E9E /* Karteikartenapp.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C8B4ED4E24BAE98800D31E9E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C8B4ED4524BAE98800D31E9E;
-			remoteInfo = Karteikartenapp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
@@ -49,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C8B4ED5024BAE98800D31E9E /* Karteikartenapp.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,10 +64,6 @@
 		B7F0DEB3039FF9DE8C7E0ABE /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		C82F67BC24BF13610087EA6B /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		C851E6D2248F6D160079AB2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C8B4ED4624BAE98800D31E9E /* Karteikartenapp.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Karteikartenapp.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8B4ED4824BAE98800D31E9E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		C8B4ED4B24BAE98800D31E9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		C8B4ED4D24BAE98800D31E9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8B4ED5624BAFE3000D31E9E /* Karteikartenapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Karteikartenapp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,13 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1D7D447F045680C334C543D /* libPods-Runner.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C8B4ED4324BAE98800D31E9E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +97,6 @@
 				545111B22482723D007B35EB /* Default-568h@2x.png */,
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
-				C8B4ED4724BAE98800D31E9E /* Share Extension */,
 				97C146EF1CF9000F007C117D /* Products */,
 				DEE4AD3E8AB203E00DE233D1 /* Pods */,
 				D9DCEF3A1D32D925658633E5 /* Frameworks */,
@@ -133,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
-				C8B4ED4624BAE98800D31E9E /* Karteikartenapp.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,16 +135,6 @@
 				97C146F21CF9000F007C117D /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C8B4ED4724BAE98800D31E9E /* Share Extension */ = {
-			isa = PBXGroup;
-			children = (
-				C8B4ED4824BAE98800D31E9E /* ShareViewController.swift */,
-				C8B4ED4A24BAE98800D31E9E /* MainInterface.storyboard */,
-				C8B4ED4D24BAE98800D31E9E /* Info.plist */,
-			);
-			path = "Share Extension";
 			sourceTree = "<group>";
 		};
 		D9DCEF3A1D32D925658633E5 /* Frameworks */ = {
@@ -213,29 +176,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				C8B4ED4F24BAE98800D31E9E /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
-		};
-		C8B4ED4524BAE98800D31E9E /* Karteikartenapp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C8B4ED5524BAE98800D31E9E /* Build configuration list for PBXNativeTarget "Karteikartenapp" */;
-			buildPhases = (
-				C8B4ED4224BAE98800D31E9E /* Sources */,
-				C8B4ED4324BAE98800D31E9E /* Frameworks */,
-				C8B4ED4424BAE98800D31E9E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Karteikartenapp;
-			productName = Karteikartenapp;
-			productReference = C8B4ED4624BAE98800D31E9E /* Karteikartenapp.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -249,11 +194,6 @@
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
-					};
-					C8B4ED4524BAE98800D31E9E = {
-						CreatedOnToolsVersion = 11.5;
-						DevelopmentTeam = CQSA53WDQH;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -271,7 +211,6 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
-				C8B4ED4524BAE98800D31E9E /* Karteikartenapp */,
 			);
 		};
 /* End PBXProject section */
@@ -287,14 +226,6 @@
 				545111B32482723D007B35EB /* Default-568h@2x.png in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				C851E6D3248F6D160079AB2A /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C8B4ED4424BAE98800D31E9E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8B4ED4C24BAE98800D31E9E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,23 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C8B4ED4224BAE98800D31E9E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8B4ED4924BAE98800D31E9E /* ShareViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C8B4ED4F24BAE98800D31E9E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C8B4ED4524BAE98800D31E9E /* Karteikartenapp */;
-			targetProxy = C8B4ED4E24BAE98800D31E9E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
@@ -427,14 +342,6 @@
 				97C147001CF9000F007C117D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		C8B4ED4A24BAE98800D31E9E /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8B4ED4B24BAE98800D31E9E /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -495,7 +402,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -630,7 +536,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -658,7 +563,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -682,83 +586,6 @@
 			};
 			name = Release;
 		};
-		C8B4ED5224BAE98800D31E9E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Karteikartenapp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQSA53WDQH;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Karteikartenapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maximiliandrescher.karteikartenapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C8B4ED5324BAE98800D31E9E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Karteikartenapp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQSA53WDQH;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Karteikartenapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maximiliandrescher.karteikartenapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		C8B4ED5424BAE98800D31E9E /* Profile */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Karteikartenapp.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQSA53WDQH;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Karteikartenapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maximiliandrescher.karteikartenapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Profile;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -778,16 +605,6 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C8B4ED5524BAE98800D31E9E /* Build configuration list for PBXNativeTarget "Karteikartenapp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C8B4ED5224BAE98800D31E9E /* Debug */,
-				C8B4ED5324BAE98800D31E9E /* Release */,
-				C8B4ED5424BAE98800D31E9E /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

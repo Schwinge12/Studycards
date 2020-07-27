@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
@@ -39,15 +40,27 @@ class _AlleStapel extends State<AlleStapel> {
     var  verfuegbareStapel = _userdata.stapel.length;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: (){
-            Navigator.pushNamed(context, 'MenuPage');
-          },
-        ) ,
-        title: Text('Meine Stapel',style: WeisserTextStyle,),
-      ),
+        appBar: AppBar(
+            title:Center(
+              child: Text("Meine Stapel", style:WeisserTextStyle,)
+              ),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: (){
+                Navigator.pushNamed(context,'MenuPage');
+              },
+            ),
+            actions: <Widget>[
+              // action button
+              IconButton(
+                icon: Icon(Icons.file_download, color: Colors.white, size: 35),
+                onPressed: (){
+                  Navigator.pushNamed(context, 'StapelImport');
+                },
+              ),
+
+            ]
+        ),
 
       body: new ListView.builder(
         itemCount: buttons.length,

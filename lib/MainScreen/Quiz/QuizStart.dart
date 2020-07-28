@@ -78,12 +78,6 @@ class _QuizStartState extends State<QuizStart>{
                     barrierDismissible: true);
               },
             ),
-            IconButton(
-                icon: Icon(Icons.share,color: Colors.white, size: 35),
-                onPressed:() {
-                  //ShareExtend.shareMultiple(widget.stapel.stapelKarten, "Hier ist ein Stapel für dich",subject: widget.stapel.getThemengebietName());
-                }
-            ),
           ]
       ),
       body: Container(

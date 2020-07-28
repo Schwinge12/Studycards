@@ -119,7 +119,6 @@ class _Quiz extends State<Quiz> {
                 text: frage.getAntwort(4),
                 auswertung: istAuswertung(4),
               ),
-
             ],
           ),
         ],

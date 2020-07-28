@@ -51,20 +51,22 @@ class StapelAbschliessen extends StatelessWidget {
                SizedBox(
                  height: 50,
                ),
-               MenuButton(
-                text: 'Stapel speichern',
-                onPress: () async {
-                  //set id
-                   await bilderSpeichern();
-                   LokaleDatenbankStapel.insertStapel(stapel);
-                  Stapel tmpStapel  = await LokaleDatenbankStapel.lastEntry();
-                  //kopiere / speichere - stapel/ kk / bilder
+               SafeArea(
+                 child: MenuButton(
+                  text: 'Stapel speichern',
+                  onPress: () async {
+                    //set id
+                     await bilderSpeichern();
+                     LokaleDatenbankStapel.insertStapel(stapel);
+                    Stapel tmpStapel  = await LokaleDatenbankStapel.lastEntry();
+                    //kopiere / speichere - stapel/ kk / bilder
 
-                  _u.einfuegen(tmpStapel);
-                  // debugAusgabe(stapel, tmpStapel);
-                Navigator.pushNamed(context, 'MenuPage');
-                },
+                    _u.einfuegen(tmpStapel);
+                    // debugAusgabe(stapel, tmpStapel);
+                  Navigator.pushNamed(context, 'MenuPage');
+                  },
               ),
+               ),
 
               //TODO Backend: Stapel aus DB löschen
 

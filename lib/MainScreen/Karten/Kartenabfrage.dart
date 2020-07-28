@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Stapel/StapelStatus.dart';
-import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankKarteikarten.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankStapel.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 
@@ -170,7 +169,7 @@ class _KartenanzeigeState extends State<Kartenabfrage> {
                               Expanded(
                                 child:
                                 IconButton(
-                                  //Spericherung.loeschen(Produkt zuLoeschendeKarte)
+
                                   icon: Icon(Icons.cancel,color: Colors.red,),
                                   iconSize: 60.0,
                                   onPressed: (){

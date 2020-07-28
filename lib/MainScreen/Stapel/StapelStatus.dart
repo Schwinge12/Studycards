@@ -35,7 +35,6 @@ String ueberschrift="Viel Spaß damit";
 
   @override
   Widget build(BuildContext context) {
-    // LokaleDatenbankStapel.ausgeben(widget.stapel.getThemengebietName());
     return Scaffold(
         appBar: AppBar(
           title:Center(
@@ -82,38 +81,11 @@ String ueberschrift="Viel Spaß damit";
               icon: Icon(Icons.share,color: Colors.white, size: 35),
               onPressed:()  {
                 final RenderBox box = context.findRenderObject();
-               // for (int i=1; i<widget.stapel.stapelKarten.length; i++)
-
                 List<String> stapelliste = Stapel.listfromStapel(widget.stapel);
                 for(int i=0; i<widget.stapel.stapelKarten.length; i++){
                 stapelliste.addAll(LokaleDatenbankKarteiKarten.kkToStringList(widget.stapel.stapelKarten[i]));
                 }
                 ShareExtend.share(stapelliste.toString(), "text");
-
-
-
-
-
-
-                //ShareExtend.shareMultiple();
-
-                //Share.share(
-
-                   // widget.stapel.getStudiengang(),
-                  //  subject: widget.stapel.getThemengebietName(),
-                   // sharePositionOrigin:
-                    //box.localToGlobal(Offset.zero) &
-                   // box.size);
-
-                //for(int i =0; i<widget.stapel.stapelKarten.length;i++)
-                //{
-                  //widget.stapel.stapelKarten[i].getVorderSeite();
-                 // widget.stapel.stapelKarten[i].getRueckSeite();
-                 // for(int j =0; j<widget.stapel.stapelKarten[i].bilder.length;j++)
-                  //{
-                  //  widget.stapel.stapelKarten[i].bilder[j];
-                 // }
-                //}
                 }
             ),
           ]

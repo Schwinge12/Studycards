@@ -1,13 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'Dart:io';
-import 'package:image_picker/image_picker.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
-import 'package:karteikartenapp/MainScreen/Karten/KarteErstellenRueckseite.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
-import 'package:karteikartenapp/MainScreen/Stapel/StapelErstellen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
-
 import 'StapelAbschliessen.dart';
 
 
@@ -38,17 +33,6 @@ class _StapelImportieren  extends State<StapelImportieren> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          actions: <Widget>[
-            // action button
-            /*IconButton(
-              icon: Icon(Icons.arrow_forward_ios, color: Colors.white, size: 25),
-              onPressed: (){
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>KarteErstellenRueckseite(vorderSeite: this.widget,stapel: widget.stapel)));
-              },
-
-            ),*/
-          ]
-
       ),
 
 

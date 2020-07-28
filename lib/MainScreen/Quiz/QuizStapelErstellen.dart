@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/FlexButton.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/MCErstellen.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
-//TODO Backend: Eingebene Daten abspeichern
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 
 class QuizStapelErstellen extends StatefulWidget{

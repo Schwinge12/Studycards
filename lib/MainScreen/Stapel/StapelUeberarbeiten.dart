@@ -81,7 +81,6 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
             ),
             ),
             actions: <Widget>[
-              // action button
               IconButton(
                 icon: Icon(Icons.arrow_back,color: Colors.white, size: 30),
                 onPressed: (){
@@ -97,7 +96,6 @@ class _StapelUeberarbeitenState extends State<StapelUeberarbeiten> {
                 icon: Icon(Icons.save,color: Colors.grey, size: 30),
                 tooltip: 'Stapel abschließen und hochladen',
                 onPressed: (){
-
                   Navigator.pop(context, 'StapelAbschliessenDozent');
                 },
               ),

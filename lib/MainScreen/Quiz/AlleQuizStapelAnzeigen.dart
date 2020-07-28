@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizStart.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
-import 'package:karteikartenapp/Speicherung/Produkte/Stapel/Stapel.dart';
 import 'package:karteikartenapp/Speicherung/Userdata.dart';
 import '../../ButtonsAndConstants/MenuButton.dart';
 import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';

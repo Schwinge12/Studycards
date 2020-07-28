@@ -8,7 +8,7 @@ import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/MainScreen/Quiz/QuizAktuelleFrageErgebnis.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/MenuButton.dart';
+
 
 class Quiz extends StatefulWidget {
   int anzahlFragen;

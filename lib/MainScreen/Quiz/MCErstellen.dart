@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:karteikartenapp/ButtonsAndConstants/TextStyles.dart';
 import 'package:karteikartenapp/Speicherung/DB/LokaleDatenbankQuiznamen.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/QuizNeu.dart';
 import 'package:karteikartenapp/Speicherung/Produkte/Quiz/Quizfragen.dart';
